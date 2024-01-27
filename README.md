@@ -16,6 +16,7 @@
 
 ## Prerequisites
 - Automatic1111: Install and read instructions at [Automatic1111 GitHub](https://github.com/AUTOMATIC1111/stable-diffusion-webui).
+- Deforum Stable Diffusion — official extension for AUTOMATIC1111's webui   [Deforum](https://github.com/deforum-art/sd-webui-deforum) 
 - Python version 3.10.x: Download from [Python.org](https://www.python.org/downloads/).
 
 ## Installation
