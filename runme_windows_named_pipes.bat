@@ -1,0 +1,1 @@
+rw.bat "--use_named_pipes" "--use_named_pipes"

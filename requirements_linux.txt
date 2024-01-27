@@ -1,0 +1,7 @@
+PySide6>=6.6.0
+numpy>=1.26.1
+pyeaze>=0.8.1
+websockets~=12.0
+python-osc~=1.8.3
+inputs~=0.5
+pyjoystick~=1.2.4

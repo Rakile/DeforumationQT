@@ -1,0 +1,9 @@
+{
+    "files": [
+        "deforumation.py",
+        "ui/deforumation.ui",
+        "helpers/video_player_deforumation.py",
+        "ui/video_player.ui",
+        "ui/deforumation - Copy.ui"
+    ]
+}
