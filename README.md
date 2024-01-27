@@ -1,5 +1,5 @@
 # DeforumationQT Version 0.1.3
-[<img src="github_images/DMQT front.png">]
+<img src="github_images/DMQT front.png">
 
 ## Table of Contents
 1. [Prerequisites](#prerequisites)
