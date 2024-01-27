@@ -1,0 +1,1 @@
+Don't forget to copy the image folder to the main Deforumation root folder after adding images for use with QT Creator. Deforumation uses that image folder during actual execution.
