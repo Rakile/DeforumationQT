@@ -20,6 +20,9 @@
 - Python version 3.10.x: Download from [Python.org](https://www.python.org/downloads/).
 
 ## Installation
+
+A more comprehensive installations guide is found in the "DeforumationQT_installation_guide.pdf" 
+
 **Clone or download** the git repository  `git clone https://github.com/Rakile/DeforumationQT`  
 Keep deforumation folder outside your `"stable-diffusion-webui"` path.
 ### Installation Windows
