@@ -1,4 +1,4 @@
-# DeforumationQT Version 0.1.2
+# DeforumationQT Version 0.1.3
 
 ## Table of Contents
 1. [Prerequisites](#prerequisites)
