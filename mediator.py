@@ -2291,10 +2291,15 @@ async def main_websockets(host, port):
 
 
 if __name__ == '__main__':
-    print("Special thank you to our patreons and contributers:")
+    print("\n\nSpecial thank you to our patreons and contributers:")
     print("--------------------------------------")
-    print("Apollo, Michael, Moceanike, Dustin, wildpusa, ein5tv, Davy,\nBaptiste, virusvjvisuals, make, James, Jags, Wrenn, esfera,\ncheng, Nenad, le000dv, Justin, Sergiy, Pistons & Volts, Pixery")
+    print("Chris Barnes, 鑫涛 李, Mintercraft Media, Mizar, 红军 陆, Eddie Wong, Thomas DeColita, Dmitry, Dmitry,\n"
+         " Милена Куприна, Jarkabob French, 雨 刘, kimraven, Itzevil, Apollo R.E.D., Michael, Dustin johnsen,\n"
+         "wildpusa, ein5tv, eku Zhombi, Davy Smith, Anup prabhakar, Baptiste Perrin, virusvjvisuals, make shimis,\n"
+         "Jags, Wrenn Bunker-Koesters, esfera, cheng bei, le000dv, Justin Weiss, Sergiy Dovgal, Pistons&Volts,\n"
+         "Pixery Bilgi")
     print("---------------------------------------------------\n")
+
     arga = sys.argv[0]
     if len(sys.argv) > 1:
         argb = sys.argv[1].split(' ')
