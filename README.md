@@ -1,4 +1,4 @@
-# DeforumationQT Version 0.1.3
+# DeforumationQT Version 0.1.3 #
 <img src="github_images/DMQT front.png">
 
 **Introduction**
