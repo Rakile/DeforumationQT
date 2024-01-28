@@ -448,7 +448,15 @@ class Ui_MainWindow(object):
 
         self.Preview_Frame = QFrame(self.Movie_Tab)
         self.Preview_Frame.setObjectName(u"Preview_Frame")
-        self.Preview_Frame.setStyleSheet(u"border: 0px")
+        self.Preview_Frame.setStyleSheet(u"QFrame\n"
+"{\n"
+"border: 0px\n"
+"}\n"
+"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px;\n"
+" }")
         self.Preview_Frame.setFrameShape(QFrame.StyledPanel)
         self.Preview_Frame.setFrameShadow(QFrame.Raised)
         self.gridLayout_15 = QGridLayout(self.Preview_Frame)
@@ -551,11 +559,7 @@ class Ui_MainWindow(object):
         self.replay_from_input_box.setObjectName(u"replay_from_input_box")
         self.replay_from_input_box.setGeometry(QRect(187, 8, 40, 24))
         self.replay_from_input_box.setMaximumSize(QSize(40, 16777215))
-        self.replay_from_input_box.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;*/\n"
-"\n"
-"\n"
-"\n"
-"QLineEdit {\n"
+        self.replay_from_input_box.setStyleSheet(u"QLineEdit {\n"
 "    background-color: rgb(42, 42, 42); /* Dark background */\n"
 "    color: rgb(0, 255, 0); /* Bright green text */\n"
 "    border: 2px solid rgb(40, 40, 40); /* Dark grey border */\n"
@@ -572,7 +576,10 @@ class Ui_MainWindow(object):
         self.preview_compression_slider = QSlider(self.Preview_Frame)
         self.preview_compression_slider.setObjectName(u"preview_compression_slider")
         self.preview_compression_slider.setMinimumSize(QSize(200, 0))
-        self.preview_compression_slider.setStyleSheet(u"QSlider::groove:horizontal {\n"
+        self.preview_compression_slider.setStyleSheet(u"QSlider{\n"
+"border:0;\n"
+"}\n"
+"QSlider::groove:horizontal {\n"
 "    border-image: url(images/groove_230.png) ; /* Adjust slicing and stretch as needed */\n"
 "    height: 31px; /* The height of your image */\n"
 "}\n"
@@ -592,9 +599,9 @@ class Ui_MainWindow(object):
 "background-repeat: no-repeat;\n"
 "    border: none; /* Remove the border if you don't need it */\n"
 "    width: 32px; /* Width of the handle - adjust as needed */\n"
-"    height: 32px; /* Height of the handle - adjust as needed */\n"
-"    margin: -1px"
-                        " 0; /* Optional: Adjust the margin if needed */\n"
+"    height: 32px; /* Height of the handle - adjust "
+                        "as needed */\n"
+"    margin: -1px 0; /* Optional: Adjust the margin if needed */\n"
 "}\n"
 "\n"
 "QSlider::handle:horizontal:pressed {\n"
@@ -788,7 +795,7 @@ class Ui_MainWindow(object):
         self.movie_clip = QWidget(self.Movie_Tab)
         self.movie_clip.setObjectName(u"movie_clip")
         self.movie_clip.setMinimumSize(QSize(0, 64))
-        self.movie_clip.setStyleSheet(u"background-color: rgb(0,0,0); border: 1px solid rgb(0,0,0); border-radius: 1px;")
+        self.movie_clip.setStyleSheet(u"background-color: rgb(0,0,0); border-radius: 1px; color: white;")
         self.movie_tab_grid_layout = QGridLayout(self.movie_clip)
         self.movie_tab_grid_layout.setSpacing(0)
         self.movie_tab_grid_layout.setObjectName(u"movie_tab_grid_layout")
@@ -938,10 +945,62 @@ class Ui_MainWindow(object):
         sizePolicy6.setHeightForWidth(self.frame_2.sizePolicy().hasHeightForWidth())
         self.frame_2.setSizePolicy(sizePolicy6)
         self.frame_2.setMinimumSize(QSize(0, 0))
-        self.frame_2.setStyleSheet(u"background-color: rgb(108,108,118);\n"
+        self.frame_2.setStyleSheet(u"QFrame{\n"
+"background-color: rgb(108,108,118);\n"
 "border: 2px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
 "border-radius: 10px;\n"
-"padding: 0px  1px ;  /* To prevent the content from touching the border */")
+"padding: 0px  1px ;  /* To prevent the content from touching the border */\n"
+"}\n"
+"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px;\n"
+" }\n"
+"QTextEdit{\n"
+"background-color:rgb(42, 42, 42);\n"
+"color: rgb(0, 255, 0);\n"
+"border: 2px solid rgb(128,128,128);\n"
+"border-radius: 5px;\n"
+"}\n"
+"\n"
+"QScrollArea {\n"
+"    border: 0px;\n"
+"background-color: rgb(108,108,118);\n"
+"}\n"
+"\n"
+"\n"
+"QScrollArea QScrollBar:vertical {\n"
+"    border: 2px;\n"
+"    background: rgb(66,66,66);\n"
+"    width: 15px; /* Narrow scrollbar for a sleek look */\n"
+"    border-radius: 5px;\n"
+"    margin: 0px 0 0px 0;\n"
+"    \n"
+"}\n"
+"\n"
+"QScrollArea QScrollBar::handle:vertical {\n"
+"    background-color: rgb(40,129,232); /* Dark handle */\n"
+"    min-height: 20px; /* Minimum handle height */\n"
+"    border-radius: 5px; /* Rounded corners"
+                        " for the handle */\n"
+"}\n"
+"\n"
+"QScrollArea QScrollBar::handle:vertical:hover {\n"
+"    background-color: rgb(59,165,0); /* Slightly lighter handle on hover */\n"
+"}\n"
+"\n"
+"\n"
+"QScrollArea QScrollBar::sub-line:vertical,\n"
+"QScrollArea QScrollBar::add-line:vertical {\n"
+"    background: none;\n"
+"border: none; /* No buttons at the end of the scrollbar */\n"
+"}\n"
+"\n"
+"QScrollArea QScrollBar::sub-page:vertical,\n"
+"QScrollArea QScrollBar::add-page:vertical {\n"
+"    background: none; \n"
+"border: none;/* No background for the scrollable area behind the handle */\n"
+"}")
         self.frame_2.setFrameShape(QFrame.StyledPanel)
         self.frame_2.setFrameShadow(QFrame.Raised)
         self.frame_2.setLineWidth(0)
@@ -989,7 +1048,38 @@ class Ui_MainWindow(object):
         self.prompt1.setMaximumSize(QSize(16777215, 16777215))
         self.prompt1.setSizeIncrement(QSize(0, 0))
         self.prompt1.setAutoFillBackground(False)
-        self.prompt1.setStyleSheet(u"background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(128,128,128); border-radius: 5px;")
+        self.prompt1.setStyleSheet(u"QTextEdit QScrollBar:vertical {\n"
+"    border: 2px;\n"
+"    background: rgb(66,66,66);\n"
+"    width: 15px; /* Narrow scrollbar for a sleek look */\n"
+"    border-radius: 5px;\n"
+"    margin: 0px 0 0px 0;\n"
+"    \n"
+"}\n"
+"\n"
+"QTextEdit QScrollBar::handle:vertical {\n"
+"    background-color: rgb(40,129,232); /* Dark handle */\n"
+"    min-height: 20px; /* Minimum handle height */\n"
+"    border-radius: 5px; /* Rounded corners for the handle */\n"
+"}\n"
+"\n"
+"QTextEdit QScrollBar::handle:vertical:hover {\n"
+"    background-color: rgb(59,165,0); /* Slightly lighter handle on hover */\n"
+"}\n"
+"\n"
+"\n"
+"QTextEdit QScrollBar::sub-line:vertical,\n"
+"QTextEdit QScrollBar::add-line:vertical {\n"
+"    background: none;\n"
+"border: none; /* No buttons at the end of the scrollbar */\n"
+"}\n"
+"\n"
+"QTextEdit QScrollBar::sub-page:vertical,\n"
+"QTextEdit QScrollBar::add-page:vertical {\n"
+"    background: none; \n"
+"border: none;/* No background for the scrollable area behind the handle */\n"
+"}")
+        self.prompt1.setAcceptRichText(False)
 
         self.verticalLayout_12.addWidget(self.prompt1)
 
@@ -1017,7 +1107,38 @@ class Ui_MainWindow(object):
         self.prompt2.setSizePolicy(sizePolicy8)
         self.prompt2.setMinimumSize(QSize(0, 1))
         self.prompt2.setMaximumSize(QSize(16777215, 16777215))
-        self.prompt2.setStyleSheet(u"background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(128,128,128); border-radius: 5px;")
+        self.prompt2.setStyleSheet(u"QTextEdit QScrollBar:vertical {\n"
+"    border: 2px;\n"
+"    background: rgb(66,66,66);\n"
+"    width: 15px; /* Narrow scrollbar for a sleek look */\n"
+"    border-radius: 5px;\n"
+"    margin: 0px 0 0px 0;\n"
+"    \n"
+"}\n"
+"\n"
+"QTextEdit QScrollBar::handle:vertical {\n"
+"    background-color: rgb(40,129,232); /* Dark handle */\n"
+"    min-height: 20px; /* Minimum handle height */\n"
+"    border-radius: 5px; /* Rounded corners for the handle */\n"
+"}\n"
+"\n"
+"QTextEdit QScrollBar::handle:vertical:hover {\n"
+"    background-color: rgb(59,165,0); /* Slightly lighter handle on hover */\n"
+"}\n"
+"\n"
+"\n"
+"QTextEdit QScrollBar::sub-line:vertical,\n"
+"QTextEdit QScrollBar::add-line:vertical {\n"
+"    background: none;\n"
+"border: none; /* No buttons at the end of the scrollbar */\n"
+"}\n"
+"\n"
+"QTextEdit QScrollBar::sub-page:vertical,\n"
+"QTextEdit QScrollBar::add-page:vertical {\n"
+"    background: none; \n"
+"border: none;/* No background for the scrollable area behind the handle */\n"
+"}")
+        self.prompt2.setAcceptRichText(False)
 
         self.verticalLayout_12.addWidget(self.prompt2)
 
@@ -1049,7 +1170,39 @@ class Ui_MainWindow(object):
         self.negative_prompt.setSizePolicy(sizePolicy8)
         self.negative_prompt.setMinimumSize(QSize(0, 1))
         self.negative_prompt.setMaximumSize(QSize(16777215, 16777215))
-        self.negative_prompt.setStyleSheet(u"background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(128,128,128); border-radius: 5px;")
+        self.negative_prompt.setStyleSheet(u"QTextEdit QScrollBar:vertical {\n"
+"    border: 2px;\n"
+"    background: rgb(66,66,66);\n"
+"    width: 15px; /* Narrow scrollbar for a sleek look */\n"
+"    border-radius: 5px;\n"
+"    margin: 0px 0 0px 0;\n"
+"    \n"
+"}\n"
+"\n"
+"QTextEdit QScrollBar::handle:vertical {\n"
+"    background-color: rgb(40,129,232); /* Dark handle */\n"
+"    min-height: 20px; /* Minimum handle height */\n"
+"    border-radius: 5px; /* Rounded corners for the handle */\n"
+"}\n"
+"\n"
+"QTextEdit QScrollBar::handle:vertical:hover {\n"
+"    background-color: rgb(59,165,0); /* Slightly lighter handle on hover */\n"
+"}\n"
+"\n"
+"\n"
+"QTextEdit QScrollBar::sub-line:vertical,\n"
+"QTextEdit QScrollBar::add-line:vertical {\n"
+"    background: none;\n"
+"border: none; /* No buttons at the end of the scrollbar */\n"
+"}\n"
+"\n"
+"QTextEdit QScrollBar::sub-page:vertical,\n"
+"QTextEdit QScrollBar::add-page:vertical {\n"
+"    background: none; \n"
+"border: none;/* No background for the scrollable area behind the handle */\n"
+"}")
+        self.negative_prompt.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.negative_prompt.setAcceptRichText(False)
 
         self.verticalLayout_12.addWidget(self.negative_prompt)
 
@@ -1062,9 +1215,23 @@ class Ui_MainWindow(object):
         sizePolicy10.setHeightForWidth(self.verticalFrame_prompt.sizePolicy().hasHeightForWidth())
         self.verticalFrame_prompt.setSizePolicy(sizePolicy10)
         self.verticalFrame_prompt.setMinimumSize(QSize(665, 0))
-        self.verticalFrame_prompt.setStyleSheet(u"border: 0px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
+        self.verticalFrame_prompt.setStyleSheet(u"\n"
+"QFrame{\n"
+"border: 0px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
 "border: 0px solid rgb(128,128,128); border-radius: 10px;\n"
-"padding: 0px; /* To prevent the content from touching the border */")
+"padding: 0px; /* To prevent the content from touching the border */\n"
+"}\n"
+"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px;\n"
+" }\n"
+"QTextEdit{\n"
+"background-color:rgb(42, 42, 42);\n"
+"color: rgb(0, 255, 0);\n"
+"border: 2px solid rgb(128,128,128);\n"
+"border-radius: 5px;\n"
+"}")
         self.verticalFrame_prompt.setLineWidth(0)
         self.verticalFrame_prompt.setMidLineWidth(0)
         self.verticalLayout_20 = QVBoxLayout(self.verticalFrame_prompt)
@@ -1088,7 +1255,7 @@ class Ui_MainWindow(object):
         self.frame_12.setObjectName(u"frame_12")
         self.frame_12.setMinimumSize(QSize(0, 245))
         self.frame_12.setMaximumSize(QSize(16777215, 245))
-        self.frame_12.setStyleSheet(u"border:0")
+        self.frame_12.setStyleSheet(u"")
         self.frame_12.setFrameShape(QFrame.StyledPanel)
         self.frame_12.setFrameShadow(QFrame.Raised)
         self.verticalLayout_26 = QVBoxLayout(self.frame_12)
@@ -1098,10 +1265,36 @@ class Ui_MainWindow(object):
         self.frame_13 = QFrame(self.frame_12)
         self.frame_13.setObjectName(u"frame_13")
         self.frame_13.setMaximumSize(QSize(16777215, 245))
-        self.frame_13.setStyleSheet(u"background-color: rgb(108,108,118);\n"
-"border: 2px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
-"    border-radius: 10px;\n"
-"    padding: 1px; /* To prevent the content from touching the border */")
+        self.frame_13.setStyleSheet(u"QFrame{\n"
+"border: 0px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
+"border: 0px solid rgb(128,128,128); border-radius: 10px;\n"
+"padding: 0px; /* To prevent the content from touching the border */\n"
+"}\n"
+"\n"
+"QSlider{\n"
+"background-color: rgb(108,108,118);\n"
+"border:0;\n"
+"}\n"
+"QCheckBox{\n"
+"border: 0px;\n"
+"background-color: transparent;\n"
+"}\n"
+"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px;\n"
+" }\n"
+"QLabel{\n"
+"padding: 0px; /* To prevent the content from touching the border */\n"
+"border: 0px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
+"border: 0px solid rgb(128,128,128);\n"
+"border-radius: 0px;\n"
+"}\n"
+"QPushButton{\n"
+"background-color: transparent;\n"
+"border:0;\n"
+"}\n"
+"")
         self.frame_13.setFrameShape(QFrame.StyledPanel)
         self.frame_13.setFrameShadow(QFrame.Raised)
         self.gridLayout_26 = QGridLayout(self.frame_13)
@@ -1115,10 +1308,18 @@ class Ui_MainWindow(object):
         self.Prompt_Morphing_poppable.setMinimumSize(QSize(0, 0))
         self.Prompt_Morphing_poppable.setMaximumSize(QSize(16777215, 16777215))
         self.Prompt_Morphing_poppable.setTabletTracking(True)
-        self.Prompt_Morphing_poppable.setStyleSheet(u"border: 0px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
-"border: 0px solid rgb(128,128,128); border-radius: 10px;\n"
-"padding: 1px; /* To prevent the content from touching the border */\n"
-"")
+        self.Prompt_Morphing_poppable.setStyleSheet(u"QFrame{\n"
+"background-color: rgb(108,108,118);\n"
+"border: 2px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
+"border-radius: 10px;\n"
+"padding: 1px  1px ;  /* To prevent the content from touching the border */\n"
+"}\n"
+"QLabel{\n"
+"padding: 0px; /* To prevent the content from touching the border */\n"
+"border: 0px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
+"border: 0px solid rgb(128,128,128);\n"
+"border-radius: 0px;\n"
+"}")
         self.Prompt_Morphing_poppable.setFrameShape(QFrame.StyledPanel)
         self.Prompt_Morphing_poppable.setFrameShadow(QFrame.Raised)
         self.verticalLayout_27 = QVBoxLayout(self.Prompt_Morphing_poppable)
@@ -1134,7 +1335,14 @@ class Ui_MainWindow(object):
         self.upper_right_prompt_frame.setSizePolicy(sizePolicy11)
         self.upper_right_prompt_frame.setMinimumSize(QSize(0, 36))
         self.upper_right_prompt_frame.setMaximumSize(QSize(16777215, 36))
-        self.upper_right_prompt_frame.setStyleSheet(u"border:0")
+        self.upper_right_prompt_frame.setStyleSheet(u"QFrame{\n"
+"background-color: rgb(108,108,118);\n"
+"border: 2px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
+"border-radius: 10px;\n"
+"padding: 1px  1px ;  /* To prevent the content from touching the border */\n"
+"\n"
+"border:0\n"
+"}")
         self.upper_right_prompt_frame.setFrameShape(QFrame.StyledPanel)
         self.upper_right_prompt_frame.setFrameShadow(QFrame.Raised)
         self.gridLayout_27 = QGridLayout(self.upper_right_prompt_frame)
@@ -1205,10 +1413,7 @@ class Ui_MainWindow(object):
         font3.setPointSize(11)
         font3.setBold(True)
         self.use_deforumation_prompt_scheduling_checkbox.setFont(font3)
-        self.use_deforumation_prompt_scheduling_checkbox.setStyleSheet(u"QCheckBox {\n"
-"    border: none; /* No border for the checkbox */\n"
-"}\n"
-"\n"
+        self.use_deforumation_prompt_scheduling_checkbox.setStyleSheet(u"\n"
 "QCheckBox::indicator {\n"
 "    width: 54px; /* Width of the checkbox */\n"
 "    height: 29px; /* Height of the checkbox */\n"
@@ -1247,7 +1452,7 @@ class Ui_MainWindow(object):
         sizePolicy12.setVerticalStretch(80)
         sizePolicy12.setHeightForWidth(self.save_positive_prompt_style.sizePolicy().hasHeightForWidth())
         self.save_positive_prompt_style.setSizePolicy(sizePolicy12)
-        self.save_positive_prompt_style.setMinimumSize(QSize(0, 40))
+        self.save_positive_prompt_style.setMinimumSize(QSize(60, 48))
         self.save_positive_prompt_style.setMaximumSize(QSize(16777215, 30))
         font4 = QFont()
         font4.setPointSize(12)
@@ -1262,19 +1467,20 @@ class Ui_MainWindow(object):
 "    padding: 4px 12px; /* Comfortable padding for the button text */\n"
 "    color: white; /* White text for contrast */\n"
 "    text-align: center;\n"
-"\n"
-"\n"
+"    min-width: 32px;\n"
+"    min-height: 36px;\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
 "    background-color: rgb(96, 96, 96); /* Lighter grey, similar to tab hover effect */\n"
-"\n"
+"    min-width: 32px;\n"
+"    min-height: 36px;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
 "    background-color: rgb(128, 128, 128); /* Similar to the selected tab color */\n"
-"\n"
-"\n"
+"    min-width: 32px;\n"
+"    min-height: 36px;\n"
 "}\n"
 "")
 
@@ -1291,12 +1497,11 @@ class Ui_MainWindow(object):
         self.prompt_morphing_label.setMinimumSize(QSize(0, 37))
         self.prompt_morphing_label.setMaximumSize(QSize(16777215, 0))
         font5 = QFont()
-        font5.setPointSize(10)
+        font5.setPointSize(15)
+        font5.setBold(True)
         self.prompt_morphing_label.setFont(font5)
-        self.prompt_morphing_label.setStyleSheet(u"border: 0px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
-"border: 0px solid rgb(128,128,128); border-radius: 0px;\n"
-"padding: 0px; /* To prevent the content from touching the border */")
-        self.prompt_morphing_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.prompt_morphing_label.setStyleSheet(u"")
+        self.prompt_morphing_label.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
 
         self.verticalLayout_27.addWidget(self.prompt_morphing_label)
 
@@ -1370,11 +1575,9 @@ class Ui_MainWindow(object):
         self.morphing_text_howto_label.setMinimumSize(QSize(0, 20))
         self.morphing_text_howto_label.setMaximumSize(QSize(16777215, 0))
         font7 = QFont()
-        font7.setPointSize(8)
+        font7.setPointSize(10)
         self.morphing_text_howto_label.setFont(font7)
-        self.morphing_text_howto_label.setStyleSheet(u"border: 0px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
-"border: 0px solid rgb(128,128,128); border-radius: 0px;\n"
-"")
+        self.morphing_text_howto_label.setStyleSheet(u"")
         self.morphing_text_howto_label.setScaledContents(False)
         self.morphing_text_howto_label.setAlignment(Qt.AlignCenter)
         self.morphing_text_howto_label.setWordWrap(True)
@@ -1383,10 +1586,6 @@ class Ui_MainWindow(object):
 
 
         self.gridLayout_26.addWidget(self.Prompt_Morphing_poppable, 0, 0, 1, 1)
-
-        self.verticalSpacer_8 = QSpacerItem(20, 7, QSizePolicy.Minimum, QSizePolicy.Fixed)
-
-        self.gridLayout_26.addItem(self.verticalSpacer_8, 1, 0, 1, 1)
 
 
         self.verticalLayout_26.addWidget(self.frame_13)
@@ -1406,10 +1605,17 @@ class Ui_MainWindow(object):
         sizePolicy2.setHeightForWidth(self.Prompt_Morph_Key_Binding_Frame.sizePolicy().hasHeightForWidth())
         self.Prompt_Morph_Key_Binding_Frame.setSizePolicy(sizePolicy2)
         self.Prompt_Morph_Key_Binding_Frame.setTabletTracking(False)
-        self.Prompt_Morph_Key_Binding_Frame.setStyleSheet(u"background-color: rgb(108,108,118);\n"
+        self.Prompt_Morph_Key_Binding_Frame.setStyleSheet(u"QFrame{\n"
+"background-color: rgb(108,108,118);\n"
 "border: 2px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
 "border-radius: 10px;\n"
-"padding: 0px  1px ;  /* To prevent the content from touching the border */")
+"padding: 0px  1px ;  /* To prevent the content from touching the border */\n"
+"}\n"
+"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px;\n"
+" }")
         self.verticalLayout_29 = QVBoxLayout(self.Prompt_Morph_Key_Binding_Frame)
         self.verticalLayout_29.setSpacing(0)
         self.verticalLayout_29.setObjectName(u"verticalLayout_29")
@@ -1456,7 +1662,8 @@ class Ui_MainWindow(object):
         self.scrollArea_Prompt_Morph_bindings.setMinimumSize(QSize(0, 0))
         self.scrollArea_Prompt_Morph_bindings.setTabletTracking(False)
         self.scrollArea_Prompt_Morph_bindings.setStyleSheet(u"QScrollArea {\n"
-"    border: 0px\n"
+"    border: 0px;\n"
+"background-color: rgb(108,108,118);\n"
 "}\n"
 "\n"
 "\n"
@@ -1489,8 +1696,8 @@ class Ui_MainWindow(object):
 "QScrollArea QScrollBar::sub-page:vertical,\n"
 "QScrollArea QScrollBar::add-page:vertical {\n"
 "    background: none; \n"
-"border: none;/* No background for the"
-                        " scrollable area behind the handle */\n"
+""
+                        "border: none;/* No background for the scrollable area behind the handle */\n"
 "}")
         self.scrollArea_Prompt_Morph_bindings.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self.scrollArea_Prompt_Morph_bindings.setWidgetResizable(True)
@@ -1501,7 +1708,16 @@ class Ui_MainWindow(object):
         self.scrollAreaWidgetContentsPromptMorph.setSizePolicy(sizePolicy2)
         self.scrollAreaWidgetContentsPromptMorph.setMinimumSize(QSize(520, 0))
         self.scrollAreaWidgetContentsPromptMorph.setMaximumSize(QSize(16777215, 0))
-        self.scrollAreaWidgetContentsPromptMorph.setStyleSheet(u"border:0")
+        self.scrollAreaWidgetContentsPromptMorph.setStyleSheet(u"QFrame{\n"
+"background-color: rgb(108,108,118);\n"
+"border: 2px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
+"border-radius: 10px;\n"
+"padding: 0px  0px ;  /* To prevent the content from touching the border */\n"
+"}\n"
+"QWidget{\n"
+"background-color: rgb(108,108,118);\n"
+"}\n"
+"")
         self.gridLayout_28 = QGridLayout(self.scrollAreaWidgetContentsPromptMorph)
         self.gridLayout_28.setSpacing(0)
         self.gridLayout_28.setObjectName(u"gridLayout_28")
@@ -1519,19 +1735,20 @@ class Ui_MainWindow(object):
 "    padding: 4px 12px; /* Comfortable padding for the button text */\n"
 "    color: white; /* White text for contrast */\n"
 "    text-align: center;\n"
-"\n"
-"\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
 "    background-color: rgb(96, 96, 96); /* Lighter grey, similar to tab hover effect */\n"
-"\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
 "    background-color: rgb(128, 128, 128); /* Similar to the selected tab color */\n"
-"\n"
-"\n"
+"}\n"
+"QFrame {\n"
+"background-color: rgb(108,108,118);\n"
+"border: 2px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
+"border-radius: 10px;\n"
+" padding: 0px; /* To prevent the content from touching the border */\n"
 "}\n"
 "")
         self.gridLayout_29 = QGridLayout(self.horizontalWidget)
@@ -1566,18 +1783,21 @@ class Ui_MainWindow(object):
         self.lower_right_prompt_frame.setSizePolicy(sizePolicy2)
         self.lower_right_prompt_frame.setMinimumSize(QSize(0, 70))
         self.lower_right_prompt_frame.setMaximumSize(QSize(16777215, 70))
-        self.lower_right_prompt_frame.setStyleSheet(u"/*background-color: rgb(108,108,118);\n"
-"border: 0px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
-"   /* border-radius: 10px;\n"
-"    padding: 1px; /* To prevent the content from touching the border */\n"
-"\n"
-"\n"
+        self.lower_right_prompt_frame.setStyleSheet(u"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px;\n"
+" }\n"
+"QCheckBox{\n"
+"border: 0px;\n"
+"background-color: transparent;\n"
+"}\n"
+"QFrame {\n"
 "background-color: rgb(108,108,118);\n"
 "border: 2px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
-"    border-radius: 10px;\n"
-"    padding: 1px; /* To prevent the content from touching the border */\n"
-"\n"
-"")
+"border-radius: 10px;\n"
+" padding: 1px; /* To prevent the content from touching the border */\n"
+"}")
         self.lower_right_prompt_frame.setFrameShape(QFrame.StyledPanel)
         self.lower_right_prompt_frame.setFrameShadow(QFrame.Raised)
         self.add_prompt_after_checkbox = QCheckBox(self.lower_right_prompt_frame)
@@ -1690,6 +1910,10 @@ class Ui_MainWindow(object):
 "    border: none;\n"
 "    min-width: 28px;\n"
 "    min-height: 23px;\n"
+"}\n"
+"QPushButton{\n"
+"background-color: transparent;\n"
+"border:0;\n"
 "}")
         self.load_morph_data.setIconSize(QSize(28, 20))
         self.save_current_ui_label_5 = QLabel(self.lower_right_prompt_frame)
@@ -1762,7 +1986,12 @@ class Ui_MainWindow(object):
 "    height: 350px; /* Adjusted to your QFrame's height */\n"
 "    width: 300px; /* Adjusted to your QFrame's width */\n"
 "}\n"
-"")
+"\n"
+"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px;\n"
+" }")
         self.Motion_Panning_Component_poppable.setFrameShape(QFrame.StyledPanel)
         self.Motion_Panning_Component_poppable.setFrameShadow(QFrame.Raised)
         self.motion_pan_button_left = QPushButton(self.Motion_Panning_Component_poppable)
@@ -1841,7 +2070,12 @@ class Ui_MainWindow(object):
         self.motion_pan_granularity = QLineEdit(self.Motion_Panning_Component_poppable)
         self.motion_pan_granularity.setObjectName(u"motion_pan_granularity")
         self.motion_pan_granularity.setGeometry(QRect(14, 236, 49, 22))
-        self.motion_pan_granularity.setStyleSheet(u"background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;")
+        self.motion_pan_granularity.setStyleSheet(u"QLineEdit{\n"
+"background-color:rgb(42, 42, 42);\n"
+"color: rgb(0, 255, 0);\n"
+"border: 1px solid rgb(128,128,128);\n"
+"border-radius: 2px;\n"
+"}")
         self.panning_preset_label = QLabel(self.Motion_Panning_Component_poppable)
         self.panning_preset_label.setObjectName(u"panning_preset_label")
         self.panning_preset_label.setGeometry(QRect(10, 218, 105, 16))
@@ -1924,7 +2158,12 @@ class Ui_MainWindow(object):
         self.syrup_pan_motion_slider_frame_number = QLineEdit(self.Motion_Panning_Component_poppable)
         self.syrup_pan_motion_slider_frame_number.setObjectName(u"syrup_pan_motion_slider_frame_number")
         self.syrup_pan_motion_slider_frame_number.setGeometry(QRect(206, 82, 41, 22))
-        self.syrup_pan_motion_slider_frame_number.setStyleSheet(u"background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;")
+        self.syrup_pan_motion_slider_frame_number.setStyleSheet(u"QLineEdit{\n"
+"background-color:rgb(42, 42, 42);\n"
+"color: rgb(0, 255, 0);\n"
+"border: 1px solid rgb(128,128,128);\n"
+"border-radius: 2px;\n"
+"}")
         self.pan_x_value = QLabel(self.Motion_Panning_Component_poppable)
         self.pan_x_value.setObjectName(u"pan_x_value")
         self.pan_x_value.setGeometry(QRect(6, 294, 32, 17))
@@ -2047,9 +2286,12 @@ class Ui_MainWindow(object):
         self.syrup_pan_curve_type.addItem("")
         self.syrup_pan_curve_type.setObjectName(u"syrup_pan_curve_type")
         self.syrup_pan_curve_type.setGeometry(QRect(162, 56, 120, 19))
-        self.syrup_pan_curve_type.setStyleSheet(u"border: 2px solid rgb(32, 32, 32);\n"
+        self.syrup_pan_curve_type.setStyleSheet(u"QComboBox\n"
+"{\n"
+"border: 2px solid rgb(32, 32, 32);\n"
 "    border-radius: 5px;\n"
 "color: rgb(0, 255, 0);\n"
+"}\n"
 "QFrame {\n"
 "    background-color: rgb(70, 70, 70); /* Fallback color */\n"
 "        color: rgb(0, 255, 0);\n"
@@ -2149,7 +2391,12 @@ class Ui_MainWindow(object):
 "    height: 350px; /* Adjusted to your QFrame's height */\n"
 "    width: 300px; /* Adjusted to your QFrame's width */\n"
 "}\n"
-"")
+"\n"
+"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px\n"
+" }")
         self.Motion_Rotation_Component_poppable.setFrameShape(QFrame.StyledPanel)
         self.Motion_Rotation_Component_poppable.setFrameShadow(QFrame.Raised)
         self.motion_rotate_button_left = QPushButton(self.Motion_Rotation_Component_poppable)
@@ -2203,7 +2450,12 @@ class Ui_MainWindow(object):
         self.motion_rotate_granularity = QLineEdit(self.Motion_Rotation_Component_poppable)
         self.motion_rotate_granularity.setObjectName(u"motion_rotate_granularity")
         self.motion_rotate_granularity.setGeometry(QRect(14, 236, 49, 22))
-        self.motion_rotate_granularity.setStyleSheet(u"background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;")
+        self.motion_rotate_granularity.setStyleSheet(u"QLineEdit{\n"
+"background-color:rgb(42, 42, 42);\n"
+"color: rgb(0, 255, 0);\n"
+"border: 1px solid rgb(128,128,128);\n"
+"border-radius: 2px;\n"
+"}")
         self.rot_preset_label = QLabel(self.Motion_Rotation_Component_poppable)
         self.rot_preset_label.setObjectName(u"rot_preset_label")
         self.rot_preset_label.setGeometry(QRect(10, 218, 105, 16))
@@ -2285,7 +2537,12 @@ class Ui_MainWindow(object):
         self.syrup_rotate_motion_slider_frame_number.setObjectName(u"syrup_rotate_motion_slider_frame_number")
         self.syrup_rotate_motion_slider_frame_number.setGeometry(QRect(206, 82, 41, 22))
         self.syrup_rotate_motion_slider_frame_number.setMaximumSize(QSize(16777214, 16777215))
-        self.syrup_rotate_motion_slider_frame_number.setStyleSheet(u"background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;")
+        self.syrup_rotate_motion_slider_frame_number.setStyleSheet(u"QLineEdit{\n"
+"background-color:rgb(42, 42, 42);\n"
+"color: rgb(0, 255, 0);\n"
+"border: 1px solid rgb(128,128,128);\n"
+"border-radius: 2px;\n"
+"}")
         self.rotate_x_value = QLabel(self.Motion_Rotation_Component_poppable)
         self.rotate_x_value.setObjectName(u"rotate_x_value")
         self.rotate_x_value.setGeometry(QRect(6, 294, 32, 17))
@@ -2406,9 +2663,12 @@ class Ui_MainWindow(object):
         self.syrup_rotation_curve_type.addItem("")
         self.syrup_rotation_curve_type.setObjectName(u"syrup_rotation_curve_type")
         self.syrup_rotation_curve_type.setGeometry(QRect(162, 56, 120, 19))
-        self.syrup_rotation_curve_type.setStyleSheet(u"border: 2px solid rgb(32, 32, 32);\n"
+        self.syrup_rotation_curve_type.setStyleSheet(u"QComboBox\n"
+"{\n"
+"border: 2px solid rgb(32, 32, 32);\n"
 "    border-radius: 5px;\n"
 "color: rgb(0, 255, 0);\n"
+"}\n"
 "QFrame {\n"
 "    background-color: rgb(70, 70, 70); /* Fallback color */\n"
 "        color: rgb(0, 255, 0);\n"
@@ -2497,12 +2757,8 @@ class Ui_MainWindow(object):
         self.Motion_Tilt_Component_poppable.setGeometry(QRect(826, 8, 300, 430))
         self.Motion_Tilt_Component_poppable.setTabletTracking(True)
         self.Motion_Tilt_Component_poppable.setStyleSheet(u"QFrame {\n"
-"\n"
-"    background-position: center;\n"
-"    background-repeat: no-repeat;\n"
-"\n"
 "    background-color: rgb(80, 80, 80); /* Fallback color */\n"
-"        border: 2px solid rgb(22, 22, 22);\n"
+"    border: 2px solid rgb(22, 22, 22);\n"
 "    border-radius: 5px;\n"
 "\n"
 "    background-position: center bottom; /* Centers horizontally and positions one third from the bottom */\n"
@@ -2511,7 +2767,11 @@ class Ui_MainWindow(object):
 "    width: 300px; /* Adjusted to your QFrame's width */\n"
 "}\n"
 "\n"
-"/*    background-image: url(images/bak_tilt.png);*/\n"
+"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px\n"
+" }\n"
 "\n"
 "\n"
 "")
@@ -2520,7 +2780,12 @@ class Ui_MainWindow(object):
         self.motion_tilt_granularity = QLineEdit(self.Motion_Tilt_Component_poppable)
         self.motion_tilt_granularity.setObjectName(u"motion_tilt_granularity")
         self.motion_tilt_granularity.setGeometry(QRect(28, 228, 49, 22))
-        self.motion_tilt_granularity.setStyleSheet(u"background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;")
+        self.motion_tilt_granularity.setStyleSheet(u"QLineEdit{\n"
+"background-color:rgb(42, 42, 42);\n"
+"color: rgb(0, 255, 0);\n"
+"border: 1px solid rgb(128,128,128);\n"
+"border-radius: 2px;\n"
+"}")
         self.tilt_preset_label = QLabel(self.Motion_Tilt_Component_poppable)
         self.tilt_preset_label.setObjectName(u"tilt_preset_label")
         self.tilt_preset_label.setGeometry(QRect(23, 208, 75, 16))
@@ -2601,7 +2866,12 @@ class Ui_MainWindow(object):
         self.syrup_tilt_motion_slider_frame_number = QLineEdit(self.Motion_Tilt_Component_poppable)
         self.syrup_tilt_motion_slider_frame_number.setObjectName(u"syrup_tilt_motion_slider_frame_number")
         self.syrup_tilt_motion_slider_frame_number.setGeometry(QRect(204, 136, 41, 22))
-        self.syrup_tilt_motion_slider_frame_number.setStyleSheet(u"background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;")
+        self.syrup_tilt_motion_slider_frame_number.setStyleSheet(u"QLineEdit{\n"
+"background-color:rgb(42, 42, 42);\n"
+"color: rgb(0, 255, 0);\n"
+"border: 1px solid rgb(128,128,128);\n"
+"border-radius: 2px;\n"
+"}")
         self.rotate_z_value = QLabel(self.Motion_Tilt_Component_poppable)
         self.rotate_z_value.setObjectName(u"rotate_z_value")
         self.rotate_z_value.setGeometry(QRect(136, 212, 33, 16))
@@ -2684,9 +2954,12 @@ class Ui_MainWindow(object):
         self.syrup_tilt_curve_type.addItem("")
         self.syrup_tilt_curve_type.setObjectName(u"syrup_tilt_curve_type")
         self.syrup_tilt_curve_type.setGeometry(QRect(94, 78, 105, 19))
-        self.syrup_tilt_curve_type.setStyleSheet(u"border: 2px solid rgb(32, 32, 32);\n"
+        self.syrup_tilt_curve_type.setStyleSheet(u"QComboBox\n"
+"{\n"
+"border: 2px solid rgb(32, 32, 32);\n"
 "    border-radius: 5px;\n"
 "color: rgb(0, 255, 0);\n"
+"}\n"
 "QFrame {\n"
 "    background-color: rgb(70, 70, 70); /* Fallback color */\n"
 "        color: rgb(0, 255, 0);\n"
@@ -2777,9 +3050,17 @@ class Ui_MainWindow(object):
         self.Motion_Fov_Component_poppable.setObjectName(u"Motion_Fov_Component_poppable")
         self.Motion_Fov_Component_poppable.setGeometry(QRect(1132, 6, 160, 430))
         self.Motion_Fov_Component_poppable.setTabletTracking(True)
-        self.Motion_Fov_Component_poppable.setStyleSheet(u"background-color: rgb(80, 80, 80); /* Fallback color */    \n"
+        self.Motion_Fov_Component_poppable.setStyleSheet(u"QFrame{\n"
+"background-color: rgb(80, 80, 80); /* Fallback color */    \n"
 "border: 2px solid rgb(22, 22, 22);\n"
-"    border-radius: 5px;")
+"    border-radius: 5px;\n"
+"}\n"
+"\n"
+"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px\n"
+" }")
         self.Motion_Fov_Component_poppable.setFrameShape(QFrame.StyledPanel)
         self.Motion_Fov_Component_poppable.setFrameShadow(QFrame.Raised)
         self.motion_fov_slider = QSlider(self.Motion_Fov_Component_poppable)
@@ -2900,7 +3181,7 @@ class Ui_MainWindow(object):
         self.Motion_Zoom_Component_poppable.setTabletTracking(True)
         self.Motion_Zoom_Component_poppable.setStyleSheet(u"QFrame {\n"
 "    background-color: rgb(80, 80, 80); /* Fallback color */\n"
-"        border: 2px solid rgb(22, 22, 22);\n"
+"    border: 2px solid rgb(22, 22, 22);\n"
 "    border-radius: 5px;\n"
 "\n"
 "    background-position: center bottom; /* Centers horizontally and positions one third from the bottom */\n"
@@ -2908,7 +3189,12 @@ class Ui_MainWindow(object):
 "    height: 350px; /* Adjusted to your QFrame's height */\n"
 "    width: 300px; /* Adjusted to your QFrame's width */\n"
 "}\n"
-"")
+"\n"
+"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px\n"
+" }")
         self.Motion_Zoom_Component_poppable.setFrameShape(QFrame.StyledPanel)
         self.Motion_Zoom_Component_poppable.setFrameShadow(QFrame.Raised)
         self.motion_zoom_slider = QSlider(self.Motion_Zoom_Component_poppable)
@@ -3058,7 +3344,12 @@ class Ui_MainWindow(object):
         self.syrup_zoom_motion_slider_frame_number = QLineEdit(self.Motion_Zoom_Component_poppable)
         self.syrup_zoom_motion_slider_frame_number.setObjectName(u"syrup_zoom_motion_slider_frame_number")
         self.syrup_zoom_motion_slider_frame_number.setGeometry(QRect(152, 78, 41, 22))
-        self.syrup_zoom_motion_slider_frame_number.setStyleSheet(u"background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;")
+        self.syrup_zoom_motion_slider_frame_number.setStyleSheet(u"QLineEdit{\n"
+"background-color:rgb(42, 42, 42);\n"
+"color: rgb(0, 255, 0);\n"
+"border: 1px solid rgb(128,128,128);\n"
+"border-radius: 2px;\n"
+"}")
         self.smooth_motion_curve_zoom_label = QLabel(self.Motion_Zoom_Component_poppable)
         self.smooth_motion_curve_zoom_label.setObjectName(u"smooth_motion_curve_zoom_label")
         self.smooth_motion_curve_zoom_label.setGeometry(QRect(36, 30, 145, 20))
@@ -3201,9 +3492,12 @@ class Ui_MainWindow(object):
         self.syrup_zoom_curve_type.addItem("")
         self.syrup_zoom_curve_type.setObjectName(u"syrup_zoom_curve_type")
         self.syrup_zoom_curve_type.setGeometry(QRect(36, 56, 120, 19))
-        self.syrup_zoom_curve_type.setStyleSheet(u"border: 2px solid rgb(32, 32, 32);\n"
+        self.syrup_zoom_curve_type.setStyleSheet(u"QComboBox\n"
+"{\n"
+"border: 2px solid rgb(32, 32, 32);\n"
 "    border-radius: 5px;\n"
 "color: rgb(0, 255, 0);\n"
+"}\n"
 "QFrame {\n"
 "    background-color: rgb(70, 70, 70); /* Fallback color */\n"
 "        color: rgb(0, 255, 0);\n"
@@ -3258,7 +3552,12 @@ class Ui_MainWindow(object):
         self.motion_zoom_granularity_special = QLineEdit(self.Motion_Zoom_Component_poppable)
         self.motion_zoom_granularity_special.setObjectName(u"motion_zoom_granularity_special")
         self.motion_zoom_granularity_special.setGeometry(QRect(132, 400, 49, 22))
-        self.motion_zoom_granularity_special.setStyleSheet(u"background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;")
+        self.motion_zoom_granularity_special.setStyleSheet(u"QLineEdit{\n"
+"background-color:rgb(42, 42, 42);\n"
+"color: rgb(0, 255, 0);\n"
+"border: 1px solid rgb(128,128,128);\n"
+"border-radius: 2px;\n"
+"}")
         self.zoom_preset_special_label = QLabel(self.Motion_Zoom_Component_poppable)
         self.zoom_preset_special_label.setObjectName(u"zoom_preset_special_label")
         self.zoom_preset_special_label.setGeometry(QRect(16, 402, 107, 16))
@@ -3334,6 +3633,10 @@ class Ui_MainWindow(object):
         self.user_interface_settings_label = QLabel(self.user_interface)
         self.user_interface_settings_label.setObjectName(u"user_interface_settings_label")
         self.user_interface_settings_label.setGeometry(QRect(8, 4, 409, 35))
+        font11 = QFont()
+        font11.setPointSize(14)
+        font11.setBold(True)
+        self.user_interface_settings_label.setFont(font11)
         self.user_interface_settings_label.setStyleSheet(u"   border: none;")
         self.Save_Settings = QPushButton(self.user_interface)
         self.Save_Settings.setObjectName(u"Save_Settings")
@@ -3560,6 +3863,7 @@ class Ui_MainWindow(object):
         self.user_interface_cust_label = QLabel(self.user_interface)
         self.user_interface_cust_label.setObjectName(u"user_interface_cust_label")
         self.user_interface_cust_label.setGeometry(QRect(8, 278, 417, 35))
+        self.user_interface_cust_label.setFont(font11)
         self.user_interface_cust_label.setStyleSheet(u"   border: none;")
         self.enable_movement_label = QLabel(self.user_interface)
         self.enable_movement_label.setObjectName(u"enable_movement_label")
@@ -3861,6 +4165,7 @@ class Ui_MainWindow(object):
         self.language_setting_label = QLabel(self.language_setting)
         self.language_setting_label.setObjectName(u"language_setting_label")
         self.language_setting_label.setGeometry(QRect(8, 4, 361, 35))
+        self.language_setting_label.setFont(font11)
         self.language_setting_label.setStyleSheet(u"   border: none;")
         self.Restore_To_Language = QPushButton(self.language_setting)
         self.Restore_To_Language.setObjectName(u"Restore_To_Language")
@@ -3902,6 +4207,7 @@ class Ui_MainWindow(object):
         self.ffmpeg_title_label = QLabel(self.ffmpeg_setting)
         self.ffmpeg_title_label.setObjectName(u"ffmpeg_title_label")
         self.ffmpeg_title_label.setGeometry(QRect(6, 2, 369, 35))
+        self.ffmpeg_title_label.setFont(font11)
         self.ffmpeg_title_label.setStyleSheet(u"   border: none;")
         self.ffmpeg_how_to_label = QLabel(self.ffmpeg_setting)
         self.ffmpeg_how_to_label.setObjectName(u"ffmpeg_how_to_label")
@@ -4032,14 +4338,22 @@ class Ui_MainWindow(object):
         self.joystick_combo_box.addItem("")
         self.joystick_combo_box.setObjectName(u"joystick_combo_box")
         self.joystick_combo_box.setGeometry(QRect(13, 112, 249, 19))
-        self.joystick_combo_box.setStyleSheet(u"border: 2px solid rgb(32, 32, 32);\n"
+        self.joystick_combo_box.setStyleSheet(u"QComboBox\n"
+"{\n"
+"border: 2px solid rgb(32, 32, 32);\n"
 "    border-radius: 5px;\n"
 "color: rgb(0, 255, 0);\n"
 "text-align: center;\n"
+"}\n"
 "QFrame {\n"
 "    background-color: rgb(70, 70, 70); /* Fallback color */\n"
 "    color: rgb(0, 255, 0);\n"
-"}")
+"}\n"
+"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px;\n"
+" }")
         self.Joystic_Key_Bindings_Frame = QFrame(self.controller_settings)
         self.Joystic_Key_Bindings_Frame.setObjectName(u"Joystic_Key_Bindings_Frame")
         self.Joystic_Key_Bindings_Frame.setGeometry(QRect(8, 195, 321, 233))
@@ -4055,12 +4369,49 @@ class Ui_MainWindow(object):
         sizePolicy2.setHeightForWidth(self.scrollArea_joystick_key_bindings.sizePolicy().hasHeightForWidth())
         self.scrollArea_joystick_key_bindings.setSizePolicy(sizePolicy2)
         self.scrollArea_joystick_key_bindings.setMinimumSize(QSize(0, 0))
-        self.scrollArea_joystick_key_bindings.setStyleSheet(u"border: 0")
+        self.scrollArea_joystick_key_bindings.setStyleSheet(u"QScrollArea {\n"
+"    border: 0px;\n"
+"background-color: rgb(108,108,118);\n"
+"}\n"
+"\n"
+"\n"
+"QScrollArea QScrollBar:vertical {\n"
+"    border: 2px;\n"
+"    background: rgb(66,66,66);\n"
+"    width: 15px; /* Narrow scrollbar for a sleek look */\n"
+"    border-radius: 5px;\n"
+"    margin: 0px 0 0px 0;\n"
+"    \n"
+"}\n"
+"\n"
+"QScrollArea QScrollBar::handle:vertical {\n"
+"    background-color: rgb(40,129,232); /* Dark handle */\n"
+"    min-height: 20px; /* Minimum handle height */\n"
+"    border-radius: 5px; /* Rounded corners for the handle */\n"
+"}\n"
+"\n"
+"QScrollArea QScrollBar::handle:vertical:hover {\n"
+"    background-color: rgb(59,165,0); /* Slightly lighter handle on hover */\n"
+"}\n"
+"\n"
+"\n"
+"QScrollArea QScrollBar::sub-line:vertical,\n"
+"QScrollArea QScrollBar::add-line:vertical {\n"
+"    background: none;\n"
+"border: none; /* No buttons at the end of the scrollbar */\n"
+"}\n"
+"\n"
+"QScrollArea QScrollBar::sub-page:vertical,\n"
+"QScrollArea QScrollBar::add-page:vertical {\n"
+"    background: none; \n"
+""
+                        "border: none;/* No background for the scrollable area behind the handle */\n"
+"}")
         self.scrollArea_joystick_key_bindings.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self.scrollArea_joystick_key_bindings.setWidgetResizable(True)
         self.scrollAreaWidgetContentsJoystickBindings = QWidget()
         self.scrollAreaWidgetContentsJoystickBindings.setObjectName(u"scrollAreaWidgetContentsJoystickBindings")
-        self.scrollAreaWidgetContentsJoystickBindings.setGeometry(QRect(0, 0, 300, 340))
+        self.scrollAreaWidgetContentsJoystickBindings.setGeometry(QRect(0, 0, 302, 340))
         sizePolicy2.setHeightForWidth(self.scrollAreaWidgetContentsJoystickBindings.sizePolicy().hasHeightForWidth())
         self.scrollAreaWidgetContentsJoystickBindings.setSizePolicy(sizePolicy2)
         self.scrollAreaWidgetContentsJoystickBindings.setMinimumSize(QSize(0, 340))
@@ -4088,7 +4439,7 @@ class Ui_MainWindow(object):
         self.joystic_bindings_row.setGeometry(QRect(5, 0, 137, 345))
         sizePolicy13.setHeightForWidth(self.joystic_bindings_row.sizePolicy().hasHeightForWidth())
         self.joystic_bindings_row.setSizePolicy(sizePolicy13)
-        self.joystic_bindings_row.setStyleSheet(u"padding:")
+        self.joystic_bindings_row.setStyleSheet(u"")
         self.verticalLayoutWidget_4 = QWidget(self.joystic_bindings_row)
         self.verticalLayoutWidget_4.setObjectName(u"verticalLayoutWidget_4")
         self.verticalLayoutWidget_4.setGeometry(QRect(0, 4, 137, 337))
@@ -4105,9 +4456,9 @@ class Ui_MainWindow(object):
         sizePolicy14.setHeightForWidth(self.joystick_panning_left_label.sizePolicy().hasHeightForWidth())
         self.joystick_panning_left_label.setSizePolicy(sizePolicy14)
         self.joystick_panning_left_label.setMinimumSize(QSize(0, 0))
-        font11 = QFont()
-        font11.setPointSize(9)
-        self.joystick_panning_left_label.setFont(font11)
+        font12 = QFont()
+        font12.setPointSize(9)
+        self.joystick_panning_left_label.setFont(font12)
         self.joystick_panning_left_label.setStyleSheet(u"background-color: rgb(64, 64, 64);\n"
 "padding: 4px; /* To prevent the content from touching the border */\n"
 " border-radius: 3px;")
@@ -4119,7 +4470,7 @@ class Ui_MainWindow(object):
         sizePolicy14.setHeightForWidth(self.joystick_panning_right_label.sizePolicy().hasHeightForWidth())
         self.joystick_panning_right_label.setSizePolicy(sizePolicy14)
         self.joystick_panning_right_label.setMinimumSize(QSize(0, 0))
-        self.joystick_panning_right_label.setFont(font11)
+        self.joystick_panning_right_label.setFont(font12)
         self.joystick_panning_right_label.setStyleSheet(u"background-color: rgb(64, 64, 64);\n"
 "padding: 4px; /* To prevent the content from touching the border */\n"
 " border-radius: 3px;")
@@ -4131,7 +4482,7 @@ class Ui_MainWindow(object):
         sizePolicy14.setHeightForWidth(self.joystick_panning_up_label.sizePolicy().hasHeightForWidth())
         self.joystick_panning_up_label.setSizePolicy(sizePolicy14)
         self.joystick_panning_up_label.setMinimumSize(QSize(0, 0))
-        self.joystick_panning_up_label.setFont(font11)
+        self.joystick_panning_up_label.setFont(font12)
         self.joystick_panning_up_label.setStyleSheet(u"background-color: rgb(64, 64, 64);\n"
 "padding: 4px; /* To prevent the content from touching the border */\n"
 " border-radius: 3px;")
@@ -4143,7 +4494,7 @@ class Ui_MainWindow(object):
         sizePolicy14.setHeightForWidth(self.joystick_panning_down_label.sizePolicy().hasHeightForWidth())
         self.joystick_panning_down_label.setSizePolicy(sizePolicy14)
         self.joystick_panning_down_label.setMinimumSize(QSize(0, 0))
-        self.joystick_panning_down_label.setFont(font11)
+        self.joystick_panning_down_label.setFont(font12)
         self.joystick_panning_down_label.setStyleSheet(u"background-color: rgb(64, 64, 64);\n"
 "padding: 4px; /* To prevent the content from touching the border */\n"
 " border-radius: 3px;")
@@ -4155,7 +4506,7 @@ class Ui_MainWindow(object):
         sizePolicy14.setHeightForWidth(self.joystick_rotate_h_left_label.sizePolicy().hasHeightForWidth())
         self.joystick_rotate_h_left_label.setSizePolicy(sizePolicy14)
         self.joystick_rotate_h_left_label.setMinimumSize(QSize(0, 0))
-        self.joystick_rotate_h_left_label.setFont(font11)
+        self.joystick_rotate_h_left_label.setFont(font12)
         self.joystick_rotate_h_left_label.setStyleSheet(u"background-color: rgb(64, 64, 64);\n"
 "padding: 4px; /* To prevent the content from touching the border */\n"
 " border-radius: 3px;")
@@ -4167,7 +4518,7 @@ class Ui_MainWindow(object):
         sizePolicy14.setHeightForWidth(self.joystick_rotate_h_right_label.sizePolicy().hasHeightForWidth())
         self.joystick_rotate_h_right_label.setSizePolicy(sizePolicy14)
         self.joystick_rotate_h_right_label.setMinimumSize(QSize(0, 0))
-        self.joystick_rotate_h_right_label.setFont(font11)
+        self.joystick_rotate_h_right_label.setFont(font12)
         self.joystick_rotate_h_right_label.setStyleSheet(u"background-color: rgb(64, 64, 64);\n"
 "padding: 4px; /* To prevent the content from touching the border */\n"
 " border-radius: 3px;")
@@ -4179,7 +4530,7 @@ class Ui_MainWindow(object):
         sizePolicy14.setHeightForWidth(self.joystick_rotate_v_up_label.sizePolicy().hasHeightForWidth())
         self.joystick_rotate_v_up_label.setSizePolicy(sizePolicy14)
         self.joystick_rotate_v_up_label.setMinimumSize(QSize(0, 0))
-        self.joystick_rotate_v_up_label.setFont(font11)
+        self.joystick_rotate_v_up_label.setFont(font12)
         self.joystick_rotate_v_up_label.setStyleSheet(u"background-color: rgb(64, 64, 64);\n"
 "padding: 4px; /* To prevent the content from touching the border */\n"
 " border-radius: 3px;")
@@ -4191,7 +4542,7 @@ class Ui_MainWindow(object):
         sizePolicy14.setHeightForWidth(self.joystick_rotate_v_down_label.sizePolicy().hasHeightForWidth())
         self.joystick_rotate_v_down_label.setSizePolicy(sizePolicy14)
         self.joystick_rotate_v_down_label.setMinimumSize(QSize(0, 0))
-        self.joystick_rotate_v_down_label.setFont(font11)
+        self.joystick_rotate_v_down_label.setFont(font12)
         self.joystick_rotate_v_down_label.setStyleSheet(u"background-color: rgb(64, 64, 64);\n"
 "padding: 4px; /* To prevent the content from touching the border */\n"
 " border-radius: 3px;")
@@ -4203,7 +4554,7 @@ class Ui_MainWindow(object):
         sizePolicy14.setHeightForWidth(self.joystick_zoom_forwards_label.sizePolicy().hasHeightForWidth())
         self.joystick_zoom_forwards_label.setSizePolicy(sizePolicy14)
         self.joystick_zoom_forwards_label.setMinimumSize(QSize(0, 0))
-        self.joystick_zoom_forwards_label.setFont(font11)
+        self.joystick_zoom_forwards_label.setFont(font12)
         self.joystick_zoom_forwards_label.setStyleSheet(u"background-color: rgb(64, 64, 64);\n"
 "padding: 4px; /* To prevent the content from touching the border */\n"
 " border-radius: 3px;")
@@ -4215,7 +4566,7 @@ class Ui_MainWindow(object):
         sizePolicy14.setHeightForWidth(self.joystick_zoom_backwards_label.sizePolicy().hasHeightForWidth())
         self.joystick_zoom_backwards_label.setSizePolicy(sizePolicy14)
         self.joystick_zoom_backwards_label.setMinimumSize(QSize(0, 0))
-        self.joystick_zoom_backwards_label.setFont(font11)
+        self.joystick_zoom_backwards_label.setFont(font12)
         self.joystick_zoom_backwards_label.setStyleSheet(u"background-color: rgb(64, 64, 64);\n"
 "padding: 4px; /* To prevent the content from touching the border */\n"
 " border-radius: 3px;")
@@ -4227,7 +4578,7 @@ class Ui_MainWindow(object):
         sizePolicy14.setHeightForWidth(self.joystick_tilt_cw_label.sizePolicy().hasHeightForWidth())
         self.joystick_tilt_cw_label.setSizePolicy(sizePolicy14)
         self.joystick_tilt_cw_label.setMinimumSize(QSize(0, 0))
-        self.joystick_tilt_cw_label.setFont(font11)
+        self.joystick_tilt_cw_label.setFont(font12)
         self.joystick_tilt_cw_label.setStyleSheet(u"background-color: rgb(64, 64, 64);\n"
 "padding: 4px; /* To prevent the content from touching the border */\n"
 " border-radius: 3px;")
@@ -4239,7 +4590,7 @@ class Ui_MainWindow(object):
         sizePolicy14.setHeightForWidth(self.joystick_tilt_cc_label.sizePolicy().hasHeightForWidth())
         self.joystick_tilt_cc_label.setSizePolicy(sizePolicy14)
         self.joystick_tilt_cc_label.setMinimumSize(QSize(0, 0))
-        self.joystick_tilt_cc_label.setFont(font11)
+        self.joystick_tilt_cc_label.setFont(font12)
         self.joystick_tilt_cc_label.setStyleSheet(u"background-color: rgb(64, 64, 64);\n"
 "padding: 4px; /* To prevent the content from touching the border */\n"
 " border-radius: 3px;")
@@ -4249,7 +4600,11 @@ class Ui_MainWindow(object):
         self.joystic_value_bindings_row = QWidget(self.joystic_key_bindings_frame_poppable)
         self.joystic_value_bindings_row.setObjectName(u"joystic_value_bindings_row")
         self.joystic_value_bindings_row.setGeometry(QRect(144, 0, 161, 345))
-        self.joystic_value_bindings_row.setStyleSheet(u"")
+        self.joystic_value_bindings_row.setStyleSheet(u"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px;\n"
+" }")
         self.verticalLayoutWidget_5 = QWidget(self.joystic_value_bindings_row)
         self.verticalLayoutWidget_5.setObjectName(u"verticalLayoutWidget_5")
         self.verticalLayoutWidget_5.setGeometry(QRect(0, 4, 153, 337))
@@ -4595,7 +4950,7 @@ class Ui_MainWindow(object):
         sizePolicy14.setHeightForWidth(self.motion_control_params_label.sizePolicy().hasHeightForWidth())
         self.motion_control_params_label.setSizePolicy(sizePolicy14)
         self.motion_control_params_label.setMinimumSize(QSize(0, 0))
-        self.motion_control_params_label.setFont(font11)
+        self.motion_control_params_label.setFont(font12)
         self.motion_control_params_label.setStyleSheet(u"border: none;")
         self.motion_control_bindings_label = QLabel(self.controller_settings)
         self.motion_control_bindings_label.setObjectName(u"motion_control_bindings_label")
@@ -4603,11 +4958,12 @@ class Ui_MainWindow(object):
         sizePolicy14.setHeightForWidth(self.motion_control_bindings_label.sizePolicy().hasHeightForWidth())
         self.motion_control_bindings_label.setSizePolicy(sizePolicy14)
         self.motion_control_bindings_label.setMinimumSize(QSize(0, 0))
-        self.motion_control_bindings_label.setFont(font11)
+        self.motion_control_bindings_label.setFont(font12)
         self.motion_control_bindings_label.setStyleSheet(u"border: none;")
         self.controller_setting_label = QLabel(self.controller_settings)
         self.controller_setting_label.setObjectName(u"controller_setting_label")
         self.controller_setting_label.setGeometry(QRect(8, 8, 313, 35))
+        self.controller_setting_label.setFont(font11)
         self.controller_setting_label.setStyleSheet(u"   border: none;")
         self.controller_how_to = QLabel(self.controller_settings)
         self.controller_how_to.setObjectName(u"controller_how_to")
@@ -4663,7 +5019,15 @@ class Ui_MainWindow(object):
         self.frame = QFrame(self.controller_settings)
         self.frame.setObjectName(u"frame")
         self.frame.setGeometry(QRect(13, 136, 201, 25))
-        self.frame.setStyleSheet(u"border-radius: 5px;")
+        self.frame.setStyleSheet(u"QFrame{\n"
+"border-radius: 5px;\n"
+"}\n"
+"\n"
+"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px;\n"
+" }")
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
         self.mode_work_label = QLabel(self.frame)
@@ -7202,6 +7566,55 @@ class Ui_MainWindow(object):
         self.gridLayout_17 = QGridLayout(self.Right_Frame)
         self.gridLayout_17.setObjectName(u"gridLayout_17")
         self.gridLayout_17.setContentsMargins(2, 5, 5, 0)
+        self.stay_on_top_checkbox = QCheckBox(self.Right_Frame)
+        self.stay_on_top_checkbox.setObjectName(u"stay_on_top_checkbox")
+        sizePolicy14.setHeightForWidth(self.stay_on_top_checkbox.sizePolicy().hasHeightForWidth())
+        self.stay_on_top_checkbox.setSizePolicy(sizePolicy14)
+        self.stay_on_top_checkbox.setMinimumSize(QSize(0, 40))
+        self.stay_on_top_checkbox.setMaximumSize(QSize(300, 16777215))
+        self.stay_on_top_checkbox.setFont(font8)
+        self.stay_on_top_checkbox.setLayoutDirection(Qt.RightToLeft)
+        self.stay_on_top_checkbox.setStyleSheet(u"QCheckBox {\n"
+"    border: none; /* No border for the checkbox */\n"
+"background-color: rgb(108,108,118);\n"
+"border: 2px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
+"    border-radius: 10px;\n"
+"    padding: 1px; /* To prevent the content from touching the border */\n"
+"spacing:28px\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 54px; /* Width of the checkbox */\n"
+"    height: 22px; /* Height of the checkbox */\n"
+"    background-color: transparent; /* Ensures background is transparent */\n"
+"border: none; /* No border for the checkbox */\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    background-image: url(images/check_off_small.png); /* Image for unchecked state */\n"
+"    background-repeat: no-repeat; /* Prevents the image from repeating */\n"
+"background-position: left; /* Left the image */\n"
+"border: none; /* No border for the checkbox */\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background-image: url(images/check_on_small.png); /* Image for checked state */"
+                        "\n"
+"    background-repeat: no-repeat; /* Prevents the image from repeating */\n"
+"background-position: left; /* Left the image */\n"
+"border: none; /* No border for the checkbox */\n"
+"}\n"
+"\n"
+"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px\n"
+" }")
+        self.stay_on_top_checkbox.setIconSize(QSize(20, 20))
+        self.stay_on_top_checkbox.setCheckable(True)
+
+        self.gridLayout_17.addWidget(self.stay_on_top_checkbox, 0, 0, 1, 1)
+
         self.right_frame_frame = QFrame(self.Right_Frame)
         self.right_frame_frame.setObjectName(u"right_frame_frame")
         self.right_frame_frame.setStyleSheet(u"border: 0px")
@@ -7215,7 +7628,7 @@ class Ui_MainWindow(object):
         self.splitter_2.setObjectName(u"splitter_2")
         sizePolicy2.setHeightForWidth(self.splitter_2.sizePolicy().hasHeightForWidth())
         self.splitter_2.setSizePolicy(sizePolicy2)
-        self.splitter_2.setStyleSheet(u"border: 0px")
+        self.splitter_2.setStyleSheet(u"border: 0px;")
         self.splitter_2.setOrientation(Qt.Vertical)
         self.splitter_2.setHandleWidth(6)
         self.Slider_Tab = QFrame(self.splitter_2)
@@ -7226,7 +7639,7 @@ class Ui_MainWindow(object):
         sizePolicy15.setHeightForWidth(self.Slider_Tab.sizePolicy().hasHeightForWidth())
         self.Slider_Tab.setSizePolicy(sizePolicy15)
         self.Slider_Tab.setMinimumSize(QSize(0, 0))
-        self.Slider_Tab.setStyleSheet(u"border: 0px")
+        self.Slider_Tab.setStyleSheet(u"")
         self.Slider_Tab.setFrameShape(QFrame.StyledPanel)
         self.Slider_Tab.setFrameShadow(QFrame.Raised)
         self.verticalLayout_8 = QVBoxLayout(self.Slider_Tab)
@@ -7237,17 +7650,46 @@ class Ui_MainWindow(object):
         self.slider_tab_frame.setObjectName(u"slider_tab_frame")
         self.slider_tab_frame.setMinimumSize(QSize(0, 0))
         self.slider_tab_frame.setMaximumSize(QSize(300, 16777215))
-        self.slider_tab_frame.setStyleSheet(u"background-color: rgb(108,108,118);\n"
+        self.slider_tab_frame.setStyleSheet(u"QFrame{\n"
+"background-color: rgb(108,108,118);\n"
 "border: 2px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
 "    border-radius: 10px;\n"
 "    padding: 1px; /* To prevent the content from touching the border */\n"
+"}\n"
 "\n"
-"")
+"QSlider\n"
+"{\n"
+"	background-color: rgb(108,108,118);\n"
+"}")
         self.slider_tab_frame.setFrameShape(QFrame.StyledPanel)
         self.slider_tab_frame.setFrameShadow(QFrame.Raised)
         self.gridLayout_9 = QGridLayout(self.slider_tab_frame)
         self.gridLayout_9.setObjectName(u"gridLayout_9")
         self.gridLayout_9.setContentsMargins(10, 10, 10, 10)
+        self.Live_ParameterLabel = QLabel(self.slider_tab_frame)
+        self.Live_ParameterLabel.setObjectName(u"Live_ParameterLabel")
+        sizePolicy2.setHeightForWidth(self.Live_ParameterLabel.sizePolicy().hasHeightForWidth())
+        self.Live_ParameterLabel.setSizePolicy(sizePolicy2)
+        font13 = QFont()
+        font13.setPointSize(20)
+        font13.setBold(True)
+        self.Live_ParameterLabel.setFont(font13)
+        self.Live_ParameterLabel.setMouseTracking(True)
+        self.Live_ParameterLabel.setTabletTracking(True)
+        self.Live_ParameterLabel.setStyleSheet(u"QLabel {\n"
+"background-color: rgb(88, 88, 98); /* Fallback color */\n"
+"        border: 2px solid rgb(32, 32, 32);\n"
+"    border-radius: 10px;\n"
+"}\n"
+"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px\n"
+" }")
+        self.Live_ParameterLabel.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_9.addWidget(self.Live_ParameterLabel, 0, 0, 1, 1)
+
         self.scrollArea_slider_frame = QScrollArea(self.slider_tab_frame)
         self.scrollArea_slider_frame.setObjectName(u"scrollArea_slider_frame")
         sizePolicy.setHeightForWidth(self.scrollArea_slider_frame.sizePolicy().hasHeightForWidth())
@@ -7255,6 +7697,7 @@ class Ui_MainWindow(object):
         self.scrollArea_slider_frame.setMinimumSize(QSize(0, 0))
         self.scrollArea_slider_frame.setStyleSheet(u"QScrollArea {\n"
 "    border: 0px solid #333; /* Adjust the color and size as needed */\n"
+"background-color: rgb(108,108,118);\n"
 "}\n"
 "\n"
 "\n"
@@ -7285,16 +7728,16 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QScrollArea QScrollBar::sub-page:vertical,\n"
-"QScrollArea QScrollBar::add-page:vertical {\n"
-"    backgr"
-                        "ound: none; \n"
+"QScrollArea QScrol"
+                        "lBar::add-page:vertical {\n"
+"    background: none; \n"
 "border: none;/* No background for the scrollable area behind the handle */\n"
 "}")
         self.scrollArea_slider_frame.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
         self.scrollArea_slider_frame.setWidgetResizable(True)
         self.scrollAreaWidgetContentsSliders = QWidget()
         self.scrollAreaWidgetContentsSliders.setObjectName(u"scrollAreaWidgetContentsSliders")
-        self.scrollAreaWidgetContentsSliders.setGeometry(QRect(0, 0, 250, 352))
+        self.scrollAreaWidgetContentsSliders.setGeometry(QRect(0, 0, 265, 355))
         self.scrollAreaWidgetContentsSliders.setMinimumSize(QSize(0, 352))
         self.scrollAreaWidgetContentsSliders.setStyleSheet(u"")
         self.verticalLayout_7 = QVBoxLayout(self.scrollAreaWidgetContentsSliders)
@@ -7303,7 +7746,20 @@ class Ui_MainWindow(object):
         self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
         self.ubder_slider_frame = QFrame(self.scrollAreaWidgetContentsSliders)
         self.ubder_slider_frame.setObjectName(u"ubder_slider_frame")
-        self.ubder_slider_frame.setStyleSheet(u"background-color: rgb(108,108,118); border: 0px solid rgb(128,128,128); border-radius: 0px;")
+        self.ubder_slider_frame.setStyleSheet(u"QWidget{\n"
+"border: 0px solid rgb(128,128,128);\n"
+"}\n"
+"QFrame{\n"
+"Qbackground-color: rgb(108,108,118);\n"
+"border: 0px solid rgb(128,128,128);\n"
+"border-radius: 0px;\n"
+"}\n"
+"\n"
+"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px\n"
+" }")
         self.ubder_slider_frame.setFrameShape(QFrame.StyledPanel)
         self.ubder_slider_frame.setFrameShadow(QFrame.Raised)
         self.frame_live_params_poppable = QFrame(self.ubder_slider_frame)
@@ -7313,26 +7769,45 @@ class Ui_MainWindow(object):
         self.frame_live_params_poppable.setSizePolicy(sizePolicy2)
         self.frame_live_params_poppable.setMinimumSize(QSize(0, 0))
         self.frame_live_params_poppable.setTabletTracking(True)
-        self.frame_live_params_poppable.setStyleSheet(u"border:0")
+        self.frame_live_params_poppable.setStyleSheet(u"QFrame{\n"
+"Qbackground-color: rgb(108,108,118);\n"
+"border: 0px solid rgb(128,128,128);\n"
+"border-radius: 0px;\n"
+"}")
         self.frame_live_params_poppable.setFrameShape(QFrame.StyledPanel)
         self.frame_live_params_poppable.setFrameShadow(QFrame.Raised)
         self.live_parameter_frame = QFrame(self.frame_live_params_poppable)
         self.live_parameter_frame.setObjectName(u"live_parameter_frame")
         self.live_parameter_frame.setGeometry(QRect(0, 0, 241, 361))
         self.live_parameter_frame.setTabletTracking(False)
-        self.live_parameter_frame.setFrameShape(QFrame.StyledPanel)
-        self.live_parameter_frame.setFrameShadow(QFrame.Raised)
-        self.Strength_Slider_poppable = QFrame(self.live_parameter_frame)
-        self.Strength_Slider_poppable.setObjectName(u"Strength_Slider_poppable")
-        self.Strength_Slider_poppable.setGeometry(QRect(8, 144, 225, 65))
-        self.Strength_Slider_poppable.setTabletTracking(True)
-        self.Strength_Slider_poppable.setStyleSheet(u"background-color: rgb(108,108,118); border: 0px solid rgb(128,128,128); border-radius: 0px;")
-        self.Strength_Slider_poppable.setFrameShape(QFrame.StyledPanel)
-        self.Strength_Slider_poppable.setFrameShadow(QFrame.Raised)
-        self.strength_slider = QSlider(self.Strength_Slider_poppable)
-        self.strength_slider.setObjectName(u"strength_slider")
-        self.strength_slider.setGeometry(QRect(-4, 24, 235, 32))
-        self.strength_slider.setStyleSheet(u"QSlider::groove:horizontal {\n"
+        self.live_parameter_frame.setStyleSheet(u"QCheckBox {\n"
+"    border: none; /* No border for the checkbox */\n"
+"background-color: rgb(108, 108, 108); /* Fallback color */\n"
+"padding:1\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 34px; /* Width of the checkbox */\n"
+"    height: 29px; /* Height of the checkbox */\n"
+"    background-color: transparent; /* Ensures background is transparent */\n"
+"border: none; /* No border for the checkbox */\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    background-image: url(images/check_off_small_green.png); /* Image for unchecked state */\n"
+"    background-repeat: no-repeat; /* Prevents the image from repeating */\n"
+"background-position: left; /* Left the image */\n"
+"border: none; /* No border for the checkbox */\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background-image: url(images/check_on_small.png); /* Image for checked state */\n"
+"    background-repeat: no-repeat; /* Prevents the image from repeating */\n"
+"background-position: left; /* Left the image */\n"
+"border: none; /* No"
+                        " border for the checkbox */\n"
+"}\n"
+"QSlider::groove:horizontal {\n"
 "    border-image: url(images/groove_230.png) ; /* Adjust slicing and stretch as needed */\n"
 "    height: 29px; /* The height of your image */\n"
 "    width: 215px; /* Width of the handle - adjust as needed */\n"
@@ -7352,9 +7827,9 @@ class Ui_MainWindow(object):
 "    background-image: url(images/handle_hover.png); /* Change the handle image when hovering */\n"
 "background-repeat: no-repeat;\n"
 "    border: none; /* Remove the border if you don't need it */\n"
-"    width: 32px; /* Width of the handle - adjust as needed */\n"
-"    height: 32px;"
-                        " /* Height of the handle - adjust as needed */\n"
+"    width: 32px; /* Width of the handle - adj"
+                        "ust as needed */\n"
+"    height: 32px; /* Height of the handle - adjust as needed */\n"
 "    margin: -2px 0; /* Optional: Adjust the margin if needed */\n"
 "}\n"
 "\n"
@@ -7375,7 +7850,25 @@ class Ui_MainWindow(object):
 "QSlider::sub-page:horizontal {\n"
 "    background: none;\n"
 "}\n"
-" ")
+"\n"
+"QFrame{\n"
+"Qbackground-color: rgb(108,108,118);\n"
+"border: 0px solid rgb(128,128,128);\n"
+"border-radius: 0px;\n"
+"}")
+        self.live_parameter_frame.setFrameShape(QFrame.StyledPanel)
+        self.live_parameter_frame.setFrameShadow(QFrame.Raised)
+        self.Strength_Slider_poppable = QFrame(self.live_parameter_frame)
+        self.Strength_Slider_poppable.setObjectName(u"Strength_Slider_poppable")
+        self.Strength_Slider_poppable.setGeometry(QRect(8, 144, 225, 65))
+        self.Strength_Slider_poppable.setTabletTracking(True)
+        self.Strength_Slider_poppable.setStyleSheet(u"")
+        self.Strength_Slider_poppable.setFrameShape(QFrame.StyledPanel)
+        self.Strength_Slider_poppable.setFrameShadow(QFrame.Raised)
+        self.strength_slider = QSlider(self.Strength_Slider_poppable)
+        self.strength_slider.setObjectName(u"strength_slider")
+        self.strength_slider.setGeometry(QRect(-4, 24, 235, 32))
+        self.strength_slider.setStyleSheet(u"")
         self.strength_slider.setMaximum(100)
         self.strength_slider.setPageStep(2)
         self.strength_slider.setValue(68)
@@ -7407,86 +7900,19 @@ class Ui_MainWindow(object):
         self.strength_active_checkbox = QCheckBox(self.Strength_Slider_poppable)
         self.strength_active_checkbox.setObjectName(u"strength_active_checkbox")
         self.strength_active_checkbox.setGeometry(QRect(7, 2, 33, 20))
-        self.strength_active_checkbox.setStyleSheet(u"QCheckBox {\n"
-"    border: none; /* No border for the checkbox */\n"
-"}\n"
-"\n"
-"QCheckBox::indicator {\n"
-"    width: 54px; /* Width of the checkbox */\n"
-"    height: 29px; /* Height of the checkbox */\n"
-"    background-color: transparent; /* Ensures background is transparent */\n"
-"border: none; /* No border for the checkbox */\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:unchecked {\n"
-"    background-image: url(images/check_off_small.png); /* Image for unchecked state */\n"
-"    background-repeat: no-repeat; /* Prevents the image from repeating */\n"
-"background-position: left; /* Left the image */\n"
-"border: none; /* No border for the checkbox */\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:checked {\n"
-"    background-image: url(images/check_on_small.png); /* Image for checked state */\n"
-"    background-repeat: no-repeat; /* Prevents the image from repeating */\n"
-"background-position: left; /* Left the image */\n"
-"border: none; /* No border for the checkbox */\n"
-"}\n"
-"")
+        self.strength_active_checkbox.setStyleSheet(u"")
         self.Step_Slider_Frame_poppable = QFrame(self.live_parameter_frame)
         self.Step_Slider_Frame_poppable.setObjectName(u"Step_Slider_Frame_poppable")
         self.Step_Slider_Frame_poppable.setGeometry(QRect(8, 2, 225, 65))
         self.Step_Slider_Frame_poppable.setTabletTracking(True)
-        self.Step_Slider_Frame_poppable.setStyleSheet(u"background-color: rgb(108,108,118); border: 0px solid rgb(128,128,128); border-radius: 0px;")
+        self.Step_Slider_Frame_poppable.setStyleSheet(u"")
         self.Step_Slider_Frame_poppable.setFrameShape(QFrame.StyledPanel)
         self.Step_Slider_Frame_poppable.setFrameShadow(QFrame.Raised)
         self.step_slider = QSlider(self.Step_Slider_Frame_poppable)
         self.step_slider.setObjectName(u"step_slider")
         self.step_slider.setGeometry(QRect(-6, 24, 235, 32))
         self.step_slider.setTabletTracking(False)
-        self.step_slider.setStyleSheet(u"QSlider::groove:horizontal {\n"
-"    border-image: url(images/groove_230.png) ; /* Adjust slicing and stretch as needed */\n"
-"    height: 29px; /* The height of your image */\n"
-"    width: 215px; /* Width of the handle - adjust as needed */\n"
-"}\n"
-"\n"
-"QSlider::handle:horizontal {\n"
-"    background-image: url(images/handle_off.png); /* The path to your handle image */\n"
-"  background-repeat: no-repeat;\n"
-"    border: none; /* Remove the border if you don't need it */\n"
-"    width: 32px; /* Width of the handle - adjust as needed */\n"
-"    height: 32px; /* Height of the handle - adjust as needed */\n"
-"    margin: -2px 0; /* Optional: Adjust the margin if needed */\n"
-"}\n"
-"\n"
-"QSlider::handle:horizontal:hover {\n"
-"\n"
-"    background-image: url(images/handle_hover.png); /* Change the handle image when hovering */\n"
-"background-repeat: no-repeat;\n"
-"    border: none; /* Remove the border if you don't need it */\n"
-"    width: 32px; /* Width of the handle - adjust as needed */\n"
-"    height: 32px;"
-                        " /* Height of the handle - adjust as needed */\n"
-"    margin: -2px 0; /* Optional: Adjust the margin if needed */\n"
-"}\n"
-"\n"
-"QSlider::handle:horizontal:pressed {\n"
-"    background-image: url(images/handle_on.png); /* Change the handle image when pressed */\n"
-"background-repeat: no-repeat;\n"
-"    border: none; /* Remove the border if you don't need it */\n"
-"    width: 32px; /* Width of the handle - adjust as needed */\n"
-"    height: 32px; /* Height of the handle - adjust as needed */\n"
-"    margin: -2px 0; /* Optional: Adjust the margin if needed */\n"
-"  \n"
-"}\n"
-"\n"
-"QSlider::add-page:horizontal {\n"
-"    background: none;\n"
-"}\n"
-"\n"
-"QSlider::sub-page:horizontal {\n"
-"    background: none;\n"
-"}\n"
-" ")
+        self.step_slider.setStyleSheet(u"")
         self.step_slider.setMinimum(1)
         self.step_slider.setMaximum(200)
         self.step_slider.setValue(50)
@@ -7496,16 +7922,17 @@ class Ui_MainWindow(object):
         self.step_slider_label = QLabel(self.Step_Slider_Frame_poppable)
         self.step_slider_label.setObjectName(u"step_slider_label")
         self.step_slider_label.setGeometry(QRect(43, 2, 121, 21))
-        self.step_slider_label.setFont(font6)
+        self.step_slider_label.setFont(font4)
+        self.step_slider_label.setStyleSheet(u"")
         self.step_slider_value = QLabel(self.Step_Slider_Frame_poppable)
         self.step_slider_value.setObjectName(u"step_slider_value")
         self.step_slider_value.setGeometry(QRect(170, 2, 46, 22))
         self.step_slider_value.setMinimumSize(QSize(0, 6))
-        font12 = QFont()
-        font12.setPointSize(12)
-        font12.setBold(True)
-        font12.setKerning(True)
-        self.step_slider_value.setFont(font12)
+        font14 = QFont()
+        font14.setPointSize(12)
+        font14.setBold(True)
+        font14.setKerning(True)
+        self.step_slider_value.setFont(font14)
         self.step_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -7525,56 +7952,13 @@ class Ui_MainWindow(object):
         self.Noice_Slider_poppable.setObjectName(u"Noice_Slider_poppable")
         self.Noice_Slider_poppable.setGeometry(QRect(8, 286, 225, 65))
         self.Noice_Slider_poppable.setTabletTracking(True)
-        self.Noice_Slider_poppable.setStyleSheet(u"background-color: rgb(108,108,118); border: 0px solid rgb(128,128,128); border-radius: 0px;")
+        self.Noice_Slider_poppable.setStyleSheet(u"")
         self.Noice_Slider_poppable.setFrameShape(QFrame.StyledPanel)
         self.Noice_Slider_poppable.setFrameShadow(QFrame.Raised)
         self.noise_slider = QSlider(self.Noice_Slider_poppable)
         self.noise_slider.setObjectName(u"noise_slider")
         self.noise_slider.setGeometry(QRect(-4, 24, 235, 32))
-        self.noise_slider.setStyleSheet(u"QSlider::groove:horizontal {\n"
-"    border-image: url(images/groove_230.png) ; /* Adjust slicing and stretch as needed */\n"
-"    height: 29px; /* The height of your image */\n"
-"    width: 215px; /* Width of the handle - adjust as needed */\n"
-"}\n"
-"\n"
-"QSlider::handle:horizontal {\n"
-"    background-image: url(images/handle_off.png); /* The path to your handle image */\n"
-"  background-repeat: no-repeat;\n"
-"    border: none; /* Remove the border if you don't need it */\n"
-"    width: 32px; /* Width of the handle - adjust as needed */\n"
-"    height: 32px; /* Height of the handle - adjust as needed */\n"
-"    margin: -2px 0; /* Optional: Adjust the margin if needed */\n"
-"}\n"
-"\n"
-"QSlider::handle:horizontal:hover {\n"
-"\n"
-"    background-image: url(images/handle_hover.png); /* Change the handle image when hovering */\n"
-"background-repeat: no-repeat;\n"
-"    border: none; /* Remove the border if you don't need it */\n"
-"    width: 32px; /* Width of the handle - adjust as needed */\n"
-"    height: 32px;"
-                        " /* Height of the handle - adjust as needed */\n"
-"    margin: -2px 0; /* Optional: Adjust the margin if needed */\n"
-"}\n"
-"\n"
-"QSlider::handle:horizontal:pressed {\n"
-"    background-image: url(images/handle_on.png); /* Change the handle image when pressed */\n"
-"background-repeat: no-repeat;\n"
-"    border: none; /* Remove the border if you don't need it */\n"
-"    width: 32px; /* Width of the handle - adjust as needed */\n"
-"    height: 32px; /* Height of the handle - adjust as needed */\n"
-"    margin: -2px 0; /* Optional: Adjust the margin if needed */\n"
-"  \n"
-"}\n"
-"\n"
-"QSlider::add-page:horizontal {\n"
-"    background: none;\n"
-"}\n"
-"\n"
-"QSlider::sub-page:horizontal {\n"
-"    background: none;\n"
-"}\n"
-" ")
+        self.noise_slider.setStyleSheet(u"")
         self.noise_slider.setMinimum(1)
         self.noise_slider.setMaximum(200)
         self.noise_slider.setSingleStep(1)
@@ -7640,56 +8024,44 @@ class Ui_MainWindow(object):
         self.CFG_Slider_poppable.setEnabled(True)
         self.CFG_Slider_poppable.setGeometry(QRect(8, 73, 225, 65))
         self.CFG_Slider_poppable.setTabletTracking(True)
-        self.CFG_Slider_poppable.setStyleSheet(u"background-color: rgb(108,108,118); border: 0px solid rgb(128,128,128); border-radius: 0px;")
+        self.CFG_Slider_poppable.setStyleSheet(u"")
         self.CFG_Slider_poppable.setFrameShape(QFrame.StyledPanel)
         self.CFG_Slider_poppable.setFrameShadow(QFrame.Raised)
         self.cfg_slider = QSlider(self.CFG_Slider_poppable)
         self.cfg_slider.setObjectName(u"cfg_slider")
         self.cfg_slider.setGeometry(QRect(-6, 24, 235, 32))
-        self.cfg_slider.setStyleSheet(u"QSlider::groove:horizontal {\n"
-"    border-image: url(images/groove_230.png) ; /* Adjust slicing and stretch as needed */\n"
-"    height: 29px; /* The height of your image */\n"
-"    width: 215px; /* Width of the handle - adjust as needed */\n"
+        self.cfg_slider.setStyleSheet(u"QCheckBox {\n"
+"    border: none; /* No border for the checkbox */\n"
 "}\n"
 "\n"
-"QSlider::handle:horizontal {\n"
-"    background-image: url(images/handle_off.png); /* The path to your handle image */\n"
-"  background-repeat: no-repeat;\n"
-"    border: none; /* Remove the border if you don't need it */\n"
-"    width: 32px; /* Width of the handle - adjust as needed */\n"
-"    height: 32px; /* Height of the handle - adjust as needed */\n"
-"    margin: -2px 0; /* Optional: Adjust the margin if needed */\n"
+"QCheckBox::indicator {\n"
+"    width: 54px; /* Width of the checkbox */\n"
+"    height: 29px; /* Height of the checkbox */\n"
+"    background-color: transparent; /* Ensures background is transparent */\n"
+"border: none; /* No border for the checkbox */\n"
 "}\n"
 "\n"
-"QSlider::handle:horizontal:hover {\n"
-"\n"
-"    background-image: url(images/handle_hover.png); /* Change the handle image when hovering */\n"
-"background-repeat: no-repeat;\n"
-"    border: none; /* Remove the border if you don't need it */\n"
-"    width: 32px; /* Width of the handle - adjust as needed */\n"
-"    height: 32px;"
-                        " /* Height of the handle - adjust as needed */\n"
-"    margin: -2px 0; /* Optional: Adjust the margin if needed */\n"
+"QCheckBox::indicator:unchecked {\n"
+"    background-image: url(images/check_off_small.png); /* Image for unchecked state */\n"
+"    background-repeat: no-repeat; /* Prevents the image from repeating */\n"
+"background-position: left; /* Left the image */\n"
+"border: none; /* No border for the checkbox */\n"
 "}\n"
 "\n"
-"QSlider::handle:horizontal:pressed {\n"
-"    background-image: url(images/handle_on.png); /* Change the handle image when pressed */\n"
-"background-repeat: no-repeat;\n"
-"    border: none; /* Remove the border if you don't need it */\n"
-"    width: 32px; /* Width of the handle - adjust as needed */\n"
-"    height: 32px; /* Height of the handle - adjust as needed */\n"
-"    margin: -2px 0; /* Optional: Adjust the margin if needed */\n"
-"  \n"
+"QCheckBox::indicator:checked {\n"
+"    background-image: url(images/check_on_small.png); /* Image for checked state */\n"
+"    background-repeat: no-repeat; /* Prevents the image from repeating */\n"
+"background-position: left; /* Left the image */\n"
+"border: none; /* No border for the checkbox */\n"
 "}\n"
 "\n"
-"QSlider::add-page:horizontal {\n"
-"    background: none;\n"
-"}\n"
 "\n"
-"QSlider::sub-page:horizontal {\n"
-"    background: none;\n"
-"}\n"
-" ")
+"QFrame{\n"
+"Qbackground-color: rgb("
+                        "108,108,118);\n"
+"border: 0px solid rgb(128,128,128);\n"
+"border-radius: 0px;\n"
+"}")
         self.cfg_slider.setMinimum(1)
         self.cfg_slider.setMaximum(30)
         self.cfg_slider.setPageStep(2)
@@ -7700,7 +8072,7 @@ class Ui_MainWindow(object):
         self.cfg_slider_label = QLabel(self.CFG_Slider_poppable)
         self.cfg_slider_label.setObjectName(u"cfg_slider_label")
         self.cfg_slider_label.setGeometry(QRect(43, 0, 121, 21))
-        self.cfg_slider_label.setFont(font6)
+        self.cfg_slider_label.setFont(font4)
         self.cfg_slider_value = QLabel(self.CFG_Slider_poppable)
         self.cfg_slider_value.setObjectName(u"cfg_slider_value")
         self.cfg_slider_value.setGeometry(QRect(170, 2, 46, 22))
@@ -7726,86 +8098,19 @@ class Ui_MainWindow(object):
         sizePolicy2.setHeightForWidth(self.cfg_active_checkbox.sizePolicy().hasHeightForWidth())
         self.cfg_active_checkbox.setSizePolicy(sizePolicy2)
         self.cfg_active_checkbox.setBaseSize(QSize(0, 0))
-        self.cfg_active_checkbox.setStyleSheet(u"QCheckBox {\n"
-"    border: none; /* No border for the checkbox */\n"
-"}\n"
-"\n"
-"QCheckBox::indicator {\n"
-"    width: 54px; /* Width of the checkbox */\n"
-"    height: 29px; /* Height of the checkbox */\n"
-"    background-color: transparent; /* Ensures background is transparent */\n"
-"border: none; /* No border for the checkbox */\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:unchecked {\n"
-"    background-image: url(images/check_off_small.png); /* Image for unchecked state */\n"
-"    background-repeat: no-repeat; /* Prevents the image from repeating */\n"
-"background-position: left; /* Left the image */\n"
-"border: none; /* No border for the checkbox */\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:checked {\n"
-"    background-image: url(images/check_on_small.png); /* Image for checked state */\n"
-"    background-repeat: no-repeat; /* Prevents the image from repeating */\n"
-"background-position: left; /* Left the image */\n"
-"border: none; /* No border for the checkbox */\n"
-"}\n"
-"")
+        self.cfg_active_checkbox.setStyleSheet(u"")
         self.cfg_active_checkbox.setIconSize(QSize(33, 20))
         self.Cadence_Slider_poppable = QFrame(self.live_parameter_frame)
         self.Cadence_Slider_poppable.setObjectName(u"Cadence_Slider_poppable")
         self.Cadence_Slider_poppable.setGeometry(QRect(8, 215, 225, 65))
         self.Cadence_Slider_poppable.setTabletTracking(True)
-        self.Cadence_Slider_poppable.setStyleSheet(u"background-color: rgb(108,108,118); border: 0px solid rgb(128,128,128); border-radius: 0px;")
+        self.Cadence_Slider_poppable.setStyleSheet(u"")
         self.Cadence_Slider_poppable.setFrameShape(QFrame.StyledPanel)
         self.Cadence_Slider_poppable.setFrameShadow(QFrame.Raised)
         self.cadence_slider = QSlider(self.Cadence_Slider_poppable)
         self.cadence_slider.setObjectName(u"cadence_slider")
         self.cadence_slider.setGeometry(QRect(-4, 24, 235, 32))
-        self.cadence_slider.setStyleSheet(u"QSlider::groove:horizontal {\n"
-"    border-image: url(images/groove_230.png) ; /* Adjust slicing and stretch as needed */\n"
-"    height: 29px; /* The height of your image */\n"
-"    width: 215px; /* Width of the handle - adjust as needed */\n"
-"}\n"
-"\n"
-"QSlider::handle:horizontal {\n"
-"    background-image: url(images/handle_off.png); /* The path to your handle image */\n"
-"  background-repeat: no-repeat;\n"
-"    border: none; /* Remove the border if you don't need it */\n"
-"    width: 32px; /* Width of the handle - adjust as needed */\n"
-"    height: 32px; /* Height of the handle - adjust as needed */\n"
-"    margin: -2px 0; /* Optional: Adjust the margin if needed */\n"
-"}\n"
-"\n"
-"QSlider::handle:horizontal:hover {\n"
-"\n"
-"    background-image: url(images/handle_hover.png); /* Change the handle image when hovering */\n"
-"background-repeat: no-repeat;\n"
-"    border: none; /* Remove the border if you don't need it */\n"
-"    width: 32px; /* Width of the handle - adjust as needed */\n"
-"    height: 32px;"
-                        " /* Height of the handle - adjust as needed */\n"
-"    margin: -2px 0; /* Optional: Adjust the margin if needed */\n"
-"}\n"
-"\n"
-"QSlider::handle:horizontal:pressed {\n"
-"    background-image: url(images/handle_on.png); /* Change the handle image when pressed */\n"
-"background-repeat: no-repeat;\n"
-"    border: none; /* Remove the border if you don't need it */\n"
-"    width: 32px; /* Width of the handle - adjust as needed */\n"
-"    height: 32px; /* Height of the handle - adjust as needed */\n"
-"    margin: -2px 0; /* Optional: Adjust the margin if needed */\n"
-"  \n"
-"}\n"
-"\n"
-"QSlider::add-page:horizontal {\n"
-"    background: none;\n"
-"}\n"
-"\n"
-"QSlider::sub-page:horizontal {\n"
-"    background: none;\n"
-"}\n"
-" ")
+        self.cadence_slider.setStyleSheet(u"")
         self.cadence_slider.setMinimum(1)
         self.cadence_slider.setMaximum(30)
         self.cadence_slider.setPageStep(2)
@@ -7838,53 +8143,13 @@ class Ui_MainWindow(object):
         self.cadence_active_checkbox = QCheckBox(self.Cadence_Slider_poppable)
         self.cadence_active_checkbox.setObjectName(u"cadence_active_checkbox")
         self.cadence_active_checkbox.setGeometry(QRect(7, 2, 33, 20))
-        self.cadence_active_checkbox.setStyleSheet(u"QCheckBox {\n"
-"    border: none; /* No border for the checkbox */\n"
-"}\n"
-"\n"
-"QCheckBox::indicator {\n"
-"    width: 54px; /* Width of the checkbox */\n"
-"    height: 29px; /* Height of the checkbox */\n"
-"    background-color: transparent; /* Ensures background is transparent */\n"
-"border: none; /* No border for the checkbox */\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:unchecked {\n"
-"    background-image: url(images/check_off_small.png); /* Image for unchecked state */\n"
-"    background-repeat: no-repeat; /* Prevents the image from repeating */\n"
-"background-position: left; /* Left the image */\n"
-"border: none; /* No border for the checkbox */\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:checked {\n"
-"    background-image: url(images/check_on_small.png); /* Image for checked state */\n"
-"    background-repeat: no-repeat; /* Prevents the image from repeating */\n"
-"background-position: left; /* Left the image */\n"
-"border: none; /* No border for the checkbox */\n"
-"}\n"
-"")
+        self.cadence_active_checkbox.setStyleSheet(u"")
 
         self.verticalLayout_7.addWidget(self.ubder_slider_frame)
 
         self.scrollArea_slider_frame.setWidget(self.scrollAreaWidgetContentsSliders)
 
         self.gridLayout_9.addWidget(self.scrollArea_slider_frame, 2, 0, 1, 1)
-
-        self.Live_ParameterLabel = QLabel(self.slider_tab_frame)
-        self.Live_ParameterLabel.setObjectName(u"Live_ParameterLabel")
-        sizePolicy2.setHeightForWidth(self.Live_ParameterLabel.sizePolicy().hasHeightForWidth())
-        self.Live_ParameterLabel.setSizePolicy(sizePolicy2)
-        font13 = QFont()
-        font13.setPointSize(20)
-        font13.setBold(True)
-        self.Live_ParameterLabel.setFont(font13)
-        self.Live_ParameterLabel.setMouseTracking(True)
-        self.Live_ParameterLabel.setTabletTracking(True)
-        self.Live_ParameterLabel.setStyleSheet(u"background-color: rgb(88, 88, 98); /* Fallback color */\n"
-"        border: 2px solid rgb(32, 32, 32);\n"
-"    border-radius: 10px;")
-
-        self.gridLayout_9.addWidget(self.Live_ParameterLabel, 0, 0, 1, 1)
 
 
         self.verticalLayout_8.addWidget(self.slider_tab_frame)
@@ -7909,8 +8174,6 @@ class Ui_MainWindow(object):
 "    background-color: rgb(108, 108, 118);\n"
 "    border: 2px solid rgb(40, 40, 40); /* Refined shadow effect */\n"
 "    border-radius: 10px; /* Smooth rounded corners */\n"
-"\n"
-"    \n"
 "")
         self.live_value_tab_frame.setFrameShape(QFrame.StyledPanel)
         self.live_value_tab_frame.setFrameShadow(QFrame.Raised)
@@ -7961,7 +8224,7 @@ class Ui_MainWindow(object):
         self.scrollArea_live_values.setWidgetResizable(True)
         self.scrollAreaWidgetContentsLiveValues = QWidget()
         self.scrollAreaWidgetContentsLiveValues.setObjectName(u"scrollAreaWidgetContentsLiveValues")
-        self.scrollAreaWidgetContentsLiveValues.setGeometry(QRect(0, 0, 269, 473))
+        self.scrollAreaWidgetContentsLiveValues.setGeometry(QRect(0, 0, 269, 466))
         sizePolicy2.setHeightForWidth(self.scrollAreaWidgetContentsLiveValues.sizePolicy().hasHeightForWidth())
         self.scrollAreaWidgetContentsLiveValues.setSizePolicy(sizePolicy2)
         self.scrollAreaWidgetContentsLiveValues.setMinimumSize(QSize(0, 355))
@@ -7981,7 +8244,11 @@ class Ui_MainWindow(object):
         self.live_value_frame_poppable.setObjectName(u"live_value_frame_poppable")
         self.live_value_frame_poppable.setGeometry(QRect(16, 8, 255, 353))
         self.live_value_frame_poppable.setTabletTracking(True)
-        self.live_value_frame_poppable.setStyleSheet(u"border:0")
+        self.live_value_frame_poppable.setStyleSheet(u"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px\n"
+" }")
         self.live_value_frame_poppable.setFrameShape(QFrame.StyledPanel)
         self.live_value_frame_poppable.setFrameShadow(QFrame.Raised)
         self.live_value_names = QWidget(self.live_value_frame_poppable)
@@ -8076,10 +8343,10 @@ class Ui_MainWindow(object):
         self.noise_multi_label = QLabel(self.verticalLayoutWidget)
         self.noise_multi_label.setObjectName(u"noise_multi_label")
         self.noise_multi_label.setMinimumSize(QSize(0, 0))
-        font14 = QFont()
-        font14.setFamilies([u"Segoe UI"])
-        font14.setPointSize(12)
-        self.noise_multi_label.setFont(font14)
+        font15 = QFont()
+        font15.setFamilies([u"Segoe UI"])
+        font15.setPointSize(12)
+        self.noise_multi_label.setFont(font15)
 
         self.verticalLayout_2.addWidget(self.noise_multi_label)
 
@@ -8208,12 +8475,12 @@ class Ui_MainWindow(object):
         self.panx_l = QLabel(self.panx_rise_fall_frame)
         self.panx_l.setObjectName(u"panx_l")
         self.panx_l.setGeometry(QRect(1, 1, 24, 24))
-        self.panx_l.setStyleSheet(u"border:0")
+        self.panx_l.setStyleSheet(u"")
         self.panx_l.setPixmap(QPixmap(u"images/value_declining_off.png"))
         self.panx_r = QLabel(self.panx_rise_fall_frame)
         self.panx_r.setObjectName(u"panx_r")
         self.panx_r.setGeometry(QRect(24, 1, 24, 24))
-        self.panx_r.setStyleSheet(u"border:0")
+        self.panx_r.setStyleSheet(u"")
         self.panx_r.setPixmap(QPixmap(u"images/value_rising_off.png"))
         self.pany_rise_fall_frame = QFrame(self.live_value_frame_poppable)
         self.pany_rise_fall_frame.setObjectName(u"pany_rise_fall_frame")
@@ -8225,12 +8492,12 @@ class Ui_MainWindow(object):
         self.pany_l = QLabel(self.pany_rise_fall_frame)
         self.pany_l.setObjectName(u"pany_l")
         self.pany_l.setGeometry(QRect(0, 0, 26, 26))
-        self.pany_l.setStyleSheet(u"border:0")
+        self.pany_l.setStyleSheet(u"")
         self.pany_l.setPixmap(QPixmap(u"images/value_declining_off.png"))
         self.pany_r = QLabel(self.pany_rise_fall_frame)
         self.pany_r.setObjectName(u"pany_r")
         self.pany_r.setGeometry(QRect(24, 1, 24, 24))
-        self.pany_r.setStyleSheet(u"border:0")
+        self.pany_r.setStyleSheet(u"")
         self.pany_r.setPixmap(QPixmap(u"images/value_rising_off.png"))
         self.roth_rise_fall_frame = QFrame(self.live_value_frame_poppable)
         self.roth_rise_fall_frame.setObjectName(u"roth_rise_fall_frame")
@@ -8242,12 +8509,12 @@ class Ui_MainWindow(object):
         self.roth_l = QLabel(self.roth_rise_fall_frame)
         self.roth_l.setObjectName(u"roth_l")
         self.roth_l.setGeometry(QRect(0, 0, 26, 26))
-        self.roth_l.setStyleSheet(u"border:0")
+        self.roth_l.setStyleSheet(u"")
         self.roth_l.setPixmap(QPixmap(u"images/value_declining_off.png"))
         self.roth_r = QLabel(self.roth_rise_fall_frame)
         self.roth_r.setObjectName(u"roth_r")
         self.roth_r.setGeometry(QRect(24, 1, 24, 24))
-        self.roth_r.setStyleSheet(u"border:0")
+        self.roth_r.setStyleSheet(u"")
         self.roth_r.setPixmap(QPixmap(u"images/value_rising_off.png"))
         self.rotv_rise_fall_frame = QFrame(self.live_value_frame_poppable)
         self.rotv_rise_fall_frame.setObjectName(u"rotv_rise_fall_frame")
@@ -8259,12 +8526,12 @@ class Ui_MainWindow(object):
         self.rotv_l = QLabel(self.rotv_rise_fall_frame)
         self.rotv_l.setObjectName(u"rotv_l")
         self.rotv_l.setGeometry(QRect(0, 0, 26, 26))
-        self.rotv_l.setStyleSheet(u"border:0")
+        self.rotv_l.setStyleSheet(u"")
         self.rotv_l.setPixmap(QPixmap(u"images/value_declining_off.png"))
         self.rotv_r = QLabel(self.rotv_rise_fall_frame)
         self.rotv_r.setObjectName(u"rotv_r")
         self.rotv_r.setGeometry(QRect(24, 1, 24, 24))
-        self.rotv_r.setStyleSheet(u"border:0")
+        self.rotv_r.setStyleSheet(u"")
         self.rotv_r.setPixmap(QPixmap(u"images/value_rising_off.png"))
         self.zoom_rise_fall_frame = QFrame(self.live_value_frame_poppable)
         self.zoom_rise_fall_frame.setObjectName(u"zoom_rise_fall_frame")
@@ -8276,12 +8543,12 @@ class Ui_MainWindow(object):
         self.zoom_l = QLabel(self.zoom_rise_fall_frame)
         self.zoom_l.setObjectName(u"zoom_l")
         self.zoom_l.setGeometry(QRect(0, 0, 26, 26))
-        self.zoom_l.setStyleSheet(u"border:0")
+        self.zoom_l.setStyleSheet(u"")
         self.zoom_l.setPixmap(QPixmap(u"images/value_declining_off.png"))
         self.zoom_r = QLabel(self.zoom_rise_fall_frame)
         self.zoom_r.setObjectName(u"zoom_r")
         self.zoom_r.setGeometry(QRect(24, 1, 24, 24))
-        self.zoom_r.setStyleSheet(u"border:0")
+        self.zoom_r.setStyleSheet(u"")
         self.zoom_r.setPixmap(QPixmap(u"images/value_rising_off.png"))
         self.tilt_rise_fall_frame = QFrame(self.live_value_frame_poppable)
         self.tilt_rise_fall_frame.setObjectName(u"tilt_rise_fall_frame")
@@ -8293,12 +8560,12 @@ class Ui_MainWindow(object):
         self.tilt_l = QLabel(self.tilt_rise_fall_frame)
         self.tilt_l.setObjectName(u"tilt_l")
         self.tilt_l.setGeometry(QRect(0, 0, 26, 26))
-        self.tilt_l.setStyleSheet(u"border:0")
+        self.tilt_l.setStyleSheet(u"")
         self.tilt_l.setPixmap(QPixmap(u"images/value_declining_off.png"))
         self.tilt_r = QLabel(self.tilt_rise_fall_frame)
         self.tilt_r.setObjectName(u"tilt_r")
         self.tilt_r.setGeometry(QRect(24, 1, 24, 24))
-        self.tilt_r.setStyleSheet(u"border:0")
+        self.tilt_r.setStyleSheet(u"")
         self.tilt_r.setPixmap(QPixmap(u"images/value_rising_off.png"))
 
         self.verticalLayout.addWidget(self.frame_live_values)
@@ -8312,9 +8579,17 @@ class Ui_MainWindow(object):
         self.Live_ValuesLabel.setFont(font13)
         self.Live_ValuesLabel.setMouseTracking(True)
         self.Live_ValuesLabel.setTabletTracking(True)
-        self.Live_ValuesLabel.setStyleSheet(u"background-color: rgb(88, 88, 98); /* Fallback color */\n"
-"        border: 2px solid rgb(32, 32, 32);\n"
-"    border-radius: 10px;")
+        self.Live_ValuesLabel.setStyleSheet(u"QLabel{\n"
+"background-color: rgb(88, 88, 98); /* Fallback color */\n"
+"border: 2px solid rgb(32, 32, 32);\n"
+"border-radius: 10px;\n"
+"}\n"
+"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px\n"
+" }")
+        self.Live_ValuesLabel.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_10.addWidget(self.Live_ValuesLabel, 0, 0, 1, 1)
 
@@ -8327,51 +8602,6 @@ class Ui_MainWindow(object):
 
 
         self.gridLayout_17.addWidget(self.right_frame_frame, 1, 0, 1, 1)
-
-        self.stay_on_top_checkbox = QCheckBox(self.Right_Frame)
-        self.stay_on_top_checkbox.setObjectName(u"stay_on_top_checkbox")
-        sizePolicy14.setHeightForWidth(self.stay_on_top_checkbox.sizePolicy().hasHeightForWidth())
-        self.stay_on_top_checkbox.setSizePolicy(sizePolicy14)
-        self.stay_on_top_checkbox.setMinimumSize(QSize(0, 40))
-        self.stay_on_top_checkbox.setMaximumSize(QSize(300, 16777215))
-        self.stay_on_top_checkbox.setFont(font8)
-        self.stay_on_top_checkbox.setLayoutDirection(Qt.RightToLeft)
-        self.stay_on_top_checkbox.setStyleSheet(u"QCheckBox {\n"
-"    border: none; /* No border for the checkbox */\n"
-"background-color: rgb(108,108,118);\n"
-"border: 2px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
-"    border-radius: 10px;\n"
-"    padding: 1px; /* To prevent the content from touching the border */\n"
-"spacing:28px\n"
-"}\n"
-"\n"
-"QCheckBox::indicator {\n"
-"    width: 54px; /* Width of the checkbox */\n"
-"    height: 22px; /* Height of the checkbox */\n"
-"    background-color: transparent; /* Ensures background is transparent */\n"
-"border: none; /* No border for the checkbox */\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:unchecked {\n"
-"    background-image: url(images/check_off_small.png); /* Image for unchecked state */\n"
-"    background-repeat: no-repeat; /* Prevents the image from repeating */\n"
-"background-position: left; /* Left the image */\n"
-"border: none; /* No border for the checkbox */\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:checked {\n"
-"    background-image: url(images/check_on_small.png); /* Image for checked state */"
-                        "\n"
-"    background-repeat: no-repeat; /* Prevents the image from repeating */\n"
-"background-position: left; /* Left the image */\n"
-"border: none; /* No border for the checkbox */\n"
-"}\n"
-"\n"
-"")
-        self.stay_on_top_checkbox.setIconSize(QSize(20, 20))
-        self.stay_on_top_checkbox.setCheckable(True)
-
-        self.gridLayout_17.addWidget(self.stay_on_top_checkbox, 0, 0, 1, 1)
 
         self.splitter_3.addWidget(self.Right_Frame)
 
@@ -8392,7 +8622,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.deforumation_tabWidget.setCurrentIndex(1)
+        self.deforumation_tabWidget.setCurrentIndex(0)
         self.syrup_pan_curve_type.setCurrentIndex(0)
         self.enablemovements_button.setDefault(False)
         self.tabWidget_CN.setCurrentIndex(0)
@@ -8405,74 +8635,93 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Deforumation QT v 0.1.3", None))
         self.preview_image.setText("")
 #if QT_CONFIG(tooltip)
-        self.movie_slider_frame_number.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt; font-weight:700; color:#ffffff;\">Display of current frame.</span></p></body></html>", None))
+        self.movie_slider_frame_number.setToolTip(QCoreApplication.translate("MainWindow", u"Tells what frame number is currently in the most left film reel. You can jump directly to a frame by typing it in.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.movie_slider.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">Film Reel jogging slider.</span></p></body></html>", None))
+        self.movie_slider.setToolTip(QCoreApplication.translate("MainWindow", u"Film Reel jogging slider.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.replay_fps_input_box.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:700; color:#ffffff;\">Enter the playback FPS of the preview animation. Use same FPS as deforum &quot;</span><span style=\" font-family:'Source Sans Pro','ui-sans-serif','system-ui','sans-serif'; font-size:11pt; font-weight:700; color:#ffffff;\">Video Output Settings ,</span><a name=\"component-2711\"/><span style=\" font-family:'Source Sans Pro','ui-sans-serif','system-ui','sans-serif'; font-size:11pt; font-weight:700; color:#ffffff;\">F</span><span style=\" font-family:'Source Sans Pro','ui-sans-serif','system-ui','sans-serif'; font-size:11pt; font-weight:700; color:#ffffff;\">PS</span><span style=\" font-size:11pt; font-weight:700; color:#ffffff;\">&quot; For correct preview.</span></p></body></html>", None))
+        self.replay_fps_input_box.setToolTip(QCoreApplication.translate("MainWindow", u"Enter the playback FPS of the preview animation. This works independently of what FPS you choose in deforum's \"Video Output Settings\".", None))
 #endif // QT_CONFIG(tooltip)
         self.replay_fps_input_box.setText(QCoreApplication.translate("MainWindow", u"30", None))
+#if QT_CONFIG(tooltip)
+        self.fps_label.setToolTip(QCoreApplication.translate("MainWindow", u"Enter the playback FPS of the preview animation. This works independently of what FPS you choose in deforum's \"Video Output Settings\".", None))
+#endif // QT_CONFIG(tooltip)
         self.fps_label.setText(QCoreApplication.translate("MainWindow", u"     fps:", None))
 #if QT_CONFIG(tooltip)
-        self.from_framelabel.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:700; color:#ffffff;\">Input starting frame of preview animation. You can also right click Film reel and </span><a name=\"tw-target-text\"/><span style=\" font-family:'inherit'; font-size:11pt; font-weight:700; color:#ffffff;\">s</span><span style=\" font-family:'inherit'; font-size:11pt; font-weight:700; color:#ffffff;\">elect &quot;Mark FFMPEG preview, IN&quot;</span></p></body></html>", None))
+        self.from_framelabel.setToolTip(QCoreApplication.translate("MainWindow", u"Input starting frame of preview animation. You can also right click Film reel and \"Mark FFMPEG preview, IN\" to set this value.", None))
 #endif // QT_CONFIG(tooltip)
         self.from_framelabel.setText(QCoreApplication.translate("MainWindow", u"From Frame:", None))
 #if QT_CONFIG(tooltip)
-        self.play_preview.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">Play Prewiev, This play a preview animation of the frames between IN and OUT marking in film reel. Fps is set in &quot;fps:&quot; input. </span></p></body></html>", None))
+        self.play_preview.setToolTip(QCoreApplication.translate("MainWindow", u"Play Prewiev, This play a preview animation of the frames between IN and OUT marking in film reel. Fps is set in \"fps\"", None))
 #endif // QT_CONFIG(tooltip)
         self.play_preview.setText(QCoreApplication.translate("MainWindow", u"Play Preview", None))
 #if QT_CONFIG(tooltip)
-        self.to_frame_label.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#ffffff;\">Input ending frame of preview animation. You can also right click Film reel and </span><a name=\"tw-target-text\"/><span style=\" font-family:'inherit'; font-size:11pt; color:#ffffff;\">s</span><span style=\" font-family:'inherit'; font-size:11pt; color:#ffffff;\">elect &quot;Mark FFMPEG preview, OUT&quot;</span></p></body></html>", None))
+        self.to_frame_label.setToolTip(QCoreApplication.translate("MainWindow", u"Input ending frame of preview animation. You can also right click Film reel and \"Mark FFMPEG preview, OUT\" to set this value.", None))
 #endif // QT_CONFIG(tooltip)
         self.to_frame_label.setText(QCoreApplication.translate("MainWindow", u"To Frame:", None))
 #if QT_CONFIG(tooltip)
-        self.replay_to_input_box.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:700; color:#ffffff;\">Input ending frame of preview animation. You can also right click Film reel and </span><a name=\"tw-target-text\"/><span style=\" font-family:'inherit'; font-size:11pt; color:#ffffff;\">s</span><span style=\" font-family:'inherit'; font-size:11pt; color:#ffffff;\">elect &quot;Mark FFMPEG preview, IN&quot;</span></p></body></html>", None))
+        self.replay_to_input_box.setToolTip(QCoreApplication.translate("MainWindow", u"Input ending frame of preview animation. You can also right click Film reel and \"Mark FFMPEG preview, OUT\" to set this value.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.replay_from_input_box.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:700; color:#ffffff;\">Input starting frame of preview animation. You can also right click Film reel and </span><a name=\"tw-target-text\"/><span style=\" font-family:'inherit'; font-size:11pt; font-weight:700; color:#ffffff;\">s</span><span style=\" font-family:'inherit'; font-size:11pt; font-weight:700; color:#ffffff;\">elect &quot;Mark FFMPEG preview, IN&quot;</span></p></body></html>", None))
+        self.replay_from_input_box.setToolTip(QCoreApplication.translate("MainWindow", u"Input starting frame of preview animation. You can also right click Film reel and \"Mark FFMPEG preview, IN\" to set this value.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.preview_compression_slider.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt; font-weight:700; color:#ffffff;\">Film Reel Granularity Slider: Shift left to display every frame, move right to evenly spread frames on the reel.</span></p></body></html>", None))
+        self.preview_compression_slider.setToolTip(QCoreApplication.translate("MainWindow", u"Film Reel Granularity Slider: Drag left to \"zoom in\", or drag right to \"zoom out\".", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.open_Deforum_folder.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:700; color:#ffffff;\">This magic button will open the current Deforum output folder, usually &quot;outputs\\img2img-images\\Deforum_timestring&quot;</span></p></body></html>", None))
+        self.open_Deforum_folder.setToolTip(QCoreApplication.translate("MainWindow", u"This magic button will open the current Deforum output folder, usually something like \"...\\outputs\\img2img-images\\Deforum_timestring\"", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(whatsthis)
         self.open_Deforum_folder.setWhatsThis("")
 #endif // QT_CONFIG(whatsthis)
         self.open_Deforum_folder.setText("")
 #if QT_CONFIG(tooltip)
-        self.goto_end_button.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:700; color:#ffffff;\">Go to last / current frame in Film Reel</span></p></body></html>", None))
+        self.goto_end_button.setToolTip(QCoreApplication.translate("MainWindow", u"Go to last / current frame in Film Reel.", None))
 #endif // QT_CONFIG(tooltip)
         self.goto_end_button.setText("")
 #if QT_CONFIG(tooltip)
-        self.play_button.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt; font-weight:700; color:#ffffff;\">Resume Deforum Rendering</span></p></body></html>", None))
+        self.play_button.setToolTip(QCoreApplication.translate("MainWindow", u"Resume Deforum Rendering.", None))
 #endif // QT_CONFIG(tooltip)
         self.play_button.setText("")
 #if QT_CONFIG(tooltip)
-        self.stop_button.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt; font-weight:700; color:#ffffff;\">Paus Deforum Rendering</span></p></body></html>", None))
+        self.stop_button.setToolTip(QCoreApplication.translate("MainWindow", u"Paus Deforum Rendering.", None))
 #endif // QT_CONFIG(tooltip)
         self.stop_button.setText("")
 #if QT_CONFIG(tooltip)
-        self.goto_start_button.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:700; color:#ffffff;\">Go to first frame in Film Reel</span></p></body></html>", None))
+        self.goto_start_button.setToolTip(QCoreApplication.translate("MainWindow", u"Go to first frame in Film Reel.", None))
 #endif // QT_CONFIG(tooltip)
         self.goto_start_button.setText("")
 #if QT_CONFIG(tooltip)
-        self.crf_input_box.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:700; color:#ffffff;\">CRF in FFmpeg: Control for video quality and size. Lower values mean better quality, higher values mean smaller file sizes. Low value and many frames takes time to compile. A good baseline is 17.</span></p></body></html>", None))
+        self.crf_input_box.setToolTip(QCoreApplication.translate("MainWindow", u"CRF in FFmpeg: Control for video quality and size. Lower values mean better quality, higher values mean smaller file sizes.\n"
+"Low value and many frames takes time to compile. A good baseline is 17.", None))
 #endif // QT_CONFIG(tooltip)
         self.crf_input_box.setText(QCoreApplication.translate("MainWindow", u"20", None))
 #if QT_CONFIG(tooltip)
-        self.crf_label.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:700; color:#ffffff;\">CRF in FFmpeg: Control for video quality and size. Lower values mean better quality, higher values mean smaller file sizes. Low value and many frames takes time to compile. A good baseline is 17.</span></p></body></html>", None))
+        self.crf_label.setToolTip(QCoreApplication.translate("MainWindow", u"CRF in FFmpeg: Control for video quality and size. Lower values mean better quality, higher values mean smaller file sizes. Low value and many frames takes time to compile. A good baseline is 17.", None))
 #endif // QT_CONFIG(tooltip)
         self.crf_label.setText(QCoreApplication.translate("MainWindow", u"CRF:(compression level)", None))
 #if QT_CONFIG(tooltip)
-        self.movie_clip.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" color:#ffffff;\">Right click for more options.</span></p><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">&quot;Set current image&quot; </span><span style=\" color:#ffffff;\">select image to start generate from.</span></p><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">&quot;copy this image`s original value to Deforumation&quot; </span><span style=\" color:#ffffff;\">this will copy movement. values and it`s parameters (CFG, Strength, Cadence, Noise Multiplier) to Deforumation.</span></p><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">&quot;Get this image prompt&quot; </span><span style=\" color:#ffffff;\">Copy the image prompt to Deforumation current prompt. </span></p><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">&quot;Get active prompt&quot; </span><span style=\" color:#ffffff;\">Copy the active prompt to Deforumation prompt.</span></p><p><span style=\" font-size:10pt; font-weight:700; color:"
-                        "#ffffff;\">&quot;Mark FFmpeg preview, IN&quot;</span><span style=\" color:#ffffff;\"> Selects the starting frame of the preview animation.</span></p><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">&quot;Mark FFmpeg preview, OUT&quot;</span><span style=\" color:#ffffff;\"> Selects the last frame of the preview animation.</span></p><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">&quot;Clear FFmpeg preview&quot; </span><span style=\" color:#ffffff;\">Clear all selected frames.</span><br/></p></body></html>", None))
+        self.movie_clip.setToolTip(QCoreApplication.translate("MainWindow", u"Right click for more options.\n"
+"\n"
+"\"Set current image and Copy it's original values\": select image to start generating from and also use all that image's original values, such as movement and live parameter values.\n"
+"\n"
+"\"Set current image\": select image to start generate from.\n"
+"\n"
+"\"Copy this image`s original value to Deforumation\": this will copy movement values and it`s parameters (CFG, Strength, Cadence, Noise Multiplier) to Deforumation.\n"
+"\n"
+"\"Get this image's prompt\": Copy the image prompt to Deforumation current prompt.\n"
+"\n"
+"\"Get active prompt\": Copy the active prompt to Deforumation prompt.\n"
+"\n"
+"\"Mark FFmpeg preview, IN\": Selects the starting frame of the preview animation.\n"
+"\n"
+"\"Mark FFmpeg preview, OUT\": Selects the last frame of the preview animation.\n"
+"\n"
+"\"Clear FFmpeg preview\": Clear all selected frames.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.label_Positive_Prompt1.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">This is the first prompt window (Prompt A). It will be combined (put infront) with Prompt B.</span></p></body></html>", None))
+        self.label_Positive_Prompt1.setToolTip(QCoreApplication.translate("MainWindow", u"This is the first prompt window (Prompt A). It will be combined (put infront) Prompt B.", None))
 #endif // QT_CONFIG(tooltip)
         self.label_Positive_Prompt1.setText(QCoreApplication.translate("MainWindow", u"Positive Prompt A", None))
         self.prompt1.setMarkdown("")
@@ -8485,46 +8734,52 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
 #if QT_CONFIG(tooltip)
-        self.label_Positive_Prompt2.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">This is the second prompt window (Prompt B). It will be combined (put behind) with Prompt A.</span></p></body></html>", None))
+        self.label_Positive_Prompt2.setToolTip(QCoreApplication.translate("MainWindow", u"This is the second prompt window (Prompt B). It will be combined (put behind) Prompt A.", None))
 #endif // QT_CONFIG(tooltip)
         self.label_Positive_Prompt2.setText(QCoreApplication.translate("MainWindow", u"Positive Prompt B", None))
 #if QT_CONFIG(tooltip)
-        self.label_Negative_Prompt.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">This is the negative prompt window. Write stuff that you don't wantto show up in your generation.</span></p></body></html>", None))
+        self.label_Negative_Prompt.setToolTip(QCoreApplication.translate("MainWindow", u"This is the negative prompt window. Write stuff that you don't want to show up in your AI generation.", None))
 #endif // QT_CONFIG(tooltip)
         self.label_Negative_Prompt.setText(QCoreApplication.translate("MainWindow", u"Negativ Prompt", None))
-        self.save_current_ui_label_4.setText(QCoreApplication.translate("MainWindow", u"Save Prompt Morphing to disc", None))
+        self.save_current_ui_label_4.setText(QCoreApplication.translate("MainWindow", u"Save Prompt Morphing to file", None))
 #if QT_CONFIG(tooltip)
-        self.save_morph_data.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:700; color:#ffffff;\">This magic button will open the current Deforum output folder, usually &quot;outputs\\img2img-images\\Deforum_timestring&quot;</span></p></body></html>", None))
+        self.save_morph_data.setToolTip(QCoreApplication.translate("MainWindow", u"Save all the current Prompt Morphing Bindings to a file.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(whatsthis)
         self.save_morph_data.setWhatsThis("")
 #endif // QT_CONFIG(whatsthis)
         self.save_morph_data.setText("")
 #if QT_CONFIG(tooltip)
-        self.use_deforumation_prompt_scheduling_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">If checked (green)</span><span style=\" font-size:10pt; color:#ffffff;\"> Prompt from Deforumation will be used to generate frames.</span></p><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">If unchecked (grey)</span><span style=\" font-size:10pt; color:#ffffff;\"> Prompt schedulinging from deforum will be used to generate frames.</span></p></body></html>", None))
+        self.use_deforumation_prompt_scheduling_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"Prompt from Deforumation will be used to generate frames if checked. If unchecked (grey) prompt schedulinging,\n"
+"from deforum will be used to generate frames. You can dynamically switch between the two.", None))
 #endif // QT_CONFIG(tooltip)
         self.use_deforumation_prompt_scheduling_checkbox.setText(QCoreApplication.translate("MainWindow", u"Use Deforumation Prompts", None))
 #if QT_CONFIG(tooltip)
-        self.save_positive_prompt_style.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">Send positive and negative prompt to render.</span></p></body></html>", None))
+        self.save_positive_prompt_style.setToolTip(QCoreApplication.translate("MainWindow", u"Send positive and negative prompt to the renderer. This has to be pushed after having changed a prompt in order for the change to take effect.", None))
 #endif // QT_CONFIG(tooltip)
         self.save_positive_prompt_style.setText(QCoreApplication.translate("MainWindow", u"Update Prompt", None))
-        self.prompt_morphing_label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:700;\">Prompt Morphing</span></p></body></html>", None))
+        self.prompt_morphing_label.setText(QCoreApplication.translate("MainWindow", u"Prompt Morphing", None))
         self.prpmta_to_promptb_label.setText(QCoreApplication.translate("MainWindow", u"Prompt A - Prompt B", None))
 #if QT_CONFIG(tooltip)
-        self.morph_slider.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">Gives Prompt A or Prompt B more focus. Left of middle will give Prompt A more focus, while right of middle will give Prompt B more focus. In the middle, both prompts have the same focus.</span></p></body></html>", None))
+        self.morph_slider.setToolTip(QCoreApplication.translate("MainWindow", u"Gives Prompt A or Prompt B more focus. Left of middle will give Prompt A more focus,\n"
+"while right of middle will give Prompt B more focus. In the middle, both prompts have\n"
+"the same focus. Right click to reset balance.", None))
 #endif // QT_CONFIG(tooltip)
-        self.morphing_text_howto_label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt;\"> Right click the slider to equal the weight </span></p></body></html>", None))
+        self.morphing_text_howto_label.setText(QCoreApplication.translate("MainWindow", u"Right click the slider to equal the weight", None))
+#if QT_CONFIG(tooltip)
+        self.AddPromptMorp_Button.setToolTip(QCoreApplication.translate("MainWindow", u"This will add a new Promp Morph component", None))
+#endif // QT_CONFIG(tooltip)
         self.AddPromptMorp_Button.setText(QCoreApplication.translate("MainWindow", u"Add Prompt Morp Binding", None))
 #if QT_CONFIG(tooltip)
-        self.add_prompt_after_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">If checked (green), Positive prompt will be placed after active prompt from Deforum prompt scedule.</span></p></body></html>", None))
+        self.add_prompt_after_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"If checked (green), Positive prompt will be placed after active prompt from Deforum prompt scedule.", None))
 #endif // QT_CONFIG(tooltip)
         self.add_prompt_after_checkbox.setText(QCoreApplication.translate("MainWindow", u"Add prompt after Deforum prompt", None))
 #if QT_CONFIG(tooltip)
-        self.add_prompt_before_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">If checked (green), Positive prompt will be placed before active prompt from Deforum prompt scedule.</span></p></body></html>", None))
+        self.add_prompt_before_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"If checked (green), Positive prompt will be placed before active prompt from Deforum prompt scedule.", None))
 #endif // QT_CONFIG(tooltip)
         self.add_prompt_before_checkbox.setText(QCoreApplication.translate("MainWindow", u"Add prompt before Deforum prompt", None))
 #if QT_CONFIG(tooltip)
-        self.load_morph_data.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:700; color:#ffffff;\">This magic button will open the current Deforum output folder, usually &quot;outputs\\img2img-images\\Deforum_timestring&quot;</span></p></body></html>", None))
+        self.load_morph_data.setToolTip(QCoreApplication.translate("MainWindow", u"Load Prompt Morphing Bindings from a file.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(whatsthis)
         self.load_morph_data.setWhatsThis("")
@@ -8533,58 +8788,63 @@ class Ui_MainWindow(object):
         self.save_current_ui_label_5.setText(QCoreApplication.translate("MainWindow", u"Load Prompt Morphing from disc", None))
         self.deforumation_tabWidget.setTabText(self.deforumation_tabWidget.indexOf(self.Prompt_Tab), QCoreApplication.translate("MainWindow", u"Prompts", None))
 #if QT_CONFIG(tooltip)
-        self.motion_pan_button_left.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Increase Pan towards the Left.</span></p></body></html>", None))
+        self.motion_pan_button_left.setToolTip(QCoreApplication.translate("MainWindow", u"Increase Pan towards the Left. Right-clicking will reset motion back to 0.", None))
 #endif // QT_CONFIG(tooltip)
         self.motion_pan_button_left.setText("")
 #if QT_CONFIG(tooltip)
-        self.motion_pan_button_down.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Increase downwards Panning.</span></p></body></html>", None))
+        self.motion_pan_button_down.setToolTip(QCoreApplication.translate("MainWindow", u"Increase downwards Panning. Right-clicking will reset motion back to 0.", None))
 #endif // QT_CONFIG(tooltip)
         self.motion_pan_button_down.setText("")
 #if QT_CONFIG(tooltip)
-        self.motion_pan_button_up.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Increase uppwards Panning.</span></p></body></html>", None))
+        self.motion_pan_button_up.setToolTip(QCoreApplication.translate("MainWindow", u"Increase uppwards Panning. Right-clicking will reset motion back to 0.", None))
 #endif // QT_CONFIG(tooltip)
         self.motion_pan_button_up.setText("")
 #if QT_CONFIG(tooltip)
-        self.motion_pan_button_right.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Increase Pan towards the Right.</span></p></body></html>", None))
+        self.motion_pan_button_right.setToolTip(QCoreApplication.translate("MainWindow", u"Increase Pan towards the Right. Right-clicking will reset motion back to 0.", None))
 #endif // QT_CONFIG(tooltip)
         self.motion_pan_button_right.setText("")
 #if QT_CONFIG(tooltip)
-        self.motion_pan_granularity.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Decides how big each step should be when clicking a motion button. Decimal numbers can be used.</span></p></body></html>", None))
+        self.motion_pan_granularity.setToolTip(QCoreApplication.translate("MainWindow", u"Decides how big each step should be when clicking a motion button. Decimal numbers can be used.", None))
 #endif // QT_CONFIG(tooltip)
         self.panning_preset_label.setText(QCoreApplication.translate("MainWindow", u"Panning preset", None))
 #if QT_CONFIG(tooltip)
-        self.syrup_pan_motion_slider.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Slider to set the smoothness &quot;of a motion.&quot;</span></p><p><span style=\" font-size:10pt; color:#ffffff;\">A lower value means that the motion value that you choose (X or Y panning), will be reached faster. A smoothness of 0, will instantly jump to the motion panning value that you chose.</span></p><p><span style=\" font-size:10pt; color:#ffffff;\">A higer value will gradually work towards your choosen motion panning value.</span></p></body></html>", None))
+        self.syrup_pan_motion_slider.setToolTip(QCoreApplication.translate("MainWindow", u"Slider to set the smoothness of the motion. A lower value means that the motion value that you choose (X or Y panning), will be reached faster.\n"
+"A smoothness of 0, will instantly jump to the motion panning value that you chose.A higer value will gradually work towards your choosen motion panning value.", None))
 #endif // QT_CONFIG(tooltip)
         self.smooth_motion_steps_pan_label.setText(QCoreApplication.translate("MainWindow", u"Smooth pan steps:", None))
 #if QT_CONFIG(tooltip)
-        self.syrup_pan_motion_slider_frame_number.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Current set &quot;Smoot motion steps&quot; shows how many frames the smooth motion will use to reach the end value. Lower value equals faster smooth motion. Higher value equals slower smooth motion.</span></p></body></html>", None))
+        self.syrup_pan_motion_slider_frame_number.setToolTip(QCoreApplication.translate("MainWindow", u"Current set \"Smoot motion steps\" shows how many frames the smooth motion will use to reach the end value.\n"
+"Lower value equals faster smooth motion. Higher value equals slower smooth motion.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.pan_x_value.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Value to strive towards.</span></p></body></html>", None))
+        self.pan_x_value.setToolTip(QCoreApplication.translate("MainWindow", u"Value to strive towards.", None))
 #endif // QT_CONFIG(tooltip)
         self.pan_x_value.setText(QCoreApplication.translate("MainWindow", u"0.00", None))
 #if QT_CONFIG(tooltip)
-        self.pan_y_value.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Value to strive towards.</span></p></body></html>", None))
+        self.pan_y_value.setToolTip(QCoreApplication.translate("MainWindow", u"Value to strive towards.", None))
 #endif // QT_CONFIG(tooltip)
         self.pan_y_value.setText(QCoreApplication.translate("MainWindow", u"0.00", None))
 #if QT_CONFIG(tooltip)
-        self.motion_syrup_progressbar_x.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Current completion level of set smoot motion steps panning X (Left, Right)</span></p></body></html>", None))
+        self.motion_syrup_progressbar_x.setToolTip(QCoreApplication.translate("MainWindow", u"Current completion level of set smoot motion steps panning X (Left, Right)", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.motion_syrup_progressbar_y.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Current completion level of set smoot motion steps panning Y (Upp, Down)</span></p></body></html>", None))
+        self.motion_syrup_progressbar_y.setToolTip(QCoreApplication.translate("MainWindow", u"Current completion level of set smoot motion steps panning Y (Upp, Down)", None))
 #endif // QT_CONFIG(tooltip)
         self.syrup_x_label.setText(QCoreApplication.translate("MainWindow", u"X", None))
         self.syrup_y_label.setText(QCoreApplication.translate("MainWindow", u"Y", None))
 #if QT_CONFIG(tooltip)
-        self.exponential_pan_motion.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">If enabled, any panning value set with the motion buttons, will be the goal values to reach using the (&quot;Smooth pan steps&quot;) value. When disabled, a motion using the same smoothness value and granularity preset (Panning preset), will be kept constant. This means that any further motion changes (you pushing a motion button while a motion is already ongoing), will be regulated to follow the already ongoing motion curve.</span></p></body></html>", None))
+        self.exponential_pan_motion.setToolTip(QCoreApplication.translate("MainWindow", u"If enabled, any panning value set with the motion buttons, will be the goal values to reach using the (\"Smooth pan steps\") value.\n"
+" When disabled, a motion using the same smoothness value and granularity preset (Panning preset), will be kept constant.\n"
+"This means that any further motion changes (you pushing a motion button while a motion is already ongoing), will b\n"
+" regulated to follow the already ongoing motion curve.", None))
 #endif // QT_CONFIG(tooltip)
         self.exponential_pan_motion.setText(QCoreApplication.translate("MainWindow", u"Exponential Panning Motion", None))
 #if QT_CONFIG(tooltip)
-        self.pan_x_value_progress.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Current value being used. This value might differ from the goal value.</span></p></body></html>", None))
+        self.pan_x_value_progress.setToolTip(QCoreApplication.translate("MainWindow", u"Current value being used. This value might differ from the goal value.", None))
 #endif // QT_CONFIG(tooltip)
         self.pan_x_value_progress.setText(QCoreApplication.translate("MainWindow", u"0.00", None))
 #if QT_CONFIG(tooltip)
-        self.pan_y_value_progress.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Current value being used. This value might differ from the goal value.</span></p></body></html>", None))
+        self.pan_y_value_progress.setToolTip(QCoreApplication.translate("MainWindow", u"Current value being used. This value might differ from the goal value.", None))
 #endif // QT_CONFIG(tooltip)
         self.pan_y_value_progress.setText(QCoreApplication.translate("MainWindow", u"0.00", None))
         self.Motion_Panning_Label.setText(QCoreApplication.translate("MainWindow", u"MOTION - PANNING", None))
@@ -8595,77 +8855,85 @@ class Ui_MainWindow(object):
         self.syrup_pan_curve_type.setItemText(4, QCoreApplication.translate("MainWindow", u"Ease-In-Out", None))
 
 #if QT_CONFIG(tooltip)
-        self.syrup_pan_curve_type.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Set &quot;Smooth motion curve&quot; to use with &quot;Smooth motion steps&quot; </p></body></html>", None))
+        self.syrup_pan_curve_type.setToolTip(QCoreApplication.translate("MainWindow", u"What \"Smooth motion curve\" to use with \"Smooth motion steps\"", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.pan_middle_button.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Zero all Panning motions.</span></p></body></html>", None))
+        self.pan_middle_button.setToolTip(QCoreApplication.translate("MainWindow", u"Zero all Panning motions.", None))
 #endif // QT_CONFIG(tooltip)
         self.pan_middle_button.setText("")
 #if QT_CONFIG(tooltip)
-        self.Panning_Component.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">The motion controller for changing panning motions.</span></p></body></html>", None))
+        self.Panning_Component.setToolTip(QCoreApplication.translate("MainWindow", u"The motion controller for changing panning motions.", None))
 #endif // QT_CONFIG(tooltip)
         self.Panning_Component.setText("")
         self.smooth_motion_curve_pan_label.setText(QCoreApplication.translate("MainWindow", u"Smooth motion curve", None))
 #if QT_CONFIG(tooltip)
-        self.Motion_panning_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Enable or disable live panning control.</span></p></body></html>", None))
+        self.Motion_panning_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"Enable or disable live panning control. If disabled, the values given in the scheduled Deforum motion will take over.\n"
+"You can dynamically switch between the two.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(statustip)
         self.Motion_panning_checkbox.setStatusTip(QCoreApplication.translate("MainWindow", u"Enable or disable live panning control.", None))
 #endif // QT_CONFIG(statustip)
         self.Motion_panning_checkbox.setText("")
 #if QT_CONFIG(tooltip)
-        self.motion_rotate_button_left.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Increase Rotation towards the Left.</span></p></body></html>", None))
+        self.motion_rotate_button_left.setToolTip(QCoreApplication.translate("MainWindow", u"Increase Rotation towards the Left. Right-clicking will reset motion back to 0.", None))
 #endif // QT_CONFIG(tooltip)
         self.motion_rotate_button_left.setText("")
 #if QT_CONFIG(tooltip)
-        self.motion_rotate_button_down.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Increase Rotation Downwards.</span></p></body></html>", None))
+        self.motion_rotate_button_down.setToolTip(QCoreApplication.translate("MainWindow", u"Increase Rotation Downwards. Right-clicking will reset motion back to 0.", None))
 #endif // QT_CONFIG(tooltip)
         self.motion_rotate_button_down.setText("")
 #if QT_CONFIG(tooltip)
-        self.motion_rotate_button_up.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Increase Rotation Upwards.</span></p></body></html>", None))
+        self.motion_rotate_button_up.setToolTip(QCoreApplication.translate("MainWindow", u"Increase Rotation Upwards. Right-clicking will reset motion back to 0.", None))
 #endif // QT_CONFIG(tooltip)
         self.motion_rotate_button_up.setText("")
 #if QT_CONFIG(tooltip)
-        self.motion_rotate_button_right.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Increase Rotation towards the Right.</span></p></body></html>", None))
+        self.motion_rotate_button_right.setToolTip(QCoreApplication.translate("MainWindow", u"Increase Rotation towards the Right. Right-clicking will reset motion back to 0.", None))
 #endif // QT_CONFIG(tooltip)
         self.motion_rotate_button_right.setText("")
 #if QT_CONFIG(tooltip)
-        self.motion_rotate_granularity.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Decides how big each step should be when clicking a motion button. Decimal numbers can be used.</span></p></body></html>", None))
+        self.motion_rotate_granularity.setToolTip(QCoreApplication.translate("MainWindow", u"Decides how big each step should be when clicking a motion button. Decimal numbers can be used.", None))
 #endif // QT_CONFIG(tooltip)
         self.rot_preset_label.setText(QCoreApplication.translate("MainWindow", u"Rotation preset", None))
 #if QT_CONFIG(tooltip)
-        self.syrup_rotate_motion_slider.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Slider to set the smoothness &quot;of a motion.&quot;</span></p><p><span style=\" font-size:10pt; color:#ffffff;\">A lower value means that the motion value that you choose (Rotate Horizontally or Rotate Vertically), will be reached faster. A smoothness of 0, will instantly jump to the motion rotation value that you chose.</span></p><p><span style=\" font-size:10pt; color:#ffffff;\">A higer value will gradually work towards your choosen motion rotation value.</span></p></body></html>", None))
+        self.syrup_rotate_motion_slider.setToolTip(QCoreApplication.translate("MainWindow", u"Slider to set the smoothness of the motion. A lower value means that the motion value that\n"
+"you choose (Rotate Horizontally or Rotate Vertically), will be reached faster.\n"
+"A smoothness of 0, will instantly jump to the motion rotation value that you chose.\n"
+"A higer value will gradually work towards your choosen motion rotation value.", None))
 #endif // QT_CONFIG(tooltip)
         self.smooth_motion_curve_rot_label.setText(QCoreApplication.translate("MainWindow", u"Smooth motion curve", None))
 #if QT_CONFIG(tooltip)
-        self.syrup_rotate_motion_slider_frame_number.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Current set &quot;Smoot motion steps&quot; shows how many frames the smooth motion will use to reach the end value. Lower value equals faster smooth motion. Higher value equals slower smooth motion.</span></p></body></html>", None))
+        self.syrup_rotate_motion_slider_frame_number.setToolTip(QCoreApplication.translate("MainWindow", u"Current set \"Smoot motion steps\" shows how many frames the smooth motion will use to reach the end value.\n"
+"Lower value equals faster smooth motion. Higher value equals slower smooth motion.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.rotate_x_value.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Value to strive towards.</span></p></body></html>", None))
+        self.rotate_x_value.setToolTip(QCoreApplication.translate("MainWindow", u"Value to strive towards.", None))
 #endif // QT_CONFIG(tooltip)
         self.rotate_x_value.setText(QCoreApplication.translate("MainWindow", u"0.00", None))
 #if QT_CONFIG(tooltip)
-        self.rotate_y_value.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Value to strive towards.</span></p></body></html>", None))
+        self.rotate_y_value.setToolTip(QCoreApplication.translate("MainWindow", u"Value to strive towards.", None))
 #endif // QT_CONFIG(tooltip)
         self.rotate_y_value.setText(QCoreApplication.translate("MainWindow", u"0.00", None))
 #if QT_CONFIG(tooltip)
-        self.motion_syrup_progressbar_rx.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Current completion level of set smoot motion steps rotation vertically (Up, Down)</span></p></body></html>", None))
+        self.motion_syrup_progressbar_rx.setToolTip(QCoreApplication.translate("MainWindow", u"Current completion level of set smoot motion steps rotation vertically (Up, Down)", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.motion_syrup_progressbar_ry.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Current completion level of set smoot motion steps rotation vertically (Left, Right)</span></p></body></html>", None))
+        self.motion_syrup_progressbar_ry.setToolTip(QCoreApplication.translate("MainWindow", u"Current completion level of set smoot motion steps rotation vertically (Left, Right)", None))
 #endif // QT_CONFIG(tooltip)
         self.syrup_xr_label.setText(QCoreApplication.translate("MainWindow", u"RV", None))
         self.syrup_ry_label.setText(QCoreApplication.translate("MainWindow", u"RH", None))
 #if QT_CONFIG(tooltip)
-        self.exponential_rotate_motion.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">If enabled, any rotation value set with the motion buttons, will be the goal values to reach using the (&quot;Smooth rotation steps&quot;) value. When disabled, a motion using the same smoothness value and granularity preset (Rotation preset), will be kept constant. This means that any further motion changes (you pushing a motion button while a motion is already ongoing), will be regulated to follow the already ongoing motion curve.</span></p></body></html>", None))
+        self.exponential_rotate_motion.setToolTip(QCoreApplication.translate("MainWindow", u"If enabled, any rotation value set with the motion buttons, will be the goal values to reach using the (\"Smooth rotation steps\") value.\n"
+"When disabled, a motion using the same smoothness value and granularity preset (Rotation preset), will be kept constant.\n"
+"This means that any further motion changes (you pushing a motion button while a motion is already ongoing), will be\n"
+"regulated to follow the already ongoing motion curve.", None))
 #endif // QT_CONFIG(tooltip)
         self.exponential_rotate_motion.setText(QCoreApplication.translate("MainWindow", u"Exponential Rotation Motion", None))
 #if QT_CONFIG(tooltip)
-        self.rotate_x_value_progress.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Current value being used. This value might differ from the goal value.</span></p></body></html>", None))
+        self.rotate_x_value_progress.setToolTip(QCoreApplication.translate("MainWindow", u"Current value being used. This value might differ from the goal value.", None))
 #endif // QT_CONFIG(tooltip)
         self.rotate_x_value_progress.setText(QCoreApplication.translate("MainWindow", u"0.00", None))
 #if QT_CONFIG(tooltip)
-        self.rotate_y_value_progress.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Current value being used. This value might differ from the goal value.</span></p></body></html>", None))
+        self.rotate_y_value_progress.setToolTip(QCoreApplication.translate("MainWindow", u"Current value being used. This value might differ from the goal value.", None))
 #endif // QT_CONFIG(tooltip)
         self.rotate_y_value_progress.setText(QCoreApplication.translate("MainWindow", u"0.00", None))
         self.Motion_Rotation_Label.setText(QCoreApplication.translate("MainWindow", u"MOTION - ROTATION", None))
@@ -8676,49 +8944,56 @@ class Ui_MainWindow(object):
         self.syrup_rotation_curve_type.setItemText(4, QCoreApplication.translate("MainWindow", u"Ease-In-Out", None))
 
 #if QT_CONFIG(tooltip)
-        self.syrup_rotation_curve_type.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Set &quot;Smooth motion curve&quot; to use with &quot;Smooth motion steps&quot; </p></body></html>", None))
+        self.syrup_rotation_curve_type.setToolTip(QCoreApplication.translate("MainWindow", u"What \"Smooth motion curve\" to use with \"Smooth motion steps\"", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.rotate_middle_button.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Zero all Rotation motions.</span></p></body></html>", None))
+        self.rotate_middle_button.setToolTip(QCoreApplication.translate("MainWindow", u"Zero all Rotation motions.", None))
 #endif // QT_CONFIG(tooltip)
         self.rotate_middle_button.setText("")
         self.smooth_motion_steps_rotation_label.setText(QCoreApplication.translate("MainWindow", u"Smooth rotation steps:", None))
 #if QT_CONFIG(tooltip)
-        self.Rotation_Component.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">The motion controller for changing rotational motions.</span></p></body></html>", None))
+        self.Rotation_Component.setToolTip(QCoreApplication.translate("MainWindow", u"The motion controller for changing rotational motions.", None))
 #endif // QT_CONFIG(tooltip)
         self.Rotation_Component.setText("")
 #if QT_CONFIG(tooltip)
-        self.Motion_rotation_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Enable or disable live rotation control.</span></p></body></html>", None))
+        self.Motion_rotation_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"Enable or disable live rotation control. If disabled, the values given in the scheduled Deforum motion will take over.\n"
+"You can dynamically switch between the two.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(statustip)
         self.Motion_rotation_checkbox.setStatusTip(QCoreApplication.translate("MainWindow", u"Enable or disable live panning control.", None))
 #endif // QT_CONFIG(statustip)
         self.Motion_rotation_checkbox.setText("")
 #if QT_CONFIG(tooltip)
-        self.motion_tilt_granularity.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Decides how big each step should be when clicking a motion button. Decimal numbers can be used.</span></p></body></html>", None))
+        self.motion_tilt_granularity.setToolTip(QCoreApplication.translate("MainWindow", u"Decides how big each step should be when clicking a motion button. Decimal numbers can be used.", None))
 #endif // QT_CONFIG(tooltip)
         self.tilt_preset_label.setText(QCoreApplication.translate("MainWindow", u"Tilt preset", None))
 #if QT_CONFIG(tooltip)
-        self.syrup_tilt_motion_slider.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Slider to set the smoothness &quot;of a motion.&quot;</span></p><p><span style=\" font-size:10pt; color:#ffffff;\">A lower value means that the motion value that you choose (Tilt), will be reached faster. A smoothness of 0, will instantly jump to the motion tilt value that you chose.</span></p><p><span style=\" font-size:10pt; color:#ffffff;\">A higer value will gradually work towards your choosen motion tilt value.</span></p></body></html>", None))
+        self.syrup_tilt_motion_slider.setToolTip(QCoreApplication.translate("MainWindow", u"Slider to set the smoothness of a motion. A lower value means that the motion value that you choose (Tilt), will be reached faster.\n"
+"A smoothness of 0, will instantly jump to the motion tilt value that you chose.\n"
+"A higer value will gradually work towards your choosen motion tilt value.", None))
 #endif // QT_CONFIG(tooltip)
         self.smooth_motion_steps_tilt_label.setText(QCoreApplication.translate("MainWindow", u"Smooth tilt steps:", None))
 #if QT_CONFIG(tooltip)
-        self.syrup_tilt_motion_slider_frame_number.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Current set &quot;Smoot motion steps&quot; shows how many frames the smooth motion will use to reach the end value. Lower value equals faster smooth motion. Higher value equals slower smooth motion.</span></p></body></html>", None))
+        self.syrup_tilt_motion_slider_frame_number.setToolTip(QCoreApplication.translate("MainWindow", u"Current set \"Smoot motion steps\" shows how many frames the smooth motion will use to reach the end value.\n"
+"Lower value equals faster smooth motion. Higher value equals slower smooth motion.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.rotate_z_value.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Value to strive towards.</span></p></body></html>", None))
+        self.rotate_z_value.setToolTip(QCoreApplication.translate("MainWindow", u"Value to strive towards.", None))
 #endif // QT_CONFIG(tooltip)
         self.rotate_z_value.setText(QCoreApplication.translate("MainWindow", u"0.00", None))
 #if QT_CONFIG(tooltip)
-        self.motion_syrup_progressbar_rz.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Current completion level of set smoot motion steps tilt (Clockwise or Counterclockwise)</span></p></body></html>", None))
+        self.motion_syrup_progressbar_rz.setToolTip(QCoreApplication.translate("MainWindow", u"Current completion level of set smoot motion steps tilt (Clockwise or Counterclockwise)", None))
 #endif // QT_CONFIG(tooltip)
         self.syrup_z_tilt_label.setText(QCoreApplication.translate("MainWindow", u"Z", None))
 #if QT_CONFIG(tooltip)
-        self.exponential_tilt_motion.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">If enabled, any tilt value set with the motion buttons, will be the goal values to reach using the (&quot;Smooth tilt steps&quot;) value. When disabled, a motion using the same smoothness value and granularity preset (Tilt preset), will be kept constant. This means that any further motion changes (you pushing a motion button while a motion is already ongoing), will be regulated to follow the already ongoing motion curve.</span></p></body></html>", None))
+        self.exponential_tilt_motion.setToolTip(QCoreApplication.translate("MainWindow", u"If enabled, any tilt value set with the motion buttons, will be the goal values to reach using the (\"Smooth tilt steps\") value.\n"
+"When disabled, a motion using the same smoothness value and granularity preset (Tilt preset), will be kept constant.\n"
+"This means that any further motion changes (you pushing a motion button while a motion is already ongoing),\n"
+"will be regulated to follow the already ongoing motion curve.", None))
 #endif // QT_CONFIG(tooltip)
         self.exponential_tilt_motion.setText(QCoreApplication.translate("MainWindow", u"Exponential Tilt Motion", None))
 #if QT_CONFIG(tooltip)
-        self.rotate_z_value_progress.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Current value being used. This value might differ from the goal value.</span></p></body></html>", None))
+        self.rotate_z_value_progress.setToolTip(QCoreApplication.translate("MainWindow", u"Current value being used. This value might differ from the goal value.", None))
 #endif // QT_CONFIG(tooltip)
         self.rotate_z_value_progress.setText(QCoreApplication.translate("MainWindow", u"0.00", None))
         self.Motion_Tilt_Label.setText(QCoreApplication.translate("MainWindow", u"MOTION - TILT", None))
@@ -8729,81 +9004,86 @@ class Ui_MainWindow(object):
         self.syrup_tilt_curve_type.setItemText(4, QCoreApplication.translate("MainWindow", u"Ease-In-Out", None))
 
 #if QT_CONFIG(tooltip)
-        self.syrup_tilt_curve_type.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Set &quot;Smooth motion curve&quot; to use with &quot;Smooth motion steps&quot; </p></body></html>", None))
+        self.syrup_tilt_curve_type.setToolTip(QCoreApplication.translate("MainWindow", u"What \"Smooth motion curve\" to use with \"Smooth motion steps\"", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.Motion_tilt_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Enable or disable live tilt control.</span></p></body></html>", None))
+        self.Motion_tilt_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"Enable or disable live tilt control. If disabled, the values given in the scheduled Deforum motion will take over.\n"
+"You can dynamically switch between the two.", None))
 #endif // QT_CONFIG(tooltip)
         self.Motion_tilt_checkbox.setText("")
         self.smooth_motion_curve_tilt_label.setText(QCoreApplication.translate("MainWindow", u"Smooth tilt curve", None))
 #if QT_CONFIG(tooltip)
-        self.Tilt_Component.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">The motion controller for changing tilt motion.</span></p></body></html>", None))
+        self.Tilt_Component.setToolTip(QCoreApplication.translate("MainWindow", u"The motion controller for changing tilt motion.", None))
 #endif // QT_CONFIG(tooltip)
         self.Tilt_Component.setText("")
 #if QT_CONFIG(tooltip)
-        self.motion_tilt_button_left.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Increase Clockwise Tilt motion.</span></p></body></html>", None))
+        self.motion_tilt_button_left.setToolTip(QCoreApplication.translate("MainWindow", u"Increase Clockwise Tilt motion. Right-clicking will reset motion back to 0.", None))
 #endif // QT_CONFIG(tooltip)
         self.motion_tilt_button_left.setText("")
 #if QT_CONFIG(tooltip)
-        self.motion_tilt_button_right.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Increase Counterclockwise Tilt motion.</span></p></body></html>", None))
+        self.motion_tilt_button_right.setToolTip(QCoreApplication.translate("MainWindow", u"Increase Counterclockwise Tilt motion. Right-clicking will reset motion back to 0.", None))
 #endif // QT_CONFIG(tooltip)
         self.motion_tilt_button_right.setText("")
 #if QT_CONFIG(tooltip)
-        self.tilt_middle_button.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Zero all Tilt motions.</span></p></body></html>", None))
+        self.tilt_middle_button.setToolTip(QCoreApplication.translate("MainWindow", u"Zero all Tilt motions.", None))
 #endif // QT_CONFIG(tooltip)
         self.tilt_middle_button.setText("")
 #if QT_CONFIG(tooltip)
-        self.motion_fov_slider.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">The motion controller for changing FOV (field of view).</span></p></body></html>", None))
+        self.motion_fov_slider.setToolTip(QCoreApplication.translate("MainWindow", u"The motion controller for changing FOV (field of view). Right-clicking will reset motion back to  the normal value (70).", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.max_fov.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Maximum FOV value.</span></p></body></html>", None))
+        self.max_fov.setToolTip(QCoreApplication.translate("MainWindow", u"Maximum FOV value.", None))
 #endif // QT_CONFIG(tooltip)
         self.max_fov.setText(QCoreApplication.translate("MainWindow", u"120", None))
 #if QT_CONFIG(tooltip)
-        self.min_fov.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Minimum FOV value.</span></p></body></html>", None))
+        self.min_fov.setToolTip(QCoreApplication.translate("MainWindow", u"Minimum FOV value.", None))
 #endif // QT_CONFIG(tooltip)
         self.min_fov.setText(QCoreApplication.translate("MainWindow", u"20", None))
         self.Motion_Fov.setText(QCoreApplication.translate("MainWindow", u"MOTION - FOV", None))
 #if QT_CONFIG(tooltip)
-        self.fov_value.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Normal FOV value.</span></p></body></html>", None))
+        self.fov_value.setToolTip(QCoreApplication.translate("MainWindow", u"Normal FOV value.", None))
 #endif // QT_CONFIG(tooltip)
         self.fov_value.setText(QCoreApplication.translate("MainWindow", u"70", None))
 #if QT_CONFIG(tooltip)
-        self.Motion_fow_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Enable or disable live Fov control.</span></p></body></html>", None))
+        self.Motion_fow_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"Enable or disable live Fov control. If disabled, the values given in the scheduled Deforum motion will take over.\n"
+"You can dynamically switch between the two.", None))
 #endif // QT_CONFIG(tooltip)
         self.Motion_fow_checkbox.setText("")
 #if QT_CONFIG(tooltip)
-        self.motion_zoom_slider.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">The motion controller for changing zoom motion.</span></p></body></html>", None))
+        self.motion_zoom_slider.setToolTip(QCoreApplication.translate("MainWindow", u"The motion controller for changing zoom motion. Right-clicking on the controller will reset the motion back to 0.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.motion_zoom_granularity.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Decides the length of the Zoom slider.</span></p></body></html>", None))
+        self.motion_zoom_granularity.setToolTip(QCoreApplication.translate("MainWindow", u"Decides the min and max value of the Zoom slider.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.max_zoom.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Maximum zoom value.</span></p></body></html>", None))
+        self.max_zoom.setToolTip(QCoreApplication.translate("MainWindow", u"Maximum zoom value.", None))
 #endif // QT_CONFIG(tooltip)
         self.max_zoom.setText(QCoreApplication.translate("MainWindow", u"1.00", None))
 #if QT_CONFIG(tooltip)
-        self.min_zoom.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Minimum zoom value.</span></p></body></html>", None))
+        self.min_zoom.setToolTip(QCoreApplication.translate("MainWindow", u"Minimum zoom value.", None))
 #endif // QT_CONFIG(tooltip)
         self.min_zoom.setText(QCoreApplication.translate("MainWindow", u"-1.00", None))
         self.Motion_Zoom_Label.setText(QCoreApplication.translate("MainWindow", u"MOTION - ZOOM", None))
 #if QT_CONFIG(tooltip)
-        self.syrup_zoom_motion_slider_frame_number.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Current set &quot;Smoot motion steps&quot; shows how many frames the smooth motion will use to reach the end value. Lower value equals faster smooth motion. Higher value equals slower smooth motion.</span></p></body></html>", None))
+        self.syrup_zoom_motion_slider_frame_number.setToolTip(QCoreApplication.translate("MainWindow", u"Current set \"Smoot motion steps\" shows how many frames the smooth motion will use to reach the end value.\n"
+"Lower value equals faster smooth motion. Higher value equals slower smooth motion.", None))
 #endif // QT_CONFIG(tooltip)
         self.smooth_motion_curve_zoom_label.setText(QCoreApplication.translate("MainWindow", u"Smooth zoom curve", None))
 #if QT_CONFIG(tooltip)
-        self.syrup_zoom_motion_slider.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Slider to set the smoothness &quot;of a motion.&quot;</span></p><p><span style=\" font-size:10pt; color:#ffffff;\">A lower value means that the motion value that you choose (Zoom), will be reached faster. A smoothness of 0, will instantly jump to the motion zoom value that you chose.</span></p><p><span style=\" font-size:10pt; color:#ffffff;\">A higer value will gradually work towards your choosen motion zoom value.</span></p></body></html>", None))
+        self.syrup_zoom_motion_slider.setToolTip(QCoreApplication.translate("MainWindow", u"Slider to set the smoothness \"of a motion\". A lower value means that the motion value that you choose (Zoom),\n"
+"will be reached faster. A smoothness of 0, will instantly jump to the motion zoom value that you chose.\n"
+"A higer value will gradually work towards your choosen motion zoom value.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.pan_z_value.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Value to strive towards.</span></p></body></html>", None))
+        self.pan_z_value.setToolTip(QCoreApplication.translate("MainWindow", u"Value to strive towards.", None))
 #endif // QT_CONFIG(tooltip)
         self.pan_z_value.setText(QCoreApplication.translate("MainWindow", u"0.00", None))
 #if QT_CONFIG(tooltip)
-        self.pan_z_value_progress.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Current value being used. This value might differ from the goal value.</span></p></body></html>", None))
+        self.pan_z_value_progress.setToolTip(QCoreApplication.translate("MainWindow", u"Current value being used. This value might differ from the goal value.", None))
 #endif // QT_CONFIG(tooltip)
         self.pan_z_value_progress.setText(QCoreApplication.translate("MainWindow", u"0.00", None))
 #if QT_CONFIG(tooltip)
-        self.motion_syrup_progressbar_z.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Current completion level of set smoot motion steps zoom (Forwards or Backwards)</span></p></body></html>", None))
+        self.motion_syrup_progressbar_z.setToolTip(QCoreApplication.translate("MainWindow", u"Current completion level of set smoot motion steps zoom (Forwards or Backwards)", None))
 #endif // QT_CONFIG(tooltip)
         self.syrup_zoom_label.setText(QCoreApplication.translate("MainWindow", u"Z", None))
         self.syrup_zoom_curve_type.setItemText(0, QCoreApplication.translate("MainWindow", u"Linear", None))
@@ -8813,35 +9093,36 @@ class Ui_MainWindow(object):
         self.syrup_zoom_curve_type.setItemText(4, QCoreApplication.translate("MainWindow", u"Ease-In-Out", None))
 
 #if QT_CONFIG(tooltip)
-        self.syrup_zoom_curve_type.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Set &quot;Smooth motion curve&quot; to use with &quot;Smooth motion steps&quot; </p></body></html>", None))
+        self.syrup_zoom_curve_type.setToolTip(QCoreApplication.translate("MainWindow", u"What \"Smooth motion curve\" to use with \"Smooth motion steps\"", None))
 #endif // QT_CONFIG(tooltip)
         self.zoom_preset_label.setText(QCoreApplication.translate("MainWindow", u"Zoom preset", None))
 #if QT_CONFIG(tooltip)
-        self.Motion_zoom_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Enable or disable live zoom control.</span></p></body></html>", None))
+        self.Motion_zoom_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"Enable or disable live zoom control. If disabled, the values given in the scheduled Deforum motion will take over.\n"
+"You can dynamically switch between the two.", None))
 #endif // QT_CONFIG(tooltip)
         self.Motion_zoom_checkbox.setText("")
         self.smooth_motion_steps_zoom_label.setText(QCoreApplication.translate("MainWindow", u"Smooth zoom steps:", None))
 #if QT_CONFIG(tooltip)
-        self.motion_zoom_granularity_special.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Decides how big each step should be when clicking a motion button. Decimal numbers can be used.</span></p></body></html>", None))
+        self.motion_zoom_granularity_special.setToolTip(QCoreApplication.translate("MainWindow", u"Decides how big each step should be when clicking a motion button. Decimal numbers can be used.", None))
 #endif // QT_CONFIG(tooltip)
         self.zoom_preset_special_label.setText(QCoreApplication.translate("MainWindow", u"C - Zoom preset", None))
 #if QT_CONFIG(tooltip)
-        self.motion_zoom_button_forwards.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:700; color:#ffffff;\">Go to first frame in Film Reel</span></p></body></html>", None))
+        self.motion_zoom_button_forwards.setToolTip(QCoreApplication.translate("MainWindow", u"Increase Zoom value as much as the C - Zoom preset is set to.", None))
 #endif // QT_CONFIG(tooltip)
         self.motion_zoom_button_forwards.setText("")
 #if QT_CONFIG(tooltip)
-        self.motion_zoom_button_backwards.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:700; color:#ffffff;\">Go to first frame in Film Reel</span></p></body></html>", None))
+        self.motion_zoom_button_backwards.setToolTip(QCoreApplication.translate("MainWindow", u"Decrease Zoom value as much as the C - Zoom preset is set to.", None))
 #endif // QT_CONFIG(tooltip)
         self.motion_zoom_button_backwards.setText("")
         self.deforumation_tabWidget.setTabText(self.deforumation_tabWidget.indexOf(self.Movement_Tab), QCoreApplication.translate("MainWindow", u"Motion", None))
-        self.user_interface_settings_label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"left\"><span style=\" font-size:14pt; font-weight:700;\">User Interface Settings</span></p></body></html>", None))
+        self.user_interface_settings_label.setText(QCoreApplication.translate("MainWindow", u"User Interface Settings", None))
         self.Save_Settings.setText(QCoreApplication.translate("MainWindow", u"Save Current UI Settings", None))
         self.Restore_Settings.setText(QCoreApplication.translate("MainWindow", u"Restore UI Settings", None))
         self.enablemovements_button.setText(QCoreApplication.translate("MainWindow", u"Enter UI edit mode", None))
         self.dissablemovements_button.setText(QCoreApplication.translate("MainWindow", u"Exit UI edit mode", None))
         self.save_current_ui_label.setText(QCoreApplication.translate("MainWindow", u"Saves the current Ui Window layout", None))
         self.restore_current_ui_label.setText(QCoreApplication.translate("MainWindow", u"Restores to the current Saved Ui Window layout", None))
-        self.user_interface_cust_label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"left\"><span style=\" font-size:14pt; font-weight:700;\">User interface customization</span></p></body></html>", None))
+        self.user_interface_cust_label.setText(QCoreApplication.translate("MainWindow", u"User interface customization", None))
         self.enable_movement_label.setText(QCoreApplication.translate("MainWindow", u"Enables you to edit the Deforumation UI", None))
         self.dissable_movement_label.setText(QCoreApplication.translate("MainWindow", u"Exits Deforumation UI editing mode", None))
         self.revert_ui_to_original_label.setText(QCoreApplication.translate("MainWindow", u"Reverts to the original Ui layout", None))
@@ -8852,11 +9133,11 @@ class Ui_MainWindow(object):
         self.Load_Settings_From_File.setText(QCoreApplication.translate("MainWindow", u"Load UI Settings From File", None))
         self.Create_Language_Config.setText(QCoreApplication.translate("MainWindow", u"Create Language Config", None))
         self.Load_Language_Config.setText(QCoreApplication.translate("MainWindow", u"Load Language Config", None))
-        self.language_setting_label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"left\"><span style=\" font-size:14pt; font-weight:700;\">Language Settings</span></p></body></html>", None))
+        self.language_setting_label.setText(QCoreApplication.translate("MainWindow", u"Language Settings", None))
         self.Restore_To_Language.setText(QCoreApplication.translate("MainWindow", u"Revert Back to English", None))
         self.ffmpeg_howto_more_label.setText(QCoreApplication.translate("MainWindow", u"Set the path to audio file; FFmpeg will use the audio file when\n"
 "prewiving the animation", None))
-        self.ffmpeg_title_label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"left\"><span style=\" font-size:14pt; font-weight:700;\">FFmpeg settings</span></p></body></html>", None))
+        self.ffmpeg_title_label.setText(QCoreApplication.translate("MainWindow", u"FFmpeg settings", None))
         self.ffmpeg_how_to_label.setText(QCoreApplication.translate("MainWindow", u"Set the path to FFmpeg; not necessary if it is included\n"
 " in Windows environments.", None))
         self.pathToFFMPEG_value.setPlaceholderText(QCoreApplication.translate("MainWindow", u"<Path to ffmpeg executable>", None))
@@ -8868,7 +9149,7 @@ class Ui_MainWindow(object):
         self.joystick_combo_box.setItemText(0, QCoreApplication.translate("MainWindow", u"<Choose Controller>", None))
 
 #if QT_CONFIG(tooltip)
-        self.joystick_combo_box.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">If Deforumation can find any controlers, they will be visible in this menu.</span></p></body></html>", None))
+        self.joystick_combo_box.setToolTip(QCoreApplication.translate("MainWindow", u"If Deforumation can find any controlers, they will be visible in this menu.", None))
 #endif // QT_CONFIG(tooltip)
         self.joystick_panning_left_label.setText(QCoreApplication.translate("MainWindow", u"Panning Left", None))
         self.joystick_panning_right_label.setText(QCoreApplication.translate("MainWindow", u"Panning Right", None))
@@ -8883,67 +9164,84 @@ class Ui_MainWindow(object):
         self.joystick_tilt_cw_label.setText(QCoreApplication.translate("MainWindow", u"Tilt Clockwise", None))
         self.joystick_tilt_cc_label.setText(QCoreApplication.translate("MainWindow", u"Tilt Counter-Clockwise", None))
 #if QT_CONFIG(tooltip)
-        self.joystick_panning_left_binding_button.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">After clicking the button, push a button or use a joystick on your controller to bind it to the specific motion. Pushing Escape will undo a binding. Pushing Delete or Backspace will un-bind.</span></p></body></html>", None))
+        self.joystick_panning_left_binding_button.setToolTip(QCoreApplication.translate("MainWindow", u"After clicking the button, push a button or use a joystick on your controller to bind it to the specific motion. Pushing Escape will undo a binding. Pushing Delete or Backspace will un-bind.", None))
 #endif // QT_CONFIG(tooltip)
         self.joystick_panning_left_binding_button.setText(QCoreApplication.translate("MainWindow", u"<Unbound>", None))
 #if QT_CONFIG(tooltip)
-        self.joystick_panning_right_binding_button.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">After clicking the button, push a button or use a joystick on your controller to bind it to the specific motion. Pushing Escape will undo a binding. Pushing Delete or Backspace will un-bind.</span></p></body></html>", None))
+        self.joystick_panning_right_binding_button.setToolTip(QCoreApplication.translate("MainWindow", u"After clicking the button, push a button or use a joystick on your controller to bind it to the specific motion. Pushing Escape will undo a binding. Pushing Delete or Backspace will un-bind.", None))
 #endif // QT_CONFIG(tooltip)
         self.joystick_panning_right_binding_button.setText(QCoreApplication.translate("MainWindow", u"<Unbound>", None))
 #if QT_CONFIG(tooltip)
-        self.joystick_panning_up_binding_button.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">After clicking the button, push a button or use a joystick on your controller to bind it to the specific motion. Pushing Escape will undo a binding. Pushing Delete or Backspace will un-bind.</span></p></body></html>", None))
+        self.joystick_panning_up_binding_button.setToolTip(QCoreApplication.translate("MainWindow", u"After clicking the button, push a button or use a joystick on your controller to bind it to the specific motion. Pushing Escape will undo a binding. Pushing Delete or Backspace will un-bind.", None))
 #endif // QT_CONFIG(tooltip)
         self.joystick_panning_up_binding_button.setText(QCoreApplication.translate("MainWindow", u"<Unbound>", None))
 #if QT_CONFIG(tooltip)
-        self.joystick_panning_down_binding_button.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">After clicking the button, push a button or use a joystick on your controller to bind it to the specific motion. Pushing Escape will undo a binding. Pushing Delete or Backspace will un-bind.</span></p></body></html>", None))
+        self.joystick_panning_down_binding_button.setToolTip(QCoreApplication.translate("MainWindow", u"After clicking the button, push a button or use a joystick on your controller to bind it to the specific motion. Pushing Escape will undo a binding. Pushing Delete or Backspace will un-bind.", None))
 #endif // QT_CONFIG(tooltip)
         self.joystick_panning_down_binding_button.setText(QCoreApplication.translate("MainWindow", u"<Unbound>", None))
 #if QT_CONFIG(tooltip)
-        self.joystick_rotate_h_left_binding_button.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">After clicking the button, push a button or use a joystick on your controller to bind it to the specific motion. Pushing Escape will undo a binding. Pushing Delete or Backspace will un-bind.</span></p></body></html>", None))
+        self.joystick_rotate_h_left_binding_button.setToolTip(QCoreApplication.translate("MainWindow", u"After clicking the button, push a button or use a joystick on your controller to bind it to the specific motion. Pushing Escape will undo a binding. Pushing Delete or Backspace will un-bind.", None))
 #endif // QT_CONFIG(tooltip)
         self.joystick_rotate_h_left_binding_button.setText(QCoreApplication.translate("MainWindow", u"<Unbound>", None))
 #if QT_CONFIG(tooltip)
-        self.joystick_rotate_h_right_binding_button.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">After clicking the button, push a button or use a joystick on your controller to bind it to the specific motion. Pushing Escape will undo a binding. Pushing Delete or Backspace will un-bind.</span></p></body></html>", None))
+        self.joystick_rotate_h_right_binding_button.setToolTip(QCoreApplication.translate("MainWindow", u"After clicking the button, push a button or use a joystick on your controller to bind it to the specific motion. Pushing Escape will undo a binding. Pushing Delete or Backspace will un-bind.", None))
 #endif // QT_CONFIG(tooltip)
         self.joystick_rotate_h_right_binding_button.setText(QCoreApplication.translate("MainWindow", u"<Unbound>", None))
 #if QT_CONFIG(tooltip)
-        self.joystick_rotate_v_up_binding_button.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">After clicking the button, push a button or use a joystick on your controller to bind it to the specific motion. Pushing Escape will undo a binding. Pushing Delete or Backspace will un-bind.</span></p></body></html>", None))
+        self.joystick_rotate_v_up_binding_button.setToolTip(QCoreApplication.translate("MainWindow", u"After clicking the button, push a button or use a joystick on your controller to bind it to the specific motion. Pushing Escape will undo a binding. Pushing Delete or Backspace will un-bind.", None))
 #endif // QT_CONFIG(tooltip)
         self.joystick_rotate_v_up_binding_button.setText(QCoreApplication.translate("MainWindow", u"<Unbound>", None))
 #if QT_CONFIG(tooltip)
-        self.joystick_rotate_v_down_binding_button.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">After clicking the button, push a button or use a joystick on your controller to bind it to the specific motion. Pushing Escape will undo a binding. Pushing Delete or Backspace will un-bind.</span></p></body></html>", None))
+        self.joystick_rotate_v_down_binding_button.setToolTip(QCoreApplication.translate("MainWindow", u"After clicking the button, push a button or use a joystick on your controller to bind it to the specific motion. Pushing Escape will undo a binding. Pushing Delete or Backspace will un-bind.", None))
 #endif // QT_CONFIG(tooltip)
         self.joystick_rotate_v_down_binding_button.setText(QCoreApplication.translate("MainWindow", u"<Unbound>", None))
 #if QT_CONFIG(tooltip)
-        self.joystick_zoom_forwards_binding_button.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">After clicking the button, push a button or use a joystick on your controller to bind it to the specific motion. Pushing Escape will undo a binding. Pushing Delete or Backspace will un-bind.</span></p></body></html>", None))
+        self.joystick_zoom_forwards_binding_button.setToolTip(QCoreApplication.translate("MainWindow", u"After clicking the button, push a button or use a joystick on your controller to bind it to the specific motion. Pushing Escape will undo a binding. Pushing Delete or Backspace will un-bind.", None))
 #endif // QT_CONFIG(tooltip)
         self.joystick_zoom_forwards_binding_button.setText(QCoreApplication.translate("MainWindow", u"<Unbound>", None))
 #if QT_CONFIG(tooltip)
-        self.joystick_zoom_backwards_binding_button.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">After clicking the button, push a button or use a joystick on your controller to bind it to the specific motion. Pushing Escape will undo a binding. Pushing Delete or Backspace will un-bind.</span></p></body></html>", None))
+        self.joystick_zoom_backwards_binding_button.setToolTip(QCoreApplication.translate("MainWindow", u"After clicking the button, push a button or use a joystick on your controller to bind it to the specific motion. Pushing Escape will undo a binding. Pushing Delete or Backspace will un-bind.", None))
 #endif // QT_CONFIG(tooltip)
         self.joystick_zoom_backwards_binding_button.setText(QCoreApplication.translate("MainWindow", u"<Unbound>", None))
 #if QT_CONFIG(tooltip)
-        self.joystick_tilt_cw_bind_button.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">After clicking the button, push a button or use a joystick on your controller to bind it to the specific motion. Pushing Escape will undo a binding. Pushing Delete or Backspace will un-bind.</span></p></body></html>", None))
+        self.joystick_tilt_cw_bind_button.setToolTip(QCoreApplication.translate("MainWindow", u"After clicking the button, push a button or use a joystick on your controller to bind it to the specific motion. Pushing Escape will undo a binding. Pushing Delete or Backspace will un-bind.", None))
 #endif // QT_CONFIG(tooltip)
         self.joystick_tilt_cw_bind_button.setText(QCoreApplication.translate("MainWindow", u"<Unbound>", None))
 #if QT_CONFIG(tooltip)
-        self.joystick_tilt_cc_bind_button.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">After clicking the button, push a button or use a joystick on your controller to bind it to the specific motion. Pushing Escape will undo a binding. Pushing Delete or Backspace will un-bind.</span></p></body></html>", None))
+        self.joystick_tilt_cc_bind_button.setToolTip(QCoreApplication.translate("MainWindow", u"After clicking the button, push a button or use a joystick on your controller to bind it to the specific motion. Pushing Escape will undo a binding. Pushing Delete or Backspace will un-bind.", None))
 #endif // QT_CONFIG(tooltip)
         self.joystick_tilt_cc_bind_button.setText(QCoreApplication.translate("MainWindow", u"<Unbound>", None))
         self.motion_control_params_label.setText(QCoreApplication.translate("MainWindow", u"Motion / Parameter", None))
         self.motion_control_bindings_label.setText(QCoreApplication.translate("MainWindow", u"Controler - Bindings", None))
-        self.controller_setting_label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"left\"><span style=\" font-size:14pt; font-weight:700;\">Controller Settings</span></p></body></html>", None))
+        self.controller_setting_label.setText(QCoreApplication.translate("MainWindow", u"Controller Settings", None))
         self.controller_how_to.setText(QCoreApplication.translate("MainWindow", u"If a controller has been detected, it can be choosen in the drop down box below; After you have chosen a controller, you can push the button next to a Motion Parameter to create a binding.", None))
         self.refresh_controller_list.setText(QCoreApplication.translate("MainWindow", u"Refresh", None))
 #if QT_CONFIG(tooltip)
-        self.frame.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:12pt; font-weight:700; color:#ffffff;\">In Game Mode, all motions will always return to 0. In this mode, the Preset-box for each motion decides the maximum and minimum value that can be reached from 0 (Smooth steps are ignored).\\n\n"
-"In Work Mode, the controller will work the same way as would you manually click a button. This includes Smooth steps and each step will follow the granularity preset.</span></p></body></html>", None))
+        self.frame.setToolTip(QCoreApplication.translate("MainWindow", u"In Game Mode, all motions will always return to 0. In this mode, the Preset-box for each motion decides\n"
+"the maximum and minimum value that can be reached from 0 (Smooth steps are ignored).\n"
+"In Work Mode, the controller will work the same way as would you manually click a button. This includes\n"
+"Smooth steps and each step will follow the granularity preset.", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(tooltip)
+        self.mode_work_label.setToolTip(QCoreApplication.translate("MainWindow", u"In Game Mode, all motions will always return to 0. In this mode, the Preset-box for each motion decides\n"
+"the maximum and minimum value that can be reached from 0 (Smooth steps are ignored).\n"
+"In Work Mode, the controller will work the same way as would you manually click a button. This includes\n"
+"Smooth steps and each step will follow the granularity preset.", None))
 #endif // QT_CONFIG(tooltip)
         self.mode_work_label.setText(QCoreApplication.translate("MainWindow", u"Work Mode", None))
 #if QT_CONFIG(tooltip)
-        self.controller_mode_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">If enabled, any tilt value set with the motion buttons, will be the goal values to reach using the (&quot;Smooth tilt steps&quot;) value. When disabled, a motion using the same smoothness value and granularity preset (Tilt preset), will be kept constant. This means that any further motion changes (you pushing a motion button while a motion is already ongoing), will be regulated to follow the already ongoing motion curve.</span></p></body></html>", None))
+        self.controller_mode_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"In Game Mode, all motions will always return to 0. In this mode, the Preset-box for each motion decides\n"
+"the maximum and minimum value that can be reached from 0 (Smooth steps are ignored).\n"
+"In Work Mode, the controller will work the same way as would you manually click a button. This includes\n"
+"Smooth steps and each step will follow the granularity preset.", None))
 #endif // QT_CONFIG(tooltip)
         self.controller_mode_checkbox.setText("")
+#if QT_CONFIG(tooltip)
+        self.mode_game_label.setToolTip(QCoreApplication.translate("MainWindow", u"In Game Mode, all motions will always return to 0. In this mode, the Preset-box for each motion decides\n"
+"the maximum and minimum value that can be reached from 0 (Smooth steps are ignored).\n"
+"In Work Mode, the controller will work the same way as would you manually click a button. This includes\n"
+"Smooth steps and each step will follow the granularity preset.", None))
+#endif // QT_CONFIG(tooltip)
         self.mode_game_label.setText(QCoreApplication.translate("MainWindow", u"GAME Mode", None))
         self.deforumation_tabWidget.setTabText(self.deforumation_tabWidget.indexOf(self.Settings_Tab), QCoreApplication.translate("MainWindow", u"Settings", None))
         self.label_cnet15.setText(QCoreApplication.translate("MainWindow", u"CNet 1 Weight", None))
@@ -9015,38 +9313,69 @@ class Ui_MainWindow(object):
         self.deforumation_tabWidget.setTabText(self.deforumation_tabWidget.indexOf(self.Misc_Tab_A), QCoreApplication.translate("MainWindow", u"MiscA", None))
         self.deforumation_tabWidget.setTabText(self.deforumation_tabWidget.indexOf(self.Misc_Tab_B), QCoreApplication.translate("MainWindow", u"MiscB", None))
 #if QT_CONFIG(tooltip)
-        self.strength_slider_label.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Strength set amount of presence of previous frame to influence next frame.</span></p></body></html>", None))
+        self.stay_on_top_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"When activated, all Deforumation windows will stay on top of other windows.", None))
+#endif // QT_CONFIG(tooltip)
+        self.stay_on_top_checkbox.setText(QCoreApplication.translate("MainWindow", u"Deforumation Stay On Top", None))
+#if QT_CONFIG(tooltip)
+        self.Live_ParameterLabel.setToolTip(QCoreApplication.translate("MainWindow", u"This window contains the most common key values that influence the image generation.", None))
+#endif // QT_CONFIG(tooltip)
+        self.Live_ParameterLabel.setText(QCoreApplication.translate("MainWindow", u"Live Parameters", None))
+#if QT_CONFIG(tooltip)
+        self.strength_slider_label.setToolTip(QCoreApplication.translate("MainWindow", u"Strength set amount of presence of previous frame to influence next frame.", None))
 #endif // QT_CONFIG(tooltip)
         self.strength_slider_label.setText(QCoreApplication.translate("MainWindow", u"Strength", None))
+#if QT_CONFIG(tooltip)
+        self.strength_slider_value.setToolTip(QCoreApplication.translate("MainWindow", u"Strength set amount of presence of previous frame to influence next frame.", None))
+#endif // QT_CONFIG(tooltip)
         self.strength_slider_value.setText(QCoreApplication.translate("MainWindow", u"0.68", None))
+#if QT_CONFIG(tooltip)
+        self.strength_active_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"If checked, this value will be used, else the Deforum value will be used. You can dynamically switch between the two.", None))
+#endif // QT_CONFIG(tooltip)
         self.strength_active_checkbox.setText("")
 #if QT_CONFIG(tooltip)
-        self.step_slider_label.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">How many times to improve the generated image iteratively; higher values take longer; very low values can produce bad results.</span></p></body></html>", None))
+        self.step_slider_label.setToolTip(QCoreApplication.translate("MainWindow", u"How many times to improve the generated image iteratively; higher values take longer; very low values can produce bad results.", None))
 #endif // QT_CONFIG(tooltip)
-        self.step_slider_label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:700;\">Sampler Steps</span></p></body></html>", None))
+        self.step_slider_label.setText(QCoreApplication.translate("MainWindow", u"Sampler Steps", None))
+#if QT_CONFIG(tooltip)
+        self.step_slider_value.setToolTip(QCoreApplication.translate("MainWindow", u"How many times to improve the generated image iteratively; higher values take longer; very low values can produce bad results.", None))
+#endif // QT_CONFIG(tooltip)
         self.step_slider_value.setText(QCoreApplication.translate("MainWindow", u"50", None))
 #if QT_CONFIG(tooltip)
-        self.noise_slider_label.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">The noise multiplier parameter increases the amount of noise resulting in more detailed images. Default value is 1.05 lower removed details and higher gives more details. Small changes is recomended.</span></p></body></html>", None))
+        self.noise_slider_label.setToolTip(QCoreApplication.translate("MainWindow", u"The noise multiplier parameter increases the amount of noise resulting in more detailed images. Default value is 1.05 lower removed details and higher gives more details. Small changes is recomended.", None))
 #endif // QT_CONFIG(tooltip)
         self.noise_slider_label.setText(QCoreApplication.translate("MainWindow", u"Noise Multi", None))
+#if QT_CONFIG(tooltip)
+        self.noise_slider_value.setToolTip(QCoreApplication.translate("MainWindow", u"The noise multiplier parameter increases the amount of noise resulting in more detailed images. Default value is 1.05 lower removed details and higher gives more details. Small changes is recomended.", None))
+#endif // QT_CONFIG(tooltip)
         self.noise_slider_value.setText(QCoreApplication.translate("MainWindow", u"1.05", None))
+#if QT_CONFIG(tooltip)
+        self.noise_multiplier_active_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"If checked, this value will be used, else the Deforum value will be used. You can dynamically switch between the two.", None))
+#endif // QT_CONFIG(tooltip)
         self.noise_multiplier_active_checkbox.setText("")
 #if QT_CONFIG(tooltip)
-        self.cfg_slider_label.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; color:#ffffff;\">How closely the image should conform to the prompt. Lower values produce more creative results. (recommended range 5-15)</span></p></body></html>", None))
+        self.cfg_slider_label.setToolTip(QCoreApplication.translate("MainWindow", u"How closely the image should conform to the prompt. Lower values produce more creative results. (recommended range 5-15)", None))
 #endif // QT_CONFIG(tooltip)
-        self.cfg_slider_label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:700;\">CFG scale</span></p></body></html>", None))
+        self.cfg_slider_label.setText(QCoreApplication.translate("MainWindow", u"CFG scale", None))
+#if QT_CONFIG(tooltip)
+        self.cfg_slider_value.setToolTip(QCoreApplication.translate("MainWindow", u"How closely the image should conform to the prompt. Lower values produce more creative results. (recommended range 5-15)", None))
+#endif // QT_CONFIG(tooltip)
         self.cfg_slider_value.setText(QCoreApplication.translate("MainWindow", u"3", None))
+#if QT_CONFIG(tooltip)
+        self.cfg_active_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"If checked, this value will be used, else the Deforum value will be used. You can dynamically switch between the two.", None))
+#endif // QT_CONFIG(tooltip)
         self.cfg_active_checkbox.setText("")
 #if QT_CONFIG(tooltip)
-        self.cadence_slider_label.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">Cadence value set how many in-between frames that will not be directly diffused. Low value produces more flickering and longer render time. Higher value produces less flickering and shorter render time. Diffrent settings for diffrent results.</span></p></body></html>", None))
+        self.cadence_slider_label.setToolTip(QCoreApplication.translate("MainWindow", u"Cadence value set how many in-between frames that will not be directly diffused. Low value produces more flickering and longer render time. Higher value produces less flickering and shorter render time. Diffrent settings for diffrent results.", None))
 #endif // QT_CONFIG(tooltip)
         self.cadence_slider_label.setText(QCoreApplication.translate("MainWindow", u"Cadence", None))
-        self.cadence_slider_value.setText(QCoreApplication.translate("MainWindow", u"3", None))
-        self.cadence_active_checkbox.setText("")
 #if QT_CONFIG(tooltip)
-        self.Live_ParameterLabel.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">This window contains the most common key values that influence the image generation.</span></p></body></html>", None))
+        self.cadence_slider_value.setToolTip(QCoreApplication.translate("MainWindow", u"Cadence value set how many in-between frames that will not be directly diffused. Low value produces more flickering and longer render time. Higher value produces less flickering and shorter render time. Diffrent settings for diffrent results.", None))
 #endif // QT_CONFIG(tooltip)
-        self.Live_ParameterLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Live Parameters</p></body></html>", None))
+        self.cadence_slider_value.setText(QCoreApplication.translate("MainWindow", u"3", None))
+#if QT_CONFIG(tooltip)
+        self.cadence_active_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"If checked, this value will be used, else the Deforum value will be used. You can dynamically switch between the two.", None))
+#endif // QT_CONFIG(tooltip)
+        self.cadence_active_checkbox.setText("")
         self.panning_x_label.setText(QCoreApplication.translate("MainWindow", u"Panning X", None))
         self.panning_y_label.setText(QCoreApplication.translate("MainWindow", u"Panning Y", None))
         self.rotate_h_label.setText(QCoreApplication.translate("MainWindow", u"Rotate H", None))
@@ -9060,127 +9389,158 @@ class Ui_MainWindow(object):
         self.cadence_label.setText(QCoreApplication.translate("MainWindow", u"Cadence", None))
         self.noise_multi_label.setText(QCoreApplication.translate("MainWindow", u"Noise Multi", None))
 #if QT_CONFIG(tooltip)
-        self.panning_x_live_value.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">Shows the value for this motion, currently used by Deforum.</span></p></body></html>", None))
+        self.panning_x_live_value.setToolTip(QCoreApplication.translate("MainWindow", u"Shows the value for this motion, currently used by Deforum.", None))
 #endif // QT_CONFIG(tooltip)
         self.panning_x_live_value.setText(QCoreApplication.translate("MainWindow", u"0.00", None))
 #if QT_CONFIG(tooltip)
-        self.panning_y_live_value.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">Shows the value for this motion, currently used by Deforum.</span></p></body></html>", None))
+        self.panning_y_live_value.setToolTip(QCoreApplication.translate("MainWindow", u"Shows the value for this motion, currently used by Deforum.", None))
 #endif // QT_CONFIG(tooltip)
         self.panning_y_live_value.setText(QCoreApplication.translate("MainWindow", u"0.00", None))
 #if QT_CONFIG(tooltip)
-        self.rotate_h_live_value.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">Shows the value for this motion, currently used by Deforum.</span></p></body></html>", None))
+        self.rotate_h_live_value.setToolTip(QCoreApplication.translate("MainWindow", u"Shows the value for this motion, currently used by Deforum.", None))
 #endif // QT_CONFIG(tooltip)
         self.rotate_h_live_value.setText(QCoreApplication.translate("MainWindow", u"0.00", None))
 #if QT_CONFIG(tooltip)
-        self.rotate_v_live_value.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">Shows the value for this motion, currently used by Deforum.</span></p></body></html>", None))
+        self.rotate_v_live_value.setToolTip(QCoreApplication.translate("MainWindow", u"Shows the value for this motion, currently used by Deforum.", None))
 #endif // QT_CONFIG(tooltip)
         self.rotate_v_live_value.setText(QCoreApplication.translate("MainWindow", u"0.00", None))
 #if QT_CONFIG(tooltip)
-        self.zoom_live_value.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">Shows the value for this motion, currently used by Deforum.</span></p></body></html>", None))
+        self.zoom_live_value.setToolTip(QCoreApplication.translate("MainWindow", u"Shows the value for this motion, currently used by Deforum.", None))
 #endif // QT_CONFIG(tooltip)
         self.zoom_live_value.setText(QCoreApplication.translate("MainWindow", u"70", None))
 #if QT_CONFIG(tooltip)
-        self.tilt_live_value.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">Shows the value for this motion, currently used by Deforum.</span></p></body></html>", None))
+        self.tilt_live_value.setToolTip(QCoreApplication.translate("MainWindow", u"Shows the value for this motion, currently used by Deforum.", None))
 #endif // QT_CONFIG(tooltip)
         self.tilt_live_value.setText(QCoreApplication.translate("MainWindow", u"0.00", None))
 #if QT_CONFIG(tooltip)
-        self.fov_live_value.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">Shows the value for this motion, currently used by Deforum.</span></p></body></html>", None))
+        self.fov_live_value.setToolTip(QCoreApplication.translate("MainWindow", u"Shows the value for this motion, currently used by Deforum.", None))
 #endif // QT_CONFIG(tooltip)
         self.fov_live_value.setText(QCoreApplication.translate("MainWindow", u"70", None))
 #if QT_CONFIG(tooltip)
-        self.steps_live_value.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">Shows the value for this motion, currently used by Deforum.</span></p></body></html>", None))
+        self.steps_live_value.setToolTip(QCoreApplication.translate("MainWindow", u"Shows the value for this motion, currently used by Deforum.", None))
 #endif // QT_CONFIG(tooltip)
         self.steps_live_value.setText(QCoreApplication.translate("MainWindow", u"50", None))
 #if QT_CONFIG(tooltip)
-        self.strength_live_value.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">Shows the value for this motion, currently used by Deforum.</span></p></body></html>", None))
+        self.strength_live_value.setToolTip(QCoreApplication.translate("MainWindow", u"Shows the value for this motion, currently used by Deforum.", None))
 #endif // QT_CONFIG(tooltip)
         self.strength_live_value.setText(QCoreApplication.translate("MainWindow", u"0.68", None))
 #if QT_CONFIG(tooltip)
-        self.cfg_live_value.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">Shows the value for this motion, currently used by Deforum.</span></p></body></html>", None))
+        self.cfg_live_value.setToolTip(QCoreApplication.translate("MainWindow", u"Shows the value for this motion, currently used by Deforum.", None))
 #endif // QT_CONFIG(tooltip)
         self.cfg_live_value.setText(QCoreApplication.translate("MainWindow", u"3", None))
 #if QT_CONFIG(tooltip)
-        self.cadence_live_value.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">Shows the value for this motion, currently used by Deforum.</span></p></body></html>", None))
+        self.cadence_live_value.setToolTip(QCoreApplication.translate("MainWindow", u"Shows the value for this motion, currently used by Deforum.", None))
 #endif // QT_CONFIG(tooltip)
         self.cadence_live_value.setText(QCoreApplication.translate("MainWindow", u"3", None))
 #if QT_CONFIG(tooltip)
-        self.noise_multiplier_live.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">Shows the value for this motion, currently used by Deforum.</span></p></body></html>", None))
+        self.noise_multiplier_live.setToolTip(QCoreApplication.translate("MainWindow", u"Shows the value for this motion, currently used by Deforum.", None))
 #endif // QT_CONFIG(tooltip)
         self.noise_multiplier_live.setText(QCoreApplication.translate("MainWindow", u"1.05", None))
 #if QT_CONFIG(tooltip)
-        self.panx_rise_fall_frame.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing). When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing. If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.</span></p></body></html>", None))
+        self.panx_rise_fall_frame.setToolTip(QCoreApplication.translate("MainWindow", u"When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing).\n"
+"When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing.\n"
+"If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.panx_l.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing). When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing. If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.</span></p></body></html>", None))
+        self.panx_l.setToolTip(QCoreApplication.translate("MainWindow", u"When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing).\n"
+"When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing.\n"
+"If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.", None))
 #endif // QT_CONFIG(tooltip)
         self.panx_l.setText("")
 #if QT_CONFIG(tooltip)
-        self.panx_r.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing). When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing. If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.</span></p></body></html>", None))
+        self.panx_r.setToolTip(QCoreApplication.translate("MainWindow", u"When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing).\n"
+"When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing.\n"
+"If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.", None))
 #endif // QT_CONFIG(tooltip)
         self.panx_r.setText("")
 #if QT_CONFIG(tooltip)
-        self.pany_rise_fall_frame.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing). When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing. If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.</span></p></body></html>", None))
+        self.pany_rise_fall_frame.setToolTip(QCoreApplication.translate("MainWindow", u"When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing).\n"
+"When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing.\n"
+"If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.pany_l.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing). When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing. If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.</span></p></body></html>", None))
+        self.pany_l.setToolTip(QCoreApplication.translate("MainWindow", u"When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing).\n"
+"When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing.\n"
+"If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.", None))
 #endif // QT_CONFIG(tooltip)
         self.pany_l.setText("")
 #if QT_CONFIG(tooltip)
-        self.pany_r.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing). When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing. If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.</span></p></body></html>", None))
+        self.pany_r.setToolTip(QCoreApplication.translate("MainWindow", u"When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing).\n"
+"When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing.\n"
+"If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.", None))
 #endif // QT_CONFIG(tooltip)
         self.pany_r.setText("")
 #if QT_CONFIG(tooltip)
-        self.roth_rise_fall_frame.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing). When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing. If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.</span></p></body></html>", None))
+        self.roth_rise_fall_frame.setToolTip(QCoreApplication.translate("MainWindow", u"When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing).\n"
+"When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing.\n"
+"If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.roth_l.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing). When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing. If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.</span></p></body></html>", None))
+        self.roth_l.setToolTip(QCoreApplication.translate("MainWindow", u"When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing).\n"
+"When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing.\n"
+"If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.", None))
 #endif // QT_CONFIG(tooltip)
         self.roth_l.setText("")
 #if QT_CONFIG(tooltip)
-        self.roth_r.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing). When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing. If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.</span></p></body></html>", None))
+        self.roth_r.setToolTip(QCoreApplication.translate("MainWindow", u"When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing).\n"
+"When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing.\n"
+"If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.", None))
 #endif // QT_CONFIG(tooltip)
         self.roth_r.setText("")
 #if QT_CONFIG(tooltip)
-        self.rotv_rise_fall_frame.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing). When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing. If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.</span></p></body></html>", None))
+        self.rotv_rise_fall_frame.setToolTip(QCoreApplication.translate("MainWindow", u"When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing).\n"
+"When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing.\n"
+"If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.rotv_l.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing). When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing. If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.</span></p></body></html>", None))
+        self.rotv_l.setToolTip(QCoreApplication.translate("MainWindow", u"When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing).\n"
+"When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing.\n"
+"If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.", None))
 #endif // QT_CONFIG(tooltip)
         self.rotv_l.setText("")
 #if QT_CONFIG(tooltip)
-        self.rotv_r.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing). When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing. If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.</span></p></body></html>", None))
+        self.rotv_r.setToolTip(QCoreApplication.translate("MainWindow", u"When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing).\n"
+"When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing.\n"
+"If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.", None))
 #endif // QT_CONFIG(tooltip)
         self.rotv_r.setText("")
 #if QT_CONFIG(tooltip)
-        self.zoom_rise_fall_frame.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing). When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing. If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.</span></p></body></html>", None))
+        self.zoom_rise_fall_frame.setToolTip(QCoreApplication.translate("MainWindow", u"When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing).\n"
+"When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing.\n"
+"If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.zoom_l.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing). When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing. If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.</span></p></body></html>", None))
+        self.zoom_l.setToolTip(QCoreApplication.translate("MainWindow", u"When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing).\n"
+"When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing.\n"
+"If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.", None))
 #endif // QT_CONFIG(tooltip)
         self.zoom_l.setText("")
 #if QT_CONFIG(tooltip)
-        self.zoom_r.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing). When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing. If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.</span></p></body></html>", None))
+        self.zoom_r.setToolTip(QCoreApplication.translate("MainWindow", u"When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing).\n"
+"When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing.\n"
+"If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.", None))
 #endif // QT_CONFIG(tooltip)
         self.zoom_r.setText("")
 #if QT_CONFIG(tooltip)
-        self.tilt_rise_fall_frame.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing). When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing. If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.</span></p></body></html>", None))
+        self.tilt_rise_fall_frame.setToolTip(QCoreApplication.translate("MainWindow", u"When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing).\n"
+"When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing.\n"
+"If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.tilt_l.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing). When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing. If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.</span></p></body></html>", None))
+        self.tilt_l.setToolTip(QCoreApplication.translate("MainWindow", u"When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing).\n"
+"When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing.\n"
+"If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.", None))
 #endif // QT_CONFIG(tooltip)
         self.tilt_l.setText("")
 #if QT_CONFIG(tooltip)
-        self.tilt_r.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing). When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing. If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.</span></p></body></html>", None))
+        self.tilt_r.setToolTip(QCoreApplication.translate("MainWindow", u"When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing).\n"
+"When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing.\n"
+"If neither of them are showing any color, the value has not changed, and there is probably no ongoing motion.", None))
 #endif // QT_CONFIG(tooltip)
         self.tilt_r.setText("")
 #if QT_CONFIG(tooltip)
-        self.Live_ValuesLabel.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; font-weight:700; color:#ffffff;\">This window shows the values that Deforum is currently working with. These values can be different from the values that Deforumation is currently using.</span></p></body></html>", None))
+        self.Live_ValuesLabel.setToolTip(QCoreApplication.translate("MainWindow", u"This window shows the values that Deforum is currently working with. These values can be different from the values that Deforumation is currently using.", None))
 #endif // QT_CONFIG(tooltip)
-        self.Live_ValuesLabel.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Live\n"
-" Values</p></body></html>", None))
-#if QT_CONFIG(tooltip)
-        self.stay_on_top_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-size:10pt; color:#ffffff;\">When activated, all Deforumation windows will stay on top of other windows.</span></p></body></html>", None))
-#endif // QT_CONFIG(tooltip)
-        self.stay_on_top_checkbox.setText(QCoreApplication.translate("MainWindow", u"Deforumation Stay On Top", None))
+        self.Live_ValuesLabel.setText(QCoreApplication.translate("MainWindow", u"Live Values", None))
     # retranslateUi
 
