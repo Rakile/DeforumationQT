@@ -982,15 +982,15 @@ class MainWindow(QMainWindow):
             self.DeforumationPrompts.setCurrentPrompts()
         elif action_string == "Mark FFMPEG Preview, IN":
             self.ui.replay_from_input_box.setText(str(identifier.pathnumber))
-            self.VideoImageContainer.setFFmpegIN(identifier.pathnumber)
+            self.VideoImageContainer.setFFmpegIN(self.ui.replay_from_input_box)
         elif action_string == "Mark FFMPEG Preview, OUT":
             self.ui.replay_to_input_box.setText(str(identifier.pathnumber))
-            self.VideoImageContainer.setFFmpegOUT(identifier.pathnumber)
+            self.VideoImageContainer.setFFmpegOUT(self.ui.replay_to_input_box)
         elif action_string == "Clear FFMPEG Preview":
             self.ui.replay_from_input_box.setText("")
             self.ui.replay_to_input_box.setText("")
-            self.VideoImageContainer.setFFmpegIN(-1)
-            self.VideoImageContainer.setFFmpegOUT(-1)
+            self.VideoImageContainer.setFFmpegIN(self.ui.replay_from_input_box)
+            self.VideoImageContainer.setFFmpegOUT(self.ui.replay_to_input_box)
 
 
     @Slot(object)
