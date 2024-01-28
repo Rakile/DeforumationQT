@@ -40,8 +40,9 @@ Keep deforumation folder outside your `"stable-diffusion-webui"` path.
    - "socket" folder: Uses websockets.
    - "hybrid" folder: Auto-selects based on OS.
 3. Unpack the correct Deforum version zip ( piped, socket or hybrid ) to the Automatic1111 "extensions" folder.
-4. Restart Automatic1111 if it was running.
-5. Run "runme_windows_named_pipes.bat" or "runme_windows_websockets.bat".
+4. Make sure there is only one deforum folder inside the extensions folder.
+5. Restart Automatic1111 if it was running.
+6. Run "runme_windows_named_pipes.bat" or "runme_windows_websockets.bat".
 
 ### Installation Linux
 1. Go to the "Deforum_Version" folder.
