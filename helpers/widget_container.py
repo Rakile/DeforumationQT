@@ -15,7 +15,6 @@ from PySide6.QtWidgets import (QApplication, QFrame, QDateEdit, QGridLayout, QSt
                                QTabWidget, QTextEdit, QWidget, QDial, QMenu, QScrollArea, QWidgetAction, QLineEdit, QCheckBox, QProgressBar, QComboBox, QTableView)
 from PySide6 import QtGui, QtCore
 
-
 class widgetContainerClass():
 
     def __init__(self, parent=None):
@@ -225,7 +224,8 @@ class Deforumation_Widgets():
             # Check if the child is a widget and has a tooltip
             if isinstance(child, QWidget) and child.toolTip():
                 objname = child.objectName()
-                config[objname+"_tooltip"] = child.toolTip()
+                tooltip = child.toolTip()
+                config[objname+"_tooltip"] = tooltip
                 # Check if the child is a widget
             if isinstance(child, QWidget):
                 # Attempt to get text if the widget supports it

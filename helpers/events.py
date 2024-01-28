@@ -146,6 +146,7 @@ def handleContextMenu(self, object, event):
                         font12 = QFont()
                         font12.setPointSize(8)
                         self.prompt_morph_binding_action_label.setFont(font12)
+                        #self.popMenu_prompt1.setStyleSheet(u"QMenu {background-color: rgb(64, 64, 64); color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;}")
                         self.prompt_morph_binding_action_label.setStyleSheet(u"QLabel {\n    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n    color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;\n}\n\nQLabel:hover {\n    background-color: rgb(96, 96, 96); /* Lighter grey, similar to tab hover effect */\n\n}\n\nQLabel:pressed {\n    background-color: rgb(128, 128, 128); /* Similar to the selected tab color */\n\n}")
 
 
@@ -299,7 +300,7 @@ def handleMouseButtonPress(self, object, event):
             if self.noMoreMovement == 0:  # If 0, then we can move the widget
                 # sender.mousePressEvent = lambda event, w=widget: self.mousePressEventWidgetButton2(event, w)
                 if not self.component_is_being_dragged and event.button() == Qt.LeftButton:
-                    print("Actual widget:" + str(sender.objectName()))
+                    #print("Actual widget:" + str(sender.objectName()))
                     if sender.objectName() != "MainWindow":
                         if 'poppable' not in sender.parentWidget().objectName():
                             name = sender.objectName()

@@ -116,11 +116,17 @@ class Video_Image_Container():
         self.setInitValues()
 
     def setFFmpegIN(self, object):
-        self.ffmpegIN = int(object.text())
+        if len(object.text()) > 0:
+            self.ffmpegIN = int(object.text())
+        else:
+            self.ffmpegIN = -1
         self.deforumation_tools.propagateAllComponents(object, self.ffmpegIN)
         self.preserveSpecialPurposeFrameLooks(0)
     def setFFmpegOUT(self, object):
-        self.ffmpegOUT = int(object.text())
+        if len(object.text()) > 0:
+            self.ffmpegOUT = int(object.text())
+        else:
+            self.ffmpegOUT = -1
         self.deforumation_tools.propagateAllComponents(object, self.ffmpegOUT)
         self.preserveSpecialPurposeFrameLooks(0)
     def setCurrentlySelectedImage(self, imageNumber):
