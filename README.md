@@ -1,7 +1,7 @@
 # DeforumationQT Version 0.1.3
 <img src="github_images/DMQT front.png">
 
-**Introduction
+**Introduction**
 Deforumation is an unofficial extension for Deforum that provides a Graphical User Interface (GUI)
 to remotely control Deforum 3D motions, zoom and angle , strength value (toggle to use deforum strenght schedule)
 CFG Scale, sampler steps, seed, cadense scale, noise values, parameters for use up to five controlnets, and prompts in real-time.
