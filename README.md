@@ -3,10 +3,10 @@
 
 Introduction
 
-**Deforumation is an unofficial extension for Deforum that provides a Graphical User Interface (GUI)
+Deforumation is an unofficial extension for Deforum that provides a Graphical User Interface (GUI)
 to remotely control Deforum 3D motions, zoom and angle , strength value (toggle to use deforum strenght schedule)
 CFG Scale, sampler steps, seed, cadense scale, noise values, parameters for use up to five controlnets, and prompts in real-time.
-It also offers pausing, rewinding, forwarding, and resuming by setting current image to fix any undesired outcomes during the rendering process.**
+It also offers pausing, rewinding, forwarding, and resuming by setting current image to fix any undesired outcomes during the rendering process.
 ---------
 
 ## Table of Contents
