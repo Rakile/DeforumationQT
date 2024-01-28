@@ -39,7 +39,7 @@ Keep deforumation folder outside your `"stable-diffusion-webui"` path.
    - "piped" folder: Uses named pipes (recommended for local Windows).
    - "socket" folder: Uses websockets.
    - "hybrid" folder: Auto-selects based on OS.
-3. Copy "sd-webui-deforum" to the Automatic1111 "extensions" folder.
+3. Unpack the correct Deforum version zip , piped, socket or hybrid to the Automatic1111 "extensions" folder.
 4. Restart Automatic1111 if it was running.
 5. Run "runme_windows_named_pipes.bat" or "runme_windows_websockets.bat".
 
