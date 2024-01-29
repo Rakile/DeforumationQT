@@ -93,8 +93,8 @@ Keep deforumation folder outside your `"stable-diffusion-webui"` path.
 - Default OSC port: 5005.
 - Example OSC client: See “test_osc_client.py” in the Example folder.
 
-## Further Help
-- Join our Discord server: [Deforumation Discord](https://discord.gg/rbKFVh9v87).
+## Further Help? Join our Discord server!
+<a href="https://discord.gg/rbKFVh9v87"><img src=github_images/discord.png></img></a>
 
 ## Support our effort!
 <a href="https://www.patreon.com/Deforumation"><img src=github_images/patreon.png></img></a>
