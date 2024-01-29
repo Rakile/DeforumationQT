@@ -1,6 +1,9 @@
 # DeforumationQT Version 0.1.3 #
 <img src="github_images/DMQT front.png">
 
+Video running DeforumationQT version 0.1.0
+https://youtu.be/1VGWA-sWiEk
+
 Introduction
 -----------------
 DeforumationQT is an unofficial extension for Deforum that provides a Graphical User Interface (GUI)
