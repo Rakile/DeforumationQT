@@ -2,7 +2,7 @@ import os
 
 from PySide6.QtCore import QEvent, QPoint, QMetaObject, QFileInfo, QRect
 from PySide6.QtGui import QIcon, Qt, QAction, QFont
-from PySide6.QtWidgets import QPushButton, QLineEdit, QSlider, QFileDialog, QWidget, QVBoxLayout, QScrollArea, QWidgetAction, QFrame, QLabel
+from PySide6.QtWidgets import QPushButton, QLineEdit, QSlider, QFileDialog, QWidget, QVBoxLayout, QScrollArea, QWidgetAction, QFrame, QLabel, QMenu
 
 
 def handleEventValueChanged(self, item):
@@ -130,26 +130,50 @@ def handleContextMenu(self, object, event):
                 menuPosition = object.mapToGlobal(event.pos())
                 # print("Show context menu")
                 popMenu.clear()
+
+                #popMenu.setStyleSheet(u"QMenu {border: 10px; border-radius: 0px;} QFrame {border: 0px; border-radius: 0px;}")
                 # Create a custom widget to hold the actions
                 containerWidget = QWidget()
                 containerLayout = QVBoxLayout()
-                containerLayout.setSpacing(2)
+                containerLayout.setSpacing(0)
                 containerLayout.setObjectName(u"verticalLayout_rsdffdsf")
                 containerLayout.setContentsMargins(0, 0, 0, 0)
                 # Add actions to the container widget
+                #popMenu = QMenu(self.ui.prompt2)
+                #popMenu.setMask(QRect(0, 0, 800, 800))
+                popMenu.setStyleSheet(u"QMenu {border: 0px;}")
+                morphPromptMenuLabelStyle = u"QLabel {\n    background-color: rgb(220,220,220); /* Matching the tab's base color */\n     color: rgb(0,0,0);\n    border-left: 0px solid rgb(220,220,220);\n    border-right: 0px solid rgb(220,220,220);\n    border-top: 0px solid rgb(220,220,220);\n    border-bottom: 2px solid rgb(220,220,220);\n	border-radius:0;\n    padding:0;\n}\n\nQLabel:hover {\n    background-color: rgb(150,150,200); /* Matching the tab's base color */\n    color: rgb(0, 100, 0); /* Matching the tab's base color */\n    color: rgb(0,0,0);\n	border:0\n}\n\nQLabel:pressed {\n    background-color: rgb(128, 128, 128); /* Similar to the selected tab color */\n	border:0\n}"
+                morphPromptMenuStandardLabelStyleFinal = u"QLabel {\n    background-color: rgb(50,50,50); /* Matching the tab's base color */\n     color: rgb(220,220,220);\n    border-left: 0px solid rgb(50,50,50);\n    border-right: 0px solid rgb(50,50,50);\n    border-top: 0px solid rgb(50,50,50);\n    border-bottom: 2px solid rgb(180,140,180);\n	border-radius:0;\n    padding:0;\n}\n\nQLabel:hover {\n    background-color: rgb(80,80,140); /* Matching the tab's base color */\n    color: rgb(0, 100, 0); /* Matching the tab's base color */\n    color: rgb(0,0,0);\n	border:0\n}\n\nQLabel:pressed {\n    background-color: rgb(80,80,140); /* Similar to the selected tab color */\n	border:0\n}"
+                morphPromptMenuStandardLabelStyle = u"QLabel {\n    background-color: rgb(50,50,50); /* Matching the tab's base color */\n     color: rgb(220,220,220);\n    border-left: 0px solid rgb(50,50,50);\n    border-right: 0px solid rgb(50,50,50);\n    border-top: 0px solid rgb(50,50,50);\n    border-bottom: 2px solid rgb(50,50,50);\n	border-radius:0;\n    padding:0;\n}\n\nQLabel:hover {\n    background-color: rgb(80,80,140); /* Matching the tab's base color */\n    color: rgb(0, 100, 0); /* Matching the tab's base color */\n    color: rgb(0,0,0);\n	border:0\n}\n\nQLabel:pressed {\n    background-color: rgb(80,80,140); /* Similar to the selected tab color */\n	border:0\n}"
+                # First add cut and paste in the menu
+                standardtextedititems = ["Cut", "Copy", "Paste"]
+                for standarditem in standardtextedititems:
+                    self.anItem = QLabel()
+                    self.anItem.setText(standarditem)
+                    self.anItem.setObjectName(u"morph_standard_" + standarditem)
+                    self.anItem.setGeometry(QRect(0, 0, 100, 40))
+                    font12 = QFont()
+                    font12.setPointSize(11)
+                    self.anItem.setFont(font12)
+                    if standarditem != "Paste":
+                        self.anItem.setStyleSheet(morphPromptMenuStandardLabelStyle)
+                    else:
+                        self.anItem.setStyleSheet(morphPromptMenuStandardLabelStyleFinal)
+
+                    self.anItem.mousePressEvent = lambda event, item=standarditem, popMenu=popMenu: self.mousePressEventMorphPromptLabelStandard(event, item, popMenu)
+                    containerLayout.addWidget(self.anItem)
+
                 for index in self.DeforumationPrompts.prompt_morphing_container:
                     item = self.DeforumationPrompts.prompt_morphing_container[index]
+
                     if item.morph_prompt_binding.text() != "":
                         self.prompt_morph_binding_action_label = QLabel()
                         self.prompt_morph_binding_action_label.setObjectName(u"morph_choice"+str(item))
                         self.prompt_morph_binding_action_label.setGeometry(QRect(0, 0, 100, 40))
                         font12 = QFont()
-                        font12.setPointSize(8)
+                        font12.setPointSize(11)
                         self.prompt_morph_binding_action_label.setFont(font12)
-                        #self.popMenu_prompt1.setStyleSheet(u"QMenu {background-color: rgb(64, 64, 64); color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;}")
-                        self.prompt_morph_binding_action_label.setStyleSheet(u"QLabel {\n    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n    color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;\n}\n\nQLabel:hover {\n    background-color: rgb(96, 96, 96); /* Lighter grey, similar to tab hover effect */\n\n}\n\nQLabel:pressed {\n    background-color: rgb(128, 128, 128); /* Similar to the selected tab color */\n\n}")
-
-
+                        self.prompt_morph_binding_action_label.setStyleSheet(morphPromptMenuLabelStyle)
 
                         self.prompt_morph_binding_action_label.setText(item.morph_prompt_binding.text())
                         self.prompt_morph_binding_action_label.mousePressEvent =  lambda event, item=item, popMenu=popMenu : self.mousePressEventMorphPromptLabel(event, item, popMenu)
@@ -158,10 +182,10 @@ def handleContextMenu(self, object, event):
                 containerWidget.setLayout(containerLayout)
                 # Create a scroll area and add the container widget to it
                 scrollArea = QScrollArea()
-                #scrollArea.setStyleSheet("\n\nQLabel {\n    background-color: rgb(0, 0, 0); /* Matching the tab's base color */\n    color: rgb(0, 255, 0); border: 0px solid rgb(128,128,128); border-radius: 2px;\n\n\n}\n\nQLabel:hover {\n    background-color: rgb(96, 96, 96); /* Lighter grey, similar to tab hover effect */\n\n}\n\nQLabel:pressed {\n    background-color: rgb(128, 128, 128); /* Similar to the selected tab color */\n\n\n}\n\nQMenu::item:selected {\n  color:rgb(255,255,255);\n  border-width:0px;\n  border-style:solid;\n  padding-left:0px;\n  padding-right:0px;\n  padding-top:0px;\n  padding-bottom:0px;\n  background:qlineargradient(spread:pad, x1:0.5, y1:0.7, x2:0.5, y2:0.3, stop:0 rgba(87, 97, 106, 255), stop:1 rgba(93, 103, 113, 255));\n  border-top-color: qlineargradient(spread:pad, x1:0.5, y1:0.6, x2:0.5, y2:0.4, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));\n  border-right-color: qlineargradient(spread:pad, x1:0.4, y1:0.5, x2:0.6, y2:0.5, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));\n  border-left-color: qlineargradient(spread:pad, x1:0.6, y1:0.5, x2:0.4, y2:0.5, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));\n  border-bottom-color: rgb(58, 58, 58);\n  border-bottom-width: 1px;\n}\nQMenu::item {\n  color:rgb(223,219,210);\n  background-color:rgb(78,78,78);\n  padding-left:0px;\n  padding-top:0px;\n  padding-bottom:0px;\n  padding-right:0px;\n}\nQMenu{\n  background-color:rgb(78,78,78);\n}\n\nQScrollArea{\n    border-color: rgb(77,77,77);\n    background-color:rgb(101,101,101);\n    border-style: solid;\n    border-width: 1px;\n      border-radius: 0px;\n}")
+                scrollArea.setStyleSheet("QScrollArea {border: 0px;}")
                 scrollArea.setWidgetResizable(True)
                 scrollArea.setWidget(containerWidget)
-                scrollArea.setMinimumWidth(400)
+                scrollArea.setMinimumWidth(200)
                 scrollArea.setMaximumHeight(600)
                 # Create a QWidgetAction and set the scroll area as its default widget
                 scrollWidgetAction = QWidgetAction(popMenu)

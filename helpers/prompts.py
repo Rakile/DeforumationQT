@@ -394,7 +394,7 @@ class Deforumation_Prompts():
                 print("What THE FUCK ARE YOU DOING!!! THIS FRAME ALREADY EXISTS!!! AND YOU WANT TO STEAl IT!?!?!?!?")
         self.prompt_morphing_container[self.numberOfPromptMorphFrames] = Deforumation_Prompt_Morphing_Frame(self.numberOfPromptMorphFrames, self.parent)
         self.prompt_morphing_container[self.numberOfPromptMorphFrames].add_prompt_morph_blending_frame_to_container(1)
-        self.resizeEvent_morph_frames(self.parent.ui.verticalFrame_prompt.width())
+        self.resizeEvent_morph_frames(self.parent.ui.right_prompt_tab_frame.width())
         self.parent.deforumationwidgets.enumerateWidgets(self.parent, self.prompt_morphing_container[self.numberOfPromptMorphFrames].morph_prompt_frame)
         #self.parent.deforumationwidgets.enumerateWidgets(self.parent, self.prompt_morphing_container[self.numberOfPromptMorphFrames - 1].remove_morph_prompt)
         self.savePromptMorphFrameToConfig(self.prompt_morphing_container[self.numberOfPromptMorphFrames])
@@ -420,7 +420,7 @@ class Deforumation_Prompts():
         self.deforumation_settings.deletePromtMorphConfigKey()
         for morphFrame in self.prompt_morphing_container:
                 self.savePromptMorphFrameToConfig(self.prompt_morphing_container[morphFrame])
-        self.resizeEvent_morph_frames(self.parent.ui.verticalFrame_prompt.width())
+        self.resizeEvent_morph_frames(self.parent.ui.right_prompt_tab_frame.width())
 
     def setComponetValues(self):
         self.shouldUseDeforumationPrompts()
@@ -605,13 +605,6 @@ class Deforumation_Prompts():
         self.deforumationnamedpipes.writeValue("negative_prompt", self.negativePrompt1_modified)
         self.deforumationnamedpipes.writeValue("prompts_touched", 1)
 
-    """def add_prompt_morph_normal_frame(self):
-        self.numberOfPromptMorphFrames += 1
-        self.prompt_morphing_container[self.numberOfPromptMorphFrames-1] = Deforumation_Prompt_Morphing_Frame(self.numberOfPromptMorphFrames-1, self.parent)
-        self.prompt_morphing_container[self.numberOfPromptMorphFrames - 1].add_prompt_morph_blending_frame(0)
-        self.resizeEvent_morph_frames(self.parent.ui.verticalFrame_prompt.width())
-        self.parent.deforumationwidgets.enumerateWidgets(self.parent, self.prompt_morphing_container[self.numberOfPromptMorphFrames-1].morph_prompt_frame.parent())
-        #self.parent.deforumationwidgets.enumerateWidgets(self.parent, self.prompt_morphing_container[self.numberOfPromptMorphFrames - 1].remove_morph_prompt)"""
 
 
     def set_prompt_morph_input_text(self, item):
@@ -687,7 +680,7 @@ class Deforumation_Prompts():
         print("item checked: " + str(new_checked_status))
         self.prompt_morphing_container[morph_prompt_identifier].set_prompt_morphing_type(new_checked_status)
         self.deforumation_tools.propagateAllComponents(item)#, new_checked_status)
-        self.resizeEvent_morph_frames(self.parent.ui.verticalFrame_prompt.width())
+        self.resizeEvent_morph_frames(self.parent.ui.right_prompt_tab_frame.width())
         self.savePromptMorphFrameToConfig(self.prompt_morphing_container[morph_prompt_identifier])
         self.saveCurrentPrompt()
     def resizeEvent_morph_frames(self, verticalFrame_prompt_width):
