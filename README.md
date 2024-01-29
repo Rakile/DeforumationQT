@@ -2,7 +2,7 @@
 <img src="github_images/DMQT front.png">
 
 Video running DeforumationQT version 0.1.0
-https://youtu.be/1VGWA-sWiEk
+[<img src="github_images/DMQTyou.png" width="50%">](https://youtu.be/1VGWA-sWiEk "DeforumationQT v.0.1.0  Quickrun, installation and functions video.")
 
 Introduction
 -----------------
