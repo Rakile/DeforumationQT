@@ -97,4 +97,4 @@ Keep deforumation folder outside your `"stable-diffusion-webui"` path.
 - Join our Discord server: [Deforumation Discord](https://discord.gg/rbKFVh9v87).
 
 ## Support our effort!
-- <a href="https://www.patreon.com/Deforumation"><img src=github_images/patreon.png></img></a>
+<a href="https://www.patreon.com/Deforumation"><img src=github_images/patreon.png></img></a>
