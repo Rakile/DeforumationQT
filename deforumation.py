@@ -363,7 +363,7 @@ class MainWindow(QMainWindow):
         #self.addButton_prompt_modifier = QPushButton("Add Row")
         self.ui.addButton_prompt_modifier.clicked.connect(self.addRow)"""
 
-        self.ui.verticalFrame_prompt.resizeEvent = self.promt_params_frame_resizeEvent
+        self.ui.right_prompt_tab_frame.resizeEvent = self.promt_params_frame_resizeEvent
 
         ########################################################################
         # Start Joystick manager
@@ -1013,16 +1013,14 @@ class MainWindow(QMainWindow):
         event.accept()
 
     def promt_params_frame_resizeEvent(self, event):
-        verticalFrame_prompt_width = self.ui.verticalFrame_prompt.width()
+        verticalFrame_prompt_width = self.ui.right_prompt_tab_frame.width()
         #print("promt_params_frame_resizeEvent:" + str(verticalFrame_prompt_width))
         #self.table.setColumnWidth(1, int(verticalFrame_prompt_width/2-110))
         #self.table.setColumnWidth(3, int(verticalFrame_prompt_width/2-110))
         self.DeforumationPrompts.resizeEvent_morph_frames(verticalFrame_prompt_width)
 
     def preview_tab_resizeEvent(self, event):
-        #current_preview_tab_height = self.ui.verticalFrame_prompt.height()
         current_preview_tab_height = self.ui.preview_screen.height()
-        #current_preview_tab_width = self.ui.verticalFrame_prompt.width()
         #print("movie_clip.width:" + str(current_preview_tab_width) + " movie_clip.height:" + str(current_preview_tab_height))
 
         if current_preview_tab_height == 0:
@@ -1542,6 +1540,22 @@ class MainWindow(QMainWindow):
                     self.deforumationwidgets.getWidgetContainer()[slidertextwidgets].widget.setText(str(imageNumber))
 
 
+    def mousePressEventMorphPromptLabelStandard(self, event, action, popMenu):
+        promptWindow = None
+        if popMenu == self.popMenu_prompt1:
+            promptWindow = self.ui.prompt1
+        elif popMenu == self.popMenu_prompt2:
+            promptWindow = self.ui.prompt2
+        elif popMenu == self.popMenu_negative1:
+            promptWindow = self.ui.negative_prompt
+        if promptWindow != None:
+            if action == "Cut":
+                promptWindow.cut()
+            elif action == "Copy":
+                promptWindow.copy()
+            elif action == "Paste":
+                promptWindow.paste()
+        popMenu.close()
     def mousePressEventMorphPromptLabel(self, event, item, popMenu):
         redColor = QColor(255, 0, 0)
         whiteColor = QColor(255, 255, 255)
