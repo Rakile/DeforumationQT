@@ -358,7 +358,16 @@ class Ui_MainWindow(object):
         self.Movie_Slider_Frame_poppable = QFrame(self.Movie_Tab)
         self.Movie_Slider_Frame_poppable.setObjectName(u"Movie_Slider_Frame_poppable")
         self.Movie_Slider_Frame_poppable.setTabletTracking(True)
-        self.Movie_Slider_Frame_poppable.setStyleSheet(u"background-color: rgb(108,108,118); border: 0px solid rgb(128,128,128); border-radius: 0px;")
+        self.Movie_Slider_Frame_poppable.setStyleSheet(u"QFrame{\n"
+"background-color: rgb(108,108,118);\n"
+"border: 0px solid rgb(128,128,128);\n"
+"border-radius: 0px;\n"
+"}\n"
+"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px;\n"
+" }")
         self.Movie_Slider_Frame_poppable.setFrameShape(QFrame.StyledPanel)
         self.Movie_Slider_Frame_poppable.setFrameShadow(QFrame.Raised)
         self.gridLayout_12 = QGridLayout(self.Movie_Slider_Frame_poppable)
@@ -401,7 +410,10 @@ class Ui_MainWindow(object):
         sizePolicy4.setHeightForWidth(self.movie_slider.sizePolicy().hasHeightForWidth())
         self.movie_slider.setSizePolicy(sizePolicy4)
         self.movie_slider.setMinimumSize(QSize(0, 28))
-        self.movie_slider.setStyleSheet(u"QSlider::groove:horizontal {\n"
+        self.movie_slider.setStyleSheet(u"QSlider{\n"
+"border:0;\n"
+"}\n"
+"QSlider::groove:horizontal {\n"
 "    border-image: url(images/movie_groove_long.png) ; /* Adjust slicing and stretch as needed */\n"
 "    height: 31px; /* The height of your image */\n"
 "}\n"
@@ -421,9 +433,9 @@ class Ui_MainWindow(object):
 "background-repeat: no-repeat;\n"
 "    border: none; /* Remove the border if you don't need it */\n"
 "    width: 32px; /* Width of the handle - adjust as needed */\n"
-"    height: 32px; /* Height of the handle - adjust as needed */\n"
-"    margi"
-                        "n: -1px 0; /* Optional: Adjust the margin if needed */\n"
+"    height: 32px; /* Height of the handle - "
+                        "adjust as needed */\n"
+"    margin: -1px 0; /* Optional: Adjust the margin if needed */\n"
 "}\n"
 "\n"
 "QSlider::handle:horizontal:pressed {\n"
@@ -937,15 +949,15 @@ class Ui_MainWindow(object):
         self.prompt_splitter.setMidLineWidth(0)
         self.prompt_splitter.setOrientation(Qt.Horizontal)
         self.prompt_splitter.setHandleWidth(6)
-        self.frame_2 = QFrame(self.prompt_splitter)
-        self.frame_2.setObjectName(u"frame_2")
+        self.left_prompt_tab_frame = QFrame(self.prompt_splitter)
+        self.left_prompt_tab_frame.setObjectName(u"left_prompt_tab_frame")
         sizePolicy6 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy6.setHorizontalStretch(12)
         sizePolicy6.setVerticalStretch(0)
-        sizePolicy6.setHeightForWidth(self.frame_2.sizePolicy().hasHeightForWidth())
-        self.frame_2.setSizePolicy(sizePolicy6)
-        self.frame_2.setMinimumSize(QSize(0, 0))
-        self.frame_2.setStyleSheet(u"QFrame{\n"
+        sizePolicy6.setHeightForWidth(self.left_prompt_tab_frame.sizePolicy().hasHeightForWidth())
+        self.left_prompt_tab_frame.setSizePolicy(sizePolicy6)
+        self.left_prompt_tab_frame.setMinimumSize(QSize(0, 0))
+        self.left_prompt_tab_frame.setStyleSheet(u"QFrame{\n"
 "background-color: rgb(108,108,118);\n"
 "border: 2px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
 "border-radius: 10px;\n"
@@ -1001,14 +1013,14 @@ class Ui_MainWindow(object):
 "    background: none; \n"
 "border: none;/* No background for the scrollable area behind the handle */\n"
 "}")
-        self.frame_2.setFrameShape(QFrame.StyledPanel)
-        self.frame_2.setFrameShadow(QFrame.Raised)
-        self.frame_2.setLineWidth(0)
-        self.verticalLayout_12 = QVBoxLayout(self.frame_2)
+        self.left_prompt_tab_frame.setFrameShape(QFrame.StyledPanel)
+        self.left_prompt_tab_frame.setFrameShadow(QFrame.Raised)
+        self.left_prompt_tab_frame.setLineWidth(0)
+        self.verticalLayout_12 = QVBoxLayout(self.left_prompt_tab_frame)
         self.verticalLayout_12.setSpacing(6)
         self.verticalLayout_12.setObjectName(u"verticalLayout_12")
         self.verticalLayout_12.setContentsMargins(9, 0, 9, 10)
-        self.Prompt_1_Frame = QFrame(self.frame_2)
+        self.Prompt_1_Frame = QFrame(self.left_prompt_tab_frame)
         self.Prompt_1_Frame.setObjectName(u"Prompt_1_Frame")
         sizePolicy7 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy7.setHorizontalStretch(1)
@@ -1037,7 +1049,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_12.addWidget(self.Prompt_1_Frame)
 
-        self.prompt1 = QTextEdit(self.frame_2)
+        self.prompt1 = QTextEdit(self.left_prompt_tab_frame)
         self.prompt1.setObjectName(u"prompt1")
         sizePolicy8 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy8.setHorizontalStretch(0)
@@ -1083,7 +1095,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_12.addWidget(self.prompt1)
 
-        self.Prompt_2_Frame = QFrame(self.frame_2)
+        self.Prompt_2_Frame = QFrame(self.left_prompt_tab_frame)
         self.Prompt_2_Frame.setObjectName(u"Prompt_2_Frame")
         sizePolicy5.setHeightForWidth(self.Prompt_2_Frame.sizePolicy().hasHeightForWidth())
         self.Prompt_2_Frame.setSizePolicy(sizePolicy5)
@@ -1101,7 +1113,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_12.addWidget(self.Prompt_2_Frame)
 
-        self.prompt2 = QTextEdit(self.frame_2)
+        self.prompt2 = QTextEdit(self.left_prompt_tab_frame)
         self.prompt2.setObjectName(u"prompt2")
         sizePolicy8.setHeightForWidth(self.prompt2.sizePolicy().hasHeightForWidth())
         self.prompt2.setSizePolicy(sizePolicy8)
@@ -1142,7 +1154,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_12.addWidget(self.prompt2)
 
-        self.Prompt_3_Frame = QFrame(self.frame_2)
+        self.Prompt_3_Frame = QFrame(self.left_prompt_tab_frame)
         self.Prompt_3_Frame.setObjectName(u"Prompt_3_Frame")
         sizePolicy5.setHeightForWidth(self.Prompt_3_Frame.sizePolicy().hasHeightForWidth())
         self.Prompt_3_Frame.setSizePolicy(sizePolicy5)
@@ -1164,7 +1176,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_12.addWidget(self.Prompt_3_Frame)
 
-        self.negative_prompt = QTextEdit(self.frame_2)
+        self.negative_prompt = QTextEdit(self.left_prompt_tab_frame)
         self.negative_prompt.setObjectName(u"negative_prompt")
         sizePolicy8.setHeightForWidth(self.negative_prompt.sizePolicy().hasHeightForWidth())
         self.negative_prompt.setSizePolicy(sizePolicy8)
@@ -1206,16 +1218,16 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_12.addWidget(self.negative_prompt)
 
-        self.prompt_splitter.addWidget(self.frame_2)
-        self.verticalFrame_prompt = QFrame(self.prompt_splitter)
-        self.verticalFrame_prompt.setObjectName(u"verticalFrame_prompt")
+        self.prompt_splitter.addWidget(self.left_prompt_tab_frame)
+        self.right_prompt_tab_frame = QFrame(self.prompt_splitter)
+        self.right_prompt_tab_frame.setObjectName(u"right_prompt_tab_frame")
         sizePolicy10 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy10.setHorizontalStretch(2)
         sizePolicy10.setVerticalStretch(0)
-        sizePolicy10.setHeightForWidth(self.verticalFrame_prompt.sizePolicy().hasHeightForWidth())
-        self.verticalFrame_prompt.setSizePolicy(sizePolicy10)
-        self.verticalFrame_prompt.setMinimumSize(QSize(665, 0))
-        self.verticalFrame_prompt.setStyleSheet(u"\n"
+        sizePolicy10.setHeightForWidth(self.right_prompt_tab_frame.sizePolicy().hasHeightForWidth())
+        self.right_prompt_tab_frame.setSizePolicy(sizePolicy10)
+        self.right_prompt_tab_frame.setMinimumSize(QSize(665, 0))
+        self.right_prompt_tab_frame.setStyleSheet(u"\n"
 "QFrame{\n"
 "border: 0px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
 "border: 0px solid rgb(128,128,128); border-radius: 10px;\n"
@@ -1232,13 +1244,13 @@ class Ui_MainWindow(object):
 "border: 2px solid rgb(128,128,128);\n"
 "border-radius: 5px;\n"
 "}")
-        self.verticalFrame_prompt.setLineWidth(0)
-        self.verticalFrame_prompt.setMidLineWidth(0)
-        self.verticalLayout_20 = QVBoxLayout(self.verticalFrame_prompt)
+        self.right_prompt_tab_frame.setLineWidth(0)
+        self.right_prompt_tab_frame.setMidLineWidth(0)
+        self.verticalLayout_20 = QVBoxLayout(self.right_prompt_tab_frame)
         self.verticalLayout_20.setSpacing(0)
         self.verticalLayout_20.setObjectName(u"verticalLayout_20")
         self.verticalLayout_20.setContentsMargins(0, 0, 0, 0)
-        self.prompt_morph_splitter = QSplitter(self.verticalFrame_prompt)
+        self.prompt_morph_splitter = QSplitter(self.right_prompt_tab_frame)
         self.prompt_morph_splitter.setObjectName(u"prompt_morph_splitter")
         sizePolicy2.setHeightForWidth(self.prompt_morph_splitter.sizePolicy().hasHeightForWidth())
         self.prompt_morph_splitter.setSizePolicy(sizePolicy2)
@@ -1251,20 +1263,22 @@ class Ui_MainWindow(object):
         self.prompt_morph_splitter.setOpaqueResize(True)
         self.prompt_morph_splitter.setHandleWidth(0)
         self.prompt_morph_splitter.setChildrenCollapsible(True)
-        self.frame_12 = QFrame(self.prompt_morph_splitter)
-        self.frame_12.setObjectName(u"frame_12")
-        self.frame_12.setMinimumSize(QSize(0, 245))
-        self.frame_12.setMaximumSize(QSize(16777215, 245))
-        self.frame_12.setStyleSheet(u"")
-        self.frame_12.setFrameShape(QFrame.StyledPanel)
-        self.frame_12.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_26 = QVBoxLayout(self.frame_12)
+        self.upper_morph_frame = QFrame(self.prompt_morph_splitter)
+        self.upper_morph_frame.setObjectName(u"upper_morph_frame")
+        self.upper_morph_frame.setMinimumSize(QSize(0, 150))
+        self.upper_morph_frame.setMaximumSize(QSize(16777215, 150))
+        self.upper_morph_frame.setStyleSheet(u"")
+        self.upper_morph_frame.setFrameShape(QFrame.StyledPanel)
+        self.upper_morph_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_26 = QVBoxLayout(self.upper_morph_frame)
         self.verticalLayout_26.setSpacing(0)
         self.verticalLayout_26.setObjectName(u"verticalLayout_26")
-        self.verticalLayout_26.setContentsMargins(0, 0, 0, 6)
-        self.frame_13 = QFrame(self.frame_12)
+        self.verticalLayout_26.setContentsMargins(0, 0, 0, 8)
+        self.frame_13 = QFrame(self.upper_morph_frame)
         self.frame_13.setObjectName(u"frame_13")
-        self.frame_13.setMaximumSize(QSize(16777215, 245))
+        sizePolicy4.setHeightForWidth(self.frame_13.sizePolicy().hasHeightForWidth())
+        self.frame_13.setSizePolicy(sizePolicy4)
+        self.frame_13.setMaximumSize(QSize(16777215, 240))
         self.frame_13.setStyleSheet(u"QFrame{\n"
 "border: 0px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
 "border: 0px solid rgb(128,128,128); border-radius: 10px;\n"
@@ -1275,10 +1289,7 @@ class Ui_MainWindow(object):
 "background-color: rgb(108,108,118);\n"
 "border:0;\n"
 "}\n"
-"QCheckBox{\n"
-"border: 0px;\n"
-"background-color: transparent;\n"
-"}\n"
+"\n"
 "QToolTip { \n"
 " background-color: black; \n"
 "color: white; \n"
@@ -1323,42 +1334,52 @@ class Ui_MainWindow(object):
         self.Prompt_Morphing_poppable.setFrameShape(QFrame.StyledPanel)
         self.Prompt_Morphing_poppable.setFrameShadow(QFrame.Raised)
         self.verticalLayout_27 = QVBoxLayout(self.Prompt_Morphing_poppable)
-        self.verticalLayout_27.setSpacing(20)
+        self.verticalLayout_27.setSpacing(0)
         self.verticalLayout_27.setObjectName(u"verticalLayout_27")
-        self.verticalLayout_27.setContentsMargins(8, 5, 8, 10)
-        self.upper_right_prompt_frame = QFrame(self.Prompt_Morphing_poppable)
-        self.upper_right_prompt_frame.setObjectName(u"upper_right_prompt_frame")
-        sizePolicy11 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
-        sizePolicy11.setHorizontalStretch(0)
-        sizePolicy11.setVerticalStretch(5)
-        sizePolicy11.setHeightForWidth(self.upper_right_prompt_frame.sizePolicy().hasHeightForWidth())
-        self.upper_right_prompt_frame.setSizePolicy(sizePolicy11)
-        self.upper_right_prompt_frame.setMinimumSize(QSize(0, 36))
-        self.upper_right_prompt_frame.setMaximumSize(QSize(16777215, 36))
-        self.upper_right_prompt_frame.setStyleSheet(u"QFrame{\n"
+        self.verticalLayout_27.setContentsMargins(8, 0, 8, 0)
+        self.frame_4 = QFrame(self.Prompt_Morphing_poppable)
+        self.frame_4.setObjectName(u"frame_4")
+        self.frame_4.setMaximumSize(QSize(16777215, 128))
+        self.frame_4.setStyleSheet(u"QFrame{\n"
 "background-color: rgb(108,108,118);\n"
-"border: 2px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
-"border-radius: 10px;\n"
-"padding: 1px  1px ;  /* To prevent the content from touching the border */\n"
-"\n"
-"border:0\n"
+"border:0;\n"
+"padding:0\n"
 "}")
-        self.upper_right_prompt_frame.setFrameShape(QFrame.StyledPanel)
-        self.upper_right_prompt_frame.setFrameShadow(QFrame.Raised)
-        self.gridLayout_27 = QGridLayout(self.upper_right_prompt_frame)
-        self.gridLayout_27.setSpacing(6)
-        self.gridLayout_27.setObjectName(u"gridLayout_27")
-        self.gridLayout_27.setContentsMargins(-1, 0, -1, 10)
-        self.save_current_ui_label_4 = QLabel(self.upper_right_prompt_frame)
-        self.save_current_ui_label_4.setObjectName(u"save_current_ui_label_4")
-        self.save_current_ui_label_4.setMinimumSize(QSize(93, 35))
-        self.save_current_ui_label_4.setStyleSheet(u"border: none;")
-        self.save_current_ui_label_4.setAlignment(Qt.AlignBottom|Qt.AlignHCenter)
-        self.save_current_ui_label_4.setWordWrap(True)
+        self.frame_4.setFrameShape(QFrame.StyledPanel)
+        self.frame_4.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_5 = QVBoxLayout(self.frame_4)
+        self.verticalLayout_5.setSpacing(0)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.frame_5 = QFrame(self.frame_4)
+        self.frame_5.setObjectName(u"frame_5")
+        self.frame_5.setMinimumSize(QSize(0, 38))
+        self.frame_5.setMaximumSize(QSize(16777215, 38))
+        self.frame_5.setFrameShape(QFrame.StyledPanel)
+        self.frame_5.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_5 = QHBoxLayout(self.frame_5)
+        self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
+        self.horizontalLayout_5.setContentsMargins(-1, 0, -1, -1)
+        self.prompt_morphing_label = QLabel(self.frame_5)
+        self.prompt_morphing_label.setObjectName(u"prompt_morphing_label")
+        sizePolicy2.setHeightForWidth(self.prompt_morphing_label.sizePolicy().hasHeightForWidth())
+        self.prompt_morphing_label.setSizePolicy(sizePolicy2)
+        self.prompt_morphing_label.setMinimumSize(QSize(0, 34))
+        self.prompt_morphing_label.setMaximumSize(QSize(16777215, 34))
+        font3 = QFont()
+        font3.setPointSize(15)
+        font3.setBold(True)
+        self.prompt_morphing_label.setFont(font3)
+        self.prompt_morphing_label.setStyleSheet(u"")
+        self.prompt_morphing_label.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
 
-        self.gridLayout_27.addWidget(self.save_current_ui_label_4, 0, 3, 1, 1)
+        self.horizontalLayout_5.addWidget(self.prompt_morphing_label)
 
-        self.save_morph_data = QPushButton(self.upper_right_prompt_frame)
+        self.horizontalSpacer_8 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer_8)
+
+        self.save_morph_data = QPushButton(self.frame_5)
         self.save_morph_data.setObjectName(u"save_morph_data")
         self.save_morph_data.setEnabled(True)
         sizePolicy2.setHeightForWidth(self.save_morph_data.sizePolicy().hasHeightForWidth())
@@ -1403,123 +1424,37 @@ class Ui_MainWindow(object):
 "}")
         self.save_morph_data.setIconSize(QSize(28, 20))
 
-        self.gridLayout_27.addWidget(self.save_morph_data, 0, 2, 1, 1)
+        self.horizontalLayout_5.addWidget(self.save_morph_data)
 
-        self.use_deforumation_prompt_scheduling_checkbox = QCheckBox(self.upper_right_prompt_frame)
-        self.use_deforumation_prompt_scheduling_checkbox.setObjectName(u"use_deforumation_prompt_scheduling_checkbox")
-        self.use_deforumation_prompt_scheduling_checkbox.setEnabled(True)
-        self.use_deforumation_prompt_scheduling_checkbox.setMinimumSize(QSize(0, 0))
-        font3 = QFont()
-        font3.setPointSize(11)
-        font3.setBold(True)
-        self.use_deforumation_prompt_scheduling_checkbox.setFont(font3)
-        self.use_deforumation_prompt_scheduling_checkbox.setStyleSheet(u"\n"
-"QCheckBox::indicator {\n"
-"    width: 54px; /* Width of the checkbox */\n"
-"    height: 29px; /* Height of the checkbox */\n"
-"    background-color: transparent; /* Ensures background is transparent */\n"
-"border: none; /* No border for the checkbox */\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:unchecked {\n"
-"    background-image: url(images/check_off.png); /* Image for unchecked state */\n"
-"    background-repeat: no-repeat; /* Prevents the image from repeating */\n"
-"border: none; /* No border for the checkbox */\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:checked {\n"
-"    background-image: url(images/check_on.png); /* Image for checked state */\n"
-"    background-repeat: no-repeat; /* Prevents the image from repeating */\n"
-"border: none; /* No border for the checkbox */\n"
-"}\n"
-"")
-        self.use_deforumation_prompt_scheduling_checkbox.setIconSize(QSize(54, 29))
-        self.use_deforumation_prompt_scheduling_checkbox.setCheckable(True)
+        self.save_current_ui_label_4 = QLabel(self.frame_5)
+        self.save_current_ui_label_4.setObjectName(u"save_current_ui_label_4")
+        self.save_current_ui_label_4.setMinimumSize(QSize(93, 35))
+        self.save_current_ui_label_4.setStyleSheet(u"border: none;")
+        self.save_current_ui_label_4.setAlignment(Qt.AlignBottom|Qt.AlignHCenter)
+        self.save_current_ui_label_4.setWordWrap(True)
 
-        self.gridLayout_27.addWidget(self.use_deforumation_prompt_scheduling_checkbox, 0, 0, 1, 1)
-
-        self.horizontalSpacer_2 = QSpacerItem(80, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout_27.addItem(self.horizontalSpacer_2, 0, 1, 1, 1)
+        self.horizontalLayout_5.addWidget(self.save_current_ui_label_4)
 
 
-        self.verticalLayout_27.addWidget(self.upper_right_prompt_frame)
+        self.verticalLayout_5.addWidget(self.frame_5)
 
-        self.save_positive_prompt_style = QPushButton(self.Prompt_Morphing_poppable)
-        self.save_positive_prompt_style.setObjectName(u"save_positive_prompt_style")
-        sizePolicy12 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
-        sizePolicy12.setHorizontalStretch(0)
-        sizePolicy12.setVerticalStretch(80)
-        sizePolicy12.setHeightForWidth(self.save_positive_prompt_style.sizePolicy().hasHeightForWidth())
-        self.save_positive_prompt_style.setSizePolicy(sizePolicy12)
-        self.save_positive_prompt_style.setMinimumSize(QSize(60, 48))
-        self.save_positive_prompt_style.setMaximumSize(QSize(16777215, 30))
+        self.prpmta_to_promptb_label = QLabel(self.frame_4)
+        self.prpmta_to_promptb_label.setObjectName(u"prpmta_to_promptb_label")
+        self.prpmta_to_promptb_label.setMinimumSize(QSize(0, 28))
+        self.prpmta_to_promptb_label.setMaximumSize(QSize(16777215, 28))
         font4 = QFont()
         font4.setPointSize(12)
-        font4.setBold(True)
-        self.save_positive_prompt_style.setFont(font4)
-        self.save_positive_prompt_style.setStyleSheet(u"QPushButton {\n"
-"    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n"
-"    border-style: solid; /* Defines the style of the border */\n"
-"    border-width: 2px; /* Width of the border */\n"
-"    border-color: rgba(255, 255, 255, 0.5); /* Border color with some transparency */\n"
-"    border-radius: 5px; /* Consistent with the tab's rounded corners */\n"
-"    padding: 4px 12px; /* Comfortable padding for the button text */\n"
-"    color: white; /* White text for contrast */\n"
-"    text-align: center;\n"
-"    min-width: 32px;\n"
-"    min-height: 36px;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(96, 96, 96); /* Lighter grey, similar to tab hover effect */\n"
-"    min-width: 32px;\n"
-"    min-height: 36px;\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(128, 128, 128); /* Similar to the selected tab color */\n"
-"    min-width: 32px;\n"
-"    min-height: 36px;\n"
-"}\n"
-"")
-
-        self.verticalLayout_27.addWidget(self.save_positive_prompt_style)
-
-        self.verticalSpacer_7 = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
-
-        self.verticalLayout_27.addItem(self.verticalSpacer_7)
-
-        self.prompt_morphing_label = QLabel(self.Prompt_Morphing_poppable)
-        self.prompt_morphing_label.setObjectName(u"prompt_morphing_label")
-        sizePolicy2.setHeightForWidth(self.prompt_morphing_label.sizePolicy().hasHeightForWidth())
-        self.prompt_morphing_label.setSizePolicy(sizePolicy2)
-        self.prompt_morphing_label.setMinimumSize(QSize(0, 37))
-        self.prompt_morphing_label.setMaximumSize(QSize(16777215, 0))
-        font5 = QFont()
-        font5.setPointSize(15)
-        font5.setBold(True)
-        self.prompt_morphing_label.setFont(font5)
-        self.prompt_morphing_label.setStyleSheet(u"")
-        self.prompt_morphing_label.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
-
-        self.verticalLayout_27.addWidget(self.prompt_morphing_label)
-
-        self.prpmta_to_promptb_label = QLabel(self.Prompt_Morphing_poppable)
-        self.prpmta_to_promptb_label.setObjectName(u"prpmta_to_promptb_label")
-        self.prpmta_to_promptb_label.setMinimumSize(QSize(0, 30))
-        font6 = QFont()
-        font6.setPointSize(12)
-        self.prpmta_to_promptb_label.setFont(font6)
+        self.prpmta_to_promptb_label.setFont(font4)
         self.prpmta_to_promptb_label.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
 
-        self.verticalLayout_27.addWidget(self.prpmta_to_promptb_label)
+        self.verticalLayout_5.addWidget(self.prpmta_to_promptb_label)
 
-        self.morph_slider = QSlider(self.Prompt_Morphing_poppable)
+        self.morph_slider = QSlider(self.frame_4)
         self.morph_slider.setObjectName(u"morph_slider")
-        sizePolicy4.setHeightForWidth(self.morph_slider.sizePolicy().hasHeightForWidth())
-        self.morph_slider.setSizePolicy(sizePolicy4)
+        sizePolicy2.setHeightForWidth(self.morph_slider.sizePolicy().hasHeightForWidth())
+        self.morph_slider.setSizePolicy(sizePolicy2)
         self.morph_slider.setMinimumSize(QSize(0, 33))
+        self.morph_slider.setMaximumSize(QSize(16777215, 33))
         self.morph_slider.setStyleSheet(u"QSlider::groove:horizontal {\n"
 "    border-image: url(images/groove_230.png) ; /* Adjust slicing and stretch as needed */\n"
 "    height: 29px; /* The height of your image */\n"
@@ -1568,21 +1503,25 @@ class Ui_MainWindow(object):
         self.morph_slider.setMaximum(100)
         self.morph_slider.setOrientation(Qt.Horizontal)
 
-        self.verticalLayout_27.addWidget(self.morph_slider)
+        self.verticalLayout_5.addWidget(self.morph_slider)
 
-        self.morphing_text_howto_label = QLabel(self.Prompt_Morphing_poppable)
+        self.morphing_text_howto_label = QLabel(self.frame_4)
         self.morphing_text_howto_label.setObjectName(u"morphing_text_howto_label")
-        self.morphing_text_howto_label.setMinimumSize(QSize(0, 20))
-        self.morphing_text_howto_label.setMaximumSize(QSize(16777215, 0))
-        font7 = QFont()
-        font7.setPointSize(10)
-        self.morphing_text_howto_label.setFont(font7)
+        sizePolicy2.setHeightForWidth(self.morphing_text_howto_label.sizePolicy().hasHeightForWidth())
+        self.morphing_text_howto_label.setSizePolicy(sizePolicy2)
+        self.morphing_text_howto_label.setMinimumSize(QSize(0, 22))
+        font5 = QFont()
+        font5.setPointSize(10)
+        self.morphing_text_howto_label.setFont(font5)
         self.morphing_text_howto_label.setStyleSheet(u"")
         self.morphing_text_howto_label.setScaledContents(False)
         self.morphing_text_howto_label.setAlignment(Qt.AlignCenter)
         self.morphing_text_howto_label.setWordWrap(True)
 
-        self.verticalLayout_27.addWidget(self.morphing_text_howto_label)
+        self.verticalLayout_5.addWidget(self.morphing_text_howto_label)
+
+
+        self.verticalLayout_27.addWidget(self.frame_4)
 
 
         self.gridLayout_26.addWidget(self.Prompt_Morphing_poppable, 0, 0, 1, 1)
@@ -1590,17 +1529,17 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_26.addWidget(self.frame_13)
 
-        self.prompt_morph_splitter.addWidget(self.frame_12)
-        self.frame_14 = QFrame(self.prompt_morph_splitter)
-        self.frame_14.setObjectName(u"frame_14")
-        self.frame_14.setStyleSheet(u"border:0")
-        self.frame_14.setFrameShape(QFrame.StyledPanel)
-        self.frame_14.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_28 = QVBoxLayout(self.frame_14)
+        self.prompt_morph_splitter.addWidget(self.upper_morph_frame)
+        self.middle_morph_frame = QFrame(self.prompt_morph_splitter)
+        self.middle_morph_frame.setObjectName(u"middle_morph_frame")
+        self.middle_morph_frame.setStyleSheet(u"border:0")
+        self.middle_morph_frame.setFrameShape(QFrame.StyledPanel)
+        self.middle_morph_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_28 = QVBoxLayout(self.middle_morph_frame)
         self.verticalLayout_28.setSpacing(0)
         self.verticalLayout_28.setObjectName(u"verticalLayout_28")
         self.verticalLayout_28.setContentsMargins(0, 0, 0, 0)
-        self.Prompt_Morph_Key_Binding_Frame = QFrame(self.frame_14)
+        self.Prompt_Morph_Key_Binding_Frame = QFrame(self.middle_morph_frame)
         self.Prompt_Morph_Key_Binding_Frame.setObjectName(u"Prompt_Morph_Key_Binding_Frame")
         sizePolicy2.setHeightForWidth(self.Prompt_Morph_Key_Binding_Frame.sizePolicy().hasHeightForWidth())
         self.Prompt_Morph_Key_Binding_Frame.setSizePolicy(sizePolicy2)
@@ -1615,23 +1554,130 @@ class Ui_MainWindow(object):
 " background-color: black; \n"
 "color: white; \n"
 " border: black solid 1px;\n"
-" }")
+" }\n"
+"QCheckBox{\n"
+"border: 0px;\n"
+"background-color: transparent;\n"
+"}")
         self.verticalLayout_29 = QVBoxLayout(self.Prompt_Morph_Key_Binding_Frame)
-        self.verticalLayout_29.setSpacing(0)
+        self.verticalLayout_29.setSpacing(4)
         self.verticalLayout_29.setObjectName(u"verticalLayout_29")
-        self.verticalLayout_29.setContentsMargins(8, 8, 8, 0)
+        self.verticalLayout_29.setContentsMargins(8, 8, 8, 5)
+        self.prompt_update_frame = QFrame(self.Prompt_Morph_Key_Binding_Frame)
+        self.prompt_update_frame.setObjectName(u"prompt_update_frame")
+        sizePolicy4.setHeightForWidth(self.prompt_update_frame.sizePolicy().hasHeightForWidth())
+        self.prompt_update_frame.setSizePolicy(sizePolicy4)
+        self.prompt_update_frame.setMinimumSize(QSize(0, 39))
+        self.prompt_update_frame.setMaximumSize(QSize(16777215, 39))
+        self.prompt_update_frame.setStyleSheet(u"QFrame{\n"
+"background-color: rgb(108,108,118);\n"
+"border:0\n"
+"}")
+        self.prompt_update_frame.setFrameShape(QFrame.StyledPanel)
+        self.prompt_update_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_4 = QHBoxLayout(self.prompt_update_frame)
+        self.horizontalLayout_4.setSpacing(0)
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.use_deforumation_prompt_scheduling_checkbox = QCheckBox(self.prompt_update_frame)
+        self.use_deforumation_prompt_scheduling_checkbox.setObjectName(u"use_deforumation_prompt_scheduling_checkbox")
+        self.use_deforumation_prompt_scheduling_checkbox.setEnabled(True)
+        sizePolicy11 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy11.setHorizontalStretch(0)
+        sizePolicy11.setVerticalStretch(0)
+        sizePolicy11.setHeightForWidth(self.use_deforumation_prompt_scheduling_checkbox.sizePolicy().hasHeightForWidth())
+        self.use_deforumation_prompt_scheduling_checkbox.setSizePolicy(sizePolicy11)
+        self.use_deforumation_prompt_scheduling_checkbox.setMinimumSize(QSize(0, 0))
+        font6 = QFont()
+        font6.setPointSize(11)
+        font6.setBold(True)
+        self.use_deforumation_prompt_scheduling_checkbox.setFont(font6)
+        self.use_deforumation_prompt_scheduling_checkbox.setStyleSheet(u"\n"
+"QCheckBox::indicator {\n"
+"    width: 54px; /* Width of the checkbox */\n"
+"    height: 29px; /* Height of the checkbox */\n"
+"    background-color: transparent; /* Ensures background is transparent */\n"
+"border: none; /* No border for the checkbox */\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    background-image: url(images/check_off.png); /* Image for unchecked state */\n"
+"    background-repeat: no-repeat; /* Prevents the image from repeating */\n"
+"border: none; /* No border for the checkbox */\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background-image: url(images/check_on.png); /* Image for checked state */\n"
+"    background-repeat: no-repeat; /* Prevents the image from repeating */\n"
+"border: none; /* No border for the checkbox */\n"
+"}\n"
+"")
+        self.use_deforumation_prompt_scheduling_checkbox.setIconSize(QSize(54, 29))
+        self.use_deforumation_prompt_scheduling_checkbox.setCheckable(True)
+
+        self.horizontalLayout_4.addWidget(self.use_deforumation_prompt_scheduling_checkbox)
+
+        self.horizontalSpacer = QSpacerItem(10, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_4.addItem(self.horizontalSpacer)
+
+        self.save_positive_prompt_style = QPushButton(self.prompt_update_frame)
+        self.save_positive_prompt_style.setObjectName(u"save_positive_prompt_style")
+        sizePolicy12 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy12.setHorizontalStretch(1)
+        sizePolicy12.setVerticalStretch(80)
+        sizePolicy12.setHeightForWidth(self.save_positive_prompt_style.sizePolicy().hasHeightForWidth())
+        self.save_positive_prompt_style.setSizePolicy(sizePolicy12)
+        self.save_positive_prompt_style.setMinimumSize(QSize(60, 32))
+        self.save_positive_prompt_style.setMaximumSize(QSize(16777215, 43))
+        font7 = QFont()
+        font7.setPointSize(12)
+        font7.setBold(True)
+        self.save_positive_prompt_style.setFont(font7)
+        self.save_positive_prompt_style.setStyleSheet(u"QPushButton {\n"
+"    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n"
+"    border-style: solid; /* Defines the style of the border */\n"
+"    border-width: 2px; /* Width of the border */\n"
+"    border-color: rgba(255, 255, 255, 0.5); /* Border color with some transparency */\n"
+"    border-radius: 5px; /* Consistent with the tab's rounded corners */\n"
+"    padding: 4px 12px; /* Comfortable padding for the button text */\n"
+"    color: white; /* White text for contrast */\n"
+"    text-align: center;\n"
+"    min-width: 32px;\n"
+"	max-height:31px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(96, 96, 96); /* Lighter grey, similar to tab hover effect */\n"
+"    min-width: 32px;\n"
+"	max-height:31px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(128, 128, 128); /* Similar to the selected tab color */\n"
+"    min-width: 32px;\n"
+"	max-height:31px;\n"
+"}\n"
+"")
+
+        self.horizontalLayout_4.addWidget(self.save_positive_prompt_style)
+
+
+        self.verticalLayout_29.addWidget(self.prompt_update_frame)
+
         self.AddPromptMorp_Button = QPushButton(self.Prompt_Morph_Key_Binding_Frame)
         self.AddPromptMorp_Button.setObjectName(u"AddPromptMorp_Button")
         sizePolicy2.setHeightForWidth(self.AddPromptMorp_Button.sizePolicy().hasHeightForWidth())
         self.AddPromptMorp_Button.setSizePolicy(sizePolicy2)
-        self.AddPromptMorp_Button.setMaximumSize(QSize(16777215, 20))
+        self.AddPromptMorp_Button.setMinimumSize(QSize(0, 27))
+        self.AddPromptMorp_Button.setMaximumSize(QSize(16777215, 27))
         self.AddPromptMorp_Button.setStyleSheet(u"QPushButton {\n"
 "    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n"
 "    border-style: solid; /* Defines the style of the border */\n"
 "    border-width: 1px; /* Width of the border */\n"
 "    border-color: rgba(255, 255, 255, 0.5); /* Border color with some transparency */\n"
 "    border-radius: 5px; /* Consistent with the tab's rounded corners */\n"
-"    padding: 0px 0px; /* Comfortable padding for the button text */\n"
+"    padding: 4px 4px; /* Comfortable padding for the button text */\n"
 "    color: white; /* White text for contrast */\n"
 "    text-align: center;\n"
 "\n"
@@ -1765,19 +1811,19 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_28.addWidget(self.Prompt_Morph_Key_Binding_Frame)
 
-        self.prompt_morph_splitter.addWidget(self.frame_14)
-        self.frame_15 = QFrame(self.prompt_morph_splitter)
-        self.frame_15.setObjectName(u"frame_15")
-        self.frame_15.setMinimumSize(QSize(0, 78))
-        self.frame_15.setMaximumSize(QSize(16777215, 78))
-        self.frame_15.setStyleSheet(u"border:0")
-        self.frame_15.setFrameShape(QFrame.StyledPanel)
-        self.frame_15.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_30 = QVBoxLayout(self.frame_15)
+        self.prompt_morph_splitter.addWidget(self.middle_morph_frame)
+        self.lower_morph_frame = QFrame(self.prompt_morph_splitter)
+        self.lower_morph_frame.setObjectName(u"lower_morph_frame")
+        self.lower_morph_frame.setMinimumSize(QSize(0, 78))
+        self.lower_morph_frame.setMaximumSize(QSize(16777215, 78))
+        self.lower_morph_frame.setStyleSheet(u"border:0")
+        self.lower_morph_frame.setFrameShape(QFrame.StyledPanel)
+        self.lower_morph_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_30 = QVBoxLayout(self.lower_morph_frame)
         self.verticalLayout_30.setSpacing(0)
         self.verticalLayout_30.setObjectName(u"verticalLayout_30")
         self.verticalLayout_30.setContentsMargins(0, 8, 0, 0)
-        self.lower_right_prompt_frame = QFrame(self.frame_15)
+        self.lower_right_prompt_frame = QFrame(self.lower_morph_frame)
         self.lower_right_prompt_frame.setObjectName(u"lower_right_prompt_frame")
         sizePolicy2.setHeightForWidth(self.lower_right_prompt_frame.sizePolicy().hasHeightForWidth())
         self.lower_right_prompt_frame.setSizePolicy(sizePolicy2)
@@ -1800,10 +1846,25 @@ class Ui_MainWindow(object):
 "}")
         self.lower_right_prompt_frame.setFrameShape(QFrame.StyledPanel)
         self.lower_right_prompt_frame.setFrameShadow(QFrame.Raised)
-        self.add_prompt_after_checkbox = QCheckBox(self.lower_right_prompt_frame)
+        self.horizontalLayout_7 = QHBoxLayout(self.lower_right_prompt_frame)
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.horizontalLayout_7.setContentsMargins(-1, 1, -1, 1)
+        self.frame_2 = QFrame(self.lower_right_prompt_frame)
+        self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setMinimumSize(QSize(298, 58))
+        self.frame_2.setMaximumSize(QSize(290, 16777215))
+        self.frame_2.setStyleSheet(u"QFrame {\n"
+"background-color: rgb(108,108,118);\n"
+"border: 0px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
+"border-radius: 0px;\n"
+" padding: 0px; /* To prevent the content from touching the border */\n"
+"}")
+        self.frame_2.setFrameShape(QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QFrame.Raised)
+        self.add_prompt_after_checkbox = QCheckBox(self.frame_2)
         self.add_prompt_after_checkbox.setObjectName(u"add_prompt_after_checkbox")
         self.add_prompt_after_checkbox.setEnabled(True)
-        self.add_prompt_after_checkbox.setGeometry(QRect(8, 34, 289, 28))
+        self.add_prompt_after_checkbox.setGeometry(QRect(0, 27, 289, 28))
         sizePolicy2.setHeightForWidth(self.add_prompt_after_checkbox.sizePolicy().hasHeightForWidth())
         self.add_prompt_after_checkbox.setSizePolicy(sizePolicy2)
         self.add_prompt_after_checkbox.setMinimumSize(QSize(0, 0))
@@ -1837,10 +1898,10 @@ class Ui_MainWindow(object):
 "")
         self.add_prompt_after_checkbox.setIconSize(QSize(54, 29))
         self.add_prompt_after_checkbox.setCheckable(True)
-        self.add_prompt_before_checkbox = QCheckBox(self.lower_right_prompt_frame)
+        self.add_prompt_before_checkbox = QCheckBox(self.frame_2)
         self.add_prompt_before_checkbox.setObjectName(u"add_prompt_before_checkbox")
         self.add_prompt_before_checkbox.setEnabled(True)
-        self.add_prompt_before_checkbox.setGeometry(QRect(8, 4, 297, 28))
+        self.add_prompt_before_checkbox.setGeometry(QRect(0, 4, 297, 28))
         sizePolicy2.setHeightForWidth(self.add_prompt_before_checkbox.sizePolicy().hasHeightForWidth())
         self.add_prompt_before_checkbox.setSizePolicy(sizePolicy2)
         self.add_prompt_before_checkbox.setMinimumSize(QSize(0, 0))
@@ -1870,10 +1931,16 @@ class Ui_MainWindow(object):
 "}")
         self.add_prompt_before_checkbox.setIconSize(QSize(54, 29))
         self.add_prompt_before_checkbox.setCheckable(True)
+
+        self.horizontalLayout_7.addWidget(self.frame_2)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_7.addItem(self.horizontalSpacer_2)
+
         self.load_morph_data = QPushButton(self.lower_right_prompt_frame)
         self.load_morph_data.setObjectName(u"load_morph_data")
         self.load_morph_data.setEnabled(True)
-        self.load_morph_data.setGeometry(QRect(358, 19, 36, 31))
         sizePolicy5.setHeightForWidth(self.load_morph_data.sizePolicy().hasHeightForWidth())
         self.load_morph_data.setSizePolicy(sizePolicy5)
         self.load_morph_data.setMinimumSize(QSize(30, 25))
@@ -1916,21 +1983,26 @@ class Ui_MainWindow(object):
 "border:0;\n"
 "}")
         self.load_morph_data.setIconSize(QSize(28, 20))
+
+        self.horizontalLayout_7.addWidget(self.load_morph_data)
+
         self.save_current_ui_label_5 = QLabel(self.lower_right_prompt_frame)
         self.save_current_ui_label_5.setObjectName(u"save_current_ui_label_5")
-        self.save_current_ui_label_5.setGeometry(QRect(412, 12, 128, 38))
         self.save_current_ui_label_5.setMinimumSize(QSize(0, 30))
         self.save_current_ui_label_5.setStyleSheet(u"border: none;")
         self.save_current_ui_label_5.setAlignment(Qt.AlignCenter)
         self.save_current_ui_label_5.setWordWrap(True)
 
+        self.horizontalLayout_7.addWidget(self.save_current_ui_label_5)
+
+
         self.verticalLayout_30.addWidget(self.lower_right_prompt_frame)
 
-        self.prompt_morph_splitter.addWidget(self.frame_15)
+        self.prompt_morph_splitter.addWidget(self.lower_morph_frame)
 
         self.verticalLayout_20.addWidget(self.prompt_morph_splitter)
 
-        self.prompt_splitter.addWidget(self.verticalFrame_prompt)
+        self.prompt_splitter.addWidget(self.right_prompt_tab_frame)
 
         self.horizontalLayout_6.addWidget(self.prompt_splitter)
 
@@ -2274,7 +2346,7 @@ class Ui_MainWindow(object):
         self.Motion_Panning_Label = QLabel(self.Motion_Panning_Component_poppable)
         self.Motion_Panning_Label.setObjectName(u"Motion_Panning_Label")
         self.Motion_Panning_Label.setGeometry(QRect(68, 6, 167, 16))
-        self.Motion_Panning_Label.setFont(font4)
+        self.Motion_Panning_Label.setFont(font7)
         self.Motion_Panning_Label.setStyleSheet(u"border: 0;\n"
 "background: none;")
         self.Motion_Panning_Label.setAlignment(Qt.AlignCenter)
@@ -2651,7 +2723,7 @@ class Ui_MainWindow(object):
         self.Motion_Rotation_Label = QLabel(self.Motion_Rotation_Component_poppable)
         self.Motion_Rotation_Label.setObjectName(u"Motion_Rotation_Label")
         self.Motion_Rotation_Label.setGeometry(QRect(64, 6, 163, 16))
-        self.Motion_Rotation_Label.setFont(font4)
+        self.Motion_Rotation_Label.setFont(font7)
         self.Motion_Rotation_Label.setTabletTracking(False)
         self.Motion_Rotation_Label.setStyleSheet(u"border: 0;\n"
 "background: none;")
@@ -2943,7 +3015,7 @@ class Ui_MainWindow(object):
         self.Motion_Tilt_Label = QLabel(self.Motion_Tilt_Component_poppable)
         self.Motion_Tilt_Label.setObjectName(u"Motion_Tilt_Label")
         self.Motion_Tilt_Label.setGeometry(QRect(86, 6, 121, 16))
-        self.Motion_Tilt_Label.setFont(font4)
+        self.Motion_Tilt_Label.setFont(font7)
         self.Motion_Tilt_Label.setStyleSheet(u"border: 0")
         self.Motion_Tilt_Label.setAlignment(Qt.AlignCenter)
         self.syrup_tilt_curve_type = QComboBox(self.Motion_Tilt_Component_poppable)
@@ -3338,7 +3410,7 @@ class Ui_MainWindow(object):
         self.Motion_Zoom_Label = QLabel(self.Motion_Zoom_Component_poppable)
         self.Motion_Zoom_Label.setObjectName(u"Motion_Zoom_Label")
         self.Motion_Zoom_Label.setGeometry(QRect(8, 6, 133, 16))
-        self.Motion_Zoom_Label.setFont(font4)
+        self.Motion_Zoom_Label.setFont(font7)
         self.Motion_Zoom_Label.setStyleSheet(u"border: 0")
         self.Motion_Zoom_Label.setAlignment(Qt.AlignCenter)
         self.syrup_zoom_motion_slider_frame_number = QLineEdit(self.Motion_Zoom_Component_poppable)
@@ -5226,7 +5298,7 @@ class Ui_MainWindow(object):
         self.CN_1_weight_slider_value = QLabel(self.CN_1_weight_poppable)
         self.CN_1_weight_slider_value.setObjectName(u"CN_1_weight_slider_value")
         self.CN_1_weight_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_1_weight_slider_value.setFont(font4)
+        self.CN_1_weight_slider_value.setFont(font7)
         self.CN_1_weight_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -5310,7 +5382,7 @@ class Ui_MainWindow(object):
         self.CN_1_starting_control_step_slider_value = QLabel(self.CN_1_start_control_step_poppable)
         self.CN_1_starting_control_step_slider_value.setObjectName(u"CN_1_starting_control_step_slider_value")
         self.CN_1_starting_control_step_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_1_starting_control_step_slider_value.setFont(font4)
+        self.CN_1_starting_control_step_slider_value.setFont(font7)
         self.CN_1_starting_control_step_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -5394,7 +5466,7 @@ class Ui_MainWindow(object):
         self.CN_1_ending_control_step_slider_value = QLabel(self.CN_1_end_control_step_poppable)
         self.CN_1_ending_control_step_slider_value.setObjectName(u"CN_1_ending_control_step_slider_value")
         self.CN_1_ending_control_step_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_1_ending_control_step_slider_value.setFont(font4)
+        self.CN_1_ending_control_step_slider_value.setFont(font7)
         self.CN_1_ending_control_step_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -5478,7 +5550,7 @@ class Ui_MainWindow(object):
         self.CN_1_low_threshold_slider_value = QLabel(self.CN_1_low_threshold_poppable)
         self.CN_1_low_threshold_slider_value.setObjectName(u"CN_1_low_threshold_slider_value")
         self.CN_1_low_threshold_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_1_low_threshold_slider_value.setFont(font4)
+        self.CN_1_low_threshold_slider_value.setFont(font7)
         self.CN_1_low_threshold_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -5562,7 +5634,7 @@ class Ui_MainWindow(object):
         self.CN_1_high_threshold_slider_value = QLabel(self.CN_1_high_threshold_poppable)
         self.CN_1_high_threshold_slider_value.setObjectName(u"CN_1_high_threshold_slider_value")
         self.CN_1_high_threshold_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_1_high_threshold_slider_value.setFont(font4)
+        self.CN_1_high_threshold_slider_value.setFont(font7)
         self.CN_1_high_threshold_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -5655,7 +5727,7 @@ class Ui_MainWindow(object):
         self.CN_2_high_threshold_slider_value = QLabel(self.CN_2_high_threshold_poppable)
         self.CN_2_high_threshold_slider_value.setObjectName(u"CN_2_high_threshold_slider_value")
         self.CN_2_high_threshold_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_2_high_threshold_slider_value.setFont(font4)
+        self.CN_2_high_threshold_slider_value.setFont(font7)
         self.CN_2_high_threshold_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -5738,7 +5810,7 @@ class Ui_MainWindow(object):
         self.CN_2_weight_slider_value = QLabel(self.CN_2_weight_poppable)
         self.CN_2_weight_slider_value.setObjectName(u"CN_2_weight_slider_value")
         self.CN_2_weight_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_2_weight_slider_value.setFont(font4)
+        self.CN_2_weight_slider_value.setFont(font7)
         self.CN_2_weight_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -5821,7 +5893,7 @@ class Ui_MainWindow(object):
         self.CN_2_ending_control_step_slider_value = QLabel(self.CN_2_end_control_step_poppable)
         self.CN_2_ending_control_step_slider_value.setObjectName(u"CN_2_ending_control_step_slider_value")
         self.CN_2_ending_control_step_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_2_ending_control_step_slider_value.setFont(font4)
+        self.CN_2_ending_control_step_slider_value.setFont(font7)
         self.CN_2_ending_control_step_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -5904,7 +5976,7 @@ class Ui_MainWindow(object):
         self.CN_2_starting_control_step_slider_value = QLabel(self.CN_2_start_control_step_poppable)
         self.CN_2_starting_control_step_slider_value.setObjectName(u"CN_2_starting_control_step_slider_value")
         self.CN_2_starting_control_step_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_2_starting_control_step_slider_value.setFont(font4)
+        self.CN_2_starting_control_step_slider_value.setFont(font7)
         self.CN_2_starting_control_step_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -5987,7 +6059,7 @@ class Ui_MainWindow(object):
         self.CN_2_low_threshold_slider_value = QLabel(self.CN_2_low_threshold_poppable)
         self.CN_2_low_threshold_slider_value.setObjectName(u"CN_2_low_threshold_slider_value")
         self.CN_2_low_threshold_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_2_low_threshold_slider_value.setFont(font4)
+        self.CN_2_low_threshold_slider_value.setFont(font7)
         self.CN_2_low_threshold_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -6080,7 +6152,7 @@ class Ui_MainWindow(object):
         self.CN_3_high_threshold_slider_value = QLabel(self.CN_3_high_threshold_poppable)
         self.CN_3_high_threshold_slider_value.setObjectName(u"CN_3_high_threshold_slider_value")
         self.CN_3_high_threshold_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_3_high_threshold_slider_value.setFont(font4)
+        self.CN_3_high_threshold_slider_value.setFont(font7)
         self.CN_3_high_threshold_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -6163,7 +6235,7 @@ class Ui_MainWindow(object):
         self.CN_3_weight_slider_value = QLabel(self.CN_3_weight_poppable)
         self.CN_3_weight_slider_value.setObjectName(u"CN_3_weight_slider_value")
         self.CN_3_weight_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_3_weight_slider_value.setFont(font4)
+        self.CN_3_weight_slider_value.setFont(font7)
         self.CN_3_weight_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -6246,7 +6318,7 @@ class Ui_MainWindow(object):
         self.CN_3_ending_control_step_slider_value = QLabel(self.CN_3_end_control_step_poppable)
         self.CN_3_ending_control_step_slider_value.setObjectName(u"CN_3_ending_control_step_slider_value")
         self.CN_3_ending_control_step_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_3_ending_control_step_slider_value.setFont(font4)
+        self.CN_3_ending_control_step_slider_value.setFont(font7)
         self.CN_3_ending_control_step_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -6329,7 +6401,7 @@ class Ui_MainWindow(object):
         self.CN_3_starting_control_step_slider_value = QLabel(self.CN_3_start_control_step_poppable)
         self.CN_3_starting_control_step_slider_value.setObjectName(u"CN_3_starting_control_step_slider_value")
         self.CN_3_starting_control_step_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_3_starting_control_step_slider_value.setFont(font4)
+        self.CN_3_starting_control_step_slider_value.setFont(font7)
         self.CN_3_starting_control_step_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -6412,7 +6484,7 @@ class Ui_MainWindow(object):
         self.CN_3_low_threshold_slider_value = QLabel(self.CN_3_low_threshold_poppable)
         self.CN_3_low_threshold_slider_value.setObjectName(u"CN_3_low_threshold_slider_value")
         self.CN_3_low_threshold_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_3_low_threshold_slider_value.setFont(font4)
+        self.CN_3_low_threshold_slider_value.setFont(font7)
         self.CN_3_low_threshold_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -6505,7 +6577,7 @@ class Ui_MainWindow(object):
         self.CN_4_high_threshold_slider_value = QLabel(self.CN_4_high_threshold_poppable)
         self.CN_4_high_threshold_slider_value.setObjectName(u"CN_4_high_threshold_slider_value")
         self.CN_4_high_threshold_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_4_high_threshold_slider_value.setFont(font4)
+        self.CN_4_high_threshold_slider_value.setFont(font7)
         self.CN_4_high_threshold_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -6588,7 +6660,7 @@ class Ui_MainWindow(object):
         self.CN_4_weight_slider_value = QLabel(self.CN_4_weight_poppable)
         self.CN_4_weight_slider_value.setObjectName(u"CN_4_weight_slider_value")
         self.CN_4_weight_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_4_weight_slider_value.setFont(font4)
+        self.CN_4_weight_slider_value.setFont(font7)
         self.CN_4_weight_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -6671,7 +6743,7 @@ class Ui_MainWindow(object):
         self.CN_4_ending_control_step_slider_value = QLabel(self.CN_4_end_control_step_poppable)
         self.CN_4_ending_control_step_slider_value.setObjectName(u"CN_4_ending_control_step_slider_value")
         self.CN_4_ending_control_step_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_4_ending_control_step_slider_value.setFont(font4)
+        self.CN_4_ending_control_step_slider_value.setFont(font7)
         self.CN_4_ending_control_step_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -6754,7 +6826,7 @@ class Ui_MainWindow(object):
         self.CN_4_starting_control_step_slider_value = QLabel(self.CN_4_start_control_step_poppable)
         self.CN_4_starting_control_step_slider_value.setObjectName(u"CN_4_starting_control_step_slider_value")
         self.CN_4_starting_control_step_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_4_starting_control_step_slider_value.setFont(font4)
+        self.CN_4_starting_control_step_slider_value.setFont(font7)
         self.CN_4_starting_control_step_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -6837,7 +6909,7 @@ class Ui_MainWindow(object):
         self.CN_4_low_threshold_slider_value = QLabel(self.CN_4_low_threshold_poppable)
         self.CN_4_low_threshold_slider_value.setObjectName(u"CN_4_low_threshold_slider_value")
         self.CN_4_low_threshold_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_4_low_threshold_slider_value.setFont(font4)
+        self.CN_4_low_threshold_slider_value.setFont(font7)
         self.CN_4_low_threshold_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -6930,7 +7002,7 @@ class Ui_MainWindow(object):
         self.CN_5_high_threshold_slider_value = QLabel(self.CN_5_high_threshold_poppable)
         self.CN_5_high_threshold_slider_value.setObjectName(u"CN_5_high_threshold_slider_value")
         self.CN_5_high_threshold_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_5_high_threshold_slider_value.setFont(font4)
+        self.CN_5_high_threshold_slider_value.setFont(font7)
         self.CN_5_high_threshold_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -7013,7 +7085,7 @@ class Ui_MainWindow(object):
         self.CN_5_weight_slider_value = QLabel(self.CN_5_weight_poppable)
         self.CN_5_weight_slider_value.setObjectName(u"CN_5_weight_slider_value")
         self.CN_5_weight_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_5_weight_slider_value.setFont(font4)
+        self.CN_5_weight_slider_value.setFont(font7)
         self.CN_5_weight_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -7096,7 +7168,7 @@ class Ui_MainWindow(object):
         self.CN_5_ending_control_step_slider_value = QLabel(self.CN_5_end_control_step_poppable)
         self.CN_5_ending_control_step_slider_value.setObjectName(u"CN_5_ending_control_step_slider_value")
         self.CN_5_ending_control_step_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_5_ending_control_step_slider_value.setFont(font4)
+        self.CN_5_ending_control_step_slider_value.setFont(font7)
         self.CN_5_ending_control_step_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -7179,7 +7251,7 @@ class Ui_MainWindow(object):
         self.CN_5_starting_control_step_slider_value = QLabel(self.CN_5_start_control_step_poppable)
         self.CN_5_starting_control_step_slider_value.setObjectName(u"CN_5_starting_control_step_slider_value")
         self.CN_5_starting_control_step_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_5_starting_control_step_slider_value.setFont(font4)
+        self.CN_5_starting_control_step_slider_value.setFont(font7)
         self.CN_5_starting_control_step_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -7262,7 +7334,7 @@ class Ui_MainWindow(object):
         self.CN_5_low_threshold_slider_value = QLabel(self.CN_5_low_threshold_poppable)
         self.CN_5_low_threshold_slider_value.setObjectName(u"CN_5_low_threshold_slider_value")
         self.CN_5_low_threshold_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_5_low_threshold_slider_value.setFont(font4)
+        self.CN_5_low_threshold_slider_value.setFont(font7)
         self.CN_5_low_threshold_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -7878,11 +7950,11 @@ class Ui_MainWindow(object):
         self.strength_slider_label = QLabel(self.Strength_Slider_poppable)
         self.strength_slider_label.setObjectName(u"strength_slider_label")
         self.strength_slider_label.setGeometry(QRect(43, 0, 121, 25))
-        self.strength_slider_label.setFont(font4)
+        self.strength_slider_label.setFont(font7)
         self.strength_slider_value = QLabel(self.Strength_Slider_poppable)
         self.strength_slider_value.setObjectName(u"strength_slider_value")
         self.strength_slider_value.setGeometry(QRect(170, 2, 46, 22))
-        self.strength_slider_value.setFont(font4)
+        self.strength_slider_value.setFont(font7)
         self.strength_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -7922,7 +7994,7 @@ class Ui_MainWindow(object):
         self.step_slider_label = QLabel(self.Step_Slider_Frame_poppable)
         self.step_slider_label.setObjectName(u"step_slider_label")
         self.step_slider_label.setGeometry(QRect(43, 2, 121, 21))
-        self.step_slider_label.setFont(font4)
+        self.step_slider_label.setFont(font7)
         self.step_slider_label.setStyleSheet(u"")
         self.step_slider_value = QLabel(self.Step_Slider_Frame_poppable)
         self.step_slider_value.setObjectName(u"step_slider_value")
@@ -7970,11 +8042,11 @@ class Ui_MainWindow(object):
         self.noise_slider_label = QLabel(self.Noice_Slider_poppable)
         self.noise_slider_label.setObjectName(u"noise_slider_label")
         self.noise_slider_label.setGeometry(QRect(43, 0, 121, 21))
-        self.noise_slider_label.setFont(font4)
+        self.noise_slider_label.setFont(font7)
         self.noise_slider_value = QLabel(self.Noice_Slider_poppable)
         self.noise_slider_value.setObjectName(u"noise_slider_value")
         self.noise_slider_value.setGeometry(QRect(170, 2, 46, 22))
-        self.noise_slider_value.setFont(font4)
+        self.noise_slider_value.setFont(font7)
         self.noise_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -8072,12 +8144,12 @@ class Ui_MainWindow(object):
         self.cfg_slider_label = QLabel(self.CFG_Slider_poppable)
         self.cfg_slider_label.setObjectName(u"cfg_slider_label")
         self.cfg_slider_label.setGeometry(QRect(43, 0, 121, 21))
-        self.cfg_slider_label.setFont(font4)
+        self.cfg_slider_label.setFont(font7)
         self.cfg_slider_value = QLabel(self.CFG_Slider_poppable)
         self.cfg_slider_value.setObjectName(u"cfg_slider_value")
         self.cfg_slider_value.setGeometry(QRect(170, 2, 46, 22))
         self.cfg_slider_value.setMinimumSize(QSize(0, 0))
-        self.cfg_slider_value.setFont(font4)
+        self.cfg_slider_value.setFont(font7)
         self.cfg_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -8121,11 +8193,11 @@ class Ui_MainWindow(object):
         self.cadence_slider_label = QLabel(self.Cadence_Slider_poppable)
         self.cadence_slider_label.setObjectName(u"cadence_slider_label")
         self.cadence_slider_label.setGeometry(QRect(43, 0, 121, 21))
-        self.cadence_slider_label.setFont(font4)
+        self.cadence_slider_label.setFont(font7)
         self.cadence_slider_value = QLabel(self.Cadence_Slider_poppable)
         self.cadence_slider_value.setObjectName(u"cadence_slider_value")
         self.cadence_slider_value.setGeometry(QRect(170, 2, 46, 22))
-        self.cadence_slider_value.setFont(font4)
+        self.cadence_slider_value.setFont(font7)
         self.cadence_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -8264,14 +8336,14 @@ class Ui_MainWindow(object):
         self.panning_x_label = QLabel(self.verticalLayoutWidget)
         self.panning_x_label.setObjectName(u"panning_x_label")
         self.panning_x_label.setMinimumSize(QSize(0, 0))
-        self.panning_x_label.setFont(font6)
+        self.panning_x_label.setFont(font4)
 
         self.verticalLayout_2.addWidget(self.panning_x_label)
 
         self.panning_y_label = QLabel(self.verticalLayoutWidget)
         self.panning_y_label.setObjectName(u"panning_y_label")
         self.panning_y_label.setMinimumSize(QSize(0, 0))
-        self.panning_y_label.setFont(font6)
+        self.panning_y_label.setFont(font4)
         self.panning_y_label.setTextFormat(Qt.AutoText)
 
         self.verticalLayout_2.addWidget(self.panning_y_label)
@@ -8279,42 +8351,42 @@ class Ui_MainWindow(object):
         self.rotate_h_label = QLabel(self.verticalLayoutWidget)
         self.rotate_h_label.setObjectName(u"rotate_h_label")
         self.rotate_h_label.setMinimumSize(QSize(0, 0))
-        self.rotate_h_label.setFont(font6)
+        self.rotate_h_label.setFont(font4)
 
         self.verticalLayout_2.addWidget(self.rotate_h_label)
 
         self.rotate_v_label = QLabel(self.verticalLayoutWidget)
         self.rotate_v_label.setObjectName(u"rotate_v_label")
         self.rotate_v_label.setMinimumSize(QSize(0, 0))
-        self.rotate_v_label.setFont(font6)
+        self.rotate_v_label.setFont(font4)
 
         self.verticalLayout_2.addWidget(self.rotate_v_label)
 
         self.zoom_label = QLabel(self.verticalLayoutWidget)
         self.zoom_label.setObjectName(u"zoom_label")
         self.zoom_label.setMinimumSize(QSize(0, 0))
-        self.zoom_label.setFont(font6)
+        self.zoom_label.setFont(font4)
 
         self.verticalLayout_2.addWidget(self.zoom_label)
 
         self.tilt_label = QLabel(self.verticalLayoutWidget)
         self.tilt_label.setObjectName(u"tilt_label")
         self.tilt_label.setMinimumSize(QSize(0, 0))
-        self.tilt_label.setFont(font6)
+        self.tilt_label.setFont(font4)
 
         self.verticalLayout_2.addWidget(self.tilt_label)
 
         self.fov_label = QLabel(self.verticalLayoutWidget)
         self.fov_label.setObjectName(u"fov_label")
         self.fov_label.setMinimumSize(QSize(0, 0))
-        self.fov_label.setFont(font6)
+        self.fov_label.setFont(font4)
 
         self.verticalLayout_2.addWidget(self.fov_label)
 
         self.steps_label = QLabel(self.verticalLayoutWidget)
         self.steps_label.setObjectName(u"steps_label")
         self.steps_label.setMinimumSize(QSize(0, 0))
-        self.steps_label.setFont(font6)
+        self.steps_label.setFont(font4)
         self.steps_label.setStyleSheet(u"")
 
         self.verticalLayout_2.addWidget(self.steps_label)
@@ -8322,21 +8394,21 @@ class Ui_MainWindow(object):
         self.strength_label = QLabel(self.verticalLayoutWidget)
         self.strength_label.setObjectName(u"strength_label")
         self.strength_label.setMinimumSize(QSize(0, 0))
-        self.strength_label.setFont(font6)
+        self.strength_label.setFont(font4)
 
         self.verticalLayout_2.addWidget(self.strength_label)
 
         self.cfg_label = QLabel(self.verticalLayoutWidget)
         self.cfg_label.setObjectName(u"cfg_label")
         self.cfg_label.setMinimumSize(QSize(0, 0))
-        self.cfg_label.setFont(font6)
+        self.cfg_label.setFont(font4)
 
         self.verticalLayout_2.addWidget(self.cfg_label)
 
         self.cadence_label = QLabel(self.verticalLayoutWidget)
         self.cadence_label.setObjectName(u"cadence_label")
         self.cadence_label.setMinimumSize(QSize(0, 0))
-        self.cadence_label.setFont(font6)
+        self.cadence_label.setFont(font4)
 
         self.verticalLayout_2.addWidget(self.cadence_label)
 
@@ -8380,7 +8452,7 @@ class Ui_MainWindow(object):
         self.panning_x_live_value = QLabel(self.verticalLayoutWidget_2)
         self.panning_x_live_value.setObjectName(u"panning_x_live_value")
         self.panning_x_live_value.setMaximumSize(QSize(50, 16777215))
-        self.panning_x_live_value.setFont(font6)
+        self.panning_x_live_value.setFont(font4)
         self.panning_x_live_value.setFrameShape(QFrame.NoFrame)
         self.panning_x_live_value.setFrameShadow(QFrame.Plain)
         self.panning_x_live_value.setLineWidth(1)
@@ -8391,77 +8463,77 @@ class Ui_MainWindow(object):
         self.panning_y_live_value = QLabel(self.verticalLayoutWidget_2)
         self.panning_y_live_value.setObjectName(u"panning_y_live_value")
         self.panning_y_live_value.setMaximumSize(QSize(50, 16777215))
-        self.panning_y_live_value.setFont(font6)
+        self.panning_y_live_value.setFont(font4)
 
         self.verticalLayout_3.addWidget(self.panning_y_live_value)
 
         self.rotate_h_live_value = QLabel(self.verticalLayoutWidget_2)
         self.rotate_h_live_value.setObjectName(u"rotate_h_live_value")
         self.rotate_h_live_value.setMaximumSize(QSize(50, 16777215))
-        self.rotate_h_live_value.setFont(font6)
+        self.rotate_h_live_value.setFont(font4)
 
         self.verticalLayout_3.addWidget(self.rotate_h_live_value)
 
         self.rotate_v_live_value = QLabel(self.verticalLayoutWidget_2)
         self.rotate_v_live_value.setObjectName(u"rotate_v_live_value")
         self.rotate_v_live_value.setMaximumSize(QSize(50, 16777215))
-        self.rotate_v_live_value.setFont(font6)
+        self.rotate_v_live_value.setFont(font4)
 
         self.verticalLayout_3.addWidget(self.rotate_v_live_value)
 
         self.zoom_live_value = QLabel(self.verticalLayoutWidget_2)
         self.zoom_live_value.setObjectName(u"zoom_live_value")
         self.zoom_live_value.setMaximumSize(QSize(50, 16777215))
-        self.zoom_live_value.setFont(font6)
+        self.zoom_live_value.setFont(font4)
 
         self.verticalLayout_3.addWidget(self.zoom_live_value)
 
         self.tilt_live_value = QLabel(self.verticalLayoutWidget_2)
         self.tilt_live_value.setObjectName(u"tilt_live_value")
         self.tilt_live_value.setMaximumSize(QSize(50, 16777215))
-        self.tilt_live_value.setFont(font6)
+        self.tilt_live_value.setFont(font4)
 
         self.verticalLayout_3.addWidget(self.tilt_live_value)
 
         self.fov_live_value = QLabel(self.verticalLayoutWidget_2)
         self.fov_live_value.setObjectName(u"fov_live_value")
         self.fov_live_value.setMaximumSize(QSize(50, 16777215))
-        self.fov_live_value.setFont(font6)
+        self.fov_live_value.setFont(font4)
 
         self.verticalLayout_3.addWidget(self.fov_live_value)
 
         self.steps_live_value = QLabel(self.verticalLayoutWidget_2)
         self.steps_live_value.setObjectName(u"steps_live_value")
         self.steps_live_value.setMaximumSize(QSize(50, 16777215))
-        self.steps_live_value.setFont(font6)
+        self.steps_live_value.setFont(font4)
 
         self.verticalLayout_3.addWidget(self.steps_live_value)
 
         self.strength_live_value = QLabel(self.verticalLayoutWidget_2)
         self.strength_live_value.setObjectName(u"strength_live_value")
         self.strength_live_value.setMaximumSize(QSize(50, 16777215))
-        self.strength_live_value.setFont(font6)
+        self.strength_live_value.setFont(font4)
 
         self.verticalLayout_3.addWidget(self.strength_live_value)
 
         self.cfg_live_value = QLabel(self.verticalLayoutWidget_2)
         self.cfg_live_value.setObjectName(u"cfg_live_value")
         self.cfg_live_value.setMaximumSize(QSize(50, 16777215))
-        self.cfg_live_value.setFont(font6)
+        self.cfg_live_value.setFont(font4)
 
         self.verticalLayout_3.addWidget(self.cfg_live_value)
 
         self.cadence_live_value = QLabel(self.verticalLayoutWidget_2)
         self.cadence_live_value.setObjectName(u"cadence_live_value")
         self.cadence_live_value.setMaximumSize(QSize(50, 16777215))
-        self.cadence_live_value.setFont(font6)
+        self.cadence_live_value.setFont(font4)
 
         self.verticalLayout_3.addWidget(self.cadence_live_value)
 
         self.noise_multiplier_live = QLabel(self.verticalLayoutWidget_2)
         self.noise_multiplier_live.setObjectName(u"noise_multiplier_live")
         self.noise_multiplier_live.setMaximumSize(QSize(50, 16777215))
-        self.noise_multiplier_live.setFont(font6)
+        self.noise_multiplier_live.setFont(font4)
 
         self.verticalLayout_3.addWidget(self.noise_multiplier_live)
 
@@ -8741,7 +8813,7 @@ class Ui_MainWindow(object):
         self.label_Negative_Prompt.setToolTip(QCoreApplication.translate("MainWindow", u"This is the negative prompt window. Write stuff that you don't want to show up in your AI generation.", None))
 #endif // QT_CONFIG(tooltip)
         self.label_Negative_Prompt.setText(QCoreApplication.translate("MainWindow", u"Negativ Prompt", None))
-        self.save_current_ui_label_4.setText(QCoreApplication.translate("MainWindow", u"Save Prompt Morphing to file", None))
+        self.prompt_morphing_label.setText(QCoreApplication.translate("MainWindow", u"Prompt Morphing", None))
 #if QT_CONFIG(tooltip)
         self.save_morph_data.setToolTip(QCoreApplication.translate("MainWindow", u"Save all the current Prompt Morphing Bindings to a file.", None))
 #endif // QT_CONFIG(tooltip)
@@ -8749,6 +8821,14 @@ class Ui_MainWindow(object):
         self.save_morph_data.setWhatsThis("")
 #endif // QT_CONFIG(whatsthis)
         self.save_morph_data.setText("")
+        self.save_current_ui_label_4.setText(QCoreApplication.translate("MainWindow", u"Save Prompt Morphing to file", None))
+        self.prpmta_to_promptb_label.setText(QCoreApplication.translate("MainWindow", u"Prompt A - Prompt B", None))
+#if QT_CONFIG(tooltip)
+        self.morph_slider.setToolTip(QCoreApplication.translate("MainWindow", u"Gives Prompt A or Prompt B more focus. Left of middle will give Prompt A more focus,\n"
+"while right of middle will give Prompt B more focus. In the middle, both prompts have\n"
+"the same focus. Right click to reset balance.", None))
+#endif // QT_CONFIG(tooltip)
+        self.morphing_text_howto_label.setText(QCoreApplication.translate("MainWindow", u"Right click the slider to equal the weight", None))
 #if QT_CONFIG(tooltip)
         self.use_deforumation_prompt_scheduling_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"Prompt from Deforumation will be used to generate frames if checked. If unchecked (grey) prompt schedulinging,\n"
 "from deforum will be used to generate frames. You can dynamically switch between the two.", None))
@@ -8758,14 +8838,6 @@ class Ui_MainWindow(object):
         self.save_positive_prompt_style.setToolTip(QCoreApplication.translate("MainWindow", u"Send positive and negative prompt to the renderer. This has to be pushed after having changed a prompt in order for the change to take effect.", None))
 #endif // QT_CONFIG(tooltip)
         self.save_positive_prompt_style.setText(QCoreApplication.translate("MainWindow", u"Update Prompt", None))
-        self.prompt_morphing_label.setText(QCoreApplication.translate("MainWindow", u"Prompt Morphing", None))
-        self.prpmta_to_promptb_label.setText(QCoreApplication.translate("MainWindow", u"Prompt A - Prompt B", None))
-#if QT_CONFIG(tooltip)
-        self.morph_slider.setToolTip(QCoreApplication.translate("MainWindow", u"Gives Prompt A or Prompt B more focus. Left of middle will give Prompt A more focus,\n"
-"while right of middle will give Prompt B more focus. In the middle, both prompts have\n"
-"the same focus. Right click to reset balance.", None))
-#endif // QT_CONFIG(tooltip)
-        self.morphing_text_howto_label.setText(QCoreApplication.translate("MainWindow", u"Right click the slider to equal the weight", None))
 #if QT_CONFIG(tooltip)
         self.AddPromptMorp_Button.setToolTip(QCoreApplication.translate("MainWindow", u"This will add a new Promp Morph component", None))
 #endif // QT_CONFIG(tooltip)
