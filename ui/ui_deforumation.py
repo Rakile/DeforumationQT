@@ -7756,7 +7756,7 @@ class Ui_MainWindow(object):
 "QToolTip { \n"
 " background-color: black; \n"
 "color: white; \n"
-" border: black solid 1px\n"
+" border: black solid 1px;\n"
 " }")
         self.Live_ParameterLabel.setAlignment(Qt.AlignCenter)
 
@@ -7830,7 +7830,7 @@ class Ui_MainWindow(object):
 "QToolTip { \n"
 " background-color: black; \n"
 "color: white; \n"
-" border: black solid 1px\n"
+" border: black solid 1px;\n"
 " }")
         self.ubder_slider_frame.setFrameShape(QFrame.StyledPanel)
         self.ubder_slider_frame.setFrameShadow(QFrame.Raised)
@@ -7855,7 +7855,7 @@ class Ui_MainWindow(object):
         self.live_parameter_frame.setStyleSheet(u"QCheckBox {\n"
 "    border: none; /* No border for the checkbox */\n"
 "background-color: rgb(108, 108, 108); /* Fallback color */\n"
-"padding:1\n"
+"padding:1;\n"
 "}\n"
 "\n"
 "QCheckBox::indicator {\n"
@@ -7866,7 +7866,7 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QCheckBox::indicator:unchecked {\n"
-"    background-image: url(images/check_off_small_green.png); /* Image for unchecked state */\n"
+"    background-image: url(images/check_off_small.png); /* Image for unchecked state */\n"
 "    background-repeat: no-repeat; /* Prevents the image from repeating */\n"
 "background-position: left; /* Left the image */\n"
 "border: none; /* No border for the checkbox */\n"
@@ -7876,8 +7876,8 @@ class Ui_MainWindow(object):
 "    background-image: url(images/check_on_small.png); /* Image for checked state */\n"
 "    background-repeat: no-repeat; /* Prevents the image from repeating */\n"
 "background-position: left; /* Left the image */\n"
-"border: none; /* No"
-                        " border for the checkbox */\n"
+"border: none; /* No bord"
+                        "er for the checkbox */\n"
 "}\n"
 "QSlider::groove:horizontal {\n"
 "    border-image: url(images/groove_230.png) ; /* Adjust slicing and stretch as needed */\n"
@@ -7899,8 +7899,8 @@ class Ui_MainWindow(object):
 "    background-image: url(images/handle_hover.png); /* Change the handle image when hovering */\n"
 "background-repeat: no-repeat;\n"
 "    border: none; /* Remove the border if you don't need it */\n"
-"    width: 32px; /* Width of the handle - adj"
-                        "ust as needed */\n"
+"    width: 32px; /* Width of the handle - adjust a"
+                        "s needed */\n"
 "    height: 32px; /* Height of the handle - adjust as needed */\n"
 "    margin: -2px 0; /* Optional: Adjust the margin if needed */\n"
 "}\n"

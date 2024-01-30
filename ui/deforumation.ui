@@ -14810,7 +14810,7 @@ background-color: rgb(88, 88, 98); /* Fallback color */
 QToolTip { 
  background-color: black; 
 color: white; 
- border: black solid 1px
+ border: black solid 1px;
  }</string>
                       </property>
                       <property name="text">
@@ -14929,7 +14929,7 @@ border-radius: 0px;
 QToolTip { 
  background-color: black; 
 color: white; 
- border: black solid 1px
+ border: black solid 1px;
  }</string>
                           </property>
                           <property name="frameShape">
@@ -14991,7 +14991,7 @@ border-radius: 0px;
                              <string notr="true">QCheckBox {
     border: none; /* No border for the checkbox */
 background-color: rgb(108, 108, 108); /* Fallback color */
-padding:1
+padding:1;
 }
 
 QCheckBox::indicator {
@@ -15002,7 +15002,7 @@ border: none; /* No border for the checkbox */
 }
 
 QCheckBox::indicator:unchecked {
-    background-image: url(images/check_off_small_green.png); /* Image for unchecked state */
+    background-image: url(images/check_off_small.png); /* Image for unchecked state */
     background-repeat: no-repeat; /* Prevents the image from repeating */
 background-position: left; /* Left the image */
 border: none; /* No border for the checkbox */
