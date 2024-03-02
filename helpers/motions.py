@@ -1,7 +1,7 @@
 import pickle
 
 from PySide6.QtCore import (Qt, Slot, QMetaObject, Q_ARG)
-from PySide6.QtGui import QPixmap
+from PySide6.QtGui import QPixmap, QIcon
 from PySide6.QtWidgets import QSlider, QCheckBox, QLineEdit, QLabel, QProgressBar
 from pyeaze import pyeaze
 
@@ -159,6 +159,15 @@ class Deforumation_Motions():
                 self.ui.rotate_y_value.setText(str(float('%.2f' % self.Translation_RX)))
                 self.ui.rotate_z_value.setText(str(float('%.2f' % self.Translation_RZ)))
 
+                # Special for handling total recall seed value
+                seed_value = totalRecallFrame.seed_value
+                self.parent.ui.IterSeed_Inputbox.setText(str(seed_value))
+                self.parent.ui.fixedSeed_Inputbox.setText(str(seed_value))
+                self.deforumationnamedpipes.writeValue("seed", seed_value)
+                self.deforumationnamedpipes.writeValue("seed_changed", 1)
+                #seed_iter_n = int(self.parent.ui.IterSeed_N_Inputbox.text())
+                #self.deforumationnamedpipes.writeValue("seed_iter_n", seed_iter_n)
+
 
             else:
                 if self.is_verbose:
@@ -232,6 +241,65 @@ class Deforumation_Motions():
         self.exponential_rotate_motion = self.deforumation_settings.getGuiConfigValue("exponential_rotate_motion")
         self.exponential_tilt_motion = self.deforumation_settings.getGuiConfigValue("exponential_tilt_motion")
         self.should_stay_on_top = self.deforumation_settings.getGuiConfigValue("should_stay_on_top")
+        #Special handling of seed stuff
+        self.seed = self.deforumation_settings.getSendConfigValue("seed")
+        self.seed_fixed = self.deforumation_settings.getGuiConfigValue("seed_fixed")
+        self.seed_iter_n = self.deforumation_settings.getSendConfigValue("seed_iter_n")
+        if self.seed_iter_n <=0:
+            self.seed_iter_n = self.deforumation_settings.getGuiConfigValue("seed_iter_n")
+            if self.seed_iter_n <= 0:
+                self.seed_iter_n = 1
+        self.parent.ui.IterSeed_N_Inputbox.setText(str(self.seed_iter_n))
+        self.parent.ui.IterSeed_Inputbox.setText(str(self.seed))
+        self.parent.ui.fixedSeed_Inputbox.setText(str(self.seed_fixed))
+        self.seed_behavior = self.deforumation_settings.getSendConfigValue("seed_behavior")
+        if str(self.seed_behavior) == "0":
+            if self.is_verbose:
+                print("No render active so using seed_behaviour from saved GUI-state")
+            self.seed_behavior = self.deforumation_settings.getGuiConfigValue("seed_radio_button_checked")
+        else:
+            if self.is_verbose:
+                print("Render active so using seed_behaviour from active render send-state")
+
+        if str(self.seed_behavior) != "-1" and str(self.seed_behavior) != "0":
+            if self.seed_behavior ==  "iter":
+                self.parent.ui.iter_RadioButton.setChecked(True)
+                if self.is_verbose:
+                    print("iter_RadioButton checked")
+                self.deforumation_settings.writeDeforumationGuiValuesToConfig("seed_radio_button_checked", "iter")
+                self.deforumationnamedpipes.writeValue("seed_behavior", "iter")
+            elif self.seed_behavior == "fixed":
+                self.parent.ui.fixed_RadioButton.setChecked(True)
+                if self.is_verbose:
+                    print("fixed_RadioButton checked")
+                self.deforumation_settings.writeDeforumationGuiValuesToConfig("seed_radio_button_checked", "fixed")
+                self.deforumationnamedpipes.writeValue("seed_behavior", "fixed")
+            elif self.seed_behavior == "random":
+                self.parent.ui.random_RadioButton.setChecked(True)
+                if self.is_verbose:
+                    print("random_RadioButton checked")
+                self.deforumation_settings.writeDeforumationGuiValuesToConfig("seed_radio_button_checked", "random")
+                self.deforumationnamedpipes.writeValue("seed_behavior", "random")
+            elif self.seed_behavior == "ladder":
+                self.parent.ui.ladder_RadioButton.setChecked(True)
+                if self.is_verbose:
+                    print("ladder_RadioButton checked")
+                self.deforumation_settings.writeDeforumationGuiValuesToConfig("seed_radio_button_checked", "ladder")
+                self.deforumationnamedpipes.writeValue("seed_behavior", "ladder")
+            elif self.seed_behavior == "alternate":
+                self.parent.ui.alternate_RadioButton.setChecked(True)
+                if self.is_verbose:
+                    print("alternate_RadioButton checked")
+                self.deforumation_settings.writeDeforumationGuiValuesToConfig("seed_radio_button_checked", "alternate")
+                self.deforumationnamedpipes.writeValue("seed_behavior", "alternate")
+            elif self.seed_behavior == "schedule":
+                self.parent.ui.scheduled_RadioButton.setChecked(True)
+                if self.is_verbose:
+                    print("scheduled_RadioButton checked")
+                self.deforumation_settings.writeDeforumationGuiValuesToConfig("seed_radio_button_checked", "schedule")
+                self.deforumationnamedpipes.writeValue("seed_behavior", "schedule")
+
+
 
         #Adjust checkboxes
         #self.setShouldUseDeforumationSteps(self.should_use_deforumation_steps)
@@ -1277,6 +1345,22 @@ class Deforumation_Motions():
             if checkboxwidgets.startswith(original_checkbox_name) and not checkboxwidgets == sender.objectName():
                 self.deforumationwidgets.getWidgetContainer()[checkboxwidgets].widget.setChecked(not sender.isChecked())
 
+    def propagateAllRadioButtons(self, sender):
+        #Check if the checkbox is a copy of the original
+        digitPosition = -1
+        for i, c in enumerate(sender.objectName()):
+            if c.isdigit():
+                digitPosition = i
+                break
+        if digitPosition == -1:
+            original_checkbox_name = sender.objectName()
+        else:
+            original_checkbox_name = sender.objectName()[:digitPosition-1]
+        for checkboxwidgets in self.deforumationwidgets.getWidgetContainer():
+            if checkboxwidgets.startswith(original_checkbox_name) and not checkboxwidgets == sender.objectName():
+                self.deforumationwidgets.getWidgetContainer()[checkboxwidgets].widget.setChecked(True)
+
+
     def live_param_handler(self, unused_addr, args, value):
         QMetaObject.invokeMethod(self.parent, "handler", Qt.QueuedConnection, Q_ARG("QVariantList", args), Q_ARG("QString", str(value)))
 
@@ -1331,3 +1415,73 @@ class Deforumation_Motions():
         if self.previous_rot_y_value != value:
             self.previous_rot_y_value = value
             QMetaObject.invokeMethod(self.parent, "handler", Qt.QueuedConnection, Q_ARG("QVariantList", args), Q_ARG("QString", str(value)))
+
+    def setSeedAndScheme(self, event, object):
+        #print("Action:" + str(event.type()) + "    --  Object Name:" + str(object.objectName()))
+        if object.objectName().startswith("iter_RadioButton") or object.objectName().startswith("fixed_RadioButton") or object.objectName().startswith("random_RadioButton") or object.objectName().startswith("ladder_RadioButton") or object.objectName().startswith("alternate_RadioButton")  or object.objectName().startswith("scheduled_RadioButton"):
+            object.setChecked(True)
+            self.propagateAllRadioButtons(object)
+        if object.objectName().startswith("update_seed_button"):
+            if self.parent.ui.iter_RadioButton.isChecked():
+                seedValue = int(self.parent.ui.IterSeed_Inputbox.text())
+                self.deforumationnamedpipes.writeValue("seed", seedValue)
+                self.deforumationnamedpipes.writeValue("seed_changed", 1)
+            elif self.parent.ui.fixed_RadioButton.isChecked():
+                seedValue = int(self.parent.ui.fixedSeed_Inputbox.text())
+                self.deforumationnamedpipes.writeValue("seed", seedValue)
+                self.deforumationnamedpipes.writeValue("seed_changed", 1)
+                self.deforumation_settings.writeDeforumationGuiValuesToConfig("seed_fixed", seedValue)
+            seed_iter_n = int(self.parent.ui.IterSeed_N_Inputbox.text())
+            self.deforumation_settings.writeDeforumationGuiValuesToConfig("seed_iter_n", seed_iter_n)
+            self.deforumationnamedpipes.writeValue("seed_iter_n", seed_iter_n)
+
+        if object.objectName().startswith("update_seed_iter_n_button"):
+            seed_iter_n = int(self.parent.ui.IterSeed_N_Inputbox.text())
+            self.deforumationnamedpipes.writeValue("seed_iter_n", seed_iter_n)
+        if self.parent.ui.iter_RadioButton.isChecked():
+            print("iter_RadioButton checked")
+            self.deforumation_settings.writeDeforumationGuiValuesToConfig("seed_radio_button_checked", "iter")
+            self.deforumationnamedpipes.writeValue("seed_behavior", "iter")
+        elif self.parent.ui.fixed_RadioButton.isChecked():
+            print("fixed_RadioButton checked")
+            self.deforumation_settings.writeDeforumationGuiValuesToConfig("seed_radio_button_checked", "fixed")
+            self.deforumationnamedpipes.writeValue("seed_behavior", "fixed")
+        elif self.parent.ui.random_RadioButton.isChecked():
+            print("random_RadioButton checked")
+            self.deforumation_settings.writeDeforumationGuiValuesToConfig("seed_radio_button_checked", "random")
+            self.deforumationnamedpipes.writeValue("seed_behavior", "random")
+        elif self.parent.ui.ladder_RadioButton.isChecked():
+            print("ladder_RadioButton checked")
+            self.deforumation_settings.writeDeforumationGuiValuesToConfig("seed_radio_button_checked", "ladder")
+            self.deforumationnamedpipes.writeValue("seed_behavior", "ladder")
+        elif self.parent.ui.alternate_RadioButton.isChecked():
+            print("alternate_RadioButton checked")
+            self.deforumation_settings.writeDeforumationGuiValuesToConfig("seed_radio_button_checked", "alternate")
+            self.deforumationnamedpipes.writeValue("seed_behavior", "alternate")
+        elif self.parent.ui.scheduled_RadioButton.isChecked():
+            print("scheduled_RadioButton checked")
+            self.deforumation_settings.writeDeforumationGuiValuesToConfig("seed_radio_button_checked", "schedule")
+            self.deforumationnamedpipes.writeValue("seed_behavior", "schedule")
+
+    def setLoobackButtonState(self):
+        #Set looback button to on or off depending on state
+        isLoobackOn = int(self.deforumationnamedpipes.readValue("render_loopback"))
+        if isLoobackOn:
+            loobObjectName = "loop_button"
+            self.deforumationwidgets.getWidgetContainer()[loobObjectName].isActivated = True
+            self.parent.ui.loop_button.setIcon(self.deforumationwidgets.getWidgetContainer()["loop_button"].icon.pixmap(self.parent.ui.loop_button.iconSize(), QIcon.Active, QIcon.On))
+
+    def toggleLoopBack(self,event, object):
+        is_in_loopback = int(self.deforumationnamedpipes.readValue("render_loopback"))
+        if is_in_loopback:
+            self.deforumationnamedpipes.writeValue("render_loopback", 0)
+            if self.is_verbose:
+                print("Exiting LoopBack Mode.")
+            self.deforumationwidgets.getWidgetContainer()[object.objectName()].isActivated = False
+            object.setIcon(self.deforumationwidgets.getWidgetContainer()[object.objectName()].icon.pixmap(object.iconSize(), QIcon.Active, QIcon.Off))
+        else:
+            self.deforumationnamedpipes.writeValue("render_loopback", 1)
+            if self.is_verbose:
+                print("Entering LoopBack Mode.")
+            self.deforumationwidgets.getWidgetContainer()[object.objectName()].isActivated = True
+            object.setIcon(self.deforumationwidgets.getWidgetContainer()[object.objectName()].icon.pixmap(object.iconSize(), QIcon.Active, QIcon.On))

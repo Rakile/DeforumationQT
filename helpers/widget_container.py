@@ -12,7 +12,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
                            QTextFrame, QAction, QMouseEvent)
 from PySide6.QtWidgets import (QApplication, QFrame, QDateEdit, QGridLayout, QStackedLayout, QBoxLayout, QHBoxLayout,
                                QVBoxLayout, QLabel, QSlider, QLayout, QMainWindow, QMenuBar, QPushButton, QSizePolicy, QStatusBar,
-                               QTabWidget, QTextEdit, QWidget, QDial, QMenu, QScrollArea, QWidgetAction, QLineEdit, QCheckBox, QProgressBar, QComboBox, QTableView)
+                               QTabWidget, QTextEdit, QWidget, QDial, QMenu, QScrollArea, QWidgetAction, QLineEdit, QCheckBox, QProgressBar, QComboBox, QTableView, QRadioButton)
 from PySide6 import QtGui, QtCore
 
 class widgetContainerClass():
@@ -29,6 +29,7 @@ class widgetContainerClass():
         self.original_widget_name = "Empty"
         self.component_pos = None
         self.component_parent = None
+        self.isActivated = False
     def SetValues(self, object):
         self.widget = object
         self.original_widget_name = object.objectName()
@@ -238,7 +239,7 @@ class Deforumation_Widgets():
                             config[objname] = child.text()
 
     def enumerateWidgets(self, parent, aWidget):
-        moveableTypes = [QFrame, QLabel, QPushButton, QLabel, QSlider, QDateEdit, QDial, QLineEdit, QCheckBox, QTextEdit, QProgressBar, QComboBox, QWidget, QTableView, QScrollArea]
+        moveableTypes = [QFrame, QLabel, QPushButton, QLabel, QSlider, QDateEdit, QDial, QLineEdit, QCheckBox, QTextEdit, QProgressBar, QComboBox, QWidget, QTableView, QScrollArea, QRadioButton]
         #for widget in aWidget.children():
         isIterable = False
         while isIterable == False:
@@ -270,6 +271,7 @@ class Deforumation_Widgets():
                             self.widgetContainer[widget.objectName()].hasBeenProcessed = True
                     elif type(widget) == QSlider:
                         widget.valueChanged.connect(lambda chk=False, item=widget: parent.value_changed_slider(item))
+                        #widget.mouseReleaseEvent.connect(lambda chk=False, item=widget: parent.slider_release_event(item))
                         self.widgetContainer[widget.objectName()].hasBeenProcessed = True
                     if widget.hasTabletTracking():# and "_poppable" in objname:
                         self.componentContainer[widget.objectName()] = widget

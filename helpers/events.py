@@ -60,7 +60,11 @@ def handleEventValueChanged(self, item):
         self.DeforumationControlNets.slider_changed(item)
         #print("CN:"+str(item.value()))
     elif item.objectName().startswith("morph_prompt_slider"):
-        self.DeforumationPrompts.setCurrentMorphPromptWeight(item) #slider_changed(item)
+        #This function only updates the prompt morph slider value (it does not execute anything else until mouse release... See "handleMouseReleaseEvent")
+        self.DeforumationPrompts.setCurrentMorphPromptWeightValueOnly(item) #slider_changed(item)
+    elif item.objectName().startswith("syrup_prompt_morph_slider"):
+        self.DeforumationPrompts.setCurrentPromptMorphSyrupValue(item)
+
     else:
         if self.is_verbose:
             print("<Not implemented yet>, Slider changed:" + str(item.objectName()))
@@ -86,8 +90,13 @@ def handleEventReturnPressed(self):
         if self.is_verbose:
             print("<NOT IMPLEMENTED YET, Pressed return>:" + str(sender.objectName()))
 
+def handleMouseReleaseEvent(self, object, event):
+    if event.type() == QEvent.MouseButtonRelease:
+        if object.objectName().startswith("morph_prompt_slider"):
+            self.DeforumationPrompts.setCurrentMorphPromptWeight(object)
 def handleEvent(self, object, event):
     #This is for restoring icons in a strange way, and should be removed in further release
+    #if object.objectName() == "iter_RadioButton":
     #print("Action:" + str(event.type()) + "    --  Object Name:" + str(object.objectName()))
     #if event.type() == QEvent.ContextMenu:
     #    print("Action!!!:" + str(event.type()) + "    --  Object Name!!!:" + str(object.objectName()))
@@ -96,11 +105,13 @@ def handleEvent(self, object, event):
         # print("Object Name:" + str(object.objectName()))
         if event.type() == QEvent.Enter and type(object) == QPushButton:
             if self.deforumationwidgets.getWidgetContainer()[object.objectName()].icon != None:
-                object.setIcon(self.deforumationwidgets.getWidgetContainer()[object.objectName()].icon.pixmap(object.iconSize(), QIcon.Normal, QIcon.On))
+                if self.deforumationwidgets.getWidgetContainer()[object.objectName()].isActivated == False:
+                    object.setIcon(self.deforumationwidgets.getWidgetContainer()[object.objectName()].icon.pixmap(object.iconSize(), QIcon.Normal, QIcon.On))
                 # print("Icon On:" + str(object.icon))
         elif event.type() == QEvent.Leave and type(object) == QPushButton:
             if self.deforumationwidgets.getWidgetContainer()[object.objectName()].icon != None:
-                object.setIcon(self.deforumationwidgets.getWidgetContainer()[object.objectName()].icon.pixmap(object.iconSize(), QIcon.Normal, QIcon.Off))
+                if self.deforumationwidgets.getWidgetContainer()[object.objectName()].isActivated == False:
+                    object.setIcon(self.deforumationwidgets.getWidgetContainer()[object.objectName()].icon.pixmap(object.iconSize(), QIcon.Normal, QIcon.Off))
                 # print("Icon Off:" + str(object.icon))
         # self.ui.cookie_button.setIcon(QPixmap(u"images/pan_right_on.png"))
 
@@ -112,7 +123,8 @@ def handleEvent(self, object, event):
     handleMouseButtonRelease(self, object, event)
     #Handle context menu (popup menu)
     handleContextMenu(self, object, event)
-
+    #Handle Mouse Release event
+    handleMouseReleaseEvent(self, object, event)
 
 def handleContextMenu(self, object, event):
     if (object.objectName().startswith("prompt1") or object.objectName().startswith("prompt2") or object.objectName().startswith("negative_prompt")) and event.type() == QEvent.MouseButtonPress:
@@ -657,10 +669,18 @@ def handleMouseButtonRelease(self, object, event):
                         self.DeforumationPrompts.set_prompt_morph_type(sender)
                 elif sender.objectName().startswith("morph_prompt_checkbox_on_off"):
                     self.DeforumationPrompts.set_prompt_morph_on_off(sender)
+                elif sender.objectName().startswith("morph_prompt_smooth_motion_enabled_checkbox"):
+                    self.DeforumationPrompts.set_prompt_morph_smooth_motion_on_off(sender)
                 elif sender.objectName().startswith("save_morph_data"):
                     self.DeforumationPrompts.savePromptMorphingToFile()
                 elif sender.objectName().startswith("load_morph_data"):
                     self.DeforumationPrompts.loadPromptMorphingFromFile()
+                elif sender.objectName().startswith("update_seed_button") or sender.objectName().startswith("update_seed_iter_n_button"):
+                    self.DeforumationMotions.setSeedAndScheme(event, sender)
+                elif sender.objectName().startswith("iter_RadioButton") or sender.objectName().startswith("fixed_RadioButton") or sender.objectName().startswith("random_RadioButton") or sender.objectName().startswith("ladder_RadioButton") or sender.objectName().startswith("alternate_RadioButton") or sender.objectName().startswith("scheduled_RadioButton"):
+                    self.DeforumationMotions.setSeedAndScheme(event, sender)
+                elif sender.objectName().startswith("loop_button"):
+                    self.DeforumationMotions.toggleLoopBack(event, sender)
                 else:
                     if self.is_verbose:
                         print("<Not implemented yet>, Button clicked:" + str(object.objectName()))

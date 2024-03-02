@@ -44,6 +44,7 @@ class Deforumation_Live_Values():
         else:
             total_recall_frame = self.DeforumationTotalRecall.getCurrentTotalRecallFrame(totalRecallFrame)
         if total_recall_frame != 0:
+
             #motion_is_active = int(self.deforumationnamedpipes.readValue("start_zero_pan_motion_x"))
             self.setImage(self.parent.ui.panx_l, self.parent.ui.panx_r, round(float(self.parent.ui.panning_x_live_value.text()),2), round(float(total_recall_frame.deforum_translation_x),2), "./images/value_declining_off.png", "./images/value_declining_on.png", "./images/value_rising_off.png", "./images/value_rising_on.png", total_recall_frame.start_zero_pan_motion_x)
             self.parent.ui.panning_x_live_value.setText(str('%.2f' % total_recall_frame.deforum_translation_x))
@@ -71,6 +72,11 @@ class Deforumation_Live_Values():
             self.parent.ui.cfg_live_value.setText(str(total_recall_frame.deforum_cfg))
             self.parent.ui.cadence_live_value.setText(str(total_recall_frame.deforum_cadence))
             self.parent.ui.noise_multiplier_live.setText(str(total_recall_frame.deforum_noise_multiplier))
+            self.parent.ui.seed_live_value.setText(str(total_recall_frame.seed_value))
+
+            #print(str( total_recall_frame.seed_value))
+
+
 
             self.deforumationtools.propagateAllComponents(self.parent.ui.panning_x_live_value, str('%.2f' % total_recall_frame.deforum_translation_x))
             self.deforumationtools.propagateAllComponents(self.parent.ui.panning_y_live_value, str('%.2f' % total_recall_frame.deforum_translation_y))
@@ -84,6 +90,7 @@ class Deforumation_Live_Values():
             self.deforumationtools.propagateAllComponents(self.parent.ui.cfg_live_value, str(total_recall_frame.deforum_cfg))
             self.deforumationtools.propagateAllComponents(self.parent.ui.cadence_live_value, str(total_recall_frame.deforum_cadence))
             self.deforumationtools.propagateAllComponents(self.parent.ui.noise_multiplier_live, str(total_recall_frame.deforum_noise_multiplier))
+            self.deforumationtools.propagateAllComponents(self.parent.ui.seed_live_value, str(total_recall_frame.seed_value))
 
 
             """self.parent.ui.strength_slider_value.setText(str(total_recall_frame.deforum_strength))

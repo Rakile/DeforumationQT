@@ -5,6 +5,7 @@ received packets.
 """
 import argparse
 import math
+from typing import List, Any
 
 from PySide6.QtCore import Slot, QMetaObject, Q_ARG
 from PySide6.QtGui import Qt
@@ -55,9 +56,13 @@ class Deforumation_OSC():
     self.dispatcher.map("/Cadence", self.live_param_handler, "Cadence")
     self.dispatcher.map("/Noise_Multiplier", self.live_param_handler, "Noise_Multiplier")
 
+    self.dispatcher.map("/Prompt_Morph", self.prompt_morph_handler)
+
+
     self.server = osc_server.ThreadingOSCUDPServer((self.ip, self.port), self.dispatcher)
     print("Starting DeforumationQT OSC server on {}".format(self.server.server_address))
     self.server.serve_forever()
+
 
   def stopServer(self):
     if not self.server == None:
@@ -69,6 +74,14 @@ class Deforumation_OSC():
     QMetaObject.invokeMethod(self.parent, "handler", Qt.QueuedConnection, Q_ARG("QVariantList", args), Q_ARG("QString", str(value)))
 
 
+  def prompt_morph_handler(self, address: str, *args: List[Any]):
+    if len(args) == 2:
+      print(str(args))
+      QMetaObject.invokeMethod(self.parent, "handler_prompt_morph", Qt.QueuedConnection, Q_ARG("QVariantList", args))
+
+    # if self.previous_tilt_value != value:
+    #  self.previous_tilt_value = value
+      #QMetaObject.invokeMethod(self.parent, "handler", Qt.QueuedConnection, Q_ARG("QVariantList", args), Q_ARG("QString", str(value)))
   def tilt_handler(self, unused_addr, args, value):
     if self.previous_tilt_value != value:
       self.previous_tilt_value = value
