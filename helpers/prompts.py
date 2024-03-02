@@ -992,5 +992,6 @@ class Deforumation_Prompts():
                 self.deforumation_tools.propagateAllComponents(self.prompt_morphing_container[morph].morph_prompt_value, str('%.2f' % float(weight)))
                 self.prompt_morphing_container[morph].morph_prompt_slider.setValue(int(float(weight) * 100))
                 #self.savePromptMorphFrameToConfig(self.prompt_morphing_container[morph])
+                self.setCurrentMorphPromptWeight(self.prompt_morphing_container[morph].morph_prompt_slider)
                 self.saveCurrentPrompt()
                 break
