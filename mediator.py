@@ -1,3 +1,4 @@
+import re
 import sys
 import asyncio
 import copy
@@ -49,7 +50,9 @@ number_of_generated_images = 0
 frame_outdir = ""
 resume_timestring = ""
 seed_value = -1
+seed_iter_n = 1
 did_seed_change = 0
+seed_behavior = "iter"
 should_use_deforumation_prompt_scheduling = 1
 should_use_before_deforum_prompt = 0
 should_use_after_deforum_prompt = 0
@@ -182,7 +185,15 @@ positive_prompt_1 = ""
 positive_prompt_2 = ""
 negative_prompt_1 = ""
 
+deforumation_prompt_morph_container = {}
+prepare_prompt_morph_motion_container = {}
+start_prompt_morph_motion_container = {}
+prepare_prompt_morph_motion_start_container = {}
+prompt_morphing_container = {}
+current_prompt_morph_progressions = []
+
 deforum_interrupted = 0
+render_loopback = 0
 ShouldBeRunning = True
 
 def RecallValues(frame):
@@ -624,6 +635,7 @@ def doSyrup():
     global start_zero_rotate_motion_y
     global start_zero_rotate_motion_z
     global start_zero_pan_motion_z
+
     global frame_idx
     global translation_x
     global translation_y
@@ -632,100 +644,211 @@ def doSyrup():
     global rotation_z
     global translation_z
 
+    global start_prompt_morph_motion_container
+    global deforumation_prompt_morph_container
+    global current_prompt_morph_progressions
+
     # ZERO PAN X
     if len(prepared_zero_pan_motion_x) > 0:
         if start_zero_pan_motion_x == 1 and (frame_idx < (prepared_zero_pan_motion_x_start + len(prepared_zero_pan_motion_x))):
             if (frame_idx >= prepared_zero_pan_motion_x_start):
                 motionIndex = frame_idx - prepared_zero_pan_motion_x_start
-                print("Using Zero PanX at frame " + str(frame_idx))
-                print("Which is step " + str(motionIndex + 1) + " in pan motions out of " + str(len(prepared_zero_pan_motion_x)))
-                print("prepared_motion value is:" + str(prepared_zero_pan_motion_x[motionIndex]))
+                if doVerbose:
+                    print("Using Zero PanX at frame " + str(frame_idx))
+                    print("Which is step " + str(motionIndex + 1) + " in pan motions out of " + str(len(prepared_zero_pan_motion_x)))
+                    print("prepared_motion value is:" + str(prepared_zero_pan_motion_x[motionIndex]))
                 translation_x = float(prepared_zero_pan_motion_x[motionIndex])
         elif start_zero_pan_motion_x == 1:
             start_zero_pan_motion_x = -1
-            print("0-Pan_X complete")
+            if doVerbose:
+                print("0-Pan_X complete")
         elif start_zero_pan_motion_x == -2:
             start_zero_pan_motion_x = -1
-            print("0-Pan_X complete")
+            if doVerbose:
+                print("0-Pan_X complete")
 
     # ZERO PAN Y
     if len(prepared_zero_pan_motion_y) > 0:
         if start_zero_pan_motion_y == 1 and (frame_idx < (prepared_zero_pan_motion_y_start + len(prepared_zero_pan_motion_y))):
             if (frame_idx >= prepared_zero_pan_motion_y_start):
                 motionIndex = frame_idx - prepared_zero_pan_motion_y_start
-                print("Using Zero PanY at frame " + str(frame_idx))
-                print("Which is step " + str(motionIndex + 1) + " in pan motions out of " + str(len(prepared_zero_pan_motion_y)))
-                print("prepared_motion value is:" + str(prepared_zero_pan_motion_y[motionIndex]))
+                if doVerbose:
+                    print("Using Zero PanY at frame " + str(frame_idx))
+                    print("Which is step " + str(motionIndex + 1) + " in pan motions out of " + str(len(prepared_zero_pan_motion_y)))
+                    print("prepared_motion value is:" + str(prepared_zero_pan_motion_y[motionIndex]))
                 translation_y = float(prepared_zero_pan_motion_y[motionIndex])
         elif start_zero_pan_motion_y == 1:
             start_zero_pan_motion_y = -1
-            print("0-Pan_Y complete")
+            if doVerbose:
+                print("0-Pan_Y complete")
         elif start_zero_pan_motion_y == -2:
             start_zero_pan_motion_y = -1
-            print("0-Pan_Y complete")
+            if doVerbose:
+                print("0-Pan_Y complete")
     # ZERO ROTATION X
     if len(prepared_zero_rotate_motion_x) > 0:
         if start_zero_rotate_motion_x == 1 and (frame_idx < (prepared_zero_rotate_motion_x_start + len(prepared_zero_rotate_motion_x))):
             if (frame_idx >= prepared_zero_rotate_motion_x_start):
                 motionIndex = frame_idx - prepared_zero_rotate_motion_x_start
-                print("Using Zero RotateX at frame " + str(frame_idx))
-                print("Which is step " + str(motionIndex + 1) + " in pan motions out of " + str(len(prepared_zero_rotate_motion_x)))
-                print("prepared_motion value is:" + str(prepared_zero_rotate_motion_x[motionIndex]))
+                if doVerbose:
+                    print("Using Zero RotateX at frame " + str(frame_idx))
+                    print("Which is step " + str(motionIndex + 1) + " in pan motions out of " + str(len(prepared_zero_rotate_motion_x)))
+                    print("prepared_motion value is:" + str(prepared_zero_rotate_motion_x[motionIndex]))
                 rotation_x = float(prepared_zero_rotate_motion_x[motionIndex])
         elif start_zero_rotate_motion_x == 1:
             start_zero_rotate_motion_x = -1
-            print("0-Rotate_X complete")
+            if doVerbose:
+                print("0-Rotate_X complete")
         elif start_zero_rotate_motion_x == -2:
             start_zero_rotate_motion_x = -1
-            print("0-Rotate_X complete")
+            if doVerbose:
+                print("0-Rotate_X complete")
 
     # ZERO ROTATION Y
     if len(prepared_zero_rotate_motion_y) > 0:
         if start_zero_rotate_motion_y == 1 and (frame_idx < (prepared_zero_rotate_motion_y_start + len(prepared_zero_rotate_motion_y))):
             if (frame_idx >= prepared_zero_rotate_motion_y_start):
                 motionIndex = frame_idx - prepared_zero_rotate_motion_y_start
-                print("Using Zero RotateY at frame " + str(frame_idx))
-                print("Which is step " + str(motionIndex + 1) + " in pan motions out of " + str(len(prepared_zero_rotate_motion_y)))
-                print("prepared_motion value is:" + str(prepared_zero_rotate_motion_y[motionIndex]))
+                if doVerbose:
+                    print("Using Zero RotateY at frame " + str(frame_idx))
+                    print("Which is step " + str(motionIndex + 1) + " in pan motions out of " + str(len(prepared_zero_rotate_motion_y)))
+                    print("prepared_motion value is:" + str(prepared_zero_rotate_motion_y[motionIndex]))
                 rotation_y = float(prepared_zero_rotate_motion_y[motionIndex])
         elif start_zero_rotate_motion_y == 1:
             start_zero_rotate_motion_y = -1
-            print("0-Rotate_Y complete")
+            if doVerbose:
+                print("0-Rotate_Y complete")
         elif start_zero_rotate_motion_y == -2:
             start_zero_rotate_motion_y = -1
-            print("0-Rotate_Y complete")
+            if doVerbose:
+                print("0-Rotate_Y complete")
 
     # ZERO ROTATION Z
     if len(prepared_zero_rotate_motion_z) > 0:
         if start_zero_rotate_motion_z == 1 and (frame_idx < (prepared_zero_rotate_motion_z_start + len(prepared_zero_rotate_motion_z))):
             if (frame_idx >= prepared_zero_rotate_motion_z_start):
                 motionIndex = frame_idx - prepared_zero_rotate_motion_z_start
-                print("Using Zero Rotate> at frame " + str(frame_idx))
-                print("Which is step " + str(motionIndex + 1) + " in pan motions out of " + str(len(prepared_zero_rotate_motion_z)))
-                print("prepared_motion value is:" + str(prepared_zero_rotate_motion_z[motionIndex]))
+                if doVerbose:
+                    print("Using Zero Rotate> at frame " + str(frame_idx))
+                    print("Which is step " + str(motionIndex + 1) + " in pan motions out of " + str(len(prepared_zero_rotate_motion_z)))
+                    print("prepared_motion value is:" + str(prepared_zero_rotate_motion_z[motionIndex]))
                 rotation_z = float(prepared_zero_rotate_motion_z[motionIndex])
         elif start_zero_rotate_motion_z == 1:
             start_zero_rotate_motion_z = -1
-            print("0-Rotate_Z complete")
+            if doVerbose:
+                print("0-Rotate_Z complete")
         elif start_zero_rotate_motion_z == -2:
             start_zero_rotate_motion_z = -1
-            print("0-Rotate_Z complete")
+            if doVerbose:
+                print("0-Rotate_Z complete")
 
     # ZERO ZOOM
     if len(prepared_zero_pan_motion_z) > 0:
         if start_zero_pan_motion_z == 1 and (frame_idx < (prepared_zero_pan_motion_z_start + len(prepared_zero_pan_motion_z))):
             if (frame_idx >= prepared_zero_pan_motion_z_start):
                 motionIndex = frame_idx - prepared_zero_pan_motion_z_start
-                print("Using Zero Zoom at frame " + str(frame_idx))
-                print("Which is step " + str(motionIndex + 1) + " in pan motions out of " + str(len(prepared_zero_pan_motion_z)))
-                print("prepared_motion value is:" + str(prepared_zero_pan_motion_z[motionIndex]))
+                if doVerbose:
+                    print("Using Zero Zoom at frame " + str(frame_idx))
+                    print("Which is step " + str(motionIndex + 1) + " in pan motions out of " + str(len(prepared_zero_pan_motion_z)))
+                    print("prepared_motion value is:" + str(prepared_zero_pan_motion_z[motionIndex]))
                 translation_z = float(prepared_zero_pan_motion_z[motionIndex])
         elif start_zero_pan_motion_z == 1:
             start_zero_pan_motion_z = -1
-            print("0-Zoom complete")
+            if doVerbose:
+                print("0-Zoom complete")
         elif start_zero_pan_motion_z == -2:
             start_zero_pan_motion_z = -1
-            print("0-Zoom complete")
+            if doVerbose:
+                print("0-Zoom complete")
+
+    # ZERO PROMPT MORPH
+    current_prompt_morph_progressions = []
+    for morphs in prepare_prompt_morph_motion_container:
+        prepare_prompt_morph_motion_start_value = prepare_prompt_morph_motion_start_container[morphs]
+        if len(prepare_prompt_morph_motion_container[morphs]) > 0:
+            if start_prompt_morph_motion_container[morphs] == 1 and (frame_idx < (prepare_prompt_morph_motion_start_value + len(prepare_prompt_morph_motion_container[morphs]))):
+                if (frame_idx >= prepare_prompt_morph_motion_start_value):
+                    motionIndex = frame_idx - prepare_prompt_morph_motion_start_value
+                    if doVerbose:
+                        print("Using Prompt Morph ("+str(morphs)+") syrup at frame " + str(frame_idx))
+                        print("Which is step " + str(motionIndex + 1) + " in syrup motion out of " + str(len(prepare_prompt_morph_motion_container[morphs])))
+                        print("prepared_motion value for ("+str(morphs)+") is:" + str(prepare_prompt_morph_motion_container[morphs][motionIndex]))
+                    deforumation_prompt_morph_container[morphs] = float(prepare_prompt_morph_motion_container[morphs][motionIndex])
+                    #Prepare the progress status array
+                    current_step_progress = motionIndex #frame_idx - prepare_prompt_morph_motion_start_container[morphs]  # prepared_zero_pan_motion_z_start
+                    current_total_steps = len(prepare_prompt_morph_motion_container[morphs])  # len(prepared_zero_pan_motion_z)
+                    current_prompt_morph_progressions.append((morphs, current_step_progress, current_total_steps, deforumation_prompt_morph_container[morphs]))
+
+            elif start_prompt_morph_motion_container[morphs] == 1:
+                start_prompt_morph_motion_container[morphs] = -1
+                if doVerbose:
+                    print("0-morph motion "+str(morphs)+" complete")
+            elif start_prompt_morph_motion_container[morphs] == -2:
+                start_prompt_morph_motion_container[morphs] = -1
+                if doVerbose:
+                    print("0-morph motion "+str(morphs)+" complete")
+
+
+
+def replace_with_prompt_morph_bindings(promptItem):
+    #prompt_morphing_container contains the array [promptA, promptB, isPromptBlending, is_enabled, current_value]
+    modified_prompt = promptItem
+    for morphFrame in prompt_morphing_container:#prepare_prompt_morph_motion_container:
+        is_enabled = prompt_morphing_container[morphFrame][3] #not self.prompt_morphing_container[morphFrame].morph_prompt_enabled
+        if not is_enabled:
+            continue
+        binding = morphFrame #self.prompt_morphing_container[morphFrame].morph_prompt_binding.text()
+        #print("Binding:" + str(binding))
+        if binding == "":
+            continue
+        if prompt_morphing_container[morphFrame][2]: #.isPromptBlending:
+            promptA = prompt_morphing_container[morphFrame][0] #.morph_promptA.text()
+            promptB = prompt_morphing_container[morphFrame][1] #.morph_promptB.text()
+            shouldContinue = True
+            if promptA == "":
+                #print("No promptA found for morphFrame " + "{{" + str(binding) + "}}")
+                shouldContinue = False
+            if promptB == "":
+                #print("No promptB found for morphFrame " + "{{" + str(binding) + "}}")
+                shouldContinue = False
+            if shouldContinue == False:
+                modified_prompt = modified_prompt.replace("{{" + binding + "}}", "")
+                #print("Modified text:" + str(modified_prompt))
+                continue
+            #motionIndex = frame_idx - prepare_prompt_morph_motion_start_container[morphFrame]
+            #prepare_prompt_morph_motion_container[morphFrame][motionIndex]
+            if morphFrame in deforumation_prompt_morph_container:
+                prompt_value = deforumation_prompt_morph_container[morphFrame] #self.prompt_morphing_container[morphFrame].morph_prompt_value.text()
+            else:
+                prompt_value = prompt_morphing_container[morphFrame][4]
+                deforumation_prompt_morph_container[morphFrame] = prompt_value
+            substituedText = "[" + promptB + ":" + promptA + ":" + str(prompt_value) + "]"
+            #print("Substituting {{" + str(binding) + "}}, with " + str(substituedText))
+        else:
+            promptA = prompt_morphing_container[morphFrame][0] #.morph_promptA.text()
+            if promptA == "":
+                #print("No promptA found for morphFrame " + "{{" + str(binding) + "}}")
+                modified_prompt = modified_prompt.replace("{{" + binding + "}}", "")
+                #print("Modified text:" + str(modified_prompt))
+                continue
+            if morphFrame in deforumation_prompt_morph_container:
+                prompt_value = deforumation_prompt_morph_container[morphFrame] #prompt_morphing_container[morphFrame].morph_prompt_value.text()
+            else:
+                prompt_value = prompt_morphing_container[morphFrame][4]
+                deforumation_prompt_morph_container[morphFrame] = prompt_value
+            substituedText = "(" + promptA + ":" + str(prompt_value) + ")"
+            #print("Substituting {{" + str(binding) + "}}, with " + str(substituedText))
+
+
+        #print("Original text:" + promptItem)
+        modified_prompt = modified_prompt.replace("{{" + binding + "}}", substituedText)
+        #print("Modified text:" + str(modified_prompt))
+
+    #pattern = re.escape("\{\{.*\}\}")
+    match = re.findall(r'\{\{(.*?)\}\}',modified_prompt) #re.search(pattern, modified_prompt)
+    for matchings in match:
+        modified_prompt = modified_prompt.replace("{{" + matchings + "}}", "")
+    return modified_prompt
 
 async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunication = None):
     global serverShutDown
@@ -862,6 +985,15 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
     global positive_prompt_2
     global negative_prompt_1
     global ShouldBeRunning
+    global deforumation_prompt_morph_container
+    global prepare_prompt_morph_motion_container
+    global start_prompt_morph_motion_container
+    global prepare_prompt_morph_motion_start_container
+    global prompt_morphing_container
+    global current_prompt_morph_progressions
+    global seed_behavior
+    global seed_iter_n
+    global render_loopback
 
     totalToSend = []
 
@@ -1240,14 +1372,18 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
             else:
                 if doVerbose:
                     print("positive_prompt:" + str(Prompt_Positive))
-                totalToSend.append((str(Prompt_Positive)))
+                modified_prompt = replace_with_prompt_morph_bindings(str(Prompt_Positive))
+                totalToSend.append((str(modified_prompt)))
+                #totalToSend.append((str(Prompt_Positive)))
         elif str(parameter) == "negative_prompt":
             if shouldWrite:
                 Prompt_Negative = value
             else:
                 if doVerbose:
                     print("negative_prompt:" + str(Prompt_Negative))
-                totalToSend.append((str(Prompt_Negative)))
+                modified_prompt = replace_with_prompt_morph_bindings(str(Prompt_Negative))
+                totalToSend.append((str(modified_prompt)))
+                #totalToSend.append((str(Prompt_Negative)))
         elif str(parameter) == "positive_prompt_mixed":
             if shouldWrite:
                 positive_prompt_mixed = value
@@ -1448,6 +1584,22 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
                 if doVerbose:
                     print("sending deforum_strength:" + str(deforum_strength))
                 totalToSend.append((str(deforum_strength)))
+        #Prompt Morph Values
+        elif str(parameter).startswith("deforumation_prompt_morph_value_binding_"):
+            bind_name = parameter[len("deforumation_prompt_morph_value_binding_"):]
+            if shouldWrite:
+                #deforum_translation_z = float(value)
+                deforumation_prompt_morph_container[bind_name] = float(value)
+            else:
+                if doVerbose:
+                    print("sending deforumation_prompt_morph_container:")
+                # totalToSend.append((str(deforum_translation_z)))
+                if bind_name in deforumation_prompt_morph_container:
+                    totalToSend.append((str(deforumation_prompt_morph_container[bind_name])))
+                else:
+                    totalToSend.append(("NONE"))
+                #totalToSend.append(str(deforum_translation_z))
+
         # ControlNet Weight Params
         ###########################################################################
         elif str(parameter).startswith("cn_weight"):
@@ -1519,11 +1671,25 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
                 if doVerbose:
                     print("sending SEED:" + str(seed_value))
                 totalToSend.append((str(seed_value)))
+        elif str(parameter) == "seed_iter_n":
+            if shouldWrite:
+                seed_iter_n = int(value)
+            else:
+                if doVerbose:
+                    print("sending seed_iter_n:" + str(seed_iter_n))
+                totalToSend.append((str(seed_iter_n)))
         elif str(parameter) == "seed_changed":
             if shouldWrite:
                 did_seed_change = int(value)
             else:
                 totalToSend.append((str(did_seed_change)))
+        elif str(parameter) == "seed_behavior":
+            if shouldWrite:
+                seed_behavior = str(value)
+            else:
+                if doVerbose:
+                    print("sending seed behavior:" + str(seed_behavior))
+                totalToSend.append((str(seed_behavior)))
 
         # Perlin persistence Param
         ###########################################################################
@@ -1668,40 +1834,109 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
         elif str(parameter) == "get_number_of_recalled_frames":
             totalToSend.append((str(number_of_recalled_frames)))
 
+
+        elif str(parameter).startswith("deforumation_prompt_morph_remove_"):
+            bind_name = parameter[len("deforumation_prompt_morph_remove_"):]
+            if shouldWrite:
+                if bind_name in prepare_prompt_morph_motion_container:
+                    del prepare_prompt_morph_motion_container[bind_name]
+                if bind_name in prompt_morphing_container:
+                    del prompt_morphing_container[bind_name]
+                if bind_name in start_prompt_morph_motion_container:
+                    del start_prompt_morph_motion_container[bind_name]
+                if bind_name in prepare_prompt_morph_motion_start_container:
+                    del prepare_prompt_morph_motion_start_container[bind_name]
+                if bind_name in deforumation_prompt_morph_container:
+                    del deforumation_prompt_morph_container[bind_name]
+
+                print(str("deleting prepare_prompt_morph_motion_container:" + str(bind_name)))
+            else:
+                print("deforumation_prompt_morph_remove_???")
+        elif str(parameter).startswith("remove_all_deforumation_prompt_morph"):
+            if shouldWrite:
+                deforumation_prompt_morph_container = {}
+                prepare_prompt_morph_motion_container = {}
+                start_prompt_morph_motion_container = {}
+                prepare_prompt_morph_motion_start_container = {}
+                prompt_morphing_container = {}
+                current_prompt_morph_progressions = []
+                if doVerbose:
+                    print(str("deleting all prepare_prompt_morph_motion_containers:"))
+            else:
+                print("deforumation_prompt_morph_remove_???")
+        #Prepare prompt morph syrup motion
+        elif str(parameter).startswith("prepare_prompt_morph_motion_"):
+            bind_name = parameter[len("prepare_prompt_morph_motion_"):]
+            if shouldWrite:
+                prepare_prompt_morph_motion_container[bind_name] = value
+                print(str("prepared prompt motion:" + str(parameter)))
+            else:
+                print("prepare_prompt_morph_motion_???")
+        elif str(parameter).startswith("set_prompt_morph_values_"):
+            bind_name = parameter[len("set_prompt_morph_values_"):]
+            if shouldWrite:
+                #[promptA, promptB, None, None, None]
+                if bind_name in prompt_morphing_container and value[2] == None and value[3] == None and value[4] == None:
+                    print("Only writing new promptValues")
+                    temp_val = prompt_morphing_container[bind_name]
+                    temp_val[0] = value[0]
+                    temp_val[1] = value[1]
+                    prompt_morphing_container[bind_name] = temp_val
+                else:
+                    prompt_morphing_container[bind_name] = value
+                    if bind_name in deforumation_prompt_morph_container:
+                        deforumation_prompt_morph_container[bind_name] = float(value[4])
+                        #print("Overriding deforumation_prompt_morph_container[bind_name]")
+                #print(str("prepared prompt motion container(" + str(bind_name) + "):" + str(value)))
+            else:
+                print("set_prompt_morph_values_???")
+
+        elif str(parameter).startswith("start_prompt_morph_motion_"):
+            bind_name = parameter[len("start_prompt_morph_motion_"):]
+            if shouldWrite:
+                start_prompt_morph_motion_container[bind_name] = int(value)
+                if start_prompt_morph_motion_container[bind_name] == 1:
+                    prepare_prompt_morph_motion_start_container[bind_name] = start_frame
+                    start_motion = 0
+                    #print("Prepare rotate motion z from frame: " + str(start_frame))
+            else:
+                totalToSend.append((str(start_zero_rotate_motion_z)))
+
+
         elif str(parameter) == "prepare_zero_pan_motion_x":
             if shouldWrite:
                 prepared_zero_pan_motion_x = value
-                print(str(prepared_zero_pan_motion_x))
+                #print(str(prepared_zero_pan_motion_x))
             else:
                 print("prepare_zero_pan_motion_x")
         elif str(parameter) == "prepare_zero_pan_motion_y":
             if shouldWrite:
                 prepared_zero_pan_motion_y = value
-                print(str(prepared_zero_pan_motion_y))
+                #print(str(prepared_zero_pan_motion_y))
             else:
                 print("prepare_zero_pan_motion_y")
         elif str(parameter) == "prepare_zero_rotate_motion_x":
             if shouldWrite:
                 prepared_zero_rotate_motion_x = value
-                print(str(prepared_zero_rotate_motion_x))
+                #print(str(prepared_zero_rotate_motion_x))
             else:
                 print("prepare_zero_rotate_motion_x")
         elif str(parameter) == "prepare_zero_rotate_motion_y":
             if shouldWrite:
                 prepared_zero_rotate_motion_y = value
-                print(str(prepared_zero_rotate_motion_y))
+                #print(str(prepared_zero_rotate_motion_y))
             else:
                 print("prepare_zero_rotate_motion_y")
         elif str(parameter) == "prepare_zero_rotate_motion_z":
             if shouldWrite:
                 prepared_zero_rotate_motion_z = value
-                print(str(prepared_zero_rotate_motion_z))
+                #print(str(prepared_zero_rotate_motion_z))
             else:
                 print("prepare_zero_rotate_motion_z")
         elif str(parameter) == "prepare_zero_pan_motion_z":
             if shouldWrite:
                 prepared_zero_pan_motion_z = value
-                print(str(prepared_zero_pan_motion_z))
+                #print(str(prepared_zero_pan_motion_z))
             else:
                 print("prepare_zero_pan_motion_z")
 
@@ -1741,7 +1976,7 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
                 if start_zero_pan_motion_x == 1:
                     prepared_zero_pan_motion_x_start = start_frame
                     start_motion = 0
-                    print("Prepare pan motion x from frame: " + str(start_frame))
+                    #print("Prepare pan motion x from frame: " + str(start_frame))
             else:
                 totalToSend.append((str(start_zero_pan_motion_x)))
         elif str(parameter) == "start_zero_pan_motion_y":
@@ -1750,7 +1985,7 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
                 if start_zero_pan_motion_y == 1:
                     prepared_zero_pan_motion_y_start = start_frame
                     start_motion = 0
-                    print("Prepare pan motion y from frame: " + str(start_frame))
+                    #print("Prepare pan motion y from frame: " + str(start_frame))
             else:
                 totalToSend.append((str(start_zero_pan_motion_y)))
         elif str(parameter) == "start_zero_rotate_motion_x":
@@ -1759,7 +1994,7 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
                 if start_zero_rotate_motion_x == 1:
                     prepared_zero_rotate_motion_x_start = start_frame
                     start_motion = 0
-                    print("Prepare rotate motion x from frame: " + str(start_frame))
+                    #print("Prepare rotate motion x from frame: " + str(start_frame))
             else:
                 totalToSend.append((str(start_zero_rotate_motion_x)))
         elif str(parameter) == "start_zero_rotate_motion_y":
@@ -1768,7 +2003,7 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
                 if start_zero_rotate_motion_y == 1:
                     prepared_zero_rotate_motion_y_start = start_frame
                     start_motion = 0
-                    print("Prepare rotate motion y from frame: " + str(start_frame))
+                    #print("Prepare rotate motion y from frame: " + str(start_frame))
             else:
                 totalToSend.append((str(start_zero_rotate_motion_y)))
         elif str(parameter) == "start_zero_rotate_motion_z":
@@ -1777,7 +2012,7 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
                 if start_zero_rotate_motion_z == 1:
                     prepared_zero_rotate_motion_z_start = start_frame
                     start_motion = 0
-                    print("Prepare rotate motion z from frame: " + str(start_frame))
+                    #print("Prepare rotate motion z from frame: " + str(start_frame))
             else:
                 totalToSend.append((str(start_zero_rotate_motion_z)))
         elif str(parameter) == "start_zero_pan_motion_z":
@@ -1786,7 +2021,7 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
                 if start_zero_pan_motion_z == 1:
                     prepared_zero_pan_motion_z_start = start_frame
                     start_motion = 0
-                    print("Prepare pan motion z from frame: " + str(start_frame))
+                    #print("Prepare pan motion z from frame: " + str(start_frame))
             else:
                 totalToSend.append((str(start_zero_pan_motion_z)))
         elif str(parameter) == "start_zero_pan_motion":
@@ -1795,7 +2030,7 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
                 if start_zero_pan_motion == 1:
                     prepared_zero_pan_motion_start = start_frame
                     start_motion = 0
-                    print("Prepare pan motion from frame: " + str(start_frame))
+                    #print("Prepare pan motion from frame: " + str(start_frame))
             else:
                 totalToSend.append((str(start_zero_pan_motion)))
         elif str(parameter) == "start_zero_zoom_motion":
@@ -1804,7 +2039,7 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
                 if start_zero_zoom_motion == 1:
                     prepared_zero_zoom_motion_start = start_frame
                     start_motion = 0
-                    print("Prepare zoom motion from frame: " + str(start_frame))
+                    #print("Prepare zoom motion from frame: " + str(start_frame))
             else:
                 totalToSend.append((str(start_zero_zoom_motion)))
         elif str(parameter) == "start_zero_rotation_motion":
@@ -1813,7 +2048,7 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
                 if start_zero_rotation_motion == 1:
                     prepared_zero_rotation_motion_start = start_frame
                     start_motion = 0
-                    print("Prepare rotation motion from frame: " + str(start_frame))
+                    #print("Prepare rotation motion from frame: " + str(start_frame))
             else:
                 totalToSend.append((str(start_zero_rotation_motion)))
         elif str(parameter) == "start_zero_tilt_motion":
@@ -1822,7 +2057,7 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
                 if start_zero_tilt_motion == 1:
                     prepared_zero_tilt_motion_start = start_frame
                     start_motion = 0
-                    print("Prepare tilt motion from frame: " + str(start_frame))
+                    #print("Prepare tilt motion from frame: " + str(start_frame))
             else:
                 totalToSend.append((str(start_zero_tilt_motion)))
         elif str(parameter) == "start_motion":
@@ -1834,7 +2069,7 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
                     start_zero_rotation_motion = 0
                     start_zero_tilt_motion = 0
                     prepared_motion_start = start_frame
-                    print("Prepare motion from frame: " + str(start_frame))
+                    #print("Prepare motion from frame: " + str(start_frame))
             else:
                 totalToSend.append((str(start_motion)))
         elif str(parameter) == "saved_frame_params":
@@ -1970,6 +2205,13 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
                 totalToSend.append((current_step_progress, current_total_steps))
                 if doVerbose2:
                     print("sending syrup_steps_pan_z:" + str((current_step_progress, current_total_steps)))
+        elif str(parameter) == "syrup_steps_prompt_morph_motions":
+            if shouldWrite:
+                pass
+            else:
+                totalToSend.append((current_prompt_morph_progressions))
+                if doVerbose2:
+                    print("sending syrup_steps_prompt_morph_motions:" + str(current_prompt_morph_progressions))
         elif str(parameter) == "start_frame":
             if shouldWrite:
                 start_frame = int(value)
@@ -2070,7 +2312,13 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
                 if doVerbose2:
                     print("sending should_use_deforumation_cadence:" + str(should_use_deforumation_cadence))
                 totalToSend.append((str(should_use_deforumation_cadence)))
-
+        elif str(parameter) == "render_loopback":
+            if shouldWrite:
+                render_loopback = str(value)
+            else:
+                if doVerbose2:
+                    print("sending render_loopback:" + str(render_loopback))
+                totalToSend.append((str(render_loopback)))
         # What Deforum thinks the cadence Value is
         ###########################################################################
         elif str(parameter) == "deforum_cadence":
@@ -2338,14 +2586,14 @@ if __name__ == '__main__':
         if isWindows:
             import win32pipe, win32file, pywintypes
             shouldUseNamedPipes = True
-            print("Starting Mediator with Named Pipes communication, version 0.8.0")
+            print("Starting DMQT Mediator with Named Pipes communication, version 0.1.5")
         else:
             shouldUseNamedPipes = False
-            print("Named Pipes communication is only supported on Windows OS... exiting..")
+            print("Named DMQT Pipes communication is only supported on Windows OS, version 0.1.5... exiting..")
             exit(0)
     else:
         shouldUseNamedPipes = False
-        print("Starting Mediator with WebSocket communication, listening for Deforum at " + args.mediator_deforum_address + ":" + args.mediator_deforum_port + ", version 0.7.7")
+        print("Starting DMQT Mediator (version 0.1.5) with WebSocket communication, listening for Deforum at " + args.mediator_deforum_address + ":" + args.mediator_deforum_port + ", version 0.7.7")
         print("   -- And listening for Deforumation at " + args.mediator_deforumation_address + ":" + args.mediator_deforumation_port + ", version 0.7.7")
         print("Connecting to Deforumation's live view server using " + args.deforumation_address + ":" + args.deforumation_port)
         deforumation_address = args.deforumation_address

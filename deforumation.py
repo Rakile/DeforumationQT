@@ -417,6 +417,7 @@ class MainWindow(QMainWindow):
         self.load_language_file()
 
         #self.DeforumationPrompts.setCurrentPrompts()
+        self.DeforumationPrompts.loadMorphPromptSyrupFromConfig()
         self.DeforumationPrompts.loadMorphPromptFramesFromConfig()
         self.DeforumationPrompts.setComponetValues()
         #self.DeforumationPrompts.shouldUseDeforumationPrompts()
@@ -450,6 +451,8 @@ class MainWindow(QMainWindow):
         #self.eventFilter = KeyPressFilter(parent=self)
         self.installEventFilter(self)
 
+        #Special case LoopBack Button
+        self.DeforumationMotions.setLoobackButtonState()
 
 
     #def setupSliders(self):
@@ -573,7 +576,9 @@ class MainWindow(QMainWindow):
                 rotationValues = self.deforumationnamedpipes.readValue(["syrup_steps_rotate_x", "syrup_steps_rotate_y", "rotation_x", "rotation_y"])
                 zoomValues = self.deforumationnamedpipes.readValue(["syrup_steps_pan_z", "translation_z"])
                 tiltValues = self.deforumationnamedpipes.readValue(["syrup_steps_rotate_z", "rotation_z"])
-                QMetaObject.invokeMethod(self, "adjustSyrupMotionProgressBar_from_thread", Qt.QueuedConnection, Q_ARG("QVariantList", panValues), Q_ARG("QVariantList", rotationValues), Q_ARG("QVariantList", zoomValues), Q_ARG("QVariantList", tiltValues))
+                promptMorphMotionValues = self.deforumationnamedpipes.readValue("syrup_steps_prompt_morph_motions")
+                #print("promptMotionValues:" + str(promptMorphMotionValues))
+                QMetaObject.invokeMethod(self, "adjustSyrupMotionProgressBar_from_thread", Qt.QueuedConnection, Q_ARG("QVariantList", panValues), Q_ARG("QVariantList", rotationValues), Q_ARG("QVariantList", zoomValues), Q_ARG("QVariantList", tiltValues), Q_ARG("QVariantList", promptMorphMotionValues))
                 QMetaObject.invokeMethod(self, "update_movie_strip", Qt.QueuedConnection)
         print("Live view has been terminated")
         QMetaObject.invokeMethod(self, "close_down", Qt.QueuedConnection)
@@ -606,6 +611,11 @@ class MainWindow(QMainWindow):
         if self.deforumationVideoPlayerIsOnTop:
             self.makeDeforumationVideoPlayerOnTop(True)
         caller.player.play_video()
+
+    @Slot(list)
+    def handler_prompt_morph(self, args):
+        print("Should change prompt:" + str(args[0]) + " to:" + str(args[1]))
+        self.DeforumationPrompts.changePromptWeightByBindName(args[0], args[1])
 
     @Slot(list, str)
     def handler(self, args, value):
@@ -810,12 +820,13 @@ class MainWindow(QMainWindow):
         #only_file_name = QFileInfo(file_name).fileName()
         #self.deforumation_settings.writeDeforumationGuiValuesToConfig("language_file", "./languages/" + only_file_name)
 
-    @Slot(list, list, list, list)
-    def adjustSyrupMotionProgressBar_from_thread(self, panValues, rotationValues, zoomValues, tiltValues):
+    @Slot(list, list, list, list, list)
+    def adjustSyrupMotionProgressBar_from_thread(self, panValues, rotationValues, zoomValues, tiltValues,promptMorphMotionValues):
         self.DeforumationMotions.adjustSyrupMotionProgressBarPan(panValues)
         self.DeforumationMotions.adjustSyrupRotationProgressBarPan(rotationValues)
         self.DeforumationMotions.adjustSyrupMotionProgressBarZoom(zoomValues)
         self.DeforumationMotions.adjustSyrupTiltProgressBarPan(tiltValues)
+        self.DeforumationPrompts.adjustSyrupPromptMorphProgressBars(promptMorphMotionValues)
 
     @Slot()
     def setLiveValues_from_thread(self, totalRecallFrame=-1):
@@ -959,7 +970,7 @@ class MainWindow(QMainWindow):
 
     def on_action_popup_preview_image_triggered(self, action_string, identifier):
         if action_string == "Set current image":
-            self.DeforumationMotions.setComponetValuesThroughTotalRecall(self.DeforumationTotalRecall.getCurrentTotalRecallFrame())
+            #self.DeforumationMotions.setComponetValuesThroughTotalRecall(self.DeforumationTotalRecall.getCurrentTotalRecallFrame())
             self.total_number_of_frames_generated = identifier.pathnumber
             self.refreshPreviewSliderWindow()
             self.DeforumationMotions.haltAllSyrupMotions()
@@ -1177,12 +1188,14 @@ class MainWindow(QMainWindow):
         self.p["Right_Splitter"] = [sizes[0], sizes[1]]
         sizes = self.ui.splitter_3.sizes()
         self.p["Middle_Splitter"] = [sizes[0], sizes[1]]
+        sizes = self.ui.splitter_4.sizes()
+        self.p["LeftLeft_Splitter"] = [sizes[0], sizes[1]]
 
         sizes = self.ui.prompt_splitter.sizes()
         self.p["Prompt_Tab_Splitter"] = [sizes[0], sizes[1]]
 
         sizes = self.ui.prompt_morph_splitter.sizes()
-        self.p["Prompt_Morph_Splitter"] = [sizes[0], sizes[1], sizes[2]]
+        self.p["Prompt_Morph_Splitter"] = [sizes[0], sizes[1]]
 
         self.p["Slider_Tab_ScreenSizeWidth"] = self.ui.Slider_Tab.width()
         self.p["Slider_Tab_ScreenSizeHeight"] = self.ui.Slider_Tab.height()
@@ -1241,6 +1254,14 @@ class MainWindow(QMainWindow):
             sizes[1] = stored_sizes[1]
             self.ui.splitter_3.setSizes(sizes)
 
+            #Splitter of left frames
+            sizes = self.ui.splitter_3.sizes()
+            stored_sizes = self.p["LeftLeft_Splitter"]
+            sizes[0] = stored_sizes[0]
+            sizes[1] = stored_sizes[1]
+            self.ui.splitter_4.setSizes(sizes)
+
+
             sizes = self.ui.prompt_splitter.sizes()
             stored_sizes = self.p["Prompt_Tab_Splitter"]
             sizes[0] = stored_sizes[0]
@@ -1251,7 +1272,6 @@ class MainWindow(QMainWindow):
             stored_sizes = self.p["Prompt_Morph_Splitter"]
             sizes[0] = stored_sizes[0]
             sizes[1] = stored_sizes[1]
-            sizes[2] = stored_sizes[2]
             self.ui.prompt_morph_splitter.setSizes(sizes)
 
 
@@ -1425,12 +1445,16 @@ class MainWindow(QMainWindow):
         handleEventReturnPressed(self)
 
     #This function receives all the events from a slider
+
+    def slider_release_event(self, item):
+        print("Slider was released: " + str(item))
     def value_changed_slider(self, item):
         handleEventValueChanged(self, item)
     #This function handles all the events signaled by widgets/components (except signals when values change, omitted by sliders). See function value_changed_slider, above for that
     def eventFilter(self, object, event):
         global ShouldRestoreOriginalDeforumationGui
         global ShouldOnlyRestartDeforumationGui
+
         if object == self:
             if event.type() == QEvent.KeyRelease:
                 if event.key() == Qt.Key_Delete or event.key() == Qt.Key_Backspace:
@@ -1568,7 +1592,7 @@ class MainWindow(QMainWindow):
         elif popMenu == self.popMenu_negative1:
             promptWindow = self.ui.negative_prompt
         if promptWindow != None:
-            if item.morph_prompt_enabled == 0:
+            if item.morph_prompt_enabled == 1:
                 promptWindow.setTextColor(whiteColor)
             else:
                 promptWindow.setTextColor(redColor)
