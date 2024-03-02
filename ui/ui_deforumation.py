@@ -18,15 +18,15 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QFrame,
     QGridLayout, QHBoxLayout, QLabel, QLayout,
     QLineEdit, QMainWindow, QMenuBar, QProgressBar,
-    QPushButton, QScrollArea, QSizePolicy, QSlider,
-    QSpacerItem, QSplitter, QStatusBar, QTabWidget,
-    QTextEdit, QVBoxLayout, QWidget)
+    QPushButton, QRadioButton, QScrollArea, QSizePolicy,
+    QSlider, QSpacerItem, QSplitter, QStatusBar,
+    QTabWidget, QTextEdit, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(2059, 1076)
+        MainWindow.resize(1925, 1058)
         MainWindow.setMinimumSize(QSize(512, 249))
         MainWindow.setLayoutDirection(Qt.LeftToRight)
         MainWindow.setStyleSheet(u"QMainWindow {\n"
@@ -252,19 +252,740 @@ class Ui_MainWindow(object):
         self.splitter_3.setStyleSheet(u"background-color: rgb(66,66,66); border: 0px solid rgb(128,128,128); border-radius: 20px;")
         self.splitter_3.setLineWidth(1)
         self.splitter_3.setOrientation(Qt.Horizontal)
+        self.LeftLeft_Frame = QFrame(self.splitter_3)
+        self.LeftLeft_Frame.setObjectName(u"LeftLeft_Frame")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.LeftLeft_Frame.sizePolicy().hasHeightForWidth())
+        self.LeftLeft_Frame.setSizePolicy(sizePolicy1)
+        self.LeftLeft_Frame.setMinimumSize(QSize(300, 0))
+        self.LeftLeft_Frame.setMaximumSize(QSize(250, 16777215))
+        self.LeftLeft_Frame.setStyleSheet(u"")
+        self.LeftLeft_Frame.setFrameShape(QFrame.StyledPanel)
+        self.LeftLeft_Frame.setFrameShadow(QFrame.Raised)
+        self.gridLayout_99 = QGridLayout(self.LeftLeft_Frame)
+        self.gridLayout_99.setObjectName(u"gridLayout_99")
+        self.gridLayout_99.setContentsMargins(2, 5, 0, 0)
+        self.splitter_4 = QSplitter(self.LeftLeft_Frame)
+        self.splitter_4.setObjectName(u"splitter_4")
+        sizePolicy1.setHeightForWidth(self.splitter_4.sizePolicy().hasHeightForWidth())
+        self.splitter_4.setSizePolicy(sizePolicy1)
+        self.splitter_4.setStyleSheet(u"border: 0px;")
+        self.splitter_4.setOrientation(Qt.Vertical)
+        self.splitter_4.setHandleWidth(6)
+        self.Slider_Left_Tab = QFrame(self.splitter_4)
+        self.Slider_Left_Tab.setObjectName(u"Slider_Left_Tab")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(3)
+        sizePolicy2.setHeightForWidth(self.Slider_Left_Tab.sizePolicy().hasHeightForWidth())
+        self.Slider_Left_Tab.setSizePolicy(sizePolicy2)
+        self.Slider_Left_Tab.setMinimumSize(QSize(0, 0))
+        self.Slider_Left_Tab.setStyleSheet(u"")
+        self.Slider_Left_Tab.setFrameShape(QFrame.StyledPanel)
+        self.Slider_Left_Tab.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_11 = QVBoxLayout(self.Slider_Left_Tab)
+        self.verticalLayout_11.setSpacing(0)
+        self.verticalLayout_11.setObjectName(u"verticalLayout_11")
+        self.verticalLayout_11.setContentsMargins(0, 0, 0, 0)
+        self.temp_tab_frame = QFrame(self.Slider_Left_Tab)
+        self.temp_tab_frame.setObjectName(u"temp_tab_frame")
+        self.temp_tab_frame.setMinimumSize(QSize(0, 0))
+        self.temp_tab_frame.setMaximumSize(QSize(300, 16777215))
+        self.temp_tab_frame.setStyleSheet(u"QFrame{\n"
+"background-color: rgb(108,108,118);\n"
+"border: 2px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
+"    border-radius: 10px;\n"
+"    padding: 1px; /* To prevent the content from touching the border */\n"
+"}\n"
+"\n"
+"QSlider\n"
+"{\n"
+"	background-color: rgb(108,108,118);\n"
+"}")
+        self.temp_tab_frame.setFrameShape(QFrame.StyledPanel)
+        self.temp_tab_frame.setFrameShadow(QFrame.Raised)
+        self.gridLayout_11 = QGridLayout(self.temp_tab_frame)
+        self.gridLayout_11.setObjectName(u"gridLayout_11")
+        self.gridLayout_11.setContentsMargins(10, 10, 10, 10)
+        self.SuperTEmp_ParameterLabel = QLabel(self.temp_tab_frame)
+        self.SuperTEmp_ParameterLabel.setObjectName(u"SuperTEmp_ParameterLabel")
+        sizePolicy1.setHeightForWidth(self.SuperTEmp_ParameterLabel.sizePolicy().hasHeightForWidth())
+        self.SuperTEmp_ParameterLabel.setSizePolicy(sizePolicy1)
+        font = QFont()
+        font.setPointSize(20)
+        font.setBold(True)
+        self.SuperTEmp_ParameterLabel.setFont(font)
+        self.SuperTEmp_ParameterLabel.setMouseTracking(True)
+        self.SuperTEmp_ParameterLabel.setTabletTracking(True)
+        self.SuperTEmp_ParameterLabel.setStyleSheet(u"QLabel {\n"
+"background-color: rgb(88, 88, 98); /* Fallback color */\n"
+"        border: 2px solid rgb(32, 32, 32);\n"
+"    border-radius: 10px;\n"
+"}\n"
+"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px;\n"
+" }")
+        self.SuperTEmp_ParameterLabel.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_11.addWidget(self.SuperTEmp_ParameterLabel, 0, 0, 1, 1)
+
+        self.scrollArea_Left_slider_frame = QScrollArea(self.temp_tab_frame)
+        self.scrollArea_Left_slider_frame.setObjectName(u"scrollArea_Left_slider_frame")
+        sizePolicy.setHeightForWidth(self.scrollArea_Left_slider_frame.sizePolicy().hasHeightForWidth())
+        self.scrollArea_Left_slider_frame.setSizePolicy(sizePolicy)
+        self.scrollArea_Left_slider_frame.setMinimumSize(QSize(0, 0))
+        self.scrollArea_Left_slider_frame.setStyleSheet(u"QScrollArea {\n"
+"    border: 0px solid #333; /* Adjust the color and size as needed */\n"
+"background-color: rgb(108,108,118);\n"
+"}\n"
+"\n"
+"\n"
+"QScrollArea QScrollBar:vertical {\n"
+"    border: 2px;\n"
+"    background: rgb(66,66,66);\n"
+"    width: 15px; /* Narrow scrollbar for a sleek look */\n"
+"    border-radius: 5px;\n"
+"    margin: 0px 0 0px 0;\n"
+"    \n"
+"}\n"
+"\n"
+"QScrollArea QScrollBar::handle:vertical {\n"
+"    background-color: rgb(40,129,232); /* Dark handle */\n"
+"    min-height: 20px; /* Minimum handle height */\n"
+"    border-radius: 5px; /* Rounded corners for the handle */\n"
+"}\n"
+"\n"
+"QScrollArea QScrollBar::handle:vertical:hover {\n"
+"    background-color: rgb(59,165,0); /* Slightly lighter handle on hover */\n"
+"}\n"
+"\n"
+"\n"
+"QScrollArea QScrollBar::sub-line:vertical,\n"
+"QScrollArea QScrollBar::add-line:vertical {\n"
+"    background: none;\n"
+"border: none; /* No buttons at the end of the scrollbar */\n"
+"}\n"
+"\n"
+"QScrollArea QScrollBar::sub-page:vertical,\n"
+"QScrollArea QScrol"
+                        "lBar::add-page:vertical {\n"
+"    background: none; \n"
+"border: none;/* No background for the scrollable area behind the handle */\n"
+"}")
+        self.scrollArea_Left_slider_frame.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.scrollArea_Left_slider_frame.setWidgetResizable(True)
+        self.scrollAreaWidgetContentsSlidersLeft = QWidget()
+        self.scrollAreaWidgetContentsSlidersLeft.setObjectName(u"scrollAreaWidgetContentsSlidersLeft")
+        self.scrollAreaWidgetContentsSlidersLeft.setGeometry(QRect(0, 0, 270, 361))
+        self.scrollAreaWidgetContentsSlidersLeft.setMinimumSize(QSize(0, 330))
+        self.scrollAreaWidgetContentsSlidersLeft.setStyleSheet(u"")
+        self.verticalLayout_13 = QVBoxLayout(self.scrollAreaWidgetContentsSlidersLeft)
+        self.verticalLayout_13.setSpacing(0)
+        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
+        self.verticalLayout_13.setContentsMargins(0, 0, 0, 0)
+        self.Seed_frame_poppable = QFrame(self.scrollAreaWidgetContentsSlidersLeft)
+        self.Seed_frame_poppable.setObjectName(u"Seed_frame_poppable")
+        self.Seed_frame_poppable.setTabletTracking(True)
+        self.Seed_frame_poppable.setStyleSheet(u"QWidget{\n"
+"border: 0px solid rgb(128,128,128);\n"
+"}\n"
+"QFrame{\n"
+"Qbackground-color: rgb(108,108,118);\n"
+"border: 0px solid rgb(128,128,128);\n"
+"border-radius: 0px;\n"
+"}\n"
+"\n"
+"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px;\n"
+" }")
+        self.Seed_frame_poppable.setFrameShape(QFrame.StyledPanel)
+        self.Seed_frame_poppable.setFrameShadow(QFrame.Raised)
+        self.iter_RadioButton = QRadioButton(self.Seed_frame_poppable)
+        self.iter_RadioButton.setObjectName(u"iter_RadioButton")
+        self.iter_RadioButton.setGeometry(QRect(14, 30, 171, 20))
+        palette = QPalette()
+        brush = QBrush(QColor(255, 255, 255, 255))
+        brush.setStyle(Qt.SolidPattern)
+        palette.setBrush(QPalette.Active, QPalette.WindowText, brush)
+        brush1 = QBrush(QColor(108, 108, 118, 255))
+        brush1.setStyle(Qt.SolidPattern)
+        palette.setBrush(QPalette.Active, QPalette.Button, brush1)
+        palette.setBrush(QPalette.Active, QPalette.Text, brush)
+        palette.setBrush(QPalette.Active, QPalette.ButtonText, brush)
+        palette.setBrush(QPalette.Active, QPalette.Base, brush1)
+        palette.setBrush(QPalette.Active, QPalette.Window, brush1)
+        brush2 = QBrush(QColor(255, 255, 255, 128))
+        brush2.setStyle(Qt.SolidPattern)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette.setBrush(QPalette.Active, QPalette.PlaceholderText, brush2)
+#endif
+        palette.setBrush(QPalette.Inactive, QPalette.WindowText, brush)
+        palette.setBrush(QPalette.Inactive, QPalette.Button, brush1)
+        palette.setBrush(QPalette.Inactive, QPalette.Text, brush)
+        palette.setBrush(QPalette.Inactive, QPalette.ButtonText, brush)
+        palette.setBrush(QPalette.Inactive, QPalette.Base, brush1)
+        palette.setBrush(QPalette.Inactive, QPalette.Window, brush1)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush2)
+#endif
+        palette.setBrush(QPalette.Disabled, QPalette.WindowText, brush)
+        palette.setBrush(QPalette.Disabled, QPalette.Button, brush1)
+        palette.setBrush(QPalette.Disabled, QPalette.Text, brush)
+        palette.setBrush(QPalette.Disabled, QPalette.ButtonText, brush)
+        palette.setBrush(QPalette.Disabled, QPalette.Base, brush1)
+        palette.setBrush(QPalette.Disabled, QPalette.Window, brush1)
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
+        palette.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush2)
+#endif
+        self.iter_RadioButton.setPalette(palette)
+        font1 = QFont()
+        font1.setPointSize(12)
+        font1.setBold(True)
+        self.iter_RadioButton.setFont(font1)
+        self.iter_RadioButton.setStyleSheet(u"/*QRadioButton {\n"
+"    spacing: 5px;\n"
+"    padding: 2px 2px;\n"
+"    color: white; \n"
+"    background-color: rgb(108,108,118);\n"
+"    border: 0px solid #bbb; \n"
+"    border-radius: 4px; \n"
+"} */\n"
+"\n"
+"QRadioButton {\n"
+"    spacing: 5px;\n"
+"    padding: 2px 2px;\n"
+"    color: white; /* Text color */\n"
+"    background-color: rgb(108,108,118); /* General background color */\n"
+"    border: 0px solid #bbb; /* Border color and width */\n"
+"    border-radius: 0px; /* Rounded corners */\n"
+"}\n"
+"\n"
+"QRadioButton::indicator {\n"
+"    border-radius: 9px; /* Round indicator */\n"
+"border: 2px solid #bbb; /* Border color and width */\n"
+"    width: 15px; /* Adjust size as needed */\n"
+"    height: 15px; /* Adjust size as needed */\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:unchecked {\n"
+"    background-color: rgb(42, 42, 42); /* Dark grey for off state */\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:checked {\n"
+"    background-color: #00ff00; /* Green for on state */\n"
+"}\n"
+"\n"
+"/*background-color: rgb(108,10"
+                        "8,118);\n"
+"color: white; \n"
+"border: 0px solid rgb(40, 40, 40); \n"
+"border-radius: 5px;\n"
+"padding: 1px; /* \n"
+"")
+        self.iter_RadioButton.setCheckable(True)
+        self.iter_RadioButton.setChecked(True)
+        self.fixed_RadioButton = QRadioButton(self.Seed_frame_poppable)
+        self.fixed_RadioButton.setObjectName(u"fixed_RadioButton")
+        self.fixed_RadioButton.setGeometry(QRect(14, 94, 95, 20))
+        self.fixed_RadioButton.setFont(font1)
+        self.fixed_RadioButton.setStyleSheet(u"QRadioButton {\n"
+"    spacing: 5px;\n"
+"    padding: 2px 2px;\n"
+"    color: white; /* Text color */\n"
+"    background-color: rgb(108,108,118); /* General background color */\n"
+"    border: 0px solid #bbb; /* Border color and width */\n"
+"    border-radius: 0px; /* Rounded corners */\n"
+"}\n"
+"\n"
+"QRadioButton::indicator {\n"
+"    border-radius: 9px; /* Round indicator */\n"
+"border: 2px solid #bbb; /* Border color and width */\n"
+"    width: 15px; /* Adjust size as needed */\n"
+"    height: 15px; /* Adjust size as needed */\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:unchecked {\n"
+"    background-color: rgb(42, 42, 42); /* Dark grey for off state */\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:checked {\n"
+"    background-color: #00ff00; /* Green for on state */\n"
+"}")
+        self.IterSeed_Inputbox = QLineEdit(self.Seed_frame_poppable)
+        self.IterSeed_Inputbox.setObjectName(u"IterSeed_Inputbox")
+        self.IterSeed_Inputbox.setGeometry(QRect(16, 58, 113, 22))
+        self.IterSeed_Inputbox.setMaximumSize(QSize(16777215, 16777215))
+        font2 = QFont()
+        font2.setPointSize(12)
+        self.IterSeed_Inputbox.setFont(font2)
+        self.IterSeed_Inputbox.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;*/\n"
+"\n"
+"\n"
+"\n"
+"QLineEdit {\n"
+"    background-color: rgb(42, 42, 42); /* Dark background */\n"
+"    color: rgb(0, 255, 0); /* Bright green text */\n"
+"    border: 2px solid rgb(40, 40, 40); /* Dark grey border */\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    padding-top: 1px; /* Top padding to push the text down */\n"
+"    padding-bottom: 1px; /* Bottom padding for even spacing */\n"
+"    padding-left: 1px; /* Left padding */\n"
+"    padding-right: 1px; /* Right padding */\n"
+"    text-align: center; /* Center the text horizontally */\n"
+"}")
+        self.fixedSeed_Inputbox = QLineEdit(self.Seed_frame_poppable)
+        self.fixedSeed_Inputbox.setObjectName(u"fixedSeed_Inputbox")
+        self.fixedSeed_Inputbox.setGeometry(QRect(16, 120, 209, 22))
+        self.fixedSeed_Inputbox.setMaximumSize(QSize(16777215, 16777215))
+        self.fixedSeed_Inputbox.setFont(font2)
+        self.fixedSeed_Inputbox.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;*/\n"
+"\n"
+"\n"
+"\n"
+"QLineEdit {\n"
+"    background-color: rgb(42, 42, 42); /* Dark background */\n"
+"    color: rgb(0, 255, 0); /* Bright green text */\n"
+"    border: 2px solid rgb(40, 40, 40); /* Dark grey border */\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    padding-top: 1px; /* Top padding to push the text down */\n"
+"    padding-bottom: 1px; /* Bottom padding for even spacing */\n"
+"    padding-left: 1px; /* Left padding */\n"
+"    padding-right: 1px; /* Right padding */\n"
+"    text-align: center; /* Center the text horizontally */\n"
+"}")
+        self.random_RadioButton = QRadioButton(self.Seed_frame_poppable)
+        self.random_RadioButton.setObjectName(u"random_RadioButton")
+        self.random_RadioButton.setGeometry(QRect(14, 160, 95, 20))
+        self.random_RadioButton.setFont(font1)
+        self.random_RadioButton.setStyleSheet(u"QRadioButton {\n"
+"    spacing: 5px;\n"
+"    padding: 2px 2px;\n"
+"    color: white; /* Text color */\n"
+"    background-color: rgb(108,108,118); /* General background color */\n"
+"    border: 0px solid #bbb; /* Border color and width */\n"
+"    border-radius: 0px; /* Rounded corners */\n"
+"}\n"
+"\n"
+"QRadioButton::indicator {\n"
+"    border-radius: 9px; /* Round indicator */\n"
+"border: 2px solid #bbb; /* Border color and width */\n"
+"    width: 15px; /* Adjust size as needed */\n"
+"    height: 15px; /* Adjust size as needed */\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:unchecked {\n"
+"    background-color: rgb(42, 42, 42); /* Dark grey for off state */\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:checked {\n"
+"    background-color: #00ff00; /* Green for on state */\n"
+"}")
+        self.IterSeed_N_Inputbox = QLineEdit(self.Seed_frame_poppable)
+        self.IterSeed_N_Inputbox.setObjectName(u"IterSeed_N_Inputbox")
+        self.IterSeed_N_Inputbox.setGeometry(QRect(208, 56, 41, 22))
+        self.IterSeed_N_Inputbox.setMaximumSize(QSize(16777215, 16777215))
+        self.IterSeed_N_Inputbox.setFont(font2)
+        self.IterSeed_N_Inputbox.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;*/\n"
+"\n"
+"\n"
+"\n"
+"QLineEdit {\n"
+"    background-color: rgb(42, 42, 42); /* Dark background */\n"
+"    color: rgb(0, 255, 0); /* Bright green text */\n"
+"    border: 2px solid rgb(40, 40, 40); /* Dark grey border */\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    padding-top: 1px; /* Top padding to push the text down */\n"
+"    padding-bottom: 1px; /* Bottom padding for even spacing */\n"
+"    padding-left: 1px; /* Left padding */\n"
+"    padding-right: 1px; /* Right padding */\n"
+"    text-align: center; /* Center the text horizontally */\n"
+"}")
+        self.seed_iter_n = QLabel(self.Seed_frame_poppable)
+        self.seed_iter_n.setObjectName(u"seed_iter_n")
+        self.seed_iter_n.setGeometry(QRect(130, 56, 73, 21))
+        font3 = QFont()
+        font3.setPointSize(10)
+        font3.setBold(True)
+        self.seed_iter_n.setFont(font3)
+        self.seed_iter_n.setStyleSheet(u"")
+        self.ladder_RadioButton = QRadioButton(self.Seed_frame_poppable)
+        self.ladder_RadioButton.setObjectName(u"ladder_RadioButton")
+        self.ladder_RadioButton.setGeometry(QRect(14, 198, 105, 20))
+        self.ladder_RadioButton.setFont(font1)
+        self.ladder_RadioButton.setStyleSheet(u"QRadioButton {\n"
+"    spacing: 5px;\n"
+"    padding: 2px 2px;\n"
+"    color: white; /* Text color */\n"
+"    background-color: rgb(108,108,118); /* General background color */\n"
+"    border: 0px solid #bbb; /* Border color and width */\n"
+"    border-radius: 0px; /* Rounded corners */\n"
+"}\n"
+"\n"
+"QRadioButton::indicator {\n"
+"    border-radius: 9px; /* Round indicator */\n"
+"border: 2px solid #bbb; /* Border color and width */\n"
+"    width: 15px; /* Adjust size as needed */\n"
+"    height: 15px; /* Adjust size as needed */\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:unchecked {\n"
+"    background-color: rgb(42, 42, 42); /* Dark grey for off state */\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:checked {\n"
+"    background-color: #00ff00; /* Green for on state */\n"
+"}")
+        self.line_a = QFrame(self.Seed_frame_poppable)
+        self.line_a.setObjectName(u"line_a")
+        self.line_a.setGeometry(QRect(12, 86, 250, 3))
+        self.line_a.setStyleSheet(u"QFrame {\n"
+"    border: 2px solid rgb(42, 42, 42); /* Adjust the color to fit your UI theme */\n"
+"    background-color: black; /* Optional: adjust the background color */\n"
+"    border-style: inset;\n"
+"    border-width: 2px;\n"
+"    border-radius: 2px; /* Optional: adds rounded corners if you prefer */\n"
+"}")
+        self.line_a.setLineWidth(2)
+        self.line_a.setFrameShape(QFrame.HLine)
+        self.line_a.setFrameShadow(QFrame.Sunken)
+        self.line_b = QFrame(self.Seed_frame_poppable)
+        self.line_b.setObjectName(u"line_b")
+        self.line_b.setGeometry(QRect(12, 152, 250, 3))
+        self.line_b.setStyleSheet(u"QFrame {\n"
+"    border: 2px solid rgb(42, 42, 42); /* Adjust the color to fit your UI theme */\n"
+"    background-color: black; /* Optional: adjust the background color */\n"
+"    border-style: inset;\n"
+"    border-width: 2px;\n"
+"    border-radius: 2px; /* Optional: adds rounded corners if you prefer */\n"
+"}")
+        self.line_b.setFrameShadow(QFrame.Raised)
+        self.line_b.setLineWidth(2)
+        self.line_b.setFrameShape(QFrame.HLine)
+        self.line_c = QFrame(self.Seed_frame_poppable)
+        self.line_c.setObjectName(u"line_c")
+        self.line_c.setGeometry(QRect(12, 188, 250, 3))
+        self.line_c.setStyleSheet(u"QFrame {\n"
+"    border: 2px solid rgb(42, 42, 42); /* Adjust the color to fit your UI theme */\n"
+"    background-color: black; /* Optional: adjust the background color */\n"
+"    border-style: inset;\n"
+"    border-width: 2px;\n"
+"    border-radius: 2px; /* Optional: adds rounded corners if you prefer */\n"
+"}")
+        self.line_c.setFrameShadow(QFrame.Raised)
+        self.line_c.setLineWidth(2)
+        self.line_c.setFrameShape(QFrame.HLine)
+        self.alternate_RadioButton = QRadioButton(self.Seed_frame_poppable)
+        self.alternate_RadioButton.setObjectName(u"alternate_RadioButton")
+        self.alternate_RadioButton.setGeometry(QRect(14, 234, 105, 20))
+        self.alternate_RadioButton.setFont(font1)
+        self.alternate_RadioButton.setStyleSheet(u"QRadioButton {\n"
+"    spacing: 5px;\n"
+"    padding: 2px 2px;\n"
+"    color: white; /* Text color */\n"
+"    background-color: rgb(108,108,118); /* General background color */\n"
+"    border: 0px solid #bbb; /* Border color and width */\n"
+"    border-radius: 0px; /* Rounded corners */\n"
+"}\n"
+"\n"
+"QRadioButton::indicator {\n"
+"    border-radius: 9px; /* Round indicator */\n"
+"border: 2px solid #bbb; /* Border color and width */\n"
+"    width: 15px; /* Adjust size as needed */\n"
+"    height: 15px; /* Adjust size as needed */\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:unchecked {\n"
+"    background-color: rgb(42, 42, 42); /* Dark grey for off state */\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:checked {\n"
+"    background-color: #00ff00; /* Green for on state */\n"
+"}")
+        self.line_d = QFrame(self.Seed_frame_poppable)
+        self.line_d.setObjectName(u"line_d")
+        self.line_d.setGeometry(QRect(12, 224, 250, 3))
+        self.line_d.setStyleSheet(u"QFrame {\n"
+"    border: 2px solid rgb(42, 42, 42); /* Adjust the color to fit your UI theme */\n"
+"    background-color: black; /* Optional: adjust the background color */\n"
+"    border-style: inset;\n"
+"    border-width: 2px;\n"
+"    border-radius: 2px; /* Optional: adds rounded corners if you prefer */\n"
+"}")
+        self.line_d.setFrameShadow(QFrame.Raised)
+        self.line_d.setLineWidth(2)
+        self.line_d.setFrameShape(QFrame.HLine)
+        self.update_seed_button = QPushButton(self.Seed_frame_poppable)
+        self.update_seed_button.setObjectName(u"update_seed_button")
+        self.update_seed_button.setGeometry(QRect(10, 297, 233, 33))
+        sizePolicy3 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy3.setHorizontalStretch(1)
+        sizePolicy3.setVerticalStretch(80)
+        sizePolicy3.setHeightForWidth(self.update_seed_button.sizePolicy().hasHeightForWidth())
+        self.update_seed_button.setSizePolicy(sizePolicy3)
+        self.update_seed_button.setMinimumSize(QSize(60, 32))
+        self.update_seed_button.setMaximumSize(QSize(16777215, 43))
+        self.update_seed_button.setFont(font1)
+        self.update_seed_button.setStyleSheet(u"QPushButton {\n"
+"    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n"
+"    border-style: solid; /* Defines the style of the border */\n"
+"    border-width: 2px; /* Width of the border */\n"
+"    border-color: rgba(255, 255, 255, 0.5); /* Border color with some transparency */\n"
+"    border-radius: 5px; /* Consistent with the tab's rounded corners */\n"
+"    padding: 4px 12px; /* Comfortable padding for the button text */\n"
+"    color: white; /* White text for contrast */\n"
+"    text-align: center;\n"
+"    min-width: 32px;\n"
+"	max-height:31px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(96, 96, 96); /* Lighter grey, similar to tab hover effect */\n"
+"    min-width: 32px;\n"
+"	max-height:31px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(128, 128, 128); /* Similar to the selected tab color */\n"
+"    min-width: 32px;\n"
+"	max-height:31px;\n"
+"}\n"
+"")
+        self.update_seed_iter_n_button = QPushButton(self.Seed_frame_poppable)
+        self.update_seed_iter_n_button.setObjectName(u"update_seed_iter_n_button")
+        self.update_seed_iter_n_button.setGeometry(QRect(145, 29, 105, 24))
+        sizePolicy3.setHeightForWidth(self.update_seed_iter_n_button.sizePolicy().hasHeightForWidth())
+        self.update_seed_iter_n_button.setSizePolicy(sizePolicy3)
+        self.update_seed_iter_n_button.setMinimumSize(QSize(44, 24))
+        self.update_seed_iter_n_button.setMaximumSize(QSize(16777215, 39))
+        self.update_seed_iter_n_button.setFont(font3)
+        self.update_seed_iter_n_button.setStyleSheet(u"QPushButton {\n"
+"    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n"
+"    border-style: solid; /* Defines the style of the border */\n"
+"    border-width: 2px; /* Width of the border */\n"
+"    border-color: rgba(255, 255, 255, 0.5); /* Border color with some transparency */\n"
+"    border-radius: 5px; /* Consistent with the tab's rounded corners */\n"
+"    padding: 2px 4px; /* Comfortable padding for the button text */\n"
+"    color: white; /* White text for contrast */\n"
+"    text-align: center;\n"
+"    min-width: 32px;\n"
+"	max-height:31px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(96, 96, 96); /* Lighter grey, similar to tab hover effect */\n"
+"    min-width: 32px;\n"
+"	max-height:31px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(128, 128, 128); /* Similar to the selected tab color */\n"
+"    min-width: 32px;\n"
+"	max-height:31px;\n"
+"}\n"
+"")
+        self.scheduled_RadioButton = QRadioButton(self.Seed_frame_poppable)
+        self.scheduled_RadioButton.setObjectName(u"scheduled_RadioButton")
+        self.scheduled_RadioButton.setGeometry(QRect(14, 268, 105, 25))
+        self.scheduled_RadioButton.setFont(font1)
+        self.scheduled_RadioButton.setStyleSheet(u"QRadioButton {\n"
+"    spacing: 5px;\n"
+"    padding: 2px 2px;\n"
+"    color: white; /* Text color */\n"
+"    background-color: rgb(108,108,118); /* General background color */\n"
+"    border: 0px solid #bbb; /* Border color and width */\n"
+"    border-radius: 0px; /* Rounded corners */\n"
+"}\n"
+"\n"
+"QRadioButton::indicator {\n"
+"    border-radius: 9px; /* Round indicator */\n"
+"border: 2px solid #bbb; /* Border color and width */\n"
+"    width: 15px; /* Adjust size as needed */\n"
+"    height: 15px; /* Adjust size as needed */\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:unchecked {\n"
+"    background-color: rgb(42, 42, 42); /* Dark grey for off state */\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:checked {\n"
+"    background-color: #00ff00; /* Green for on state */\n"
+"}")
+        self.line_f = QFrame(self.Seed_frame_poppable)
+        self.line_f.setObjectName(u"line_f")
+        self.line_f.setGeometry(QRect(12, 260, 250, 3))
+        self.line_f.setStyleSheet(u"QFrame {\n"
+"    border: 2px solid rgb(42, 42, 42); /* Adjust the color to fit your UI theme */\n"
+"    background-color: black; /* Optional: adjust the background color */\n"
+"    border-style: inset;\n"
+"    border-width: 2px;\n"
+"    border-radius: 2px; /* Optional: adds rounded corners if you prefer */\n"
+"}")
+        self.line_f.setFrameShadow(QFrame.Raised)
+        self.line_f.setLineWidth(2)
+        self.line_f.setFrameShape(QFrame.HLine)
+
+        self.verticalLayout_13.addWidget(self.Seed_frame_poppable)
+
+        self.scrollArea_Left_slider_frame.setWidget(self.scrollAreaWidgetContentsSlidersLeft)
+
+        self.gridLayout_11.addWidget(self.scrollArea_Left_slider_frame, 2, 0, 1, 1)
+
+
+        self.verticalLayout_11.addWidget(self.temp_tab_frame)
+
+        self.splitter_4.addWidget(self.Slider_Left_Tab)
+        self.OtherLeft_Tab = QFrame(self.splitter_4)
+        self.OtherLeft_Tab.setObjectName(u"OtherLeft_Tab")
+        sizePolicy4 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(4)
+        sizePolicy4.setHeightForWidth(self.OtherLeft_Tab.sizePolicy().hasHeightForWidth())
+        self.OtherLeft_Tab.setSizePolicy(sizePolicy4)
+        self.OtherLeft_Tab.setMinimumSize(QSize(0, 0))
+        self.OtherLeft_Tab.setStyleSheet(u"border: 0px")
+        self.OtherLeft_Tab.setFrameShape(QFrame.StyledPanel)
+        self.OtherLeft_Tab.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_14 = QVBoxLayout(self.OtherLeft_Tab)
+        self.verticalLayout_14.setSpacing(0)
+        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
+        self.verticalLayout_14.setContentsMargins(0, 0, 0, 0)
+        self.live_value_tab_left_frame = QFrame(self.OtherLeft_Tab)
+        self.live_value_tab_left_frame.setObjectName(u"live_value_tab_left_frame")
+        self.live_value_tab_left_frame.setMaximumSize(QSize(300, 16777215))
+        self.live_value_tab_left_frame.setStyleSheet(u"\n"
+"    background-color: rgb(108, 108, 118);\n"
+"    border: 2px solid rgb(40, 40, 40); /* Refined shadow effect */\n"
+"    border-radius: 10px; /* Smooth rounded corners */\n"
+"")
+        self.live_value_tab_left_frame.setFrameShape(QFrame.StyledPanel)
+        self.live_value_tab_left_frame.setFrameShadow(QFrame.Raised)
+        self.gridLayout_13 = QGridLayout(self.live_value_tab_left_frame)
+        self.gridLayout_13.setObjectName(u"gridLayout_13")
+        self.gridLayout_13.setContentsMargins(10, 10, 10, 10)
+        self.Temp_ValuesLabel = QLabel(self.live_value_tab_left_frame)
+        self.Temp_ValuesLabel.setObjectName(u"Temp_ValuesLabel")
+        self.Temp_ValuesLabel.setFont(font)
+        self.Temp_ValuesLabel.setMouseTracking(True)
+        self.Temp_ValuesLabel.setTabletTracking(True)
+        self.Temp_ValuesLabel.setStyleSheet(u"QLabel{\n"
+"background-color: rgb(88, 88, 98); /* Fallback color */\n"
+"border: 2px solid rgb(32, 32, 32);\n"
+"border-radius: 10px;\n"
+"}\n"
+"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px\n"
+" }")
+        self.Temp_ValuesLabel.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_13.addWidget(self.Temp_ValuesLabel, 0, 0, 1, 1)
+
+        self.scrollArea_left_values = QScrollArea(self.live_value_tab_left_frame)
+        self.scrollArea_left_values.setObjectName(u"scrollArea_left_values")
+        self.scrollArea_left_values.setMinimumSize(QSize(0, 0))
+        self.scrollArea_left_values.setStyleSheet(u"QScrollArea {\n"
+"    border: 0px solid #333; /* Adjust the color and size as needed */\n"
+"}\n"
+"\n"
+"\n"
+"QScrollArea QScrollBar:vertical {\n"
+"    border: 2px;\n"
+"    background: rgb(66,66,66);\n"
+"    width: 15px; /* Narrow scrollbar for a sleek look */\n"
+"    border-radius: 5px;\n"
+"    margin: 0px 0 0px 0;\n"
+"    \n"
+"}\n"
+"\n"
+"QScrollArea QScrollBar::handle:vertical {\n"
+"    background-color: rgb(40,129,232); /* Dark handle */\n"
+"    min-height: 20px; /* Minimum handle height */\n"
+"    border-radius: 5px; /* Rounded corners for the handle */\n"
+"}\n"
+"\n"
+"QScrollArea QScrollBar::handle:vertical:hover {\n"
+"    background-color: rgb(59,165,0); /* Slightly lighter handle on hover */\n"
+"}\n"
+"\n"
+"\n"
+"QScrollArea QScrollBar::sub-line:vertical,\n"
+"QScrollArea QScrollBar::add-line:vertical {\n"
+"    background: none;\n"
+"border: none; /* No buttons at the end of the scrollbar */\n"
+"}\n"
+"\n"
+"QScrollArea QScrollBar::sub-page:vertical,\n"
+"QScrollArea QScrollBar::add-page:vertical {\n"
+"    backgr"
+                        "ound: none; \n"
+"border: none;/* No background for the scrollable area behind the handle */\n"
+"}")
+        self.scrollArea_left_values.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.scrollArea_left_values.setWidgetResizable(True)
+        self.scrollAreaLeftWidgetValues = QWidget()
+        self.scrollAreaLeftWidgetValues.setObjectName(u"scrollAreaLeftWidgetValues")
+        self.scrollAreaLeftWidgetValues.setGeometry(QRect(0, 0, 274, 488))
+        sizePolicy1.setHeightForWidth(self.scrollAreaLeftWidgetValues.sizePolicy().hasHeightForWidth())
+        self.scrollAreaLeftWidgetValues.setSizePolicy(sizePolicy1)
+        self.scrollAreaLeftWidgetValues.setMinimumSize(QSize(0, 390))
+        self.scrollAreaLeftWidgetValues.setStyleSheet(u"")
+        self.verticalLayout_5 = QVBoxLayout(self.scrollAreaLeftWidgetValues)
+        self.verticalLayout_5.setSpacing(0)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.frame_6 = QFrame(self.scrollAreaLeftWidgetValues)
+        self.frame_6.setObjectName(u"frame_6")
+        self.frame_6.setStyleSheet(u"QWidget{\n"
+"border: 0px solid rgb(128,128,128);\n"
+"}\n"
+"QFrame{\n"
+"Qbackground-color: rgb(108,108,118);\n"
+"border: 0px solid rgb(128,128,128);\n"
+"border-radius: 0px;\n"
+"}\n"
+"\n"
+"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px;\n"
+" }")
+        self.frame_6.setFrameShape(QFrame.StyledPanel)
+        self.frame_6.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_5.addWidget(self.frame_6)
+
+        self.scrollArea_left_values.setWidget(self.scrollAreaLeftWidgetValues)
+
+        self.gridLayout_13.addWidget(self.scrollArea_left_values, 2, 0, 1, 1)
+
+
+        self.verticalLayout_14.addWidget(self.live_value_tab_left_frame)
+
+        self.splitter_4.addWidget(self.OtherLeft_Tab)
+
+        self.gridLayout_99.addWidget(self.splitter_4, 0, 0, 1, 1)
+
+        self.splitter_3.addWidget(self.LeftLeft_Frame)
         self.Left_Frame = QFrame(self.splitter_3)
         self.Left_Frame.setObjectName(u"Left_Frame")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy1.setHorizontalStretch(3)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.Left_Frame.sizePolicy().hasHeightForWidth())
-        self.Left_Frame.setSizePolicy(sizePolicy1)
+        sizePolicy5 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy5.setHorizontalStretch(3)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.Left_Frame.sizePolicy().hasHeightForWidth())
+        self.Left_Frame.setSizePolicy(sizePolicy5)
         self.Left_Frame.setStyleSheet(u"")
         self.Left_Frame.setFrameShape(QFrame.StyledPanel)
         self.Left_Frame.setFrameShadow(QFrame.Raised)
         self.gridLayout_16 = QGridLayout(self.Left_Frame)
         self.gridLayout_16.setObjectName(u"gridLayout_16")
-        self.gridLayout_16.setContentsMargins(5, 5, 0, 0)
+        self.gridLayout_16.setContentsMargins(0, 5, 0, 0)
         self.Deforumation_Main = QFrame(self.Left_Frame)
         self.Deforumation_Main.setObjectName(u"Deforumation_Main")
         self.Deforumation_Main.setFrameShape(QFrame.StyledPanel)
@@ -275,22 +996,16 @@ class Ui_MainWindow(object):
         self.gridLayout_4.setContentsMargins(0, 0, 0, 0)
         self.splitter = QSplitter(self.Deforumation_Main)
         self.splitter.setObjectName(u"splitter")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.splitter.sizePolicy().hasHeightForWidth())
-        self.splitter.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.splitter.sizePolicy().hasHeightForWidth())
+        self.splitter.setSizePolicy(sizePolicy1)
         self.splitter.setMinimumSize(QSize(0, 0))
         self.splitter.setStyleSheet(u"background-color: rgb(66,66,66); border: 0px solid rgb(128,128,128); border-radius: 0px;")
         self.splitter.setOrientation(Qt.Vertical)
         self.splitter.setHandleWidth(6)
         self.Preview_Tab = QWidget(self.splitter)
         self.Preview_Tab.setObjectName(u"Preview_Tab")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(4)
-        sizePolicy3.setHeightForWidth(self.Preview_Tab.sizePolicy().hasHeightForWidth())
-        self.Preview_Tab.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.Preview_Tab.sizePolicy().hasHeightForWidth())
+        self.Preview_Tab.setSizePolicy(sizePolicy4)
         self.Preview_Tab.setMinimumSize(QSize(0, 1))
         self.Preview_Tab.setSizeIncrement(QSize(0, 0))
         self.Preview_Tab.setBaseSize(QSize(0, 0))
@@ -311,15 +1026,15 @@ class Ui_MainWindow(object):
         self.gridLayout_preview_screen.setObjectName(u"gridLayout_preview_screen")
         self.preview_screen = QWidget(self.Preview_Tab)
         self.preview_screen.setObjectName(u"preview_screen")
-        sizePolicy2.setHeightForWidth(self.preview_screen.sizePolicy().hasHeightForWidth())
-        self.preview_screen.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.preview_screen.sizePolicy().hasHeightForWidth())
+        self.preview_screen.setSizePolicy(sizePolicy1)
         self.preview_screen.setStyleSheet(u"border: 0")
         self.gridLayout_14 = QGridLayout(self.preview_screen)
         self.gridLayout_14.setObjectName(u"gridLayout_14")
         self.preview_image = QLabel(self.preview_screen)
         self.preview_image.setObjectName(u"preview_image")
-        sizePolicy2.setHeightForWidth(self.preview_image.sizePolicy().hasHeightForWidth())
-        self.preview_image.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.preview_image.sizePolicy().hasHeightForWidth())
+        self.preview_image.setSizePolicy(sizePolicy1)
         self.preview_image.setMaximumSize(QSize(16777215, 16777215))
         self.preview_image.setStyleSheet(u"\n"
 "    border: 10px groove rgb(22,22,22);\n"
@@ -338,8 +1053,8 @@ class Ui_MainWindow(object):
         self.splitter.addWidget(self.Preview_Tab)
         self.Movie_Tab = QWidget(self.splitter)
         self.Movie_Tab.setObjectName(u"Movie_Tab")
-        sizePolicy2.setHeightForWidth(self.Movie_Tab.sizePolicy().hasHeightForWidth())
-        self.Movie_Tab.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.Movie_Tab.sizePolicy().hasHeightForWidth())
+        self.Movie_Tab.setSizePolicy(sizePolicy1)
         self.Movie_Tab.setMinimumSize(QSize(0, 200))
         self.Movie_Tab.setMaximumSize(QSize(16777215, 280))
         self.Movie_Tab.setSizeIncrement(QSize(0, 0))
@@ -377,11 +1092,11 @@ class Ui_MainWindow(object):
         self.gridLayout_12.setContentsMargins(5, 0, 5, 0)
         self.movie_slider_frame_number = QLineEdit(self.Movie_Slider_Frame_poppable)
         self.movie_slider_frame_number.setObjectName(u"movie_slider_frame_number")
-        sizePolicy4 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
-        sizePolicy4.setHorizontalStretch(0)
-        sizePolicy4.setVerticalStretch(0)
-        sizePolicy4.setHeightForWidth(self.movie_slider_frame_number.sizePolicy().hasHeightForWidth())
-        self.movie_slider_frame_number.setSizePolicy(sizePolicy4)
+        sizePolicy6 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy6.setHorizontalStretch(0)
+        sizePolicy6.setVerticalStretch(0)
+        sizePolicy6.setHeightForWidth(self.movie_slider_frame_number.sizePolicy().hasHeightForWidth())
+        self.movie_slider_frame_number.setSizePolicy(sizePolicy6)
         self.movie_slider_frame_number.setMinimumSize(QSize(0, 0))
         self.movie_slider_frame_number.setMaximumSize(QSize(60, 16777215))
         self.movie_slider_frame_number.setSizeIncrement(QSize(0, 0))
@@ -407,8 +1122,8 @@ class Ui_MainWindow(object):
 
         self.movie_slider = QSlider(self.Movie_Slider_Frame_poppable)
         self.movie_slider.setObjectName(u"movie_slider")
-        sizePolicy4.setHeightForWidth(self.movie_slider.sizePolicy().hasHeightForWidth())
-        self.movie_slider.setSizePolicy(sizePolicy4)
+        sizePolicy6.setHeightForWidth(self.movie_slider.sizePolicy().hasHeightForWidth())
+        self.movie_slider.setSizePolicy(sizePolicy6)
         self.movie_slider.setMinimumSize(QSize(0, 28))
         self.movie_slider.setStyleSheet(u"QSlider{\n"
 "border:0;\n"
@@ -460,6 +1175,7 @@ class Ui_MainWindow(object):
 
         self.Preview_Frame = QFrame(self.Movie_Tab)
         self.Preview_Frame.setObjectName(u"Preview_Frame")
+        self.Preview_Frame.setMinimumSize(QSize(0, 44))
         self.Preview_Frame.setStyleSheet(u"QFrame\n"
 "{\n"
 "border: 0px\n"
@@ -475,115 +1191,191 @@ class Ui_MainWindow(object):
         self.gridLayout_15.setObjectName(u"gridLayout_15")
         self.gridLayout_15.setVerticalSpacing(0)
         self.gridLayout_15.setContentsMargins(5, 0, 7, 0)
+        self.open_Deforum_folder_frame_poppable = QFrame(self.Preview_Frame)
+        self.open_Deforum_folder_frame_poppable.setObjectName(u"open_Deforum_folder_frame_poppable")
+        self.open_Deforum_folder_frame_poppable.setMinimumSize(QSize(36, 30))
+        self.open_Deforum_folder_frame_poppable.setTabletTracking(True)
+        self.open_Deforum_folder_frame_poppable.setStyleSheet(u"border:0")
+        self.open_Deforum_folder_frame_poppable.setFrameShape(QFrame.StyledPanel)
+        self.open_Deforum_folder_frame_poppable.setFrameShadow(QFrame.Raised)
+        self.open_Deforum_folder = QPushButton(self.open_Deforum_folder_frame_poppable)
+        self.open_Deforum_folder.setObjectName(u"open_Deforum_folder")
+        self.open_Deforum_folder.setEnabled(True)
+        self.open_Deforum_folder.setGeometry(QRect(0, 0, 40, 32))
+        sizePolicy7 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy7.setHorizontalStretch(0)
+        sizePolicy7.setVerticalStretch(0)
+        sizePolicy7.setHeightForWidth(self.open_Deforum_folder.sizePolicy().hasHeightForWidth())
+        self.open_Deforum_folder.setSizePolicy(sizePolicy7)
+        self.open_Deforum_folder.setMinimumSize(QSize(40, 32))
+        self.open_Deforum_folder.setBaseSize(QSize(0, 0))
+        self.open_Deforum_folder.setFocusPolicy(Qt.StrongFocus)
+        self.open_Deforum_folder.setToolTipDuration(-1)
+        self.open_Deforum_folder.setAutoFillBackground(False)
+        self.open_Deforum_folder.setStyleSheet(u"QPushButton {\n"
+"    /* Normal state */\n"
+"    background-image: url(images/Folder_off.png);\n"
+"    background-position: left top;\n"
+"    background-repeat: no-repeat;\n"
+"    border-radius: 0px;\n"
+"    min-width: 38px;\n"
+"    min-height: 30px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    /* Hovered state */\n"
+"    background-image: url(images/Folder_hover.png);\n"
+"    background-position: left top;\n"
+"    background-repeat: no-repeat;\n"
+"    border: none;\n"
+"    min-width: 38px;\n"
+"    min-height: 30px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    /* Pressed state */\n"
+"    background-image: url(images/Folder_active.png);\n"
+"    background-position: left top;\n"
+"    background-repeat: no-repeat;\n"
+"    border: none;\n"
+"    min-width: 38px;\n"
+"    min-height: 30px;\n"
+"}")
+        self.open_Deforum_folder.setIconSize(QSize(36, 30))
+
+        self.gridLayout_15.addWidget(self.open_Deforum_folder_frame_poppable, 0, 3, 1, 1)
+
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_15.addItem(self.horizontalSpacer_4, 0, 2, 1, 1)
+
+        self.CRF_Compression_Frame_poppable = QFrame(self.Preview_Frame)
+        self.CRF_Compression_Frame_poppable.setObjectName(u"CRF_Compression_Frame_poppable")
+        self.CRF_Compression_Frame_poppable.setMinimumSize(QSize(211, 0))
+        self.CRF_Compression_Frame_poppable.setTabletTracking(True)
+        self.CRF_Compression_Frame_poppable.setStyleSheet(u"border: 0px")
+        self.CRF_Compression_Frame_poppable.setFrameShape(QFrame.StyledPanel)
+        self.CRF_Compression_Frame_poppable.setFrameShadow(QFrame.Raised)
+        self.crf_input_box = QLineEdit(self.CRF_Compression_Frame_poppable)
+        self.crf_input_box.setObjectName(u"crf_input_box")
+        self.crf_input_box.setGeometry(QRect(160, 8, 40, 24))
+        self.crf_input_box.setMaximumSize(QSize(40, 16777215))
+        self.crf_input_box.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;*/\n"
+"\n"
+"\n"
+"\n"
+"QLineEdit {\n"
+"    background-color: rgb(42, 42, 42); /* Dark background */\n"
+"    color: rgb(0, 255, 0); /* Bright green text */\n"
+"    border: 2px solid rgb(40, 40, 40); /* Dark grey border */\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    padding-top: 1px; /* Top padding to push the text down */\n"
+"    padding-bottom: 1px; /* Bottom padding for even spacing */\n"
+"    padding-left: 1px; /* Left padding */\n"
+"    padding-right: 1px; /* Right padding */\n"
+"    text-align: center; /* Center the text horizontally */\n"
+"}")
+        self.crf_label = QLabel(self.CRF_Compression_Frame_poppable)
+        self.crf_label.setObjectName(u"crf_label")
+        self.crf_label.setGeometry(QRect(5, 3, 153, 35))
+        font4 = QFont()
+        font4.setBold(True)
+        self.crf_label.setFont(font4)
+
+        self.gridLayout_15.addWidget(self.CRF_Compression_Frame_poppable, 0, 9, 1, 1)
+
         self.horizontalSpacer_3 = QSpacerItem(20, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.gridLayout_15.addItem(self.horizontalSpacer_3, 0, 6, 1, 1)
 
-        self.Play_Preview_From_To_Frame_poppable = QFrame(self.Preview_Frame)
-        self.Play_Preview_From_To_Frame_poppable.setObjectName(u"Play_Preview_From_To_Frame_poppable")
-        self.Play_Preview_From_To_Frame_poppable.setMinimumSize(QSize(450, 0))
-        self.Play_Preview_From_To_Frame_poppable.setTabletTracking(True)
-        self.Play_Preview_From_To_Frame_poppable.setStyleSheet(u"border: 0px")
-        self.Play_Preview_From_To_Frame_poppable.setFrameShape(QFrame.StyledPanel)
-        self.Play_Preview_From_To_Frame_poppable.setFrameShadow(QFrame.Raised)
-        self.replay_fps_input_box = QLineEdit(self.Play_Preview_From_To_Frame_poppable)
-        self.replay_fps_input_box.setObjectName(u"replay_fps_input_box")
-        self.replay_fps_input_box.setGeometry(QRect(392, 8, 40, 24))
-        self.replay_fps_input_box.setMaximumSize(QSize(40, 16777215))
-        self.replay_fps_input_box.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;*/\n"
-"\n"
-"\n"
-"\n"
-"QLineEdit {\n"
-"    background-color: rgb(42, 42, 42); /* Dark background */\n"
-"    color: rgb(0, 255, 0); /* Bright green text */\n"
-"    border: 2px solid rgb(40, 40, 40); /* Dark grey border */\n"
-"    border-radius: 5px; /* Rounded corners */\n"
-"    padding-top: 1px; /* Top padding to push the text down */\n"
-"    padding-bottom: 1px; /* Bottom padding for even spacing */\n"
-"    padding-left: 1px; /* Left padding */\n"
-"    padding-right: 1px; /* Right padding */\n"
-"    text-align: center; /* Center the text horizontally */\n"
-"}")
-        self.fps_label = QLabel(self.Play_Preview_From_To_Frame_poppable)
-        self.fps_label.setObjectName(u"fps_label")
-        self.fps_label.setGeometry(QRect(342, 3, 44, 35))
-        font = QFont()
-        font.setBold(True)
-        self.fps_label.setFont(font)
-        self.from_framelabel = QLabel(self.Play_Preview_From_To_Frame_poppable)
-        self.from_framelabel.setObjectName(u"from_framelabel")
-        self.from_framelabel.setGeometry(QRect(106, 2, 79, 35))
-        self.from_framelabel.setFont(font)
-        self.play_preview = QPushButton(self.Play_Preview_From_To_Frame_poppable)
-        self.play_preview.setObjectName(u"play_preview")
-        self.play_preview.setGeometry(QRect(0, 6, 97, 28))
-        sizePolicy5 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.play_preview.sizePolicy().hasHeightForWidth())
-        self.play_preview.setSizePolicy(sizePolicy5)
-        self.play_preview.setMinimumSize(QSize(45, 26))
-        self.play_preview.setStyleSheet(u"QPushButton {\n"
-"    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n"
-"    border: none;\n"
-"    border-radius: 5px; /* Consistent with the tab's rounded corners */\n"
-"    padding: 6px 12px; /* Comfortable padding for the button text */\n"
-"    color: white; /* White text for contrast */\n"
-"    text-align: center;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(96, 96, 96); /* Lighter grey, similar to tab hover effect */\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(128, 128, 128); /* Similar to the selected tab color */\n"
-"\n"
-"}\n"
-"")
-        self.to_frame_label = QLabel(self.Play_Preview_From_To_Frame_poppable)
-        self.to_frame_label.setObjectName(u"to_frame_label")
-        self.to_frame_label.setGeometry(QRect(233, 3, 63, 35))
-        self.to_frame_label.setFont(font)
-        self.replay_to_input_box = QLineEdit(self.Play_Preview_From_To_Frame_poppable)
-        self.replay_to_input_box.setObjectName(u"replay_to_input_box")
-        self.replay_to_input_box.setGeometry(QRect(302, 8, 40, 24))
-        self.replay_to_input_box.setMaximumSize(QSize(40, 16777215))
-        self.replay_to_input_box.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;*/\n"
-"\n"
-"\n"
-"\n"
-"QLineEdit {\n"
-"    background-color: rgb(42, 42, 42); /* Dark background */\n"
-"    color: rgb(0, 255, 0); /* Bright green text */\n"
-"    border: 2px solid rgb(40, 40, 40); /* Dark grey border */\n"
-"    border-radius: 5px; /* Rounded corners */\n"
-"    padding-top: 1px; /* Top padding to push the text down */\n"
-"    padding-bottom: 1px; /* Bottom padding for even spacing */\n"
-"    padding-left: 1px; /* Left padding */\n"
-"    padding-right: 1px; /* Right padding */\n"
-"    text-align: center; /* Center the text horizontally */\n"
-"}")
-        self.replay_from_input_box = QLineEdit(self.Play_Preview_From_To_Frame_poppable)
-        self.replay_from_input_box.setObjectName(u"replay_from_input_box")
-        self.replay_from_input_box.setGeometry(QRect(187, 8, 40, 24))
-        self.replay_from_input_box.setMaximumSize(QSize(40, 16777215))
-        self.replay_from_input_box.setStyleSheet(u"QLineEdit {\n"
-"    background-color: rgb(42, 42, 42); /* Dark background */\n"
-"    color: rgb(0, 255, 0); /* Bright green text */\n"
-"    border: 2px solid rgb(40, 40, 40); /* Dark grey border */\n"
-"    border-radius: 5px; /* Rounded corners */\n"
-"    padding-top: 1px; /* Top padding to push the text down */\n"
-"    padding-bottom: 1px; /* Bottom padding for even spacing */\n"
-"    padding-left: 1px; /* Left padding */\n"
-"    padding-right: 1px; /* Right padding */\n"
-"    text-align: center; /* Center the text horizontally */\n"
-"}")
+        self.horizontalSpacer_5 = QSpacerItem(10, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.gridLayout_15.addWidget(self.Play_Preview_From_To_Frame_poppable, 0, 7, 1, 1)
+        self.gridLayout_15.addItem(self.horizontalSpacer_5, 0, 8, 1, 1)
+
+        self.Preview_Play_Buttons_poppable = QFrame(self.Preview_Frame)
+        self.Preview_Play_Buttons_poppable.setObjectName(u"Preview_Play_Buttons_poppable")
+        self.Preview_Play_Buttons_poppable.setMinimumSize(QSize(260, 44))
+        self.Preview_Play_Buttons_poppable.setTabletTracking(True)
+        self.Preview_Play_Buttons_poppable.setStyleSheet(u"border: 0px")
+        self.Preview_Play_Buttons_poppable.setFrameShape(QFrame.StyledPanel)
+        self.Preview_Play_Buttons_poppable.setFrameShadow(QFrame.Raised)
+        self.goto_end_button = QPushButton(self.Preview_Play_Buttons_poppable)
+        self.goto_end_button.setObjectName(u"goto_end_button")
+        self.goto_end_button.setGeometry(QRect(152, 6, 52, 34))
+        sizePolicy7.setHeightForWidth(self.goto_end_button.sizePolicy().hasHeightForWidth())
+        self.goto_end_button.setSizePolicy(sizePolicy7)
+        self.goto_end_button.setMinimumSize(QSize(52, 34))
+        self.goto_end_button.setMaximumSize(QSize(52, 34))
+        self.goto_end_button.setTabletTracking(False)
+        self.goto_end_button.setStyleSheet(u"border : 0")
+        icon = QIcon()
+        icon.addFile(u"images/goto_end_off.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u"images/goto_end_hover.png", QSize(), QIcon.Normal, QIcon.On)
+        icon.addFile(u"images/goto_end_active.png", QSize(), QIcon.Active, QIcon.On)
+        self.goto_end_button.setIcon(icon)
+        self.goto_end_button.setIconSize(QSize(52, 34))
+        self.play_button = QPushButton(self.Preview_Play_Buttons_poppable)
+        self.play_button.setObjectName(u"play_button")
+        self.play_button.setGeometry(QRect(112, 6, 37, 33))
+        sizePolicy7.setHeightForWidth(self.play_button.sizePolicy().hasHeightForWidth())
+        self.play_button.setSizePolicy(sizePolicy7)
+        self.play_button.setMinimumSize(QSize(37, 33))
+        self.play_button.setMaximumSize(QSize(37, 33))
+        self.play_button.setTabletTracking(False)
+        self.play_button.setStyleSheet(u"border : 0")
+        icon1 = QIcon()
+        icon1.addFile(u"images/play_off.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon1.addFile(u"images/play_hover.png", QSize(), QIcon.Normal, QIcon.On)
+        icon1.addFile(u"images/play_active.png", QSize(), QIcon.Active, QIcon.On)
+        self.play_button.setIcon(icon1)
+        self.play_button.setIconSize(QSize(37, 35))
+        self.stop_button = QPushButton(self.Preview_Play_Buttons_poppable)
+        self.stop_button.setObjectName(u"stop_button")
+        self.stop_button.setGeometry(QRect(72, 6, 34, 33))
+        sizePolicy7.setHeightForWidth(self.stop_button.sizePolicy().hasHeightForWidth())
+        self.stop_button.setSizePolicy(sizePolicy7)
+        self.stop_button.setMinimumSize(QSize(34, 33))
+        self.stop_button.setMaximumSize(QSize(34, 33))
+        self.stop_button.setTabletTracking(False)
+        self.stop_button.setStyleSheet(u"border : 0")
+        icon2 = QIcon()
+        icon2.addFile(u"images/paus_off.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon2.addFile(u"images/paus_hover.png", QSize(), QIcon.Normal, QIcon.On)
+        icon2.addFile(u"images/paus_active.png", QSize(), QIcon.Active, QIcon.On)
+        self.stop_button.setIcon(icon2)
+        self.stop_button.setIconSize(QSize(34, 33))
+        self.goto_start_button = QPushButton(self.Preview_Play_Buttons_poppable)
+        self.goto_start_button.setObjectName(u"goto_start_button")
+        self.goto_start_button.setGeometry(QRect(8, 6, 52, 34))
+        sizePolicy7.setHeightForWidth(self.goto_start_button.sizePolicy().hasHeightForWidth())
+        self.goto_start_button.setSizePolicy(sizePolicy7)
+        self.goto_start_button.setMinimumSize(QSize(52, 34))
+        self.goto_start_button.setMaximumSize(QSize(52, 34))
+        self.goto_start_button.setTabletTracking(False)
+        self.goto_start_button.setStyleSheet(u"border : 0")
+        icon3 = QIcon()
+        icon3.addFile(u"images/goto_start_off.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon3.addFile(u"images/goto_start_hover.png", QSize(), QIcon.Normal, QIcon.On)
+        icon3.addFile(u"images/goto_start_active.png", QSize(), QIcon.Active, QIcon.On)
+        self.goto_start_button.setIcon(icon3)
+        self.goto_start_button.setIconSize(QSize(52, 34))
+        self.loop_button = QPushButton(self.Preview_Play_Buttons_poppable)
+        self.loop_button.setObjectName(u"loop_button")
+        self.loop_button.setGeometry(QRect(212, 2, 46, 44))
+        sizePolicy7.setHeightForWidth(self.loop_button.sizePolicy().hasHeightForWidth())
+        self.loop_button.setSizePolicy(sizePolicy7)
+        self.loop_button.setMinimumSize(QSize(46, 44))
+        self.loop_button.setMaximumSize(QSize(46, 44))
+        self.loop_button.setTabletTracking(False)
+        self.loop_button.setStyleSheet(u"border : 0")
+        icon4 = QIcon()
+        icon4.addFile(u"images/loop_off.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon4.addFile(u"images/loop_hover.png", QSize(), QIcon.Normal, QIcon.On)
+        icon4.addFile(u"images/loop_active.png", QSize(), QIcon.Active, QIcon.On)
+        self.loop_button.setIcon(icon4)
+        self.loop_button.setIconSize(QSize(41, 38))
+
+        self.gridLayout_15.addWidget(self.Preview_Play_Buttons_poppable, 0, 5, 1, 1)
 
         self.preview_compression_slider = QSlider(self.Preview_Frame)
         self.preview_compression_slider.setObjectName(u"preview_compression_slider")
@@ -633,151 +1425,22 @@ class Ui_MainWindow(object):
 
         self.gridLayout_15.addWidget(self.preview_compression_slider, 0, 10, 1, 1)
 
-        self.open_Deforum_folder_frame_poppable = QFrame(self.Preview_Frame)
-        self.open_Deforum_folder_frame_poppable.setObjectName(u"open_Deforum_folder_frame_poppable")
-        self.open_Deforum_folder_frame_poppable.setMinimumSize(QSize(36, 30))
-        self.open_Deforum_folder_frame_poppable.setTabletTracking(True)
-        self.open_Deforum_folder_frame_poppable.setStyleSheet(u"border:0")
-        self.open_Deforum_folder_frame_poppable.setFrameShape(QFrame.StyledPanel)
-        self.open_Deforum_folder_frame_poppable.setFrameShadow(QFrame.Raised)
-        self.open_Deforum_folder = QPushButton(self.open_Deforum_folder_frame_poppable)
-        self.open_Deforum_folder.setObjectName(u"open_Deforum_folder")
-        self.open_Deforum_folder.setEnabled(True)
-        self.open_Deforum_folder.setGeometry(QRect(0, 0, 40, 32))
-        sizePolicy5.setHeightForWidth(self.open_Deforum_folder.sizePolicy().hasHeightForWidth())
-        self.open_Deforum_folder.setSizePolicy(sizePolicy5)
-        self.open_Deforum_folder.setMinimumSize(QSize(40, 32))
-        self.open_Deforum_folder.setBaseSize(QSize(0, 0))
-        self.open_Deforum_folder.setFocusPolicy(Qt.StrongFocus)
-        self.open_Deforum_folder.setToolTipDuration(-1)
-        self.open_Deforum_folder.setAutoFillBackground(False)
-        self.open_Deforum_folder.setStyleSheet(u"QPushButton {\n"
-"    /* Normal state */\n"
-"    background-image: url(images/Folder_off.png);\n"
-"    background-position: left top;\n"
-"    background-repeat: no-repeat;\n"
-"    border-radius: 0px;\n"
-"    min-width: 38px;\n"
-"    min-height: 30px;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    /* Hovered state */\n"
-"    background-image: url(images/Folder_hover.png);\n"
-"    background-position: left top;\n"
-"    background-repeat: no-repeat;\n"
-"    border: none;\n"
-"    min-width: 38px;\n"
-"    min-height: 30px;\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    /* Pressed state */\n"
-"    background-image: url(images/Folder_active.png);\n"
-"    background-position: left top;\n"
-"    background-repeat: no-repeat;\n"
-"    border: none;\n"
-"    min-width: 38px;\n"
-"    min-height: 30px;\n"
-"}")
-        self.open_Deforum_folder.setIconSize(QSize(36, 30))
-
-        self.gridLayout_15.addWidget(self.open_Deforum_folder_frame_poppable, 0, 3, 1, 1)
-
-        self.Preview_Play_Buttons_poppable = QFrame(self.Preview_Frame)
-        self.Preview_Play_Buttons_poppable.setObjectName(u"Preview_Play_Buttons_poppable")
-        self.Preview_Play_Buttons_poppable.setMinimumSize(QSize(260, 35))
-        self.Preview_Play_Buttons_poppable.setTabletTracking(True)
-        self.Preview_Play_Buttons_poppable.setStyleSheet(u"border: 0px")
-        self.Preview_Play_Buttons_poppable.setFrameShape(QFrame.StyledPanel)
-        self.Preview_Play_Buttons_poppable.setFrameShadow(QFrame.Raised)
-        self.goto_end_button = QPushButton(self.Preview_Play_Buttons_poppable)
-        self.goto_end_button.setObjectName(u"goto_end_button")
-        self.goto_end_button.setGeometry(QRect(192, 0, 52, 34))
-        sizePolicy5.setHeightForWidth(self.goto_end_button.sizePolicy().hasHeightForWidth())
-        self.goto_end_button.setSizePolicy(sizePolicy5)
-        self.goto_end_button.setMinimumSize(QSize(52, 34))
-        self.goto_end_button.setMaximumSize(QSize(52, 34))
-        self.goto_end_button.setTabletTracking(False)
-        self.goto_end_button.setStyleSheet(u"border : 0")
-        icon = QIcon()
-        icon.addFile(u"images/goto_end_off.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon.addFile(u"images/goto_end_hover.png", QSize(), QIcon.Normal, QIcon.On)
-        icon.addFile(u"images/goto_end_active.png", QSize(), QIcon.Active, QIcon.On)
-        self.goto_end_button.setIcon(icon)
-        self.goto_end_button.setIconSize(QSize(52, 34))
-        self.play_button = QPushButton(self.Preview_Play_Buttons_poppable)
-        self.play_button.setObjectName(u"play_button")
-        self.play_button.setGeometry(QRect(140, 0, 37, 33))
-        sizePolicy5.setHeightForWidth(self.play_button.sizePolicy().hasHeightForWidth())
-        self.play_button.setSizePolicy(sizePolicy5)
-        self.play_button.setMinimumSize(QSize(37, 33))
-        self.play_button.setMaximumSize(QSize(37, 33))
-        self.play_button.setTabletTracking(False)
-        self.play_button.setStyleSheet(u"border : 0")
-        icon1 = QIcon()
-        icon1.addFile(u"images/play_off.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon1.addFile(u"images/play_hover.png", QSize(), QIcon.Normal, QIcon.On)
-        icon1.addFile(u"images/play_active.png", QSize(), QIcon.Active, QIcon.On)
-        self.play_button.setIcon(icon1)
-        self.play_button.setIconSize(QSize(37, 35))
-        self.stop_button = QPushButton(self.Preview_Play_Buttons_poppable)
-        self.stop_button.setObjectName(u"stop_button")
-        self.stop_button.setGeometry(QRect(84, 0, 34, 33))
-        sizePolicy5.setHeightForWidth(self.stop_button.sizePolicy().hasHeightForWidth())
-        self.stop_button.setSizePolicy(sizePolicy5)
-        self.stop_button.setMinimumSize(QSize(34, 33))
-        self.stop_button.setMaximumSize(QSize(34, 33))
-        self.stop_button.setTabletTracking(False)
-        self.stop_button.setStyleSheet(u"border : 0")
-        icon2 = QIcon()
-        icon2.addFile(u"images/paus_off.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon2.addFile(u"images/paus_hover.png", QSize(), QIcon.Normal, QIcon.On)
-        icon2.addFile(u"images/paus_active.png", QSize(), QIcon.Active, QIcon.On)
-        self.stop_button.setIcon(icon2)
-        self.stop_button.setIconSize(QSize(34, 33))
-        self.goto_start_button = QPushButton(self.Preview_Play_Buttons_poppable)
-        self.goto_start_button.setObjectName(u"goto_start_button")
-        self.goto_start_button.setGeometry(QRect(8, 0, 52, 34))
-        sizePolicy5.setHeightForWidth(self.goto_start_button.sizePolicy().hasHeightForWidth())
-        self.goto_start_button.setSizePolicy(sizePolicy5)
-        self.goto_start_button.setMinimumSize(QSize(52, 34))
-        self.goto_start_button.setMaximumSize(QSize(52, 34))
-        self.goto_start_button.setTabletTracking(False)
-        self.goto_start_button.setStyleSheet(u"border : 0")
-        icon3 = QIcon()
-        icon3.addFile(u"images/goto_start_off.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon3.addFile(u"images/goto_start_hover.png", QSize(), QIcon.Normal, QIcon.On)
-        icon3.addFile(u"images/goto_start_active.png", QSize(), QIcon.Active, QIcon.On)
-        self.goto_start_button.setIcon(icon3)
-        self.goto_start_button.setIconSize(QSize(52, 34))
-
-        self.gridLayout_15.addWidget(self.Preview_Play_Buttons_poppable, 0, 5, 1, 1)
-
-        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout_15.addItem(self.horizontalSpacer_4, 0, 2, 1, 1)
-
-        self.horizontalSpacer_5 = QSpacerItem(10, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout_15.addItem(self.horizontalSpacer_5, 0, 8, 1, 1)
-
         self.horizontalSpacer_7 = QSpacerItem(20, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.gridLayout_15.addItem(self.horizontalSpacer_7, 0, 4, 1, 1)
 
-        self.CRF_Compression_Frame_poppable = QFrame(self.Preview_Frame)
-        self.CRF_Compression_Frame_poppable.setObjectName(u"CRF_Compression_Frame_poppable")
-        self.CRF_Compression_Frame_poppable.setMinimumSize(QSize(211, 0))
-        self.CRF_Compression_Frame_poppable.setTabletTracking(True)
-        self.CRF_Compression_Frame_poppable.setStyleSheet(u"border: 0px")
-        self.CRF_Compression_Frame_poppable.setFrameShape(QFrame.StyledPanel)
-        self.CRF_Compression_Frame_poppable.setFrameShadow(QFrame.Raised)
-        self.crf_input_box = QLineEdit(self.CRF_Compression_Frame_poppable)
-        self.crf_input_box.setObjectName(u"crf_input_box")
-        self.crf_input_box.setGeometry(QRect(160, 8, 40, 24))
-        self.crf_input_box.setMaximumSize(QSize(40, 16777215))
-        self.crf_input_box.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;*/\n"
+        self.Play_Preview_From_To_Frame_poppable = QFrame(self.Preview_Frame)
+        self.Play_Preview_From_To_Frame_poppable.setObjectName(u"Play_Preview_From_To_Frame_poppable")
+        self.Play_Preview_From_To_Frame_poppable.setMinimumSize(QSize(450, 0))
+        self.Play_Preview_From_To_Frame_poppable.setTabletTracking(True)
+        self.Play_Preview_From_To_Frame_poppable.setStyleSheet(u"border: 0px")
+        self.Play_Preview_From_To_Frame_poppable.setFrameShape(QFrame.StyledPanel)
+        self.Play_Preview_From_To_Frame_poppable.setFrameShadow(QFrame.Raised)
+        self.replay_fps_input_box = QLineEdit(self.Play_Preview_From_To_Frame_poppable)
+        self.replay_fps_input_box.setObjectName(u"replay_fps_input_box")
+        self.replay_fps_input_box.setGeometry(QRect(392, 8, 40, 24))
+        self.replay_fps_input_box.setMaximumSize(QSize(40, 16777215))
+        self.replay_fps_input_box.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;*/\n"
 "\n"
 "\n"
 "\n"
@@ -792,12 +1455,80 @@ class Ui_MainWindow(object):
 "    padding-right: 1px; /* Right padding */\n"
 "    text-align: center; /* Center the text horizontally */\n"
 "}")
-        self.crf_label = QLabel(self.CRF_Compression_Frame_poppable)
-        self.crf_label.setObjectName(u"crf_label")
-        self.crf_label.setGeometry(QRect(5, 3, 153, 35))
-        self.crf_label.setFont(font)
+        self.fps_label = QLabel(self.Play_Preview_From_To_Frame_poppable)
+        self.fps_label.setObjectName(u"fps_label")
+        self.fps_label.setGeometry(QRect(342, 3, 44, 35))
+        self.fps_label.setFont(font4)
+        self.from_framelabel = QLabel(self.Play_Preview_From_To_Frame_poppable)
+        self.from_framelabel.setObjectName(u"from_framelabel")
+        self.from_framelabel.setGeometry(QRect(106, 2, 79, 35))
+        self.from_framelabel.setFont(font4)
+        self.play_preview = QPushButton(self.Play_Preview_From_To_Frame_poppable)
+        self.play_preview.setObjectName(u"play_preview")
+        self.play_preview.setGeometry(QRect(0, 6, 97, 28))
+        sizePolicy7.setHeightForWidth(self.play_preview.sizePolicy().hasHeightForWidth())
+        self.play_preview.setSizePolicy(sizePolicy7)
+        self.play_preview.setMinimumSize(QSize(45, 26))
+        self.play_preview.setStyleSheet(u"QPushButton {\n"
+"    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n"
+"    border: none;\n"
+"    border-radius: 5px; /* Consistent with the tab's rounded corners */\n"
+"    padding: 6px 12px; /* Comfortable padding for the button text */\n"
+"    color: white; /* White text for contrast */\n"
+"    text-align: center;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(96, 96, 96); /* Lighter grey, similar to tab hover effect */\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(128, 128, 128); /* Similar to the selected tab color */\n"
+"\n"
+"}\n"
+"")
+        self.to_frame_label = QLabel(self.Play_Preview_From_To_Frame_poppable)
+        self.to_frame_label.setObjectName(u"to_frame_label")
+        self.to_frame_label.setGeometry(QRect(233, 3, 63, 35))
+        self.to_frame_label.setFont(font4)
+        self.replay_to_input_box = QLineEdit(self.Play_Preview_From_To_Frame_poppable)
+        self.replay_to_input_box.setObjectName(u"replay_to_input_box")
+        self.replay_to_input_box.setGeometry(QRect(302, 8, 40, 24))
+        self.replay_to_input_box.setMaximumSize(QSize(40, 16777215))
+        self.replay_to_input_box.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;*/\n"
+"\n"
+"\n"
+"\n"
+"QLineEdit {\n"
+"    background-color: rgb(42, 42, 42); /* Dark background */\n"
+"    color: rgb(0, 255, 0); /* Bright green text */\n"
+"    border: 2px solid rgb(40, 40, 40); /* Dark grey border */\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    padding-top: 1px; /* Top padding to push the text down */\n"
+"    padding-bottom: 1px; /* Bottom padding for even spacing */\n"
+"    padding-left: 1px; /* Left padding */\n"
+"    padding-right: 1px; /* Right padding */\n"
+"    text-align: center; /* Center the text horizontally */\n"
+"}")
+        self.replay_from_input_box = QLineEdit(self.Play_Preview_From_To_Frame_poppable)
+        self.replay_from_input_box.setObjectName(u"replay_from_input_box")
+        self.replay_from_input_box.setGeometry(QRect(187, 8, 40, 24))
+        self.replay_from_input_box.setMaximumSize(QSize(40, 16777215))
+        self.replay_from_input_box.setStyleSheet(u"QLineEdit {\n"
+"    background-color: rgb(42, 42, 42); /* Dark background */\n"
+"    color: rgb(0, 255, 0); /* Bright green text */\n"
+"    border: 2px solid rgb(40, 40, 40); /* Dark grey border */\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    padding-top: 1px; /* Top padding to push the text down */\n"
+"    padding-bottom: 1px; /* Bottom padding for even spacing */\n"
+"    padding-left: 1px; /* Left padding */\n"
+"    padding-right: 1px; /* Right padding */\n"
+"    text-align: center; /* Center the text horizontally */\n"
+"}")
 
-        self.gridLayout_15.addWidget(self.CRF_Compression_Frame_poppable, 0, 9, 1, 1)
+        self.gridLayout_15.addWidget(self.Play_Preview_From_To_Frame_poppable, 0, 7, 1, 1)
 
 
         self.gridLayout_8.addWidget(self.Preview_Frame, 4, 0, 1, 1)
@@ -825,8 +1556,8 @@ class Ui_MainWindow(object):
         self.splitter.addWidget(self.Movie_Tab)
         self.Tab_Tabs = QWidget(self.splitter)
         self.Tab_Tabs.setObjectName(u"Tab_Tabs")
-        sizePolicy2.setHeightForWidth(self.Tab_Tabs.sizePolicy().hasHeightForWidth())
-        self.Tab_Tabs.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.Tab_Tabs.sizePolicy().hasHeightForWidth())
+        self.Tab_Tabs.setSizePolicy(sizePolicy1)
         self.Tab_Tabs.setMinimumSize(QSize(0, 250))
         self.Tab_Tabs.setSizeIncrement(QSize(0, 0))
         self.Tab_Tabs.setBaseSize(QSize(0, 0))
@@ -851,16 +1582,16 @@ class Ui_MainWindow(object):
         self.gridLayout_2.setContentsMargins(-1, 0, 8, -1)
         self.deforumation_tabWidget = QTabWidget(self.tabWidget_frame)
         self.deforumation_tabWidget.setObjectName(u"deforumation_tabWidget")
-        sizePolicy2.setHeightForWidth(self.deforumation_tabWidget.sizePolicy().hasHeightForWidth())
-        self.deforumation_tabWidget.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.deforumation_tabWidget.sizePolicy().hasHeightForWidth())
+        self.deforumation_tabWidget.setSizePolicy(sizePolicy1)
         self.deforumation_tabWidget.setMinimumSize(QSize(0, 16))
-        font1 = QFont()
-        font1.setPointSize(7)
-        font1.setBold(True)
-        font1.setItalic(False)
-        font1.setUnderline(False)
-        font1.setKerning(True)
-        self.deforumation_tabWidget.setFont(font1)
+        font5 = QFont()
+        font5.setPointSize(7)
+        font5.setBold(True)
+        font5.setItalic(False)
+        font5.setUnderline(False)
+        font5.setKerning(True)
+        self.deforumation_tabWidget.setFont(font5)
         self.deforumation_tabWidget.setAutoFillBackground(False)
         self.deforumation_tabWidget.setStyleSheet(u"QTabWidget::pane { /* The tab widget frame */\n"
 "    border: none;\n"
@@ -951,11 +1682,11 @@ class Ui_MainWindow(object):
         self.prompt_splitter.setHandleWidth(6)
         self.left_prompt_tab_frame = QFrame(self.prompt_splitter)
         self.left_prompt_tab_frame.setObjectName(u"left_prompt_tab_frame")
-        sizePolicy6 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy6.setHorizontalStretch(12)
-        sizePolicy6.setVerticalStretch(0)
-        sizePolicy6.setHeightForWidth(self.left_prompt_tab_frame.sizePolicy().hasHeightForWidth())
-        self.left_prompt_tab_frame.setSizePolicy(sizePolicy6)
+        sizePolicy8 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy8.setHorizontalStretch(12)
+        sizePolicy8.setVerticalStretch(0)
+        sizePolicy8.setHeightForWidth(self.left_prompt_tab_frame.sizePolicy().hasHeightForWidth())
+        self.left_prompt_tab_frame.setSizePolicy(sizePolicy8)
         self.left_prompt_tab_frame.setMinimumSize(QSize(0, 0))
         self.left_prompt_tab_frame.setStyleSheet(u"QFrame{\n"
 "background-color: rgb(108,108,118);\n"
@@ -1022,11 +1753,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_12.setContentsMargins(9, 0, 9, 10)
         self.Prompt_1_Frame = QFrame(self.left_prompt_tab_frame)
         self.Prompt_1_Frame.setObjectName(u"Prompt_1_Frame")
-        sizePolicy7 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-        sizePolicy7.setHorizontalStretch(1)
-        sizePolicy7.setVerticalStretch(0)
-        sizePolicy7.setHeightForWidth(self.Prompt_1_Frame.sizePolicy().hasHeightForWidth())
-        self.Prompt_1_Frame.setSizePolicy(sizePolicy7)
+        sizePolicy9 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy9.setHorizontalStretch(1)
+        sizePolicy9.setVerticalStretch(0)
+        sizePolicy9.setHeightForWidth(self.Prompt_1_Frame.sizePolicy().hasHeightForWidth())
+        self.Prompt_1_Frame.setSizePolicy(sizePolicy9)
         self.Prompt_1_Frame.setMinimumSize(QSize(200, 21))
         self.Prompt_1_Frame.setMaximumSize(QSize(500, 17))
         self.Prompt_1_Frame.setTabletTracking(True)
@@ -1036,14 +1767,14 @@ class Ui_MainWindow(object):
         self.label_Positive_Prompt1 = QLabel(self.Prompt_1_Frame)
         self.label_Positive_Prompt1.setObjectName(u"label_Positive_Prompt1")
         self.label_Positive_Prompt1.setGeometry(QRect(0, -8, 241, 38))
-        sizePolicy5.setHeightForWidth(self.label_Positive_Prompt1.sizePolicy().hasHeightForWidth())
-        self.label_Positive_Prompt1.setSizePolicy(sizePolicy5)
+        sizePolicy7.setHeightForWidth(self.label_Positive_Prompt1.sizePolicy().hasHeightForWidth())
+        self.label_Positive_Prompt1.setSizePolicy(sizePolicy7)
         self.label_Positive_Prompt1.setMinimumSize(QSize(0, 30))
-        font2 = QFont()
-        font2.setFamilies([u"Courier"])
-        font2.setPointSize(15)
-        font2.setBold(True)
-        self.label_Positive_Prompt1.setFont(font2)
+        font6 = QFont()
+        font6.setFamilies([u"Courier"])
+        font6.setPointSize(15)
+        font6.setBold(True)
+        self.label_Positive_Prompt1.setFont(font6)
         self.label_Positive_Prompt1.setStyleSheet(u"border:0")
         self.label_Positive_Prompt1.setMargin(2)
 
@@ -1051,11 +1782,11 @@ class Ui_MainWindow(object):
 
         self.prompt1 = QTextEdit(self.left_prompt_tab_frame)
         self.prompt1.setObjectName(u"prompt1")
-        sizePolicy8 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy8.setHorizontalStretch(0)
-        sizePolicy8.setVerticalStretch(2)
-        sizePolicy8.setHeightForWidth(self.prompt1.sizePolicy().hasHeightForWidth())
-        self.prompt1.setSizePolicy(sizePolicy8)
+        sizePolicy10 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy10.setHorizontalStretch(0)
+        sizePolicy10.setVerticalStretch(2)
+        sizePolicy10.setHeightForWidth(self.prompt1.sizePolicy().hasHeightForWidth())
+        self.prompt1.setSizePolicy(sizePolicy10)
         self.prompt1.setMinimumSize(QSize(0, 1))
         self.prompt1.setMaximumSize(QSize(16777215, 16777215))
         self.prompt1.setSizeIncrement(QSize(0, 0))
@@ -1097,8 +1828,8 @@ class Ui_MainWindow(object):
 
         self.Prompt_2_Frame = QFrame(self.left_prompt_tab_frame)
         self.Prompt_2_Frame.setObjectName(u"Prompt_2_Frame")
-        sizePolicy5.setHeightForWidth(self.Prompt_2_Frame.sizePolicy().hasHeightForWidth())
-        self.Prompt_2_Frame.setSizePolicy(sizePolicy5)
+        sizePolicy7.setHeightForWidth(self.Prompt_2_Frame.sizePolicy().hasHeightForWidth())
+        self.Prompt_2_Frame.setSizePolicy(sizePolicy7)
         self.Prompt_2_Frame.setMinimumSize(QSize(200, 30))
         self.Prompt_2_Frame.setMaximumSize(QSize(500, 16777215))
         self.Prompt_2_Frame.setStyleSheet(u"border: 0px solid rgb(40, 40, 40);")
@@ -1107,16 +1838,16 @@ class Ui_MainWindow(object):
         self.label_Positive_Prompt2 = QLabel(self.Prompt_2_Frame)
         self.label_Positive_Prompt2.setObjectName(u"label_Positive_Prompt2")
         self.label_Positive_Prompt2.setGeometry(QRect(0, -2, 241, 38))
-        sizePolicy5.setHeightForWidth(self.label_Positive_Prompt2.sizePolicy().hasHeightForWidth())
-        self.label_Positive_Prompt2.setSizePolicy(sizePolicy5)
-        self.label_Positive_Prompt2.setFont(font2)
+        sizePolicy7.setHeightForWidth(self.label_Positive_Prompt2.sizePolicy().hasHeightForWidth())
+        self.label_Positive_Prompt2.setSizePolicy(sizePolicy7)
+        self.label_Positive_Prompt2.setFont(font6)
 
         self.verticalLayout_12.addWidget(self.Prompt_2_Frame)
 
         self.prompt2 = QTextEdit(self.left_prompt_tab_frame)
         self.prompt2.setObjectName(u"prompt2")
-        sizePolicy8.setHeightForWidth(self.prompt2.sizePolicy().hasHeightForWidth())
-        self.prompt2.setSizePolicy(sizePolicy8)
+        sizePolicy10.setHeightForWidth(self.prompt2.sizePolicy().hasHeightForWidth())
+        self.prompt2.setSizePolicy(sizePolicy10)
         self.prompt2.setMinimumSize(QSize(0, 1))
         self.prompt2.setMaximumSize(QSize(16777215, 16777215))
         self.prompt2.setStyleSheet(u"QTextEdit QScrollBar:vertical {\n"
@@ -1156,8 +1887,8 @@ class Ui_MainWindow(object):
 
         self.Prompt_3_Frame = QFrame(self.left_prompt_tab_frame)
         self.Prompt_3_Frame.setObjectName(u"Prompt_3_Frame")
-        sizePolicy5.setHeightForWidth(self.Prompt_3_Frame.sizePolicy().hasHeightForWidth())
-        self.Prompt_3_Frame.setSizePolicy(sizePolicy5)
+        sizePolicy7.setHeightForWidth(self.Prompt_3_Frame.sizePolicy().hasHeightForWidth())
+        self.Prompt_3_Frame.setSizePolicy(sizePolicy7)
         self.Prompt_3_Frame.setMinimumSize(QSize(200, 30))
         self.Prompt_3_Frame.setMaximumSize(QSize(500, 16777215))
         self.Prompt_3_Frame.setStyleSheet(u"border: 0px solid rgb(40, 40, 40);")
@@ -1166,20 +1897,20 @@ class Ui_MainWindow(object):
         self.label_Negative_Prompt = QLabel(self.Prompt_3_Frame)
         self.label_Negative_Prompt.setObjectName(u"label_Negative_Prompt")
         self.label_Negative_Prompt.setGeometry(QRect(0, -2, 204, 38))
-        sizePolicy9 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Ignored)
-        sizePolicy9.setHorizontalStretch(0)
-        sizePolicy9.setVerticalStretch(0)
-        sizePolicy9.setHeightForWidth(self.label_Negative_Prompt.sizePolicy().hasHeightForWidth())
-        self.label_Negative_Prompt.setSizePolicy(sizePolicy9)
+        sizePolicy11 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Ignored)
+        sizePolicy11.setHorizontalStretch(0)
+        sizePolicy11.setVerticalStretch(0)
+        sizePolicy11.setHeightForWidth(self.label_Negative_Prompt.sizePolicy().hasHeightForWidth())
+        self.label_Negative_Prompt.setSizePolicy(sizePolicy11)
         self.label_Negative_Prompt.setMinimumSize(QSize(0, 20))
-        self.label_Negative_Prompt.setFont(font2)
+        self.label_Negative_Prompt.setFont(font6)
 
         self.verticalLayout_12.addWidget(self.Prompt_3_Frame)
 
         self.negative_prompt = QTextEdit(self.left_prompt_tab_frame)
         self.negative_prompt.setObjectName(u"negative_prompt")
-        sizePolicy8.setHeightForWidth(self.negative_prompt.sizePolicy().hasHeightForWidth())
-        self.negative_prompt.setSizePolicy(sizePolicy8)
+        sizePolicy10.setHeightForWidth(self.negative_prompt.sizePolicy().hasHeightForWidth())
+        self.negative_prompt.setSizePolicy(sizePolicy10)
         self.negative_prompt.setMinimumSize(QSize(0, 1))
         self.negative_prompt.setMaximumSize(QSize(16777215, 16777215))
         self.negative_prompt.setStyleSheet(u"QTextEdit QScrollBar:vertical {\n"
@@ -1221,11 +1952,11 @@ class Ui_MainWindow(object):
         self.prompt_splitter.addWidget(self.left_prompt_tab_frame)
         self.right_prompt_tab_frame = QFrame(self.prompt_splitter)
         self.right_prompt_tab_frame.setObjectName(u"right_prompt_tab_frame")
-        sizePolicy10 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy10.setHorizontalStretch(2)
-        sizePolicy10.setVerticalStretch(0)
-        sizePolicy10.setHeightForWidth(self.right_prompt_tab_frame.sizePolicy().hasHeightForWidth())
-        self.right_prompt_tab_frame.setSizePolicy(sizePolicy10)
+        sizePolicy12 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy12.setHorizontalStretch(2)
+        sizePolicy12.setVerticalStretch(0)
+        sizePolicy12.setHeightForWidth(self.right_prompt_tab_frame.sizePolicy().hasHeightForWidth())
+        self.right_prompt_tab_frame.setSizePolicy(sizePolicy12)
         self.right_prompt_tab_frame.setMinimumSize(QSize(665, 0))
         self.right_prompt_tab_frame.setStyleSheet(u"\n"
 "QFrame{\n"
@@ -1252,8 +1983,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_20.setContentsMargins(0, 0, 0, 0)
         self.prompt_morph_splitter = QSplitter(self.right_prompt_tab_frame)
         self.prompt_morph_splitter.setObjectName(u"prompt_morph_splitter")
-        sizePolicy2.setHeightForWidth(self.prompt_morph_splitter.sizePolicy().hasHeightForWidth())
-        self.prompt_morph_splitter.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.prompt_morph_splitter.sizePolicy().hasHeightForWidth())
+        self.prompt_morph_splitter.setSizePolicy(sizePolicy1)
         self.prompt_morph_splitter.setAutoFillBackground(False)
         self.prompt_morph_splitter.setFrameShape(QFrame.NoFrame)
         self.prompt_morph_splitter.setFrameShadow(QFrame.Raised)
@@ -1263,38 +1994,35 @@ class Ui_MainWindow(object):
         self.prompt_morph_splitter.setOpaqueResize(True)
         self.prompt_morph_splitter.setHandleWidth(0)
         self.prompt_morph_splitter.setChildrenCollapsible(True)
-        self.upper_morph_frame = QFrame(self.prompt_morph_splitter)
-        self.upper_morph_frame.setObjectName(u"upper_morph_frame")
-        self.upper_morph_frame.setMinimumSize(QSize(0, 150))
-        self.upper_morph_frame.setMaximumSize(QSize(16777215, 150))
-        self.upper_morph_frame.setStyleSheet(u"")
-        self.upper_morph_frame.setFrameShape(QFrame.StyledPanel)
-        self.upper_morph_frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_26 = QVBoxLayout(self.upper_morph_frame)
-        self.verticalLayout_26.setSpacing(0)
-        self.verticalLayout_26.setObjectName(u"verticalLayout_26")
-        self.verticalLayout_26.setContentsMargins(0, 0, 0, 8)
-        self.frame_13 = QFrame(self.upper_morph_frame)
-        self.frame_13.setObjectName(u"frame_13")
-        sizePolicy4.setHeightForWidth(self.frame_13.sizePolicy().hasHeightForWidth())
-        self.frame_13.setSizePolicy(sizePolicy4)
-        self.frame_13.setMaximumSize(QSize(16777215, 240))
-        self.frame_13.setStyleSheet(u"QFrame{\n"
-"border: 0px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
-"border: 0px solid rgb(128,128,128); border-radius: 10px;\n"
-"padding: 0px; /* To prevent the content from touching the border */\n"
-"}\n"
-"\n"
-"QSlider{\n"
+        self.middle_morph_frame = QFrame(self.prompt_morph_splitter)
+        self.middle_morph_frame.setObjectName(u"middle_morph_frame")
+        self.middle_morph_frame.setStyleSheet(u"border:0")
+        self.middle_morph_frame.setFrameShape(QFrame.StyledPanel)
+        self.middle_morph_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_28 = QVBoxLayout(self.middle_morph_frame)
+        self.verticalLayout_28.setSpacing(0)
+        self.verticalLayout_28.setObjectName(u"verticalLayout_28")
+        self.verticalLayout_28.setContentsMargins(0, 0, 0, 0)
+        self.Prompt_Morph_Key_Binding_Frame = QFrame(self.middle_morph_frame)
+        self.Prompt_Morph_Key_Binding_Frame.setObjectName(u"Prompt_Morph_Key_Binding_Frame")
+        sizePolicy1.setHeightForWidth(self.Prompt_Morph_Key_Binding_Frame.sizePolicy().hasHeightForWidth())
+        self.Prompt_Morph_Key_Binding_Frame.setSizePolicy(sizePolicy1)
+        self.Prompt_Morph_Key_Binding_Frame.setTabletTracking(False)
+        self.Prompt_Morph_Key_Binding_Frame.setStyleSheet(u"QFrame{\n"
 "background-color: rgb(108,108,118);\n"
-"border:0;\n"
+"border: 2px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
+"border-radius: 10px;\n"
+"padding: 0px  1px ;  /* To prevent the content from touching the border */\n"
 "}\n"
-"\n"
 "QToolTip { \n"
 " background-color: black; \n"
 "color: white; \n"
 " border: black solid 1px;\n"
 " }\n"
+"QCheckBox{\n"
+"border: 0px;\n"
+"background-color: transparent;\n"
+"}\n"
 "QLabel{\n"
 "padding: 0px; /* To prevent the content from touching the border */\n"
 "border: 0px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
@@ -1304,24 +2032,18 @@ class Ui_MainWindow(object):
 "QPushButton{\n"
 "background-color: transparent;\n"
 "border:0;\n"
-"}\n"
-"")
-        self.frame_13.setFrameShape(QFrame.StyledPanel)
-        self.frame_13.setFrameShadow(QFrame.Raised)
-        self.gridLayout_26 = QGridLayout(self.frame_13)
-        self.gridLayout_26.setSpacing(0)
-        self.gridLayout_26.setObjectName(u"gridLayout_26")
-        self.gridLayout_26.setContentsMargins(0, 0, 0, 0)
-        self.Prompt_Morphing_poppable = QFrame(self.frame_13)
-        self.Prompt_Morphing_poppable.setObjectName(u"Prompt_Morphing_poppable")
-        sizePolicy2.setHeightForWidth(self.Prompt_Morphing_poppable.sizePolicy().hasHeightForWidth())
-        self.Prompt_Morphing_poppable.setSizePolicy(sizePolicy2)
-        self.Prompt_Morphing_poppable.setMinimumSize(QSize(0, 0))
-        self.Prompt_Morphing_poppable.setMaximumSize(QSize(16777215, 16777215))
-        self.Prompt_Morphing_poppable.setTabletTracking(True)
-        self.Prompt_Morphing_poppable.setStyleSheet(u"QFrame{\n"
+"}")
+        self.verticalLayout_29 = QVBoxLayout(self.Prompt_Morph_Key_Binding_Frame)
+        self.verticalLayout_29.setSpacing(4)
+        self.verticalLayout_29.setObjectName(u"verticalLayout_29")
+        self.verticalLayout_29.setContentsMargins(8, 8, 8, 5)
+        self.frame_5 = QFrame(self.Prompt_Morph_Key_Binding_Frame)
+        self.frame_5.setObjectName(u"frame_5")
+        self.frame_5.setMinimumSize(QSize(0, 38))
+        self.frame_5.setMaximumSize(QSize(16777215, 38))
+        self.frame_5.setStyleSheet(u"QFrame{\n"
 "background-color: rgb(108,108,118);\n"
-"border: 2px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
+"border: 0px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
 "border-radius: 10px;\n"
 "padding: 1px  1px ;  /* To prevent the content from touching the border */\n"
 "}\n"
@@ -1331,30 +2053,6 @@ class Ui_MainWindow(object):
 "border: 0px solid rgb(128,128,128);\n"
 "border-radius: 0px;\n"
 "}")
-        self.Prompt_Morphing_poppable.setFrameShape(QFrame.StyledPanel)
-        self.Prompt_Morphing_poppable.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_27 = QVBoxLayout(self.Prompt_Morphing_poppable)
-        self.verticalLayout_27.setSpacing(0)
-        self.verticalLayout_27.setObjectName(u"verticalLayout_27")
-        self.verticalLayout_27.setContentsMargins(8, 0, 8, 0)
-        self.frame_4 = QFrame(self.Prompt_Morphing_poppable)
-        self.frame_4.setObjectName(u"frame_4")
-        self.frame_4.setMaximumSize(QSize(16777215, 128))
-        self.frame_4.setStyleSheet(u"QFrame{\n"
-"background-color: rgb(108,108,118);\n"
-"border:0;\n"
-"padding:0\n"
-"}")
-        self.frame_4.setFrameShape(QFrame.StyledPanel)
-        self.frame_4.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_5 = QVBoxLayout(self.frame_4)
-        self.verticalLayout_5.setSpacing(0)
-        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
-        self.frame_5 = QFrame(self.frame_4)
-        self.frame_5.setObjectName(u"frame_5")
-        self.frame_5.setMinimumSize(QSize(0, 38))
-        self.frame_5.setMaximumSize(QSize(16777215, 38))
         self.frame_5.setFrameShape(QFrame.StyledPanel)
         self.frame_5.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_5 = QHBoxLayout(self.frame_5)
@@ -1362,14 +2060,14 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.setContentsMargins(-1, 0, -1, -1)
         self.prompt_morphing_label = QLabel(self.frame_5)
         self.prompt_morphing_label.setObjectName(u"prompt_morphing_label")
-        sizePolicy2.setHeightForWidth(self.prompt_morphing_label.sizePolicy().hasHeightForWidth())
-        self.prompt_morphing_label.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.prompt_morphing_label.sizePolicy().hasHeightForWidth())
+        self.prompt_morphing_label.setSizePolicy(sizePolicy1)
         self.prompt_morphing_label.setMinimumSize(QSize(0, 34))
         self.prompt_morphing_label.setMaximumSize(QSize(16777215, 34))
-        font3 = QFont()
-        font3.setPointSize(15)
-        font3.setBold(True)
-        self.prompt_morphing_label.setFont(font3)
+        font7 = QFont()
+        font7.setPointSize(15)
+        font7.setBold(True)
+        self.prompt_morphing_label.setFont(font7)
         self.prompt_morphing_label.setStyleSheet(u"")
         self.prompt_morphing_label.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
 
@@ -1382,8 +2080,8 @@ class Ui_MainWindow(object):
         self.save_morph_data = QPushButton(self.frame_5)
         self.save_morph_data.setObjectName(u"save_morph_data")
         self.save_morph_data.setEnabled(True)
-        sizePolicy2.setHeightForWidth(self.save_morph_data.sizePolicy().hasHeightForWidth())
-        self.save_morph_data.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.save_morph_data.sizePolicy().hasHeightForWidth())
+        self.save_morph_data.setSizePolicy(sizePolicy1)
         self.save_morph_data.setMinimumSize(QSize(34, 38))
         self.save_morph_data.setSizeIncrement(QSize(6, 0))
         self.save_morph_data.setBaseSize(QSize(0, 0))
@@ -1436,137 +2134,12 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.addWidget(self.save_current_ui_label_4)
 
 
-        self.verticalLayout_5.addWidget(self.frame_5)
+        self.verticalLayout_29.addWidget(self.frame_5)
 
-        self.prpmta_to_promptb_label = QLabel(self.frame_4)
-        self.prpmta_to_promptb_label.setObjectName(u"prpmta_to_promptb_label")
-        self.prpmta_to_promptb_label.setMinimumSize(QSize(0, 28))
-        self.prpmta_to_promptb_label.setMaximumSize(QSize(16777215, 28))
-        font4 = QFont()
-        font4.setPointSize(12)
-        self.prpmta_to_promptb_label.setFont(font4)
-        self.prpmta_to_promptb_label.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
-
-        self.verticalLayout_5.addWidget(self.prpmta_to_promptb_label)
-
-        self.morph_slider = QSlider(self.frame_4)
-        self.morph_slider.setObjectName(u"morph_slider")
-        sizePolicy2.setHeightForWidth(self.morph_slider.sizePolicy().hasHeightForWidth())
-        self.morph_slider.setSizePolicy(sizePolicy2)
-        self.morph_slider.setMinimumSize(QSize(0, 33))
-        self.morph_slider.setMaximumSize(QSize(16777215, 33))
-        self.morph_slider.setStyleSheet(u"QSlider::groove:horizontal {\n"
-"    border-image: url(images/groove_230.png) ; /* Adjust slicing and stretch as needed */\n"
-"    height: 29px; /* The height of your image */\n"
-"    width: 215px; /* Width of the handle - adjust as needed */\n"
-"}\n"
-"\n"
-"QSlider::handle:horizontal {\n"
-"    background-image: url(images/handle_off.png); /* The path to your handle image */\n"
-"  background-repeat: no-repeat;\n"
-"    border: none; /* Remove the border if you don't need it */\n"
-"    width: 32px; /* Width of the handle - adjust as needed */\n"
-"    height: 32px; /* Height of the handle - adjust as needed */\n"
-"    margin: -2px 0; /* Optional: Adjust the margin if needed */\n"
-"}\n"
-"\n"
-"QSlider::handle:horizontal:hover {\n"
-"\n"
-"    background-image: url(images/handle_hover.png); /* Change the handle image when hovering */\n"
-"background-repeat: no-repeat;\n"
-"    border: none; /* Remove the border if you don't need it */\n"
-"    width: 32px; /* Width of the handle - adjust as needed */\n"
-"    height: 32px;"
-                        " /* Height of the handle - adjust as needed */\n"
-"    margin: -2px 0; /* Optional: Adjust the margin if needed */\n"
-"}\n"
-"\n"
-"QSlider::handle:horizontal:pressed {\n"
-"    background-image: url(images/handle_on.png); /* Change the handle image when pressed */\n"
-"background-repeat: no-repeat;\n"
-"    border: none; /* Remove the border if you don't need it */\n"
-"    width: 32px; /* Width of the handle - adjust as needed */\n"
-"    height: 32px; /* Height of the handle - adjust as needed */\n"
-"    margin: -2px 0; /* Optional: Adjust the margin if needed */\n"
-"  \n"
-"}\n"
-"\n"
-"QSlider::add-page:horizontal {\n"
-"    background: none;\n"
-"}\n"
-"\n"
-"QSlider::sub-page:horizontal {\n"
-"    background: none;\n"
-"}\n"
-" ")
-        self.morph_slider.setMinimum(-100)
-        self.morph_slider.setMaximum(100)
-        self.morph_slider.setOrientation(Qt.Horizontal)
-
-        self.verticalLayout_5.addWidget(self.morph_slider)
-
-        self.morphing_text_howto_label = QLabel(self.frame_4)
-        self.morphing_text_howto_label.setObjectName(u"morphing_text_howto_label")
-        sizePolicy2.setHeightForWidth(self.morphing_text_howto_label.sizePolicy().hasHeightForWidth())
-        self.morphing_text_howto_label.setSizePolicy(sizePolicy2)
-        self.morphing_text_howto_label.setMinimumSize(QSize(0, 22))
-        font5 = QFont()
-        font5.setPointSize(10)
-        self.morphing_text_howto_label.setFont(font5)
-        self.morphing_text_howto_label.setStyleSheet(u"")
-        self.morphing_text_howto_label.setScaledContents(False)
-        self.morphing_text_howto_label.setAlignment(Qt.AlignCenter)
-        self.morphing_text_howto_label.setWordWrap(True)
-
-        self.verticalLayout_5.addWidget(self.morphing_text_howto_label)
-
-
-        self.verticalLayout_27.addWidget(self.frame_4)
-
-
-        self.gridLayout_26.addWidget(self.Prompt_Morphing_poppable, 0, 0, 1, 1)
-
-
-        self.verticalLayout_26.addWidget(self.frame_13)
-
-        self.prompt_morph_splitter.addWidget(self.upper_morph_frame)
-        self.middle_morph_frame = QFrame(self.prompt_morph_splitter)
-        self.middle_morph_frame.setObjectName(u"middle_morph_frame")
-        self.middle_morph_frame.setStyleSheet(u"border:0")
-        self.middle_morph_frame.setFrameShape(QFrame.StyledPanel)
-        self.middle_morph_frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_28 = QVBoxLayout(self.middle_morph_frame)
-        self.verticalLayout_28.setSpacing(0)
-        self.verticalLayout_28.setObjectName(u"verticalLayout_28")
-        self.verticalLayout_28.setContentsMargins(0, 0, 0, 0)
-        self.Prompt_Morph_Key_Binding_Frame = QFrame(self.middle_morph_frame)
-        self.Prompt_Morph_Key_Binding_Frame.setObjectName(u"Prompt_Morph_Key_Binding_Frame")
-        sizePolicy2.setHeightForWidth(self.Prompt_Morph_Key_Binding_Frame.sizePolicy().hasHeightForWidth())
-        self.Prompt_Morph_Key_Binding_Frame.setSizePolicy(sizePolicy2)
-        self.Prompt_Morph_Key_Binding_Frame.setTabletTracking(False)
-        self.Prompt_Morph_Key_Binding_Frame.setStyleSheet(u"QFrame{\n"
-"background-color: rgb(108,108,118);\n"
-"border: 2px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
-"border-radius: 10px;\n"
-"padding: 0px  1px ;  /* To prevent the content from touching the border */\n"
-"}\n"
-"QToolTip { \n"
-" background-color: black; \n"
-"color: white; \n"
-" border: black solid 1px;\n"
-" }\n"
-"QCheckBox{\n"
-"border: 0px;\n"
-"background-color: transparent;\n"
-"}")
-        self.verticalLayout_29 = QVBoxLayout(self.Prompt_Morph_Key_Binding_Frame)
-        self.verticalLayout_29.setSpacing(4)
-        self.verticalLayout_29.setObjectName(u"verticalLayout_29")
-        self.verticalLayout_29.setContentsMargins(8, 8, 8, 5)
         self.prompt_update_frame = QFrame(self.Prompt_Morph_Key_Binding_Frame)
         self.prompt_update_frame.setObjectName(u"prompt_update_frame")
-        sizePolicy4.setHeightForWidth(self.prompt_update_frame.sizePolicy().hasHeightForWidth())
-        self.prompt_update_frame.setSizePolicy(sizePolicy4)
+        sizePolicy6.setHeightForWidth(self.prompt_update_frame.sizePolicy().hasHeightForWidth())
+        self.prompt_update_frame.setSizePolicy(sizePolicy6)
         self.prompt_update_frame.setMinimumSize(QSize(0, 39))
         self.prompt_update_frame.setMaximumSize(QSize(16777215, 39))
         self.prompt_update_frame.setStyleSheet(u"QFrame{\n"
@@ -1582,16 +2155,16 @@ class Ui_MainWindow(object):
         self.use_deforumation_prompt_scheduling_checkbox = QCheckBox(self.prompt_update_frame)
         self.use_deforumation_prompt_scheduling_checkbox.setObjectName(u"use_deforumation_prompt_scheduling_checkbox")
         self.use_deforumation_prompt_scheduling_checkbox.setEnabled(True)
-        sizePolicy11 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
-        sizePolicy11.setHorizontalStretch(0)
-        sizePolicy11.setVerticalStretch(0)
-        sizePolicy11.setHeightForWidth(self.use_deforumation_prompt_scheduling_checkbox.sizePolicy().hasHeightForWidth())
-        self.use_deforumation_prompt_scheduling_checkbox.setSizePolicy(sizePolicy11)
+        sizePolicy13 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy13.setHorizontalStretch(0)
+        sizePolicy13.setVerticalStretch(0)
+        sizePolicy13.setHeightForWidth(self.use_deforumation_prompt_scheduling_checkbox.sizePolicy().hasHeightForWidth())
+        self.use_deforumation_prompt_scheduling_checkbox.setSizePolicy(sizePolicy13)
         self.use_deforumation_prompt_scheduling_checkbox.setMinimumSize(QSize(0, 0))
-        font6 = QFont()
-        font6.setPointSize(11)
-        font6.setBold(True)
-        self.use_deforumation_prompt_scheduling_checkbox.setFont(font6)
+        font8 = QFont()
+        font8.setPointSize(11)
+        font8.setBold(True)
+        self.use_deforumation_prompt_scheduling_checkbox.setFont(font8)
         self.use_deforumation_prompt_scheduling_checkbox.setStyleSheet(u"\n"
 "QCheckBox::indicator {\n"
 "    width: 54px; /* Width of the checkbox */\n"
@@ -1623,17 +2196,11 @@ class Ui_MainWindow(object):
 
         self.save_positive_prompt_style = QPushButton(self.prompt_update_frame)
         self.save_positive_prompt_style.setObjectName(u"save_positive_prompt_style")
-        sizePolicy12 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
-        sizePolicy12.setHorizontalStretch(1)
-        sizePolicy12.setVerticalStretch(80)
-        sizePolicy12.setHeightForWidth(self.save_positive_prompt_style.sizePolicy().hasHeightForWidth())
-        self.save_positive_prompt_style.setSizePolicy(sizePolicy12)
+        sizePolicy3.setHeightForWidth(self.save_positive_prompt_style.sizePolicy().hasHeightForWidth())
+        self.save_positive_prompt_style.setSizePolicy(sizePolicy3)
         self.save_positive_prompt_style.setMinimumSize(QSize(60, 32))
         self.save_positive_prompt_style.setMaximumSize(QSize(16777215, 43))
-        font7 = QFont()
-        font7.setPointSize(12)
-        font7.setBold(True)
-        self.save_positive_prompt_style.setFont(font7)
+        self.save_positive_prompt_style.setFont(font1)
         self.save_positive_prompt_style.setStyleSheet(u"QPushButton {\n"
 "    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n"
 "    border-style: solid; /* Defines the style of the border */\n"
@@ -1667,8 +2234,8 @@ class Ui_MainWindow(object):
 
         self.AddPromptMorp_Button = QPushButton(self.Prompt_Morph_Key_Binding_Frame)
         self.AddPromptMorp_Button.setObjectName(u"AddPromptMorp_Button")
-        sizePolicy2.setHeightForWidth(self.AddPromptMorp_Button.sizePolicy().hasHeightForWidth())
-        self.AddPromptMorp_Button.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.AddPromptMorp_Button.sizePolicy().hasHeightForWidth())
+        self.AddPromptMorp_Button.setSizePolicy(sizePolicy1)
         self.AddPromptMorp_Button.setMinimumSize(QSize(0, 27))
         self.AddPromptMorp_Button.setMaximumSize(QSize(16777215, 27))
         self.AddPromptMorp_Button.setStyleSheet(u"QPushButton {\n"
@@ -1698,13 +2265,118 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_29.addWidget(self.AddPromptMorp_Button)
 
+        self.frame_3 = QFrame(self.Prompt_Morph_Key_Binding_Frame)
+        self.frame_3.setObjectName(u"frame_3")
+        self.frame_3.setMinimumSize(QSize(0, 34))
+        self.frame_3.setMaximumSize(QSize(16777215, 34))
+        self.frame_3.setStyleSheet(u"QFrame{\n"
+"border: 2px;\n"
+"}\n"
+"")
+        self.frame_3.setFrameShape(QFrame.StyledPanel)
+        self.frame_3.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_8 = QHBoxLayout(self.frame_3)
+        self.horizontalLayout_8.setSpacing(0)
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.horizontalLayout_8.setContentsMargins(0, 0, 0, 0)
+        self.syrup_prompt_morph_label = QLabel(self.frame_3)
+        self.syrup_prompt_morph_label.setObjectName(u"syrup_prompt_morph_label")
+        self.syrup_prompt_morph_label.setStyleSheet(u"border-radius: 10px;")
+
+        self.horizontalLayout_8.addWidget(self.syrup_prompt_morph_label)
+
+        self.horizontalSpacer_9 = QSpacerItem(10, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_8.addItem(self.horizontalSpacer_9)
+
+        self.syrup_prompt_morph_slider = QSlider(self.frame_3)
+        self.syrup_prompt_morph_slider.setObjectName(u"syrup_prompt_morph_slider")
+        sizePolicy14 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy14.setHorizontalStretch(5)
+        sizePolicy14.setVerticalStretch(0)
+        sizePolicy14.setHeightForWidth(self.syrup_prompt_morph_slider.sizePolicy().hasHeightForWidth())
+        self.syrup_prompt_morph_slider.setSizePolicy(sizePolicy14)
+        self.syrup_prompt_morph_slider.setMinimumSize(QSize(0, 33))
+        self.syrup_prompt_morph_slider.setMaximumSize(QSize(16777215, 32))
+        self.syrup_prompt_morph_slider.setStyleSheet(u"QSlider{\n"
+"background-color: transparent; /* Ensures background is transparent */\n"
+"}\n"
+"QSlider::groove:horizontal {\n"
+"    border-image: url(images/groove_230_m.png) ; /* Adjust slicing and stretch as needed */\n"
+"    border: none;\n"
+"    height: 29px; /* The height of your image */\n"
+"\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal {\n"
+"    background-image: url(images/handle_off.png); /* The path to your handle image */\n"
+"  background-repeat: no-repeat;\n"
+"    border: none; /* Remove the border if you don't need it */\n"
+"    width: 32px; /* Width of the handle - adjust as needed */\n"
+"    height: 32px; /* Height of the handle - adjust as needed */\n"
+"    margin: -2px 0; /* Optional: Adjust the margin if needed */\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal:hover {\n"
+"\n"
+"    background-image: url(images/handle_hover.png); /* Change the handle image when hovering */\n"
+"background-repeat: no-repeat;\n"
+"    border: none; /* Remove the border if you don't need it */\n"
+"    width: 32px; /* Width o"
+                        "f the handle - adjust as needed */\n"
+"    height: 32px; /* Height of the handle - adjust as needed */\n"
+"    margin: -2px 0; /* Optional: Adjust the margin if needed */\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal:pressed {\n"
+"    background-image: url(images/handle_on.png); /* Change the handle image when pressed */\n"
+"background-repeat: no-repeat;\n"
+"    border: none; /* Remove the border if you don't need it */\n"
+"    width: 32px; /* Width of the handle - adjust as needed */\n"
+"    height: 32px; /* Height of the handle - adjust as needed */\n"
+"    margin: -2px 0; /* Optional: Adjust the margin if needed */\n"
+"  \n"
+"}\n"
+"\n"
+"QSlider::add-page:horizontal {\n"
+"    background: none;\n"
+" border: none;\n"
+"}\n"
+"\n"
+"QSlider::sub-page:horizontal {\n"
+"    background: none;\n"
+" border: none;\n"
+"}\n"
+"")
+        self.syrup_prompt_morph_slider.setMinimum(0)
+        self.syrup_prompt_morph_slider.setMaximum(100)
+        self.syrup_prompt_morph_slider.setOrientation(Qt.Horizontal)
+
+        self.horizontalLayout_8.addWidget(self.syrup_prompt_morph_slider)
+
+        self.syrup_prompt_morph_value = QLineEdit(self.frame_3)
+        self.syrup_prompt_morph_value.setObjectName(u"syrup_prompt_morph_value")
+        self.syrup_prompt_morph_value.setMinimumSize(QSize(0, 33))
+        self.syrup_prompt_morph_value.setMaximumSize(QSize(40, 33))
+        self.syrup_prompt_morph_value.setStyleSheet(u"QLineEdit{\n"
+"background-color:rgb(42, 42, 42);\n"
+"color: rgb(0, 255, 0);\n"
+"border: 1px solid rgb(128,128,128);\n"
+"    border-radius: 5px; /* Consistent with the tab's rounded corners */\n"
+"}")
+
+        self.horizontalLayout_8.addWidget(self.syrup_prompt_morph_value)
+
+
+        self.verticalLayout_29.addWidget(self.frame_3)
+
         self.scrollArea_Prompt_Morph_bindings = QScrollArea(self.Prompt_Morph_Key_Binding_Frame)
         self.scrollArea_Prompt_Morph_bindings.setObjectName(u"scrollArea_Prompt_Morph_bindings")
-        sizePolicy13 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
-        sizePolicy13.setHorizontalStretch(0)
-        sizePolicy13.setVerticalStretch(0)
-        sizePolicy13.setHeightForWidth(self.scrollArea_Prompt_Morph_bindings.sizePolicy().hasHeightForWidth())
-        self.scrollArea_Prompt_Morph_bindings.setSizePolicy(sizePolicy13)
+        sizePolicy15 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Preferred)
+        sizePolicy15.setHorizontalStretch(0)
+        sizePolicy15.setVerticalStretch(0)
+        sizePolicy15.setHeightForWidth(self.scrollArea_Prompt_Morph_bindings.sizePolicy().hasHeightForWidth())
+        self.scrollArea_Prompt_Morph_bindings.setSizePolicy(sizePolicy15)
         self.scrollArea_Prompt_Morph_bindings.setMinimumSize(QSize(0, 0))
         self.scrollArea_Prompt_Morph_bindings.setTabletTracking(False)
         self.scrollArea_Prompt_Morph_bindings.setStyleSheet(u"QScrollArea {\n"
@@ -1750,8 +2422,8 @@ class Ui_MainWindow(object):
         self.scrollAreaWidgetContentsPromptMorph = QWidget()
         self.scrollAreaWidgetContentsPromptMorph.setObjectName(u"scrollAreaWidgetContentsPromptMorph")
         self.scrollAreaWidgetContentsPromptMorph.setGeometry(QRect(0, 0, 641, 0))
-        sizePolicy2.setHeightForWidth(self.scrollAreaWidgetContentsPromptMorph.sizePolicy().hasHeightForWidth())
-        self.scrollAreaWidgetContentsPromptMorph.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.scrollAreaWidgetContentsPromptMorph.sizePolicy().hasHeightForWidth())
+        self.scrollAreaWidgetContentsPromptMorph.setSizePolicy(sizePolicy1)
         self.scrollAreaWidgetContentsPromptMorph.setMinimumSize(QSize(520, 0))
         self.scrollAreaWidgetContentsPromptMorph.setMaximumSize(QSize(16777215, 0))
         self.scrollAreaWidgetContentsPromptMorph.setStyleSheet(u"QFrame{\n"
@@ -1825,8 +2497,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_30.setContentsMargins(0, 8, 0, 0)
         self.lower_right_prompt_frame = QFrame(self.lower_morph_frame)
         self.lower_right_prompt_frame.setObjectName(u"lower_right_prompt_frame")
-        sizePolicy2.setHeightForWidth(self.lower_right_prompt_frame.sizePolicy().hasHeightForWidth())
-        self.lower_right_prompt_frame.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.lower_right_prompt_frame.sizePolicy().hasHeightForWidth())
+        self.lower_right_prompt_frame.setSizePolicy(sizePolicy1)
         self.lower_right_prompt_frame.setMinimumSize(QSize(0, 70))
         self.lower_right_prompt_frame.setMaximumSize(QSize(16777215, 70))
         self.lower_right_prompt_frame.setStyleSheet(u"QToolTip { \n"
@@ -1865,14 +2537,11 @@ class Ui_MainWindow(object):
         self.add_prompt_after_checkbox.setObjectName(u"add_prompt_after_checkbox")
         self.add_prompt_after_checkbox.setEnabled(True)
         self.add_prompt_after_checkbox.setGeometry(QRect(0, 27, 289, 28))
-        sizePolicy2.setHeightForWidth(self.add_prompt_after_checkbox.sizePolicy().hasHeightForWidth())
-        self.add_prompt_after_checkbox.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.add_prompt_after_checkbox.sizePolicy().hasHeightForWidth())
+        self.add_prompt_after_checkbox.setSizePolicy(sizePolicy1)
         self.add_prompt_after_checkbox.setMinimumSize(QSize(0, 0))
         self.add_prompt_after_checkbox.setMaximumSize(QSize(16777215, 40))
-        font8 = QFont()
-        font8.setPointSize(10)
-        font8.setBold(True)
-        self.add_prompt_after_checkbox.setFont(font8)
+        self.add_prompt_after_checkbox.setFont(font3)
         self.add_prompt_after_checkbox.setStyleSheet(u"QCheckBox {\n"
 "    border: none; /* No border for the checkbox */\n"
 "}\n"
@@ -1902,11 +2571,11 @@ class Ui_MainWindow(object):
         self.add_prompt_before_checkbox.setObjectName(u"add_prompt_before_checkbox")
         self.add_prompt_before_checkbox.setEnabled(True)
         self.add_prompt_before_checkbox.setGeometry(QRect(0, 4, 297, 28))
-        sizePolicy2.setHeightForWidth(self.add_prompt_before_checkbox.sizePolicy().hasHeightForWidth())
-        self.add_prompt_before_checkbox.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.add_prompt_before_checkbox.sizePolicy().hasHeightForWidth())
+        self.add_prompt_before_checkbox.setSizePolicy(sizePolicy1)
         self.add_prompt_before_checkbox.setMinimumSize(QSize(0, 0))
         self.add_prompt_before_checkbox.setMaximumSize(QSize(16777215, 40))
-        self.add_prompt_before_checkbox.setFont(font8)
+        self.add_prompt_before_checkbox.setFont(font3)
         self.add_prompt_before_checkbox.setStyleSheet(u"QCheckBox {\n"
 "    border: none; /* No border for the checkbox */\n"
 "}\n"
@@ -1941,8 +2610,8 @@ class Ui_MainWindow(object):
         self.load_morph_data = QPushButton(self.lower_right_prompt_frame)
         self.load_morph_data.setObjectName(u"load_morph_data")
         self.load_morph_data.setEnabled(True)
-        sizePolicy5.setHeightForWidth(self.load_morph_data.sizePolicy().hasHeightForWidth())
-        self.load_morph_data.setSizePolicy(sizePolicy5)
+        sizePolicy7.setHeightForWidth(self.load_morph_data.sizePolicy().hasHeightForWidth())
+        self.load_morph_data.setSizePolicy(sizePolicy7)
         self.load_morph_data.setMinimumSize(QSize(30, 25))
         self.load_morph_data.setBaseSize(QSize(0, 0))
         self.load_morph_data.setFocusPolicy(Qt.StrongFocus)
@@ -2012,8 +2681,8 @@ class Ui_MainWindow(object):
         self.deforumation_tabWidget.addTab(self.Prompt_Tab, "")
         self.Movement_Tab = QWidget()
         self.Movement_Tab.setObjectName(u"Movement_Tab")
-        sizePolicy2.setHeightForWidth(self.Movement_Tab.sizePolicy().hasHeightForWidth())
-        self.Movement_Tab.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.Movement_Tab.sizePolicy().hasHeightForWidth())
+        self.Movement_Tab.setSizePolicy(sizePolicy1)
         self.Movement_Tab.setMinimumSize(QSize(0, 0))
         self.Movement_Tab.setMaximumSize(QSize(16777207, 16777215))
         self.Movement_Tab.setStyleSheet(u"background-color: rgb(102,102,102);\n"
@@ -2069,38 +2738,38 @@ class Ui_MainWindow(object):
         self.motion_pan_button_left = QPushButton(self.Motion_Panning_Component_poppable)
         self.motion_pan_button_left.setObjectName(u"motion_pan_button_left")
         self.motion_pan_button_left.setGeometry(QRect(54, 294, 33, 37))
-        sizePolicy5.setHeightForWidth(self.motion_pan_button_left.sizePolicy().hasHeightForWidth())
-        self.motion_pan_button_left.setSizePolicy(sizePolicy5)
+        sizePolicy7.setHeightForWidth(self.motion_pan_button_left.sizePolicy().hasHeightForWidth())
+        self.motion_pan_button_left.setSizePolicy(sizePolicy7)
         self.motion_pan_button_left.setMinimumSize(QSize(33, 37))
         self.motion_pan_button_left.setMaximumSize(QSize(33, 34))
         self.motion_pan_button_left.setTabletTracking(True)
         self.motion_pan_button_left.setStyleSheet(u"border : 0")
-        icon4 = QIcon()
-        icon4.addFile(u"images/left_off.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon4.addFile(u"images/left_hover.png", QSize(), QIcon.Normal, QIcon.On)
-        icon4.addFile(u"images/left_active.png", QSize(), QIcon.Active, QIcon.On)
-        self.motion_pan_button_left.setIcon(icon4)
+        icon5 = QIcon()
+        icon5.addFile(u"images/left_off.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon5.addFile(u"images/left_hover.png", QSize(), QIcon.Normal, QIcon.On)
+        icon5.addFile(u"images/left_active.png", QSize(), QIcon.Active, QIcon.On)
+        self.motion_pan_button_left.setIcon(icon5)
         self.motion_pan_button_left.setIconSize(QSize(33, 37))
         self.motion_pan_button_down = QPushButton(self.Motion_Panning_Component_poppable)
         self.motion_pan_button_down.setObjectName(u"motion_pan_button_down")
         self.motion_pan_button_down.setGeometry(QRect(134, 378, 37, 33))
-        sizePolicy5.setHeightForWidth(self.motion_pan_button_down.sizePolicy().hasHeightForWidth())
-        self.motion_pan_button_down.setSizePolicy(sizePolicy5)
+        sizePolicy7.setHeightForWidth(self.motion_pan_button_down.sizePolicy().hasHeightForWidth())
+        self.motion_pan_button_down.setSizePolicy(sizePolicy7)
         self.motion_pan_button_down.setMinimumSize(QSize(37, 33))
         self.motion_pan_button_down.setMaximumSize(QSize(37, 33))
         self.motion_pan_button_down.setTabletTracking(True)
         self.motion_pan_button_down.setStyleSheet(u"border : 0")
-        icon5 = QIcon()
-        icon5.addFile(u"images/down_off.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon5.addFile(u"images/down_hover.png", QSize(), QIcon.Normal, QIcon.On)
-        icon5.addFile(u"images/down_active.png", QSize(), QIcon.Active, QIcon.On)
-        self.motion_pan_button_down.setIcon(icon5)
+        icon6 = QIcon()
+        icon6.addFile(u"images/down_off.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon6.addFile(u"images/down_hover.png", QSize(), QIcon.Normal, QIcon.On)
+        icon6.addFile(u"images/down_active.png", QSize(), QIcon.Active, QIcon.On)
+        self.motion_pan_button_down.setIcon(icon6)
         self.motion_pan_button_down.setIconSize(QSize(37, 33))
         self.motion_pan_button_up = QPushButton(self.Motion_Panning_Component_poppable)
         self.motion_pan_button_up.setObjectName(u"motion_pan_button_up")
         self.motion_pan_button_up.setGeometry(QRect(132, 216, 37, 33))
-        sizePolicy5.setHeightForWidth(self.motion_pan_button_up.sizePolicy().hasHeightForWidth())
-        self.motion_pan_button_up.setSizePolicy(sizePolicy5)
+        sizePolicy7.setHeightForWidth(self.motion_pan_button_up.sizePolicy().hasHeightForWidth())
+        self.motion_pan_button_up.setSizePolicy(sizePolicy7)
         self.motion_pan_button_up.setMinimumSize(QSize(37, 33))
         self.motion_pan_button_up.setMaximumSize(QSize(37, 33))
         font9 = QFont()
@@ -2116,28 +2785,28 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        icon6 = QIcon()
-        icon6.addFile(u"images/upp_off.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon6.addFile(u"images/upp_hover.png", QSize(), QIcon.Normal, QIcon.On)
-        icon6.addFile(u"images/upp_off.png", QSize(), QIcon.Disabled, QIcon.Off)
-        icon6.addFile(u"images/upp_off.png", QSize(), QIcon.Disabled, QIcon.On)
-        icon6.addFile(u"images/upp_active.png", QSize(), QIcon.Active, QIcon.On)
-        self.motion_pan_button_up.setIcon(icon6)
+        icon7 = QIcon()
+        icon7.addFile(u"images/upp_off.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon7.addFile(u"images/upp_hover.png", QSize(), QIcon.Normal, QIcon.On)
+        icon7.addFile(u"images/upp_off.png", QSize(), QIcon.Disabled, QIcon.Off)
+        icon7.addFile(u"images/upp_off.png", QSize(), QIcon.Disabled, QIcon.On)
+        icon7.addFile(u"images/upp_active.png", QSize(), QIcon.Active, QIcon.On)
+        self.motion_pan_button_up.setIcon(icon7)
         self.motion_pan_button_up.setIconSize(QSize(53, 33))
         self.motion_pan_button_right = QPushButton(self.Motion_Panning_Component_poppable)
         self.motion_pan_button_right.setObjectName(u"motion_pan_button_right")
         self.motion_pan_button_right.setGeometry(QRect(216, 294, 33, 37))
-        sizePolicy5.setHeightForWidth(self.motion_pan_button_right.sizePolicy().hasHeightForWidth())
-        self.motion_pan_button_right.setSizePolicy(sizePolicy5)
+        sizePolicy7.setHeightForWidth(self.motion_pan_button_right.sizePolicy().hasHeightForWidth())
+        self.motion_pan_button_right.setSizePolicy(sizePolicy7)
         self.motion_pan_button_right.setMinimumSize(QSize(33, 37))
         self.motion_pan_button_right.setMaximumSize(QSize(33, 37))
         self.motion_pan_button_right.setTabletTracking(True)
         self.motion_pan_button_right.setStyleSheet(u"")
-        icon7 = QIcon()
-        icon7.addFile(u"images/right_off.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon7.addFile(u"images/right_hover.png", QSize(), QIcon.Normal, QIcon.On)
-        icon7.addFile(u"images/right_active.png", QSize(), QIcon.Active, QIcon.On)
-        self.motion_pan_button_right.setIcon(icon7)
+        icon8 = QIcon()
+        icon8.addFile(u"images/right_off.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon8.addFile(u"images/right_hover.png", QSize(), QIcon.Normal, QIcon.On)
+        icon8.addFile(u"images/right_active.png", QSize(), QIcon.Active, QIcon.On)
+        self.motion_pan_button_right.setIcon(icon8)
         self.motion_pan_button_right.setIconSize(QSize(33, 37))
         self.motion_pan_granularity = QLineEdit(self.Motion_Panning_Component_poppable)
         self.motion_pan_granularity.setObjectName(u"motion_pan_granularity")
@@ -2223,7 +2892,7 @@ class Ui_MainWindow(object):
         self.smooth_motion_steps_pan_label = QLabel(self.Motion_Panning_Component_poppable)
         self.smooth_motion_steps_pan_label.setObjectName(u"smooth_motion_steps_pan_label")
         self.smooth_motion_steps_pan_label.setGeometry(QRect(12, 78, 185, 25))
-        self.smooth_motion_steps_pan_label.setFont(font8)
+        self.smooth_motion_steps_pan_label.setFont(font3)
         self.smooth_motion_steps_pan_label.setStyleSheet(u"border: 0;\n"
 "background: none;")
         self.smooth_motion_steps_pan_label.setAlignment(Qt.AlignCenter)
@@ -2346,7 +3015,7 @@ class Ui_MainWindow(object):
         self.Motion_Panning_Label = QLabel(self.Motion_Panning_Component_poppable)
         self.Motion_Panning_Label.setObjectName(u"Motion_Panning_Label")
         self.Motion_Panning_Label.setGeometry(QRect(68, 6, 167, 16))
-        self.Motion_Panning_Label.setFont(font7)
+        self.Motion_Panning_Label.setFont(font1)
         self.Motion_Panning_Label.setStyleSheet(u"border: 0;\n"
 "background: none;")
         self.Motion_Panning_Label.setAlignment(Qt.AlignCenter)
@@ -2374,11 +3043,11 @@ class Ui_MainWindow(object):
         self.pan_middle_button.setObjectName(u"pan_middle_button")
         self.pan_middle_button.setGeometry(QRect(126, 286, 51, 51))
         self.pan_middle_button.setStyleSheet(u"border : 0")
-        icon8 = QIcon()
-        icon8.addFile(u"images/middle_off.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon8.addFile(u"images/middle_hover.png", QSize(), QIcon.Normal, QIcon.On)
-        icon8.addFile(u"images/middle_active.png", QSize(), QIcon.Active, QIcon.On)
-        self.pan_middle_button.setIcon(icon8)
+        icon9 = QIcon()
+        icon9.addFile(u"images/middle_off.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon9.addFile(u"images/middle_hover.png", QSize(), QIcon.Normal, QIcon.On)
+        icon9.addFile(u"images/middle_active.png", QSize(), QIcon.Active, QIcon.On)
+        self.pan_middle_button.setIcon(icon9)
         self.pan_middle_button.setIconSize(QSize(51, 51))
         self.Panning_Component = QLabel(self.Motion_Panning_Component_poppable)
         self.Panning_Component.setObjectName(u"Panning_Component")
@@ -2394,8 +3063,8 @@ class Ui_MainWindow(object):
         self.Motion_panning_checkbox = QCheckBox(self.Motion_Panning_Component_poppable)
         self.Motion_panning_checkbox.setObjectName(u"Motion_panning_checkbox")
         self.Motion_panning_checkbox.setGeometry(QRect(256, 6, 33, 20))
-        sizePolicy2.setHeightForWidth(self.Motion_panning_checkbox.sizePolicy().hasHeightForWidth())
-        self.Motion_panning_checkbox.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.Motion_panning_checkbox.sizePolicy().hasHeightForWidth())
+        self.Motion_panning_checkbox.setSizePolicy(sizePolicy1)
         self.Motion_panning_checkbox.setBaseSize(QSize(0, 0))
         self.Motion_panning_checkbox.setStyleSheet(u"QCheckBox {\n"
 "    border: none; /* No border for the checkbox */\n"
@@ -2474,50 +3143,50 @@ class Ui_MainWindow(object):
         self.motion_rotate_button_left = QPushButton(self.Motion_Rotation_Component_poppable)
         self.motion_rotate_button_left.setObjectName(u"motion_rotate_button_left")
         self.motion_rotate_button_left.setGeometry(QRect(54, 294, 33, 37))
-        sizePolicy5.setHeightForWidth(self.motion_rotate_button_left.sizePolicy().hasHeightForWidth())
-        self.motion_rotate_button_left.setSizePolicy(sizePolicy5)
+        sizePolicy7.setHeightForWidth(self.motion_rotate_button_left.sizePolicy().hasHeightForWidth())
+        self.motion_rotate_button_left.setSizePolicy(sizePolicy7)
         self.motion_rotate_button_left.setMinimumSize(QSize(33, 37))
         self.motion_rotate_button_left.setMaximumSize(QSize(33, 37))
         self.motion_rotate_button_left.setTabletTracking(True)
         self.motion_rotate_button_left.setStyleSheet(u"border : 0")
-        self.motion_rotate_button_left.setIcon(icon4)
+        self.motion_rotate_button_left.setIcon(icon5)
         self.motion_rotate_button_left.setIconSize(QSize(33, 37))
         self.motion_rotate_button_down = QPushButton(self.Motion_Rotation_Component_poppable)
         self.motion_rotate_button_down.setObjectName(u"motion_rotate_button_down")
         self.motion_rotate_button_down.setGeometry(QRect(134, 378, 37, 33))
-        sizePolicy5.setHeightForWidth(self.motion_rotate_button_down.sizePolicy().hasHeightForWidth())
-        self.motion_rotate_button_down.setSizePolicy(sizePolicy5)
+        sizePolicy7.setHeightForWidth(self.motion_rotate_button_down.sizePolicy().hasHeightForWidth())
+        self.motion_rotate_button_down.setSizePolicy(sizePolicy7)
         self.motion_rotate_button_down.setMinimumSize(QSize(37, 33))
         self.motion_rotate_button_down.setMaximumSize(QSize(37, 33))
         self.motion_rotate_button_down.setTabletTracking(True)
         self.motion_rotate_button_down.setStyleSheet(u"border : 0")
-        self.motion_rotate_button_down.setIcon(icon5)
+        self.motion_rotate_button_down.setIcon(icon6)
         self.motion_rotate_button_down.setIconSize(QSize(37, 33))
         self.motion_rotate_button_up = QPushButton(self.Motion_Rotation_Component_poppable)
         self.motion_rotate_button_up.setObjectName(u"motion_rotate_button_up")
         self.motion_rotate_button_up.setGeometry(QRect(132, 216, 37, 33))
-        sizePolicy5.setHeightForWidth(self.motion_rotate_button_up.sizePolicy().hasHeightForWidth())
-        self.motion_rotate_button_up.setSizePolicy(sizePolicy5)
+        sizePolicy7.setHeightForWidth(self.motion_rotate_button_up.sizePolicy().hasHeightForWidth())
+        self.motion_rotate_button_up.setSizePolicy(sizePolicy7)
         self.motion_rotate_button_up.setMinimumSize(QSize(37, 33))
         self.motion_rotate_button_up.setMaximumSize(QSize(37, 33))
         self.motion_rotate_button_up.setTabletTracking(True)
         self.motion_rotate_button_up.setStyleSheet(u"border : 0")
-        icon9 = QIcon()
-        icon9.addFile(u"images/upp_off.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon9.addFile(u"images/upp_hover.png", QSize(), QIcon.Normal, QIcon.On)
-        icon9.addFile(u"images/upp_active.png", QSize(), QIcon.Active, QIcon.On)
-        self.motion_rotate_button_up.setIcon(icon9)
+        icon10 = QIcon()
+        icon10.addFile(u"images/upp_off.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon10.addFile(u"images/upp_hover.png", QSize(), QIcon.Normal, QIcon.On)
+        icon10.addFile(u"images/upp_active.png", QSize(), QIcon.Active, QIcon.On)
+        self.motion_rotate_button_up.setIcon(icon10)
         self.motion_rotate_button_up.setIconSize(QSize(37, 33))
         self.motion_rotate_button_right = QPushButton(self.Motion_Rotation_Component_poppable)
         self.motion_rotate_button_right.setObjectName(u"motion_rotate_button_right")
         self.motion_rotate_button_right.setGeometry(QRect(216, 294, 33, 37))
-        sizePolicy5.setHeightForWidth(self.motion_rotate_button_right.sizePolicy().hasHeightForWidth())
-        self.motion_rotate_button_right.setSizePolicy(sizePolicy5)
+        sizePolicy7.setHeightForWidth(self.motion_rotate_button_right.sizePolicy().hasHeightForWidth())
+        self.motion_rotate_button_right.setSizePolicy(sizePolicy7)
         self.motion_rotate_button_right.setMinimumSize(QSize(33, 37))
         self.motion_rotate_button_right.setMaximumSize(QSize(33, 37))
         self.motion_rotate_button_right.setTabletTracking(True)
         self.motion_rotate_button_right.setStyleSheet(u"")
-        self.motion_rotate_button_right.setIcon(icon7)
+        self.motion_rotate_button_right.setIcon(icon8)
         self.motion_rotate_button_right.setIconSize(QSize(33, 37))
         self.motion_rotate_granularity = QLineEdit(self.Motion_Rotation_Component_poppable)
         self.motion_rotate_granularity.setObjectName(u"motion_rotate_granularity")
@@ -2723,7 +3392,7 @@ class Ui_MainWindow(object):
         self.Motion_Rotation_Label = QLabel(self.Motion_Rotation_Component_poppable)
         self.Motion_Rotation_Label.setObjectName(u"Motion_Rotation_Label")
         self.Motion_Rotation_Label.setGeometry(QRect(64, 6, 163, 16))
-        self.Motion_Rotation_Label.setFont(font7)
+        self.Motion_Rotation_Label.setFont(font1)
         self.Motion_Rotation_Label.setTabletTracking(False)
         self.Motion_Rotation_Label.setStyleSheet(u"border: 0;\n"
 "background: none;")
@@ -2751,12 +3420,12 @@ class Ui_MainWindow(object):
         self.rotate_middle_button.setObjectName(u"rotate_middle_button")
         self.rotate_middle_button.setGeometry(QRect(126, 286, 51, 51))
         self.rotate_middle_button.setStyleSheet(u"border : 0")
-        self.rotate_middle_button.setIcon(icon8)
+        self.rotate_middle_button.setIcon(icon9)
         self.rotate_middle_button.setIconSize(QSize(51, 51))
         self.smooth_motion_steps_rotation_label = QLabel(self.Motion_Rotation_Component_poppable)
         self.smooth_motion_steps_rotation_label.setObjectName(u"smooth_motion_steps_rotation_label")
         self.smooth_motion_steps_rotation_label.setGeometry(QRect(6, 79, 193, 25))
-        self.smooth_motion_steps_rotation_label.setFont(font8)
+        self.smooth_motion_steps_rotation_label.setFont(font3)
         self.smooth_motion_steps_rotation_label.setStyleSheet(u"border: 0;\n"
 "background: none;")
         self.smooth_motion_steps_rotation_label.setAlignment(Qt.AlignCenter)
@@ -2769,8 +3438,8 @@ class Ui_MainWindow(object):
         self.Motion_rotation_checkbox = QCheckBox(self.Motion_Rotation_Component_poppable)
         self.Motion_rotation_checkbox.setObjectName(u"Motion_rotation_checkbox")
         self.Motion_rotation_checkbox.setGeometry(QRect(256, 6, 33, 20))
-        sizePolicy2.setHeightForWidth(self.Motion_rotation_checkbox.sizePolicy().hasHeightForWidth())
-        self.Motion_rotation_checkbox.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.Motion_rotation_checkbox.sizePolicy().hasHeightForWidth())
+        self.Motion_rotation_checkbox.setSizePolicy(sizePolicy1)
         self.Motion_rotation_checkbox.setBaseSize(QSize(0, 0))
         self.Motion_rotation_checkbox.setStyleSheet(u"QCheckBox {\n"
 "    border: none; /* No border for the checkbox */\n"
@@ -2932,7 +3601,7 @@ class Ui_MainWindow(object):
         self.smooth_motion_steps_tilt_label = QLabel(self.Motion_Tilt_Component_poppable)
         self.smooth_motion_steps_tilt_label.setObjectName(u"smooth_motion_steps_tilt_label")
         self.smooth_motion_steps_tilt_label.setGeometry(QRect(36, 134, 159, 25))
-        self.smooth_motion_steps_tilt_label.setFont(font8)
+        self.smooth_motion_steps_tilt_label.setFont(font3)
         self.smooth_motion_steps_tilt_label.setStyleSheet(u"border: 0")
         self.smooth_motion_steps_tilt_label.setAlignment(Qt.AlignCenter)
         self.syrup_tilt_motion_slider_frame_number = QLineEdit(self.Motion_Tilt_Component_poppable)
@@ -3015,7 +3684,7 @@ class Ui_MainWindow(object):
         self.Motion_Tilt_Label = QLabel(self.Motion_Tilt_Component_poppable)
         self.Motion_Tilt_Label.setObjectName(u"Motion_Tilt_Label")
         self.Motion_Tilt_Label.setGeometry(QRect(86, 6, 121, 16))
-        self.Motion_Tilt_Label.setFont(font7)
+        self.Motion_Tilt_Label.setFont(font1)
         self.Motion_Tilt_Label.setStyleSheet(u"border: 0")
         self.Motion_Tilt_Label.setAlignment(Qt.AlignCenter)
         self.syrup_tilt_curve_type = QComboBox(self.Motion_Tilt_Component_poppable)
@@ -3041,8 +3710,8 @@ class Ui_MainWindow(object):
         self.Motion_tilt_checkbox = QCheckBox(self.Motion_Tilt_Component_poppable)
         self.Motion_tilt_checkbox.setObjectName(u"Motion_tilt_checkbox")
         self.Motion_tilt_checkbox.setGeometry(QRect(256, 6, 33, 20))
-        sizePolicy2.setHeightForWidth(self.Motion_tilt_checkbox.sizePolicy().hasHeightForWidth())
-        self.Motion_tilt_checkbox.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.Motion_tilt_checkbox.sizePolicy().hasHeightForWidth())
+        self.Motion_tilt_checkbox.setSizePolicy(sizePolicy1)
         self.Motion_tilt_checkbox.setBaseSize(QSize(0, 0))
         self.Motion_tilt_checkbox.setStyleSheet(u"QCheckBox {\n"
 "    border: none; /* No border for the checkbox */\n"
@@ -3086,37 +3755,37 @@ class Ui_MainWindow(object):
         self.motion_tilt_button_left = QPushButton(self.Motion_Tilt_Component_poppable)
         self.motion_tilt_button_left.setObjectName(u"motion_tilt_button_left")
         self.motion_tilt_button_left.setGeometry(QRect(78, 258, 75, 79))
-        sizePolicy5.setHeightForWidth(self.motion_tilt_button_left.sizePolicy().hasHeightForWidth())
-        self.motion_tilt_button_left.setSizePolicy(sizePolicy5)
+        sizePolicy7.setHeightForWidth(self.motion_tilt_button_left.sizePolicy().hasHeightForWidth())
+        self.motion_tilt_button_left.setSizePolicy(sizePolicy7)
         self.motion_tilt_button_left.setMinimumSize(QSize(75, 79))
         self.motion_tilt_button_left.setMaximumSize(QSize(7579, 71))
         self.motion_tilt_button_left.setTabletTracking(True)
         self.motion_tilt_button_left.setStyleSheet(u"border : 0")
-        icon10 = QIcon()
-        icon10.addFile(u"images/tilt_left.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon10.addFile(u"images/tilt_left_press.png", QSize(), QIcon.Normal, QIcon.On)
-        self.motion_tilt_button_left.setIcon(icon10)
+        icon11 = QIcon()
+        icon11.addFile(u"images/tilt_left.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon11.addFile(u"images/tilt_left_press.png", QSize(), QIcon.Normal, QIcon.On)
+        self.motion_tilt_button_left.setIcon(icon11)
         self.motion_tilt_button_left.setIconSize(QSize(75, 79))
         self.motion_tilt_button_right = QPushButton(self.Motion_Tilt_Component_poppable)
         self.motion_tilt_button_right.setObjectName(u"motion_tilt_button_right")
         self.motion_tilt_button_right.setGeometry(QRect(152, 258, 76, 79))
-        sizePolicy5.setHeightForWidth(self.motion_tilt_button_right.sizePolicy().hasHeightForWidth())
-        self.motion_tilt_button_right.setSizePolicy(sizePolicy5)
+        sizePolicy7.setHeightForWidth(self.motion_tilt_button_right.sizePolicy().hasHeightForWidth())
+        self.motion_tilt_button_right.setSizePolicy(sizePolicy7)
         self.motion_tilt_button_right.setMinimumSize(QSize(76, 79))
         self.motion_tilt_button_right.setMaximumSize(QSize(76, 79))
         self.motion_tilt_button_right.setTabletTracking(True)
         self.motion_tilt_button_right.setStyleSheet(u"border : 0")
-        icon11 = QIcon()
-        icon11.addFile(u"images/tilt_right.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon11.addFile(u"images/tilt_right_press.png", QSize(), QIcon.Normal, QIcon.On)
-        icon11.addFile(u"images/tilt_right_press.png", QSize(), QIcon.Active, QIcon.On)
-        self.motion_tilt_button_right.setIcon(icon11)
+        icon12 = QIcon()
+        icon12.addFile(u"images/tilt_right.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon12.addFile(u"images/tilt_right_press.png", QSize(), QIcon.Normal, QIcon.On)
+        icon12.addFile(u"images/tilt_right_press.png", QSize(), QIcon.Active, QIcon.On)
+        self.motion_tilt_button_right.setIcon(icon12)
         self.motion_tilt_button_right.setIconSize(QSize(76, 79))
         self.tilt_middle_button = QPushButton(self.Motion_Tilt_Component_poppable)
         self.tilt_middle_button.setObjectName(u"tilt_middle_button")
         self.tilt_middle_button.setGeometry(QRect(126, 308, 51, 51))
         self.tilt_middle_button.setStyleSheet(u"border : 0")
-        self.tilt_middle_button.setIcon(icon8)
+        self.tilt_middle_button.setIcon(icon9)
         self.tilt_middle_button.setIconSize(QSize(51, 51))
         self.Motion_Fov_Component_poppable = QFrame(self.Movement_Tab)
         self.Motion_Fov_Component_poppable.setObjectName(u"Motion_Fov_Component_poppable")
@@ -3204,7 +3873,7 @@ class Ui_MainWindow(object):
         self.Motion_Fov = QLabel(self.Motion_Fov_Component_poppable)
         self.Motion_Fov.setObjectName(u"Motion_Fov")
         self.Motion_Fov.setGeometry(QRect(10, 6, 97, 16))
-        self.Motion_Fov.setFont(font8)
+        self.Motion_Fov.setFont(font3)
         self.Motion_Fov.setStyleSheet(u"border: 0")
         self.Motion_Fov.setAlignment(Qt.AlignCenter)
         self.fov_value = QLabel(self.Motion_Fov_Component_poppable)
@@ -3216,8 +3885,8 @@ class Ui_MainWindow(object):
         self.Motion_fow_checkbox = QCheckBox(self.Motion_Fov_Component_poppable)
         self.Motion_fow_checkbox.setObjectName(u"Motion_fow_checkbox")
         self.Motion_fow_checkbox.setGeometry(QRect(116, 6, 33, 20))
-        sizePolicy2.setHeightForWidth(self.Motion_fow_checkbox.sizePolicy().hasHeightForWidth())
-        self.Motion_fow_checkbox.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.Motion_fow_checkbox.sizePolicy().hasHeightForWidth())
+        self.Motion_fow_checkbox.setSizePolicy(sizePolicy1)
         self.Motion_fow_checkbox.setBaseSize(QSize(0, 0))
         self.Motion_fow_checkbox.setStyleSheet(u"QCheckBox {\n"
 "    border: none; /* No border for the checkbox */\n"
@@ -3410,7 +4079,7 @@ class Ui_MainWindow(object):
         self.Motion_Zoom_Label = QLabel(self.Motion_Zoom_Component_poppable)
         self.Motion_Zoom_Label.setObjectName(u"Motion_Zoom_Label")
         self.Motion_Zoom_Label.setGeometry(QRect(8, 6, 133, 16))
-        self.Motion_Zoom_Label.setFont(font7)
+        self.Motion_Zoom_Label.setFont(font1)
         self.Motion_Zoom_Label.setStyleSheet(u"border: 0")
         self.Motion_Zoom_Label.setAlignment(Qt.AlignCenter)
         self.syrup_zoom_motion_slider_frame_number = QLineEdit(self.Motion_Zoom_Component_poppable)
@@ -3504,21 +4173,7 @@ class Ui_MainWindow(object):
         font10.setBold(True)
         self.motion_syrup_progressbar_z.setFont(font10)
         self.motion_syrup_progressbar_z.setLayoutDirection(Qt.LeftToRight)
-        self.motion_syrup_progressbar_z.setStyleSheet(u"/*QProgressBar {\n"
-"  text-align: center;\n"
-"  color: rgb(240, 240, 240);\n"
-"  border-width: 2px; \n"
-"  border-radius: 5px;\n"
-"  border-color: rgb(58, 58, 58);\n"
-"  border-style: inset;\n"
-"  background-color:rgb(77,77,77);\n"
-"}\n"
-"QProgressBar::chunk {\n"
-"  background-color: rgb(108, 108, 160);\n"
-"  border-radius: 5px;\n"
-"} */\n"
-"\n"
-"QProgressBar {\n"
+        self.motion_syrup_progressbar_z.setStyleSheet(u"QProgressBar {\n"
 "    text-align: center;\n"
 "    color: rgb(0, 0, 0);\n"
 "    border-width: 2px;\n"
@@ -3527,7 +4182,6 @@ class Ui_MainWindow(object):
 "    border-style: inset;\n"
 "    background-color: rgb(77, 77, 77);\n"
 "}\n"
-"\n"
 "QProgressBar::chunk {\n"
 "    border-radius: 2px;\n"
 "    background: QLinearGradient( x1: 0, y1: 0, x2: 0, y2: 1, /* Vertical gradient */\n"
@@ -3535,9 +4189,7 @@ class Ui_MainWindow(object):
 "                                 stop: 0.8 #ffff00, /* Yellow in the middle */\n"
 "                                 stop: 1 #ff0000 ); /* Red at the end */\n"
 "}\n"
-"\n"
-"QProgressBar[orientation=\""
-                        "vertical\"] {\n"
+"QProgressBar[orientation=\"vertical\"] {\n"
 "    text-align: center;\n"
 "    color: rgb(0, 0, 0);\n"
 "    border-width: 2px;\n"
@@ -3584,8 +4236,8 @@ class Ui_MainWindow(object):
         self.Motion_zoom_checkbox = QCheckBox(self.Motion_Zoom_Component_poppable)
         self.Motion_zoom_checkbox.setObjectName(u"Motion_zoom_checkbox")
         self.Motion_zoom_checkbox.setGeometry(QRect(156, 6, 33, 20))
-        sizePolicy2.setHeightForWidth(self.Motion_zoom_checkbox.sizePolicy().hasHeightForWidth())
-        self.Motion_zoom_checkbox.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.Motion_zoom_checkbox.sizePolicy().hasHeightForWidth())
+        self.Motion_zoom_checkbox.setSizePolicy(sizePolicy1)
         self.Motion_zoom_checkbox.setBaseSize(QSize(0, 0))
         self.Motion_zoom_checkbox.setStyleSheet(u"QCheckBox {\n"
 "    border: none; /* No border for the checkbox */\n"
@@ -3618,7 +4270,7 @@ class Ui_MainWindow(object):
         self.smooth_motion_steps_zoom_label = QLabel(self.Motion_Zoom_Component_poppable)
         self.smooth_motion_steps_zoom_label.setObjectName(u"smooth_motion_steps_zoom_label")
         self.smooth_motion_steps_zoom_label.setGeometry(QRect(8, 78, 145, 20))
-        self.smooth_motion_steps_zoom_label.setFont(font8)
+        self.smooth_motion_steps_zoom_label.setFont(font3)
         self.smooth_motion_steps_zoom_label.setStyleSheet(u"border: 0")
         self.smooth_motion_steps_zoom_label.setAlignment(Qt.AlignCenter)
         self.motion_zoom_granularity_special = QLineEdit(self.Motion_Zoom_Component_poppable)
@@ -3638,31 +4290,31 @@ class Ui_MainWindow(object):
         self.motion_zoom_button_forwards = QPushButton(self.Motion_Zoom_Component_poppable)
         self.motion_zoom_button_forwards.setObjectName(u"motion_zoom_button_forwards")
         self.motion_zoom_button_forwards.setGeometry(QRect(78, 208, 16, 16))
-        sizePolicy5.setHeightForWidth(self.motion_zoom_button_forwards.sizePolicy().hasHeightForWidth())
-        self.motion_zoom_button_forwards.setSizePolicy(sizePolicy5)
+        sizePolicy7.setHeightForWidth(self.motion_zoom_button_forwards.sizePolicy().hasHeightForWidth())
+        self.motion_zoom_button_forwards.setSizePolicy(sizePolicy7)
         self.motion_zoom_button_forwards.setMinimumSize(QSize(16, 16))
         self.motion_zoom_button_forwards.setMaximumSize(QSize(16, 16))
         self.motion_zoom_button_forwards.setTabletTracking(True)
         self.motion_zoom_button_forwards.setStyleSheet(u"border : 0;background: none;")
-        self.motion_zoom_button_forwards.setIcon(icon9)
+        self.motion_zoom_button_forwards.setIcon(icon10)
         self.motion_zoom_button_forwards.setIconSize(QSize(16, 16))
         self.motion_zoom_button_backwards = QPushButton(self.Motion_Zoom_Component_poppable)
         self.motion_zoom_button_backwards.setObjectName(u"motion_zoom_button_backwards")
         self.motion_zoom_button_backwards.setGeometry(QRect(78, 224, 16, 16))
-        sizePolicy5.setHeightForWidth(self.motion_zoom_button_backwards.sizePolicy().hasHeightForWidth())
-        self.motion_zoom_button_backwards.setSizePolicy(sizePolicy5)
+        sizePolicy7.setHeightForWidth(self.motion_zoom_button_backwards.sizePolicy().hasHeightForWidth())
+        self.motion_zoom_button_backwards.setSizePolicy(sizePolicy7)
         self.motion_zoom_button_backwards.setMinimumSize(QSize(16, 16))
         self.motion_zoom_button_backwards.setMaximumSize(QSize(16, 16))
         self.motion_zoom_button_backwards.setTabletTracking(True)
         self.motion_zoom_button_backwards.setStyleSheet(u"border : 0;background: none;")
-        self.motion_zoom_button_backwards.setIcon(icon5)
+        self.motion_zoom_button_backwards.setIcon(icon6)
         self.motion_zoom_button_backwards.setIconSize(QSize(16, 16))
         self.deforumation_tabWidget.addTab(self.Movement_Tab, "")
         self.Settings_Tab = QWidget()
         self.Settings_Tab.setObjectName(u"Settings_Tab")
         self.Settings_Tab.setEnabled(True)
-        sizePolicy2.setHeightForWidth(self.Settings_Tab.sizePolicy().hasHeightForWidth())
-        self.Settings_Tab.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.Settings_Tab.sizePolicy().hasHeightForWidth())
+        self.Settings_Tab.setSizePolicy(sizePolicy1)
         self.Settings_Tab.setMinimumSize(QSize(0, 0))
         self.Settings_Tab.setAutoFillBackground(False)
         self.Settings_Tab.setStyleSheet(u"background-color: rgb(102,102,102);\n"
@@ -4438,8 +5090,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
         self.scrollArea_joystick_key_bindings = QScrollArea(self.Joystic_Key_Bindings_Frame)
         self.scrollArea_joystick_key_bindings.setObjectName(u"scrollArea_joystick_key_bindings")
-        sizePolicy2.setHeightForWidth(self.scrollArea_joystick_key_bindings.sizePolicy().hasHeightForWidth())
-        self.scrollArea_joystick_key_bindings.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.scrollArea_joystick_key_bindings.sizePolicy().hasHeightForWidth())
+        self.scrollArea_joystick_key_bindings.setSizePolicy(sizePolicy1)
         self.scrollArea_joystick_key_bindings.setMinimumSize(QSize(0, 0))
         self.scrollArea_joystick_key_bindings.setStyleSheet(u"QScrollArea {\n"
 "    border: 0px;\n"
@@ -4484,8 +5136,8 @@ class Ui_MainWindow(object):
         self.scrollAreaWidgetContentsJoystickBindings = QWidget()
         self.scrollAreaWidgetContentsJoystickBindings.setObjectName(u"scrollAreaWidgetContentsJoystickBindings")
         self.scrollAreaWidgetContentsJoystickBindings.setGeometry(QRect(0, 0, 302, 340))
-        sizePolicy2.setHeightForWidth(self.scrollAreaWidgetContentsJoystickBindings.sizePolicy().hasHeightForWidth())
-        self.scrollAreaWidgetContentsJoystickBindings.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.scrollAreaWidgetContentsJoystickBindings.sizePolicy().hasHeightForWidth())
+        self.scrollAreaWidgetContentsJoystickBindings.setSizePolicy(sizePolicy1)
         self.scrollAreaWidgetContentsJoystickBindings.setMinimumSize(QSize(0, 340))
         self.scrollAreaWidgetContentsJoystickBindings.setStyleSheet(u"border:0")
         self.verticalLayout_10 = QVBoxLayout(self.scrollAreaWidgetContentsJoystickBindings)
@@ -4509,8 +5161,8 @@ class Ui_MainWindow(object):
         self.joystic_bindings_row = QWidget(self.joystic_key_bindings_frame_poppable)
         self.joystic_bindings_row.setObjectName(u"joystic_bindings_row")
         self.joystic_bindings_row.setGeometry(QRect(5, 0, 137, 345))
-        sizePolicy13.setHeightForWidth(self.joystic_bindings_row.sizePolicy().hasHeightForWidth())
-        self.joystic_bindings_row.setSizePolicy(sizePolicy13)
+        sizePolicy15.setHeightForWidth(self.joystic_bindings_row.sizePolicy().hasHeightForWidth())
+        self.joystic_bindings_row.setSizePolicy(sizePolicy15)
         self.joystic_bindings_row.setStyleSheet(u"")
         self.verticalLayoutWidget_4 = QWidget(self.joystic_bindings_row)
         self.verticalLayoutWidget_4.setObjectName(u"verticalLayoutWidget_4")
@@ -4522,11 +5174,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_JoystickBinding_Key_Name.setContentsMargins(0, 0, 0, 0)
         self.joystick_panning_left_label = QLabel(self.verticalLayoutWidget_4)
         self.joystick_panning_left_label.setObjectName(u"joystick_panning_left_label")
-        sizePolicy14 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-        sizePolicy14.setHorizontalStretch(0)
-        sizePolicy14.setVerticalStretch(0)
-        sizePolicy14.setHeightForWidth(self.joystick_panning_left_label.sizePolicy().hasHeightForWidth())
-        self.joystick_panning_left_label.setSizePolicy(sizePolicy14)
+        sizePolicy16 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        sizePolicy16.setHorizontalStretch(0)
+        sizePolicy16.setVerticalStretch(0)
+        sizePolicy16.setHeightForWidth(self.joystick_panning_left_label.sizePolicy().hasHeightForWidth())
+        self.joystick_panning_left_label.setSizePolicy(sizePolicy16)
         self.joystick_panning_left_label.setMinimumSize(QSize(0, 0))
         font12 = QFont()
         font12.setPointSize(9)
@@ -4539,8 +5191,8 @@ class Ui_MainWindow(object):
 
         self.joystick_panning_right_label = QLabel(self.verticalLayoutWidget_4)
         self.joystick_panning_right_label.setObjectName(u"joystick_panning_right_label")
-        sizePolicy14.setHeightForWidth(self.joystick_panning_right_label.sizePolicy().hasHeightForWidth())
-        self.joystick_panning_right_label.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.joystick_panning_right_label.sizePolicy().hasHeightForWidth())
+        self.joystick_panning_right_label.setSizePolicy(sizePolicy16)
         self.joystick_panning_right_label.setMinimumSize(QSize(0, 0))
         self.joystick_panning_right_label.setFont(font12)
         self.joystick_panning_right_label.setStyleSheet(u"background-color: rgb(64, 64, 64);\n"
@@ -4551,8 +5203,8 @@ class Ui_MainWindow(object):
 
         self.joystick_panning_up_label = QLabel(self.verticalLayoutWidget_4)
         self.joystick_panning_up_label.setObjectName(u"joystick_panning_up_label")
-        sizePolicy14.setHeightForWidth(self.joystick_panning_up_label.sizePolicy().hasHeightForWidth())
-        self.joystick_panning_up_label.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.joystick_panning_up_label.sizePolicy().hasHeightForWidth())
+        self.joystick_panning_up_label.setSizePolicy(sizePolicy16)
         self.joystick_panning_up_label.setMinimumSize(QSize(0, 0))
         self.joystick_panning_up_label.setFont(font12)
         self.joystick_panning_up_label.setStyleSheet(u"background-color: rgb(64, 64, 64);\n"
@@ -4563,8 +5215,8 @@ class Ui_MainWindow(object):
 
         self.joystick_panning_down_label = QLabel(self.verticalLayoutWidget_4)
         self.joystick_panning_down_label.setObjectName(u"joystick_panning_down_label")
-        sizePolicy14.setHeightForWidth(self.joystick_panning_down_label.sizePolicy().hasHeightForWidth())
-        self.joystick_panning_down_label.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.joystick_panning_down_label.sizePolicy().hasHeightForWidth())
+        self.joystick_panning_down_label.setSizePolicy(sizePolicy16)
         self.joystick_panning_down_label.setMinimumSize(QSize(0, 0))
         self.joystick_panning_down_label.setFont(font12)
         self.joystick_panning_down_label.setStyleSheet(u"background-color: rgb(64, 64, 64);\n"
@@ -4575,8 +5227,8 @@ class Ui_MainWindow(object):
 
         self.joystick_rotate_h_left_label = QLabel(self.verticalLayoutWidget_4)
         self.joystick_rotate_h_left_label.setObjectName(u"joystick_rotate_h_left_label")
-        sizePolicy14.setHeightForWidth(self.joystick_rotate_h_left_label.sizePolicy().hasHeightForWidth())
-        self.joystick_rotate_h_left_label.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.joystick_rotate_h_left_label.sizePolicy().hasHeightForWidth())
+        self.joystick_rotate_h_left_label.setSizePolicy(sizePolicy16)
         self.joystick_rotate_h_left_label.setMinimumSize(QSize(0, 0))
         self.joystick_rotate_h_left_label.setFont(font12)
         self.joystick_rotate_h_left_label.setStyleSheet(u"background-color: rgb(64, 64, 64);\n"
@@ -4587,8 +5239,8 @@ class Ui_MainWindow(object):
 
         self.joystick_rotate_h_right_label = QLabel(self.verticalLayoutWidget_4)
         self.joystick_rotate_h_right_label.setObjectName(u"joystick_rotate_h_right_label")
-        sizePolicy14.setHeightForWidth(self.joystick_rotate_h_right_label.sizePolicy().hasHeightForWidth())
-        self.joystick_rotate_h_right_label.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.joystick_rotate_h_right_label.sizePolicy().hasHeightForWidth())
+        self.joystick_rotate_h_right_label.setSizePolicy(sizePolicy16)
         self.joystick_rotate_h_right_label.setMinimumSize(QSize(0, 0))
         self.joystick_rotate_h_right_label.setFont(font12)
         self.joystick_rotate_h_right_label.setStyleSheet(u"background-color: rgb(64, 64, 64);\n"
@@ -4599,8 +5251,8 @@ class Ui_MainWindow(object):
 
         self.joystick_rotate_v_up_label = QLabel(self.verticalLayoutWidget_4)
         self.joystick_rotate_v_up_label.setObjectName(u"joystick_rotate_v_up_label")
-        sizePolicy14.setHeightForWidth(self.joystick_rotate_v_up_label.sizePolicy().hasHeightForWidth())
-        self.joystick_rotate_v_up_label.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.joystick_rotate_v_up_label.sizePolicy().hasHeightForWidth())
+        self.joystick_rotate_v_up_label.setSizePolicy(sizePolicy16)
         self.joystick_rotate_v_up_label.setMinimumSize(QSize(0, 0))
         self.joystick_rotate_v_up_label.setFont(font12)
         self.joystick_rotate_v_up_label.setStyleSheet(u"background-color: rgb(64, 64, 64);\n"
@@ -4611,8 +5263,8 @@ class Ui_MainWindow(object):
 
         self.joystick_rotate_v_down_label = QLabel(self.verticalLayoutWidget_4)
         self.joystick_rotate_v_down_label.setObjectName(u"joystick_rotate_v_down_label")
-        sizePolicy14.setHeightForWidth(self.joystick_rotate_v_down_label.sizePolicy().hasHeightForWidth())
-        self.joystick_rotate_v_down_label.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.joystick_rotate_v_down_label.sizePolicy().hasHeightForWidth())
+        self.joystick_rotate_v_down_label.setSizePolicy(sizePolicy16)
         self.joystick_rotate_v_down_label.setMinimumSize(QSize(0, 0))
         self.joystick_rotate_v_down_label.setFont(font12)
         self.joystick_rotate_v_down_label.setStyleSheet(u"background-color: rgb(64, 64, 64);\n"
@@ -4623,8 +5275,8 @@ class Ui_MainWindow(object):
 
         self.joystick_zoom_forwards_label = QLabel(self.verticalLayoutWidget_4)
         self.joystick_zoom_forwards_label.setObjectName(u"joystick_zoom_forwards_label")
-        sizePolicy14.setHeightForWidth(self.joystick_zoom_forwards_label.sizePolicy().hasHeightForWidth())
-        self.joystick_zoom_forwards_label.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.joystick_zoom_forwards_label.sizePolicy().hasHeightForWidth())
+        self.joystick_zoom_forwards_label.setSizePolicy(sizePolicy16)
         self.joystick_zoom_forwards_label.setMinimumSize(QSize(0, 0))
         self.joystick_zoom_forwards_label.setFont(font12)
         self.joystick_zoom_forwards_label.setStyleSheet(u"background-color: rgb(64, 64, 64);\n"
@@ -4635,8 +5287,8 @@ class Ui_MainWindow(object):
 
         self.joystick_zoom_backwards_label = QLabel(self.verticalLayoutWidget_4)
         self.joystick_zoom_backwards_label.setObjectName(u"joystick_zoom_backwards_label")
-        sizePolicy14.setHeightForWidth(self.joystick_zoom_backwards_label.sizePolicy().hasHeightForWidth())
-        self.joystick_zoom_backwards_label.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.joystick_zoom_backwards_label.sizePolicy().hasHeightForWidth())
+        self.joystick_zoom_backwards_label.setSizePolicy(sizePolicy16)
         self.joystick_zoom_backwards_label.setMinimumSize(QSize(0, 0))
         self.joystick_zoom_backwards_label.setFont(font12)
         self.joystick_zoom_backwards_label.setStyleSheet(u"background-color: rgb(64, 64, 64);\n"
@@ -4647,8 +5299,8 @@ class Ui_MainWindow(object):
 
         self.joystick_tilt_cw_label = QLabel(self.verticalLayoutWidget_4)
         self.joystick_tilt_cw_label.setObjectName(u"joystick_tilt_cw_label")
-        sizePolicy14.setHeightForWidth(self.joystick_tilt_cw_label.sizePolicy().hasHeightForWidth())
-        self.joystick_tilt_cw_label.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.joystick_tilt_cw_label.sizePolicy().hasHeightForWidth())
+        self.joystick_tilt_cw_label.setSizePolicy(sizePolicy16)
         self.joystick_tilt_cw_label.setMinimumSize(QSize(0, 0))
         self.joystick_tilt_cw_label.setFont(font12)
         self.joystick_tilt_cw_label.setStyleSheet(u"background-color: rgb(64, 64, 64);\n"
@@ -4659,8 +5311,8 @@ class Ui_MainWindow(object):
 
         self.joystick_tilt_cc_label = QLabel(self.verticalLayoutWidget_4)
         self.joystick_tilt_cc_label.setObjectName(u"joystick_tilt_cc_label")
-        sizePolicy14.setHeightForWidth(self.joystick_tilt_cc_label.sizePolicy().hasHeightForWidth())
-        self.joystick_tilt_cc_label.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.joystick_tilt_cc_label.sizePolicy().hasHeightForWidth())
+        self.joystick_tilt_cc_label.setSizePolicy(sizePolicy16)
         self.joystick_tilt_cc_label.setMinimumSize(QSize(0, 0))
         self.joystick_tilt_cc_label.setFont(font12)
         self.joystick_tilt_cc_label.setStyleSheet(u"background-color: rgb(64, 64, 64);\n"
@@ -4687,8 +5339,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_JoystickBinding_Key_Value.setContentsMargins(0, 0, 0, 0)
         self.joystick_panning_left_binding_button = QPushButton(self.verticalLayoutWidget_5)
         self.joystick_panning_left_binding_button.setObjectName(u"joystick_panning_left_binding_button")
-        sizePolicy14.setHeightForWidth(self.joystick_panning_left_binding_button.sizePolicy().hasHeightForWidth())
-        self.joystick_panning_left_binding_button.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.joystick_panning_left_binding_button.sizePolicy().hasHeightForWidth())
+        self.joystick_panning_left_binding_button.setSizePolicy(sizePolicy16)
         self.joystick_panning_left_binding_button.setStyleSheet(u"QPushButton {\n"
 "    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n"
 "    border: none;\n"
@@ -4714,8 +5366,8 @@ class Ui_MainWindow(object):
 
         self.joystick_panning_right_binding_button = QPushButton(self.verticalLayoutWidget_5)
         self.joystick_panning_right_binding_button.setObjectName(u"joystick_panning_right_binding_button")
-        sizePolicy14.setHeightForWidth(self.joystick_panning_right_binding_button.sizePolicy().hasHeightForWidth())
-        self.joystick_panning_right_binding_button.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.joystick_panning_right_binding_button.sizePolicy().hasHeightForWidth())
+        self.joystick_panning_right_binding_button.setSizePolicy(sizePolicy16)
         self.joystick_panning_right_binding_button.setStyleSheet(u"QPushButton {\n"
 "    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n"
 "    border: none;\n"
@@ -4741,8 +5393,8 @@ class Ui_MainWindow(object):
 
         self.joystick_panning_up_binding_button = QPushButton(self.verticalLayoutWidget_5)
         self.joystick_panning_up_binding_button.setObjectName(u"joystick_panning_up_binding_button")
-        sizePolicy14.setHeightForWidth(self.joystick_panning_up_binding_button.sizePolicy().hasHeightForWidth())
-        self.joystick_panning_up_binding_button.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.joystick_panning_up_binding_button.sizePolicy().hasHeightForWidth())
+        self.joystick_panning_up_binding_button.setSizePolicy(sizePolicy16)
         self.joystick_panning_up_binding_button.setStyleSheet(u"QPushButton {\n"
 "    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n"
 "    border: none;\n"
@@ -4768,8 +5420,8 @@ class Ui_MainWindow(object):
 
         self.joystick_panning_down_binding_button = QPushButton(self.verticalLayoutWidget_5)
         self.joystick_panning_down_binding_button.setObjectName(u"joystick_panning_down_binding_button")
-        sizePolicy14.setHeightForWidth(self.joystick_panning_down_binding_button.sizePolicy().hasHeightForWidth())
-        self.joystick_panning_down_binding_button.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.joystick_panning_down_binding_button.sizePolicy().hasHeightForWidth())
+        self.joystick_panning_down_binding_button.setSizePolicy(sizePolicy16)
         self.joystick_panning_down_binding_button.setStyleSheet(u"QPushButton {\n"
 "    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n"
 "    border: none;\n"
@@ -4795,8 +5447,8 @@ class Ui_MainWindow(object):
 
         self.joystick_rotate_h_left_binding_button = QPushButton(self.verticalLayoutWidget_5)
         self.joystick_rotate_h_left_binding_button.setObjectName(u"joystick_rotate_h_left_binding_button")
-        sizePolicy14.setHeightForWidth(self.joystick_rotate_h_left_binding_button.sizePolicy().hasHeightForWidth())
-        self.joystick_rotate_h_left_binding_button.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.joystick_rotate_h_left_binding_button.sizePolicy().hasHeightForWidth())
+        self.joystick_rotate_h_left_binding_button.setSizePolicy(sizePolicy16)
         self.joystick_rotate_h_left_binding_button.setStyleSheet(u"QPushButton {\n"
 "    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n"
 "    border: none;\n"
@@ -4822,8 +5474,8 @@ class Ui_MainWindow(object):
 
         self.joystick_rotate_h_right_binding_button = QPushButton(self.verticalLayoutWidget_5)
         self.joystick_rotate_h_right_binding_button.setObjectName(u"joystick_rotate_h_right_binding_button")
-        sizePolicy14.setHeightForWidth(self.joystick_rotate_h_right_binding_button.sizePolicy().hasHeightForWidth())
-        self.joystick_rotate_h_right_binding_button.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.joystick_rotate_h_right_binding_button.sizePolicy().hasHeightForWidth())
+        self.joystick_rotate_h_right_binding_button.setSizePolicy(sizePolicy16)
         self.joystick_rotate_h_right_binding_button.setStyleSheet(u"QPushButton {\n"
 "    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n"
 "    border: none;\n"
@@ -4849,8 +5501,8 @@ class Ui_MainWindow(object):
 
         self.joystick_rotate_v_up_binding_button = QPushButton(self.verticalLayoutWidget_5)
         self.joystick_rotate_v_up_binding_button.setObjectName(u"joystick_rotate_v_up_binding_button")
-        sizePolicy14.setHeightForWidth(self.joystick_rotate_v_up_binding_button.sizePolicy().hasHeightForWidth())
-        self.joystick_rotate_v_up_binding_button.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.joystick_rotate_v_up_binding_button.sizePolicy().hasHeightForWidth())
+        self.joystick_rotate_v_up_binding_button.setSizePolicy(sizePolicy16)
         self.joystick_rotate_v_up_binding_button.setStyleSheet(u"QPushButton {\n"
 "    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n"
 "    border: none;\n"
@@ -4876,8 +5528,8 @@ class Ui_MainWindow(object):
 
         self.joystick_rotate_v_down_binding_button = QPushButton(self.verticalLayoutWidget_5)
         self.joystick_rotate_v_down_binding_button.setObjectName(u"joystick_rotate_v_down_binding_button")
-        sizePolicy14.setHeightForWidth(self.joystick_rotate_v_down_binding_button.sizePolicy().hasHeightForWidth())
-        self.joystick_rotate_v_down_binding_button.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.joystick_rotate_v_down_binding_button.sizePolicy().hasHeightForWidth())
+        self.joystick_rotate_v_down_binding_button.setSizePolicy(sizePolicy16)
         self.joystick_rotate_v_down_binding_button.setStyleSheet(u"QPushButton {\n"
 "    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n"
 "    border: none;\n"
@@ -4903,8 +5555,8 @@ class Ui_MainWindow(object):
 
         self.joystick_zoom_forwards_binding_button = QPushButton(self.verticalLayoutWidget_5)
         self.joystick_zoom_forwards_binding_button.setObjectName(u"joystick_zoom_forwards_binding_button")
-        sizePolicy14.setHeightForWidth(self.joystick_zoom_forwards_binding_button.sizePolicy().hasHeightForWidth())
-        self.joystick_zoom_forwards_binding_button.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.joystick_zoom_forwards_binding_button.sizePolicy().hasHeightForWidth())
+        self.joystick_zoom_forwards_binding_button.setSizePolicy(sizePolicy16)
         self.joystick_zoom_forwards_binding_button.setStyleSheet(u"QPushButton {\n"
 "    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n"
 "    border: none;\n"
@@ -4930,8 +5582,8 @@ class Ui_MainWindow(object):
 
         self.joystick_zoom_backwards_binding_button = QPushButton(self.verticalLayoutWidget_5)
         self.joystick_zoom_backwards_binding_button.setObjectName(u"joystick_zoom_backwards_binding_button")
-        sizePolicy14.setHeightForWidth(self.joystick_zoom_backwards_binding_button.sizePolicy().hasHeightForWidth())
-        self.joystick_zoom_backwards_binding_button.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.joystick_zoom_backwards_binding_button.sizePolicy().hasHeightForWidth())
+        self.joystick_zoom_backwards_binding_button.setSizePolicy(sizePolicy16)
         self.joystick_zoom_backwards_binding_button.setStyleSheet(u"QPushButton {\n"
 "    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n"
 "    border: none;\n"
@@ -4957,8 +5609,8 @@ class Ui_MainWindow(object):
 
         self.joystick_tilt_cw_bind_button = QPushButton(self.verticalLayoutWidget_5)
         self.joystick_tilt_cw_bind_button.setObjectName(u"joystick_tilt_cw_bind_button")
-        sizePolicy14.setHeightForWidth(self.joystick_tilt_cw_bind_button.sizePolicy().hasHeightForWidth())
-        self.joystick_tilt_cw_bind_button.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.joystick_tilt_cw_bind_button.sizePolicy().hasHeightForWidth())
+        self.joystick_tilt_cw_bind_button.setSizePolicy(sizePolicy16)
         self.joystick_tilt_cw_bind_button.setStyleSheet(u"QPushButton {\n"
 "    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n"
 "    border: none;\n"
@@ -4984,8 +5636,8 @@ class Ui_MainWindow(object):
 
         self.joystick_tilt_cc_bind_button = QPushButton(self.verticalLayoutWidget_5)
         self.joystick_tilt_cc_bind_button.setObjectName(u"joystick_tilt_cc_bind_button")
-        sizePolicy14.setHeightForWidth(self.joystick_tilt_cc_bind_button.sizePolicy().hasHeightForWidth())
-        self.joystick_tilt_cc_bind_button.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.joystick_tilt_cc_bind_button.sizePolicy().hasHeightForWidth())
+        self.joystick_tilt_cc_bind_button.setSizePolicy(sizePolicy16)
         self.joystick_tilt_cc_bind_button.setStyleSheet(u"QPushButton {\n"
 "    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n"
 "    border: none;\n"
@@ -5019,16 +5671,16 @@ class Ui_MainWindow(object):
         self.motion_control_params_label = QLabel(self.controller_settings)
         self.motion_control_params_label.setObjectName(u"motion_control_params_label")
         self.motion_control_params_label.setGeometry(QRect(16, 171, 135, 24))
-        sizePolicy14.setHeightForWidth(self.motion_control_params_label.sizePolicy().hasHeightForWidth())
-        self.motion_control_params_label.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.motion_control_params_label.sizePolicy().hasHeightForWidth())
+        self.motion_control_params_label.setSizePolicy(sizePolicy16)
         self.motion_control_params_label.setMinimumSize(QSize(0, 0))
         self.motion_control_params_label.setFont(font12)
         self.motion_control_params_label.setStyleSheet(u"border: none;")
         self.motion_control_bindings_label = QLabel(self.controller_settings)
         self.motion_control_bindings_label.setObjectName(u"motion_control_bindings_label")
         self.motion_control_bindings_label.setGeometry(QRect(156, 171, 135, 24))
-        sizePolicy14.setHeightForWidth(self.motion_control_bindings_label.sizePolicy().hasHeightForWidth())
-        self.motion_control_bindings_label.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.motion_control_bindings_label.sizePolicy().hasHeightForWidth())
+        self.motion_control_bindings_label.setSizePolicy(sizePolicy16)
         self.motion_control_bindings_label.setMinimumSize(QSize(0, 0))
         self.motion_control_bindings_label.setFont(font12)
         self.motion_control_bindings_label.setStyleSheet(u"border: none;")
@@ -5110,8 +5762,8 @@ class Ui_MainWindow(object):
         self.controller_mode_checkbox = QCheckBox(self.frame)
         self.controller_mode_checkbox.setObjectName(u"controller_mode_checkbox")
         self.controller_mode_checkbox.setGeometry(QRect(83, 6, 38, 16))
-        sizePolicy2.setHeightForWidth(self.controller_mode_checkbox.sizePolicy().hasHeightForWidth())
-        self.controller_mode_checkbox.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.controller_mode_checkbox.sizePolicy().hasHeightForWidth())
+        self.controller_mode_checkbox.setSizePolicy(sizePolicy1)
         self.controller_mode_checkbox.setLayoutDirection(Qt.RightToLeft)
         self.controller_mode_checkbox.setStyleSheet(u"QCheckBox {\n"
 "    border: none; /* No border for the checkbox */\n"
@@ -5298,7 +5950,7 @@ class Ui_MainWindow(object):
         self.CN_1_weight_slider_value = QLabel(self.CN_1_weight_poppable)
         self.CN_1_weight_slider_value.setObjectName(u"CN_1_weight_slider_value")
         self.CN_1_weight_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_1_weight_slider_value.setFont(font7)
+        self.CN_1_weight_slider_value.setFont(font1)
         self.CN_1_weight_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -5382,7 +6034,7 @@ class Ui_MainWindow(object):
         self.CN_1_starting_control_step_slider_value = QLabel(self.CN_1_start_control_step_poppable)
         self.CN_1_starting_control_step_slider_value.setObjectName(u"CN_1_starting_control_step_slider_value")
         self.CN_1_starting_control_step_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_1_starting_control_step_slider_value.setFont(font7)
+        self.CN_1_starting_control_step_slider_value.setFont(font1)
         self.CN_1_starting_control_step_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -5466,7 +6118,7 @@ class Ui_MainWindow(object):
         self.CN_1_ending_control_step_slider_value = QLabel(self.CN_1_end_control_step_poppable)
         self.CN_1_ending_control_step_slider_value.setObjectName(u"CN_1_ending_control_step_slider_value")
         self.CN_1_ending_control_step_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_1_ending_control_step_slider_value.setFont(font7)
+        self.CN_1_ending_control_step_slider_value.setFont(font1)
         self.CN_1_ending_control_step_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -5550,7 +6202,7 @@ class Ui_MainWindow(object):
         self.CN_1_low_threshold_slider_value = QLabel(self.CN_1_low_threshold_poppable)
         self.CN_1_low_threshold_slider_value.setObjectName(u"CN_1_low_threshold_slider_value")
         self.CN_1_low_threshold_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_1_low_threshold_slider_value.setFont(font7)
+        self.CN_1_low_threshold_slider_value.setFont(font1)
         self.CN_1_low_threshold_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -5634,7 +6286,7 @@ class Ui_MainWindow(object):
         self.CN_1_high_threshold_slider_value = QLabel(self.CN_1_high_threshold_poppable)
         self.CN_1_high_threshold_slider_value.setObjectName(u"CN_1_high_threshold_slider_value")
         self.CN_1_high_threshold_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_1_high_threshold_slider_value.setFont(font7)
+        self.CN_1_high_threshold_slider_value.setFont(font1)
         self.CN_1_high_threshold_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -5727,7 +6379,7 @@ class Ui_MainWindow(object):
         self.CN_2_high_threshold_slider_value = QLabel(self.CN_2_high_threshold_poppable)
         self.CN_2_high_threshold_slider_value.setObjectName(u"CN_2_high_threshold_slider_value")
         self.CN_2_high_threshold_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_2_high_threshold_slider_value.setFont(font7)
+        self.CN_2_high_threshold_slider_value.setFont(font1)
         self.CN_2_high_threshold_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -5810,7 +6462,7 @@ class Ui_MainWindow(object):
         self.CN_2_weight_slider_value = QLabel(self.CN_2_weight_poppable)
         self.CN_2_weight_slider_value.setObjectName(u"CN_2_weight_slider_value")
         self.CN_2_weight_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_2_weight_slider_value.setFont(font7)
+        self.CN_2_weight_slider_value.setFont(font1)
         self.CN_2_weight_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -5893,7 +6545,7 @@ class Ui_MainWindow(object):
         self.CN_2_ending_control_step_slider_value = QLabel(self.CN_2_end_control_step_poppable)
         self.CN_2_ending_control_step_slider_value.setObjectName(u"CN_2_ending_control_step_slider_value")
         self.CN_2_ending_control_step_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_2_ending_control_step_slider_value.setFont(font7)
+        self.CN_2_ending_control_step_slider_value.setFont(font1)
         self.CN_2_ending_control_step_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -5976,7 +6628,7 @@ class Ui_MainWindow(object):
         self.CN_2_starting_control_step_slider_value = QLabel(self.CN_2_start_control_step_poppable)
         self.CN_2_starting_control_step_slider_value.setObjectName(u"CN_2_starting_control_step_slider_value")
         self.CN_2_starting_control_step_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_2_starting_control_step_slider_value.setFont(font7)
+        self.CN_2_starting_control_step_slider_value.setFont(font1)
         self.CN_2_starting_control_step_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -6059,7 +6711,7 @@ class Ui_MainWindow(object):
         self.CN_2_low_threshold_slider_value = QLabel(self.CN_2_low_threshold_poppable)
         self.CN_2_low_threshold_slider_value.setObjectName(u"CN_2_low_threshold_slider_value")
         self.CN_2_low_threshold_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_2_low_threshold_slider_value.setFont(font7)
+        self.CN_2_low_threshold_slider_value.setFont(font1)
         self.CN_2_low_threshold_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -6152,7 +6804,7 @@ class Ui_MainWindow(object):
         self.CN_3_high_threshold_slider_value = QLabel(self.CN_3_high_threshold_poppable)
         self.CN_3_high_threshold_slider_value.setObjectName(u"CN_3_high_threshold_slider_value")
         self.CN_3_high_threshold_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_3_high_threshold_slider_value.setFont(font7)
+        self.CN_3_high_threshold_slider_value.setFont(font1)
         self.CN_3_high_threshold_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -6235,7 +6887,7 @@ class Ui_MainWindow(object):
         self.CN_3_weight_slider_value = QLabel(self.CN_3_weight_poppable)
         self.CN_3_weight_slider_value.setObjectName(u"CN_3_weight_slider_value")
         self.CN_3_weight_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_3_weight_slider_value.setFont(font7)
+        self.CN_3_weight_slider_value.setFont(font1)
         self.CN_3_weight_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -6318,7 +6970,7 @@ class Ui_MainWindow(object):
         self.CN_3_ending_control_step_slider_value = QLabel(self.CN_3_end_control_step_poppable)
         self.CN_3_ending_control_step_slider_value.setObjectName(u"CN_3_ending_control_step_slider_value")
         self.CN_3_ending_control_step_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_3_ending_control_step_slider_value.setFont(font7)
+        self.CN_3_ending_control_step_slider_value.setFont(font1)
         self.CN_3_ending_control_step_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -6401,7 +7053,7 @@ class Ui_MainWindow(object):
         self.CN_3_starting_control_step_slider_value = QLabel(self.CN_3_start_control_step_poppable)
         self.CN_3_starting_control_step_slider_value.setObjectName(u"CN_3_starting_control_step_slider_value")
         self.CN_3_starting_control_step_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_3_starting_control_step_slider_value.setFont(font7)
+        self.CN_3_starting_control_step_slider_value.setFont(font1)
         self.CN_3_starting_control_step_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -6484,7 +7136,7 @@ class Ui_MainWindow(object):
         self.CN_3_low_threshold_slider_value = QLabel(self.CN_3_low_threshold_poppable)
         self.CN_3_low_threshold_slider_value.setObjectName(u"CN_3_low_threshold_slider_value")
         self.CN_3_low_threshold_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_3_low_threshold_slider_value.setFont(font7)
+        self.CN_3_low_threshold_slider_value.setFont(font1)
         self.CN_3_low_threshold_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -6577,7 +7229,7 @@ class Ui_MainWindow(object):
         self.CN_4_high_threshold_slider_value = QLabel(self.CN_4_high_threshold_poppable)
         self.CN_4_high_threshold_slider_value.setObjectName(u"CN_4_high_threshold_slider_value")
         self.CN_4_high_threshold_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_4_high_threshold_slider_value.setFont(font7)
+        self.CN_4_high_threshold_slider_value.setFont(font1)
         self.CN_4_high_threshold_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -6660,7 +7312,7 @@ class Ui_MainWindow(object):
         self.CN_4_weight_slider_value = QLabel(self.CN_4_weight_poppable)
         self.CN_4_weight_slider_value.setObjectName(u"CN_4_weight_slider_value")
         self.CN_4_weight_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_4_weight_slider_value.setFont(font7)
+        self.CN_4_weight_slider_value.setFont(font1)
         self.CN_4_weight_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -6743,7 +7395,7 @@ class Ui_MainWindow(object):
         self.CN_4_ending_control_step_slider_value = QLabel(self.CN_4_end_control_step_poppable)
         self.CN_4_ending_control_step_slider_value.setObjectName(u"CN_4_ending_control_step_slider_value")
         self.CN_4_ending_control_step_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_4_ending_control_step_slider_value.setFont(font7)
+        self.CN_4_ending_control_step_slider_value.setFont(font1)
         self.CN_4_ending_control_step_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -6826,7 +7478,7 @@ class Ui_MainWindow(object):
         self.CN_4_starting_control_step_slider_value = QLabel(self.CN_4_start_control_step_poppable)
         self.CN_4_starting_control_step_slider_value.setObjectName(u"CN_4_starting_control_step_slider_value")
         self.CN_4_starting_control_step_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_4_starting_control_step_slider_value.setFont(font7)
+        self.CN_4_starting_control_step_slider_value.setFont(font1)
         self.CN_4_starting_control_step_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -6909,7 +7561,7 @@ class Ui_MainWindow(object):
         self.CN_4_low_threshold_slider_value = QLabel(self.CN_4_low_threshold_poppable)
         self.CN_4_low_threshold_slider_value.setObjectName(u"CN_4_low_threshold_slider_value")
         self.CN_4_low_threshold_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_4_low_threshold_slider_value.setFont(font7)
+        self.CN_4_low_threshold_slider_value.setFont(font1)
         self.CN_4_low_threshold_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -7002,7 +7654,7 @@ class Ui_MainWindow(object):
         self.CN_5_high_threshold_slider_value = QLabel(self.CN_5_high_threshold_poppable)
         self.CN_5_high_threshold_slider_value.setObjectName(u"CN_5_high_threshold_slider_value")
         self.CN_5_high_threshold_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_5_high_threshold_slider_value.setFont(font7)
+        self.CN_5_high_threshold_slider_value.setFont(font1)
         self.CN_5_high_threshold_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -7085,7 +7737,7 @@ class Ui_MainWindow(object):
         self.CN_5_weight_slider_value = QLabel(self.CN_5_weight_poppable)
         self.CN_5_weight_slider_value.setObjectName(u"CN_5_weight_slider_value")
         self.CN_5_weight_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_5_weight_slider_value.setFont(font7)
+        self.CN_5_weight_slider_value.setFont(font1)
         self.CN_5_weight_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -7168,7 +7820,7 @@ class Ui_MainWindow(object):
         self.CN_5_ending_control_step_slider_value = QLabel(self.CN_5_end_control_step_poppable)
         self.CN_5_ending_control_step_slider_value.setObjectName(u"CN_5_ending_control_step_slider_value")
         self.CN_5_ending_control_step_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_5_ending_control_step_slider_value.setFont(font7)
+        self.CN_5_ending_control_step_slider_value.setFont(font1)
         self.CN_5_ending_control_step_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -7251,7 +7903,7 @@ class Ui_MainWindow(object):
         self.CN_5_starting_control_step_slider_value = QLabel(self.CN_5_start_control_step_poppable)
         self.CN_5_starting_control_step_slider_value.setObjectName(u"CN_5_starting_control_step_slider_value")
         self.CN_5_starting_control_step_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_5_starting_control_step_slider_value.setFont(font7)
+        self.CN_5_starting_control_step_slider_value.setFont(font1)
         self.CN_5_starting_control_step_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -7334,7 +7986,7 @@ class Ui_MainWindow(object):
         self.CN_5_low_threshold_slider_value = QLabel(self.CN_5_low_threshold_poppable)
         self.CN_5_low_threshold_slider_value.setObjectName(u"CN_5_low_threshold_slider_value")
         self.CN_5_low_threshold_slider_value.setGeometry(QRect(194, 10, 46, 22))
-        self.CN_5_low_threshold_slider_value.setFont(font7)
+        self.CN_5_low_threshold_slider_value.setFont(font1)
         self.CN_5_low_threshold_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -7361,8 +8013,8 @@ class Ui_MainWindow(object):
         self.cn_udcn3 = QCheckBox(self.CN_on_off_poppable)
         self.cn_udcn3.setObjectName(u"cn_udcn3")
         self.cn_udcn3.setGeometry(QRect(208, 26, 104, 31))
-        sizePolicy2.setHeightForWidth(self.cn_udcn3.sizePolicy().hasHeightForWidth())
-        self.cn_udcn3.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.cn_udcn3.sizePolicy().hasHeightForWidth())
+        self.cn_udcn3.setSizePolicy(sizePolicy1)
         self.cn_udcn3.setBaseSize(QSize(0, 0))
         self.cn_udcn3.setStyleSheet(u"QCheckBox {\n"
 "    border: none; /* No border for the checkbox */\n"
@@ -7393,8 +8045,8 @@ class Ui_MainWindow(object):
         self.cn_udcn4 = QCheckBox(self.CN_on_off_poppable)
         self.cn_udcn4.setObjectName(u"cn_udcn4")
         self.cn_udcn4.setGeometry(QRect(316, 26, 104, 31))
-        sizePolicy2.setHeightForWidth(self.cn_udcn4.sizePolicy().hasHeightForWidth())
-        self.cn_udcn4.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.cn_udcn4.sizePolicy().hasHeightForWidth())
+        self.cn_udcn4.setSizePolicy(sizePolicy1)
         self.cn_udcn4.setBaseSize(QSize(0, 0))
         self.cn_udcn4.setStyleSheet(u"QCheckBox {\n"
 "    border: none; /* No border for the checkbox */\n"
@@ -7455,8 +8107,8 @@ class Ui_MainWindow(object):
         self.cn_udcn5 = QCheckBox(self.CN_on_off_poppable)
         self.cn_udcn5.setObjectName(u"cn_udcn5")
         self.cn_udcn5.setGeometry(QRect(420, 26, 81, 31))
-        sizePolicy2.setHeightForWidth(self.cn_udcn5.sizePolicy().hasHeightForWidth())
-        self.cn_udcn5.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.cn_udcn5.sizePolicy().hasHeightForWidth())
+        self.cn_udcn5.setSizePolicy(sizePolicy1)
         self.cn_udcn5.setBaseSize(QSize(0, 0))
         self.cn_udcn5.setStyleSheet(u"QCheckBox {\n"
 "    border: none; /* No border for the checkbox */\n"
@@ -7487,8 +8139,8 @@ class Ui_MainWindow(object):
         self.cn_udcn2 = QCheckBox(self.CN_on_off_poppable)
         self.cn_udcn2.setObjectName(u"cn_udcn2")
         self.cn_udcn2.setGeometry(QRect(106, 26, 104, 31))
-        sizePolicy2.setHeightForWidth(self.cn_udcn2.sizePolicy().hasHeightForWidth())
-        self.cn_udcn2.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.cn_udcn2.sizePolicy().hasHeightForWidth())
+        self.cn_udcn2.setSizePolicy(sizePolicy1)
         self.cn_udcn2.setBaseSize(QSize(0, 0))
         self.cn_udcn2.setStyleSheet(u"QCheckBox {\n"
 "    border: none; /* No border for the checkbox */\n"
@@ -7519,8 +8171,8 @@ class Ui_MainWindow(object):
         self.cn_udcn1 = QCheckBox(self.CN_on_off_poppable)
         self.cn_udcn1.setObjectName(u"cn_udcn1")
         self.cn_udcn1.setGeometry(QRect(28, 26, 53, 27))
-        sizePolicy2.setHeightForWidth(self.cn_udcn1.sizePolicy().hasHeightForWidth())
-        self.cn_udcn1.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.cn_udcn1.sizePolicy().hasHeightForWidth())
+        self.cn_udcn1.setSizePolicy(sizePolicy1)
         self.cn_udcn1.setBaseSize(QSize(0, 0))
         self.cn_udcn1.setStyleSheet(u"QCheckBox {\n"
 "    border: none; /* No border for the checkbox */\n"
@@ -7580,6 +8232,80 @@ class Ui_MainWindow(object):
 "\n"
 "\n"
 "")
+        self.morph_slider = QSlider(self.Misc_Tab_A)
+        self.morph_slider.setObjectName(u"morph_slider")
+        self.morph_slider.setGeometry(QRect(264, 124, 643, 33))
+        sizePolicy1.setHeightForWidth(self.morph_slider.sizePolicy().hasHeightForWidth())
+        self.morph_slider.setSizePolicy(sizePolicy1)
+        self.morph_slider.setMinimumSize(QSize(0, 33))
+        self.morph_slider.setMaximumSize(QSize(16777215, 33))
+        self.morph_slider.setStyleSheet(u"QSlider::groove:horizontal {\n"
+"    border-image: url(images/groove_230.png) ; /* Adjust slicing and stretch as needed */\n"
+"    height: 29px; /* The height of your image */\n"
+"    width: 215px; /* Width of the handle - adjust as needed */\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal {\n"
+"    background-image: url(images/handle_off.png); /* The path to your handle image */\n"
+"  background-repeat: no-repeat;\n"
+"    border: none; /* Remove the border if you don't need it */\n"
+"    width: 32px; /* Width of the handle - adjust as needed */\n"
+"    height: 32px; /* Height of the handle - adjust as needed */\n"
+"    margin: -2px 0; /* Optional: Adjust the margin if needed */\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal:hover {\n"
+"\n"
+"    background-image: url(images/handle_hover.png); /* Change the handle image when hovering */\n"
+"background-repeat: no-repeat;\n"
+"    border: none; /* Remove the border if you don't need it */\n"
+"    width: 32px; /* Width of the handle - adjust as needed */\n"
+"    height: 32px;"
+                        " /* Height of the handle - adjust as needed */\n"
+"    margin: -2px 0; /* Optional: Adjust the margin if needed */\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal:pressed {\n"
+"    background-image: url(images/handle_on.png); /* Change the handle image when pressed */\n"
+"background-repeat: no-repeat;\n"
+"    border: none; /* Remove the border if you don't need it */\n"
+"    width: 32px; /* Width of the handle - adjust as needed */\n"
+"    height: 32px; /* Height of the handle - adjust as needed */\n"
+"    margin: -2px 0; /* Optional: Adjust the margin if needed */\n"
+"  \n"
+"}\n"
+"\n"
+"QSlider::add-page:horizontal {\n"
+"    background: none;\n"
+"}\n"
+"\n"
+"QSlider::sub-page:horizontal {\n"
+"    background: none;\n"
+"}\n"
+" ")
+        self.morph_slider.setMinimum(-100)
+        self.morph_slider.setMaximum(100)
+        self.morph_slider.setOrientation(Qt.Horizontal)
+        self.morphing_text_howto_label = QLabel(self.Misc_Tab_A)
+        self.morphing_text_howto_label.setObjectName(u"morphing_text_howto_label")
+        self.morphing_text_howto_label.setGeometry(QRect(264, 157, 643, 29))
+        sizePolicy1.setHeightForWidth(self.morphing_text_howto_label.sizePolicy().hasHeightForWidth())
+        self.morphing_text_howto_label.setSizePolicy(sizePolicy1)
+        self.morphing_text_howto_label.setMinimumSize(QSize(0, 22))
+        font13 = QFont()
+        font13.setPointSize(10)
+        self.morphing_text_howto_label.setFont(font13)
+        self.morphing_text_howto_label.setStyleSheet(u"")
+        self.morphing_text_howto_label.setScaledContents(False)
+        self.morphing_text_howto_label.setAlignment(Qt.AlignCenter)
+        self.morphing_text_howto_label.setWordWrap(True)
+        self.prpmta_to_promptb_label = QLabel(self.Misc_Tab_A)
+        self.prpmta_to_promptb_label.setObjectName(u"prpmta_to_promptb_label")
+        self.prpmta_to_promptb_label.setGeometry(QRect(264, 96, 643, 28))
+        self.prpmta_to_promptb_label.setMinimumSize(QSize(0, 28))
+        self.prpmta_to_promptb_label.setMaximumSize(QSize(16777215, 28))
+        self.prpmta_to_promptb_label.setFont(font2)
+        self.prpmta_to_promptb_label.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
         self.deforumation_tabWidget.addTab(self.Misc_Tab_A, "")
         self.Misc_Tab_B = QWidget()
         self.Misc_Tab_B.setObjectName(u"Misc_Tab_B")
@@ -7623,13 +8349,13 @@ class Ui_MainWindow(object):
         self.gridLayout_4.addWidget(self.splitter, 0, 0, 1, 1)
 
 
-        self.gridLayout_16.addWidget(self.Deforumation_Main, 0, 0, 1, 1)
+        self.gridLayout_16.addWidget(self.Deforumation_Main, 0, 1, 1, 1)
 
         self.splitter_3.addWidget(self.Left_Frame)
         self.Right_Frame = QFrame(self.splitter_3)
         self.Right_Frame.setObjectName(u"Right_Frame")
-        sizePolicy2.setHeightForWidth(self.Right_Frame.sizePolicy().hasHeightForWidth())
-        self.Right_Frame.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.Right_Frame.sizePolicy().hasHeightForWidth())
+        self.Right_Frame.setSizePolicy(sizePolicy1)
         self.Right_Frame.setMinimumSize(QSize(300, 0))
         self.Right_Frame.setMaximumSize(QSize(250, 16777215))
         self.Right_Frame.setStyleSheet(u"")
@@ -7640,11 +8366,11 @@ class Ui_MainWindow(object):
         self.gridLayout_17.setContentsMargins(2, 5, 5, 0)
         self.stay_on_top_checkbox = QCheckBox(self.Right_Frame)
         self.stay_on_top_checkbox.setObjectName(u"stay_on_top_checkbox")
-        sizePolicy14.setHeightForWidth(self.stay_on_top_checkbox.sizePolicy().hasHeightForWidth())
-        self.stay_on_top_checkbox.setSizePolicy(sizePolicy14)
+        sizePolicy16.setHeightForWidth(self.stay_on_top_checkbox.sizePolicy().hasHeightForWidth())
+        self.stay_on_top_checkbox.setSizePolicy(sizePolicy16)
         self.stay_on_top_checkbox.setMinimumSize(QSize(0, 40))
         self.stay_on_top_checkbox.setMaximumSize(QSize(300, 16777215))
-        self.stay_on_top_checkbox.setFont(font8)
+        self.stay_on_top_checkbox.setFont(font3)
         self.stay_on_top_checkbox.setLayoutDirection(Qt.RightToLeft)
         self.stay_on_top_checkbox.setStyleSheet(u"QCheckBox {\n"
 "    border: none; /* No border for the checkbox */\n"
@@ -7698,18 +8424,15 @@ class Ui_MainWindow(object):
         self.gridLayout_5.setContentsMargins(0, 0, 0, 0)
         self.splitter_2 = QSplitter(self.right_frame_frame)
         self.splitter_2.setObjectName(u"splitter_2")
-        sizePolicy2.setHeightForWidth(self.splitter_2.sizePolicy().hasHeightForWidth())
-        self.splitter_2.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.splitter_2.sizePolicy().hasHeightForWidth())
+        self.splitter_2.setSizePolicy(sizePolicy1)
         self.splitter_2.setStyleSheet(u"border: 0px;")
         self.splitter_2.setOrientation(Qt.Vertical)
         self.splitter_2.setHandleWidth(6)
         self.Slider_Tab = QFrame(self.splitter_2)
         self.Slider_Tab.setObjectName(u"Slider_Tab")
-        sizePolicy15 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy15.setHorizontalStretch(0)
-        sizePolicy15.setVerticalStretch(3)
-        sizePolicy15.setHeightForWidth(self.Slider_Tab.sizePolicy().hasHeightForWidth())
-        self.Slider_Tab.setSizePolicy(sizePolicy15)
+        sizePolicy2.setHeightForWidth(self.Slider_Tab.sizePolicy().hasHeightForWidth())
+        self.Slider_Tab.setSizePolicy(sizePolicy2)
         self.Slider_Tab.setMinimumSize(QSize(0, 0))
         self.Slider_Tab.setStyleSheet(u"")
         self.Slider_Tab.setFrameShape(QFrame.StyledPanel)
@@ -7740,12 +8463,9 @@ class Ui_MainWindow(object):
         self.gridLayout_9.setContentsMargins(10, 10, 10, 10)
         self.Live_ParameterLabel = QLabel(self.slider_tab_frame)
         self.Live_ParameterLabel.setObjectName(u"Live_ParameterLabel")
-        sizePolicy2.setHeightForWidth(self.Live_ParameterLabel.sizePolicy().hasHeightForWidth())
-        self.Live_ParameterLabel.setSizePolicy(sizePolicy2)
-        font13 = QFont()
-        font13.setPointSize(20)
-        font13.setBold(True)
-        self.Live_ParameterLabel.setFont(font13)
+        sizePolicy1.setHeightForWidth(self.Live_ParameterLabel.sizePolicy().hasHeightForWidth())
+        self.Live_ParameterLabel.setSizePolicy(sizePolicy1)
+        self.Live_ParameterLabel.setFont(font)
         self.Live_ParameterLabel.setMouseTracking(True)
         self.Live_ParameterLabel.setTabletTracking(True)
         self.Live_ParameterLabel.setStyleSheet(u"QLabel {\n"
@@ -7809,7 +8529,7 @@ class Ui_MainWindow(object):
         self.scrollArea_slider_frame.setWidgetResizable(True)
         self.scrollAreaWidgetContentsSliders = QWidget()
         self.scrollAreaWidgetContentsSliders.setObjectName(u"scrollAreaWidgetContentsSliders")
-        self.scrollAreaWidgetContentsSliders.setGeometry(QRect(0, 0, 265, 355))
+        self.scrollAreaWidgetContentsSliders.setGeometry(QRect(0, 0, 250, 352))
         self.scrollAreaWidgetContentsSliders.setMinimumSize(QSize(0, 352))
         self.scrollAreaWidgetContentsSliders.setStyleSheet(u"")
         self.verticalLayout_7 = QVBoxLayout(self.scrollAreaWidgetContentsSliders)
@@ -7837,8 +8557,8 @@ class Ui_MainWindow(object):
         self.frame_live_params_poppable = QFrame(self.ubder_slider_frame)
         self.frame_live_params_poppable.setObjectName(u"frame_live_params_poppable")
         self.frame_live_params_poppable.setGeometry(QRect(12, 8, 245, 363))
-        sizePolicy2.setHeightForWidth(self.frame_live_params_poppable.sizePolicy().hasHeightForWidth())
-        self.frame_live_params_poppable.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.frame_live_params_poppable.sizePolicy().hasHeightForWidth())
+        self.frame_live_params_poppable.setSizePolicy(sizePolicy1)
         self.frame_live_params_poppable.setMinimumSize(QSize(0, 0))
         self.frame_live_params_poppable.setTabletTracking(True)
         self.frame_live_params_poppable.setStyleSheet(u"QFrame{\n"
@@ -7942,7 +8662,7 @@ class Ui_MainWindow(object):
         self.strength_slider.setGeometry(QRect(-4, 24, 235, 32))
         self.strength_slider.setStyleSheet(u"")
         self.strength_slider.setMaximum(100)
-        self.strength_slider.setPageStep(2)
+        self.strength_slider.setPageStep(1)
         self.strength_slider.setValue(68)
         self.strength_slider.setOrientation(Qt.Horizontal)
         self.strength_slider.setTickPosition(QSlider.TicksBelow)
@@ -7950,11 +8670,11 @@ class Ui_MainWindow(object):
         self.strength_slider_label = QLabel(self.Strength_Slider_poppable)
         self.strength_slider_label.setObjectName(u"strength_slider_label")
         self.strength_slider_label.setGeometry(QRect(43, 0, 121, 25))
-        self.strength_slider_label.setFont(font7)
+        self.strength_slider_label.setFont(font1)
         self.strength_slider_value = QLabel(self.Strength_Slider_poppable)
         self.strength_slider_value.setObjectName(u"strength_slider_value")
         self.strength_slider_value.setGeometry(QRect(170, 2, 46, 22))
-        self.strength_slider_value.setFont(font7)
+        self.strength_slider_value.setFont(font1)
         self.strength_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -7987,6 +8707,7 @@ class Ui_MainWindow(object):
         self.step_slider.setStyleSheet(u"")
         self.step_slider.setMinimum(1)
         self.step_slider.setMaximum(200)
+        self.step_slider.setPageStep(1)
         self.step_slider.setValue(50)
         self.step_slider.setOrientation(Qt.Horizontal)
         self.step_slider.setTickPosition(QSlider.TicksBelow)
@@ -7994,7 +8715,7 @@ class Ui_MainWindow(object):
         self.step_slider_label = QLabel(self.Step_Slider_Frame_poppable)
         self.step_slider_label.setObjectName(u"step_slider_label")
         self.step_slider_label.setGeometry(QRect(43, 2, 121, 21))
-        self.step_slider_label.setFont(font7)
+        self.step_slider_label.setFont(font1)
         self.step_slider_label.setStyleSheet(u"")
         self.step_slider_value = QLabel(self.Step_Slider_Frame_poppable)
         self.step_slider_value.setObjectName(u"step_slider_value")
@@ -8034,7 +8755,7 @@ class Ui_MainWindow(object):
         self.noise_slider.setMinimum(1)
         self.noise_slider.setMaximum(200)
         self.noise_slider.setSingleStep(1)
-        self.noise_slider.setPageStep(2)
+        self.noise_slider.setPageStep(1)
         self.noise_slider.setValue(3)
         self.noise_slider.setOrientation(Qt.Horizontal)
         self.noise_slider.setTickPosition(QSlider.TicksBelow)
@@ -8042,11 +8763,11 @@ class Ui_MainWindow(object):
         self.noise_slider_label = QLabel(self.Noice_Slider_poppable)
         self.noise_slider_label.setObjectName(u"noise_slider_label")
         self.noise_slider_label.setGeometry(QRect(43, 0, 121, 21))
-        self.noise_slider_label.setFont(font7)
+        self.noise_slider_label.setFont(font1)
         self.noise_slider_value = QLabel(self.Noice_Slider_poppable)
         self.noise_slider_value.setObjectName(u"noise_slider_value")
         self.noise_slider_value.setGeometry(QRect(170, 2, 46, 22))
-        self.noise_slider_value.setFont(font7)
+        self.noise_slider_value.setFont(font1)
         self.noise_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -8136,7 +8857,7 @@ class Ui_MainWindow(object):
 "}")
         self.cfg_slider.setMinimum(1)
         self.cfg_slider.setMaximum(30)
-        self.cfg_slider.setPageStep(2)
+        self.cfg_slider.setPageStep(1)
         self.cfg_slider.setValue(3)
         self.cfg_slider.setOrientation(Qt.Horizontal)
         self.cfg_slider.setTickPosition(QSlider.TicksBelow)
@@ -8144,12 +8865,12 @@ class Ui_MainWindow(object):
         self.cfg_slider_label = QLabel(self.CFG_Slider_poppable)
         self.cfg_slider_label.setObjectName(u"cfg_slider_label")
         self.cfg_slider_label.setGeometry(QRect(43, 0, 121, 21))
-        self.cfg_slider_label.setFont(font7)
+        self.cfg_slider_label.setFont(font1)
         self.cfg_slider_value = QLabel(self.CFG_Slider_poppable)
         self.cfg_slider_value.setObjectName(u"cfg_slider_value")
         self.cfg_slider_value.setGeometry(QRect(170, 2, 46, 22))
         self.cfg_slider_value.setMinimumSize(QSize(0, 0))
-        self.cfg_slider_value.setFont(font7)
+        self.cfg_slider_value.setFont(font1)
         self.cfg_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -8167,8 +8888,8 @@ class Ui_MainWindow(object):
         self.cfg_active_checkbox = QCheckBox(self.CFG_Slider_poppable)
         self.cfg_active_checkbox.setObjectName(u"cfg_active_checkbox")
         self.cfg_active_checkbox.setGeometry(QRect(7, 2, 33, 20))
-        sizePolicy2.setHeightForWidth(self.cfg_active_checkbox.sizePolicy().hasHeightForWidth())
-        self.cfg_active_checkbox.setSizePolicy(sizePolicy2)
+        sizePolicy1.setHeightForWidth(self.cfg_active_checkbox.sizePolicy().hasHeightForWidth())
+        self.cfg_active_checkbox.setSizePolicy(sizePolicy1)
         self.cfg_active_checkbox.setBaseSize(QSize(0, 0))
         self.cfg_active_checkbox.setStyleSheet(u"")
         self.cfg_active_checkbox.setIconSize(QSize(33, 20))
@@ -8185,7 +8906,7 @@ class Ui_MainWindow(object):
         self.cadence_slider.setStyleSheet(u"")
         self.cadence_slider.setMinimum(1)
         self.cadence_slider.setMaximum(30)
-        self.cadence_slider.setPageStep(2)
+        self.cadence_slider.setPageStep(1)
         self.cadence_slider.setValue(3)
         self.cadence_slider.setOrientation(Qt.Horizontal)
         self.cadence_slider.setTickPosition(QSlider.TicksBelow)
@@ -8193,11 +8914,11 @@ class Ui_MainWindow(object):
         self.cadence_slider_label = QLabel(self.Cadence_Slider_poppable)
         self.cadence_slider_label.setObjectName(u"cadence_slider_label")
         self.cadence_slider_label.setGeometry(QRect(43, 0, 121, 21))
-        self.cadence_slider_label.setFont(font7)
+        self.cadence_slider_label.setFont(font1)
         self.cadence_slider_value = QLabel(self.Cadence_Slider_poppable)
         self.cadence_slider_value.setObjectName(u"cadence_slider_value")
         self.cadence_slider_value.setGeometry(QRect(170, 2, 46, 22))
-        self.cadence_slider_value.setFont(font7)
+        self.cadence_slider_value.setFont(font1)
         self.cadence_slider_value.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 2px solid rgb(40,40,40); border-radius: 5px;*/\n"
 "\n"
 "QLabel {\n"
@@ -8229,8 +8950,8 @@ class Ui_MainWindow(object):
         self.splitter_2.addWidget(self.Slider_Tab)
         self.LiveValue_Tab = QFrame(self.splitter_2)
         self.LiveValue_Tab.setObjectName(u"LiveValue_Tab")
-        sizePolicy3.setHeightForWidth(self.LiveValue_Tab.sizePolicy().hasHeightForWidth())
-        self.LiveValue_Tab.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.LiveValue_Tab.sizePolicy().hasHeightForWidth())
+        self.LiveValue_Tab.setSizePolicy(sizePolicy4)
         self.LiveValue_Tab.setMinimumSize(QSize(0, 0))
         self.LiveValue_Tab.setStyleSheet(u"border: 0px")
         self.LiveValue_Tab.setFrameShape(QFrame.StyledPanel)
@@ -8296,10 +9017,10 @@ class Ui_MainWindow(object):
         self.scrollArea_live_values.setWidgetResizable(True)
         self.scrollAreaWidgetContentsLiveValues = QWidget()
         self.scrollAreaWidgetContentsLiveValues.setObjectName(u"scrollAreaWidgetContentsLiveValues")
-        self.scrollAreaWidgetContentsLiveValues.setGeometry(QRect(0, 0, 269, 466))
-        sizePolicy2.setHeightForWidth(self.scrollAreaWidgetContentsLiveValues.sizePolicy().hasHeightForWidth())
-        self.scrollAreaWidgetContentsLiveValues.setSizePolicy(sizePolicy2)
-        self.scrollAreaWidgetContentsLiveValues.setMinimumSize(QSize(0, 355))
+        self.scrollAreaWidgetContentsLiveValues.setGeometry(QRect(0, 0, 269, 462))
+        sizePolicy1.setHeightForWidth(self.scrollAreaWidgetContentsLiveValues.sizePolicy().hasHeightForWidth())
+        self.scrollAreaWidgetContentsLiveValues.setSizePolicy(sizePolicy1)
+        self.scrollAreaWidgetContentsLiveValues.setMinimumSize(QSize(0, 390))
         self.scrollAreaWidgetContentsLiveValues.setStyleSheet(u"")
         self.verticalLayout = QVBoxLayout(self.scrollAreaWidgetContentsLiveValues)
         self.verticalLayout.setSpacing(0)
@@ -8314,7 +9035,7 @@ class Ui_MainWindow(object):
         self.frame_live_values.setFrameShadow(QFrame.Raised)
         self.live_value_frame_poppable = QFrame(self.frame_live_values)
         self.live_value_frame_poppable.setObjectName(u"live_value_frame_poppable")
-        self.live_value_frame_poppable.setGeometry(QRect(16, 8, 255, 353))
+        self.live_value_frame_poppable.setGeometry(QRect(16, 8, 255, 377))
         self.live_value_frame_poppable.setTabletTracking(True)
         self.live_value_frame_poppable.setStyleSheet(u"QToolTip { \n"
 " background-color: black; \n"
@@ -8325,10 +9046,10 @@ class Ui_MainWindow(object):
         self.live_value_frame_poppable.setFrameShadow(QFrame.Raised)
         self.live_value_names = QWidget(self.live_value_frame_poppable)
         self.live_value_names.setObjectName(u"live_value_names")
-        self.live_value_names.setGeometry(QRect(0, 0, 113, 353))
+        self.live_value_names.setGeometry(QRect(0, 0, 113, 385))
         self.verticalLayoutWidget = QWidget(self.live_value_names)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(0, 0, 109, 349))
+        self.verticalLayoutWidget.setGeometry(QRect(0, 0, 109, 377))
         self.verticalLayout_2 = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout_2.setSpacing(4)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
@@ -8336,14 +9057,14 @@ class Ui_MainWindow(object):
         self.panning_x_label = QLabel(self.verticalLayoutWidget)
         self.panning_x_label.setObjectName(u"panning_x_label")
         self.panning_x_label.setMinimumSize(QSize(0, 0))
-        self.panning_x_label.setFont(font4)
+        self.panning_x_label.setFont(font2)
 
         self.verticalLayout_2.addWidget(self.panning_x_label)
 
         self.panning_y_label = QLabel(self.verticalLayoutWidget)
         self.panning_y_label.setObjectName(u"panning_y_label")
         self.panning_y_label.setMinimumSize(QSize(0, 0))
-        self.panning_y_label.setFont(font4)
+        self.panning_y_label.setFont(font2)
         self.panning_y_label.setTextFormat(Qt.AutoText)
 
         self.verticalLayout_2.addWidget(self.panning_y_label)
@@ -8351,42 +9072,42 @@ class Ui_MainWindow(object):
         self.rotate_h_label = QLabel(self.verticalLayoutWidget)
         self.rotate_h_label.setObjectName(u"rotate_h_label")
         self.rotate_h_label.setMinimumSize(QSize(0, 0))
-        self.rotate_h_label.setFont(font4)
+        self.rotate_h_label.setFont(font2)
 
         self.verticalLayout_2.addWidget(self.rotate_h_label)
 
         self.rotate_v_label = QLabel(self.verticalLayoutWidget)
         self.rotate_v_label.setObjectName(u"rotate_v_label")
         self.rotate_v_label.setMinimumSize(QSize(0, 0))
-        self.rotate_v_label.setFont(font4)
+        self.rotate_v_label.setFont(font2)
 
         self.verticalLayout_2.addWidget(self.rotate_v_label)
 
         self.zoom_label = QLabel(self.verticalLayoutWidget)
         self.zoom_label.setObjectName(u"zoom_label")
         self.zoom_label.setMinimumSize(QSize(0, 0))
-        self.zoom_label.setFont(font4)
+        self.zoom_label.setFont(font2)
 
         self.verticalLayout_2.addWidget(self.zoom_label)
 
         self.tilt_label = QLabel(self.verticalLayoutWidget)
         self.tilt_label.setObjectName(u"tilt_label")
         self.tilt_label.setMinimumSize(QSize(0, 0))
-        self.tilt_label.setFont(font4)
+        self.tilt_label.setFont(font2)
 
         self.verticalLayout_2.addWidget(self.tilt_label)
 
         self.fov_label = QLabel(self.verticalLayoutWidget)
         self.fov_label.setObjectName(u"fov_label")
         self.fov_label.setMinimumSize(QSize(0, 0))
-        self.fov_label.setFont(font4)
+        self.fov_label.setFont(font2)
 
         self.verticalLayout_2.addWidget(self.fov_label)
 
         self.steps_label = QLabel(self.verticalLayoutWidget)
         self.steps_label.setObjectName(u"steps_label")
         self.steps_label.setMinimumSize(QSize(0, 0))
-        self.steps_label.setFont(font4)
+        self.steps_label.setFont(font2)
         self.steps_label.setStyleSheet(u"")
 
         self.verticalLayout_2.addWidget(self.steps_label)
@@ -8394,21 +9115,21 @@ class Ui_MainWindow(object):
         self.strength_label = QLabel(self.verticalLayoutWidget)
         self.strength_label.setObjectName(u"strength_label")
         self.strength_label.setMinimumSize(QSize(0, 0))
-        self.strength_label.setFont(font4)
+        self.strength_label.setFont(font2)
 
         self.verticalLayout_2.addWidget(self.strength_label)
 
         self.cfg_label = QLabel(self.verticalLayoutWidget)
         self.cfg_label.setObjectName(u"cfg_label")
         self.cfg_label.setMinimumSize(QSize(0, 0))
-        self.cfg_label.setFont(font4)
+        self.cfg_label.setFont(font2)
 
         self.verticalLayout_2.addWidget(self.cfg_label)
 
         self.cadence_label = QLabel(self.verticalLayoutWidget)
         self.cadence_label.setObjectName(u"cadence_label")
         self.cadence_label.setMinimumSize(QSize(0, 0))
-        self.cadence_label.setFont(font4)
+        self.cadence_label.setFont(font2)
 
         self.verticalLayout_2.addWidget(self.cadence_label)
 
@@ -8422,9 +9143,16 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addWidget(self.noise_multi_label)
 
+        self.seed_value_label = QLabel(self.verticalLayoutWidget)
+        self.seed_value_label.setObjectName(u"seed_value_label")
+        self.seed_value_label.setMinimumSize(QSize(0, 0))
+        self.seed_value_label.setFont(font15)
+
+        self.verticalLayout_2.addWidget(self.seed_value_label)
+
         self.live_value_row = QFrame(self.live_value_frame_poppable)
         self.live_value_row.setObjectName(u"live_value_row")
-        self.live_value_row.setGeometry(QRect(120, 0, 65, 353))
+        self.live_value_row.setGeometry(QRect(120, 0, 89, 377))
         self.live_value_row.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;*/\n"
 "\n"
 "\n"
@@ -8444,7 +9172,7 @@ class Ui_MainWindow(object):
         self.live_value_row.setFrameShadow(QFrame.Raised)
         self.verticalLayoutWidget_2 = QWidget(self.live_value_row)
         self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
-        self.verticalLayoutWidget_2.setGeometry(QRect(6, 0, 57, 348))
+        self.verticalLayoutWidget_2.setGeometry(QRect(6, 0, 81, 377))
         self.verticalLayout_3 = QVBoxLayout(self.verticalLayoutWidget_2)
         self.verticalLayout_3.setSpacing(2)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
@@ -8452,7 +9180,7 @@ class Ui_MainWindow(object):
         self.panning_x_live_value = QLabel(self.verticalLayoutWidget_2)
         self.panning_x_live_value.setObjectName(u"panning_x_live_value")
         self.panning_x_live_value.setMaximumSize(QSize(50, 16777215))
-        self.panning_x_live_value.setFont(font4)
+        self.panning_x_live_value.setFont(font2)
         self.panning_x_live_value.setFrameShape(QFrame.NoFrame)
         self.panning_x_live_value.setFrameShadow(QFrame.Plain)
         self.panning_x_live_value.setLineWidth(1)
@@ -8463,83 +9191,90 @@ class Ui_MainWindow(object):
         self.panning_y_live_value = QLabel(self.verticalLayoutWidget_2)
         self.panning_y_live_value.setObjectName(u"panning_y_live_value")
         self.panning_y_live_value.setMaximumSize(QSize(50, 16777215))
-        self.panning_y_live_value.setFont(font4)
+        self.panning_y_live_value.setFont(font2)
 
         self.verticalLayout_3.addWidget(self.panning_y_live_value)
 
         self.rotate_h_live_value = QLabel(self.verticalLayoutWidget_2)
         self.rotate_h_live_value.setObjectName(u"rotate_h_live_value")
         self.rotate_h_live_value.setMaximumSize(QSize(50, 16777215))
-        self.rotate_h_live_value.setFont(font4)
+        self.rotate_h_live_value.setFont(font2)
 
         self.verticalLayout_3.addWidget(self.rotate_h_live_value)
 
         self.rotate_v_live_value = QLabel(self.verticalLayoutWidget_2)
         self.rotate_v_live_value.setObjectName(u"rotate_v_live_value")
         self.rotate_v_live_value.setMaximumSize(QSize(50, 16777215))
-        self.rotate_v_live_value.setFont(font4)
+        self.rotate_v_live_value.setFont(font2)
 
         self.verticalLayout_3.addWidget(self.rotate_v_live_value)
 
         self.zoom_live_value = QLabel(self.verticalLayoutWidget_2)
         self.zoom_live_value.setObjectName(u"zoom_live_value")
         self.zoom_live_value.setMaximumSize(QSize(50, 16777215))
-        self.zoom_live_value.setFont(font4)
+        self.zoom_live_value.setFont(font2)
 
         self.verticalLayout_3.addWidget(self.zoom_live_value)
 
         self.tilt_live_value = QLabel(self.verticalLayoutWidget_2)
         self.tilt_live_value.setObjectName(u"tilt_live_value")
         self.tilt_live_value.setMaximumSize(QSize(50, 16777215))
-        self.tilt_live_value.setFont(font4)
+        self.tilt_live_value.setFont(font2)
 
         self.verticalLayout_3.addWidget(self.tilt_live_value)
 
         self.fov_live_value = QLabel(self.verticalLayoutWidget_2)
         self.fov_live_value.setObjectName(u"fov_live_value")
         self.fov_live_value.setMaximumSize(QSize(50, 16777215))
-        self.fov_live_value.setFont(font4)
+        self.fov_live_value.setFont(font2)
 
         self.verticalLayout_3.addWidget(self.fov_live_value)
 
         self.steps_live_value = QLabel(self.verticalLayoutWidget_2)
         self.steps_live_value.setObjectName(u"steps_live_value")
         self.steps_live_value.setMaximumSize(QSize(50, 16777215))
-        self.steps_live_value.setFont(font4)
+        self.steps_live_value.setFont(font2)
 
         self.verticalLayout_3.addWidget(self.steps_live_value)
 
         self.strength_live_value = QLabel(self.verticalLayoutWidget_2)
         self.strength_live_value.setObjectName(u"strength_live_value")
         self.strength_live_value.setMaximumSize(QSize(50, 16777215))
-        self.strength_live_value.setFont(font4)
+        self.strength_live_value.setFont(font2)
 
         self.verticalLayout_3.addWidget(self.strength_live_value)
 
         self.cfg_live_value = QLabel(self.verticalLayoutWidget_2)
         self.cfg_live_value.setObjectName(u"cfg_live_value")
         self.cfg_live_value.setMaximumSize(QSize(50, 16777215))
-        self.cfg_live_value.setFont(font4)
+        self.cfg_live_value.setFont(font2)
 
         self.verticalLayout_3.addWidget(self.cfg_live_value)
 
         self.cadence_live_value = QLabel(self.verticalLayoutWidget_2)
         self.cadence_live_value.setObjectName(u"cadence_live_value")
         self.cadence_live_value.setMaximumSize(QSize(50, 16777215))
-        self.cadence_live_value.setFont(font4)
+        self.cadence_live_value.setFont(font2)
 
         self.verticalLayout_3.addWidget(self.cadence_live_value)
 
         self.noise_multiplier_live = QLabel(self.verticalLayoutWidget_2)
         self.noise_multiplier_live.setObjectName(u"noise_multiplier_live")
         self.noise_multiplier_live.setMaximumSize(QSize(50, 16777215))
-        self.noise_multiplier_live.setFont(font4)
+        self.noise_multiplier_live.setFont(font2)
 
         self.verticalLayout_3.addWidget(self.noise_multiplier_live)
 
+        self.seed_live_value = QLabel(self.verticalLayoutWidget_2)
+        self.seed_live_value.setObjectName(u"seed_live_value")
+        self.seed_live_value.setMaximumSize(QSize(90, 16777215))
+        self.seed_live_value.setFont(font12)
+
+        self.verticalLayout_3.addWidget(self.seed_live_value)
+
         self.panx_rise_fall_frame = QFrame(self.live_value_frame_poppable)
         self.panx_rise_fall_frame.setObjectName(u"panx_rise_fall_frame")
-        self.panx_rise_fall_frame.setGeometry(QRect(184, 0, 48, 24))
+        self.panx_rise_fall_frame.setGeometry(QRect(209, 3, 48, 24))
         self.panx_rise_fall_frame.setLayoutDirection(Qt.LeftToRight)
         self.panx_rise_fall_frame.setStyleSheet(u" border-radius: 0px; border:0")
         self.panx_rise_fall_frame.setFrameShape(QFrame.StyledPanel)
@@ -8556,7 +9291,7 @@ class Ui_MainWindow(object):
         self.panx_r.setPixmap(QPixmap(u"images/value_rising_off.png"))
         self.pany_rise_fall_frame = QFrame(self.live_value_frame_poppable)
         self.pany_rise_fall_frame.setObjectName(u"pany_rise_fall_frame")
-        self.pany_rise_fall_frame.setGeometry(QRect(184, 30, 49, 24))
+        self.pany_rise_fall_frame.setGeometry(QRect(209, 33, 49, 24))
         self.pany_rise_fall_frame.setLayoutDirection(Qt.LeftToRight)
         self.pany_rise_fall_frame.setStyleSheet(u" border-radius: 0px; border:0")
         self.pany_rise_fall_frame.setFrameShape(QFrame.StyledPanel)
@@ -8573,7 +9308,7 @@ class Ui_MainWindow(object):
         self.pany_r.setPixmap(QPixmap(u"images/value_rising_off.png"))
         self.roth_rise_fall_frame = QFrame(self.live_value_frame_poppable)
         self.roth_rise_fall_frame.setObjectName(u"roth_rise_fall_frame")
-        self.roth_rise_fall_frame.setGeometry(QRect(184, 59, 48, 24))
+        self.roth_rise_fall_frame.setGeometry(QRect(209, 62, 48, 24))
         self.roth_rise_fall_frame.setLayoutDirection(Qt.LeftToRight)
         self.roth_rise_fall_frame.setStyleSheet(u" border-radius: 0px; border:0")
         self.roth_rise_fall_frame.setFrameShape(QFrame.StyledPanel)
@@ -8590,7 +9325,7 @@ class Ui_MainWindow(object):
         self.roth_r.setPixmap(QPixmap(u"images/value_rising_off.png"))
         self.rotv_rise_fall_frame = QFrame(self.live_value_frame_poppable)
         self.rotv_rise_fall_frame.setObjectName(u"rotv_rise_fall_frame")
-        self.rotv_rise_fall_frame.setGeometry(QRect(184, 88, 48, 26))
+        self.rotv_rise_fall_frame.setGeometry(QRect(209, 91, 48, 26))
         self.rotv_rise_fall_frame.setLayoutDirection(Qt.LeftToRight)
         self.rotv_rise_fall_frame.setStyleSheet(u" border-radius: 0px; border:0")
         self.rotv_rise_fall_frame.setFrameShape(QFrame.StyledPanel)
@@ -8607,7 +9342,7 @@ class Ui_MainWindow(object):
         self.rotv_r.setPixmap(QPixmap(u"images/value_rising_off.png"))
         self.zoom_rise_fall_frame = QFrame(self.live_value_frame_poppable)
         self.zoom_rise_fall_frame.setObjectName(u"zoom_rise_fall_frame")
-        self.zoom_rise_fall_frame.setGeometry(QRect(184, 117, 48, 24))
+        self.zoom_rise_fall_frame.setGeometry(QRect(209, 120, 48, 24))
         self.zoom_rise_fall_frame.setLayoutDirection(Qt.LeftToRight)
         self.zoom_rise_fall_frame.setStyleSheet(u" border-radius: 0px; border:0")
         self.zoom_rise_fall_frame.setFrameShape(QFrame.StyledPanel)
@@ -8624,7 +9359,7 @@ class Ui_MainWindow(object):
         self.zoom_r.setPixmap(QPixmap(u"images/value_rising_off.png"))
         self.tilt_rise_fall_frame = QFrame(self.live_value_frame_poppable)
         self.tilt_rise_fall_frame.setObjectName(u"tilt_rise_fall_frame")
-        self.tilt_rise_fall_frame.setGeometry(QRect(184, 146, 48, 24))
+        self.tilt_rise_fall_frame.setGeometry(QRect(209, 149, 48, 24))
         self.tilt_rise_fall_frame.setLayoutDirection(Qt.LeftToRight)
         self.tilt_rise_fall_frame.setStyleSheet(u" border-radius: 0px; border:0")
         self.tilt_rise_fall_frame.setFrameShape(QFrame.StyledPanel)
@@ -8648,7 +9383,7 @@ class Ui_MainWindow(object):
 
         self.Live_ValuesLabel = QLabel(self.live_value_tab_frame)
         self.Live_ValuesLabel.setObjectName(u"Live_ValuesLabel")
-        self.Live_ValuesLabel.setFont(font13)
+        self.Live_ValuesLabel.setFont(font)
         self.Live_ValuesLabel.setMouseTracking(True)
         self.Live_ValuesLabel.setTabletTracking(True)
         self.Live_ValuesLabel.setStyleSheet(u"QLabel{\n"
@@ -8685,7 +9420,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 2059, 19))
+        self.menubar.setGeometry(QRect(0, 0, 1925, 19))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -8704,13 +9439,107 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Deforumation QT v 0.1.3", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Deforumation QT v 0.1.5", None))
+#if QT_CONFIG(tooltip)
+        self.SuperTEmp_ParameterLabel.setToolTip(QCoreApplication.translate("MainWindow", u"This window contains the most common key values that influence the image generation.", None))
+#endif // QT_CONFIG(tooltip)
+        self.SuperTEmp_ParameterLabel.setText(QCoreApplication.translate("MainWindow", u"Seed Parameters", None))
+#if QT_CONFIG(tooltip)
+        self.iter_RadioButton.setToolTip(QCoreApplication.translate("MainWindow", u"The seed value will increment by 1 for each subsequent iteration (depends on iter N)", None))
+#endif // QT_CONFIG(tooltip)
+        self.iter_RadioButton.setText(QCoreApplication.translate("MainWindow", u"Iteration", None))
+        self.fixed_RadioButton.setText(QCoreApplication.translate("MainWindow", u"Fixed", None))
+#if QT_CONFIG(tooltip)
+        self.IterSeed_Inputbox.setToolTip(QCoreApplication.translate("MainWindow", u"Seed value", None))
+#endif // QT_CONFIG(tooltip)
+        self.IterSeed_Inputbox.setText(QCoreApplication.translate("MainWindow", u"20", None))
+#if QT_CONFIG(tooltip)
+        self.fixedSeed_Inputbox.setToolTip(QCoreApplication.translate("MainWindow", u"Fixed Seed value that will be used.", None))
+#endif // QT_CONFIG(tooltip)
+        self.fixedSeed_Inputbox.setText(QCoreApplication.translate("MainWindow", u"20", None))
+#if QT_CONFIG(tooltip)
+        self.random_RadioButton.setToolTip(QCoreApplication.translate("MainWindow", u"Will create a random seed for each new iteration.", None))
+#endif // QT_CONFIG(tooltip)
+        self.random_RadioButton.setText(QCoreApplication.translate("MainWindow", u"Random", None))
+#if QT_CONFIG(tooltip)
+        self.IterSeed_N_Inputbox.setToolTip(QCoreApplication.translate("MainWindow", u"Iter N value, that decides how many iterations will be skipped before seed increase.", None))
+#endif // QT_CONFIG(tooltip)
+        self.IterSeed_N_Inputbox.setText(QCoreApplication.translate("MainWindow", u"20", None))
+#if QT_CONFIG(tooltip)
+        self.seed_iter_n.setToolTip(QCoreApplication.translate("MainWindow", u"Iter N value, that decides how many iterations will be skipped before seed increase.", None))
+#endif // QT_CONFIG(tooltip)
+        self.seed_iter_n.setText(QCoreApplication.translate("MainWindow", u"Seed iter N", None))
+#if QT_CONFIG(tooltip)
+        self.ladder_RadioButton.setToolTip(QCoreApplication.translate("MainWindow", u"Ladder when starting with seed value 1: 1,3,2,4,3,5,4,6", None))
+#endif // QT_CONFIG(tooltip)
+        self.ladder_RadioButton.setText(QCoreApplication.translate("MainWindow", u"Ladder", None))
+#if QT_CONFIG(tooltip)
+        self.alternate_RadioButton.setToolTip(QCoreApplication.translate("MainWindow", u"Alternates up and down one seed value.. e.g 1,2 1,2 1,2 1,2   etc", None))
+#endif // QT_CONFIG(tooltip)
+        self.alternate_RadioButton.setText(QCoreApplication.translate("MainWindow", u"Alternate", None))
+#if QT_CONFIG(tooltip)
+        self.update_seed_button.setToolTip(QCoreApplication.translate("MainWindow", u"Send the seed/seed scheme to the renderer. This has to be pushed after having changed the seed value in Iteration or Fixed.\\n\n"
+"If you switch to another seed scheme, the value will also automatically be sent and updated.", None))
+#endif // QT_CONFIG(tooltip)
+        self.update_seed_button.setText(QCoreApplication.translate("MainWindow", u"Update Seed && iter N", None))
+#if QT_CONFIG(tooltip)
+        self.update_seed_iter_n_button.setToolTip(QCoreApplication.translate("MainWindow", u"Send the new Itern N value to the renderer. This has to be pushed after having changed the iter N value,", None))
+#endif // QT_CONFIG(tooltip)
+        self.update_seed_iter_n_button.setText(QCoreApplication.translate("MainWindow", u"Update iter N", None))
+#if QT_CONFIG(tooltip)
+        self.scheduled_RadioButton.setToolTip(QCoreApplication.translate("MainWindow", u"Uses Deforum seed schedule", None))
+#endif // QT_CONFIG(tooltip)
+        self.scheduled_RadioButton.setText(QCoreApplication.translate("MainWindow", u"Schedule", None))
+#if QT_CONFIG(tooltip)
+        self.Temp_ValuesLabel.setToolTip(QCoreApplication.translate("MainWindow", u"This window shows the values that Deforum is currently working with. These values can be different from the values that Deforumation is currently using.", None))
+#endif // QT_CONFIG(tooltip)
+        self.Temp_ValuesLabel.setText(QCoreApplication.translate("MainWindow", u"Empty Space", None))
         self.preview_image.setText("")
 #if QT_CONFIG(tooltip)
         self.movie_slider_frame_number.setToolTip(QCoreApplication.translate("MainWindow", u"Tells what frame number is currently in the most left film reel. You can jump directly to a frame by typing it in.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
         self.movie_slider.setToolTip(QCoreApplication.translate("MainWindow", u"Film Reel jogging slider.", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(tooltip)
+        self.open_Deforum_folder.setToolTip(QCoreApplication.translate("MainWindow", u"This magic button will open the current Deforum output folder, usually something like \"...\\outputs\\img2img-images\\Deforum_timestring\"", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(whatsthis)
+        self.open_Deforum_folder.setWhatsThis("")
+#endif // QT_CONFIG(whatsthis)
+        self.open_Deforum_folder.setText("")
+#if QT_CONFIG(tooltip)
+        self.crf_input_box.setToolTip(QCoreApplication.translate("MainWindow", u"CRF in FFmpeg: Control for video quality and size. Lower values mean better quality, higher values mean smaller file sizes.\n"
+"Low value and many frames takes time to compile. A good baseline is 17.", None))
+#endif // QT_CONFIG(tooltip)
+        self.crf_input_box.setText(QCoreApplication.translate("MainWindow", u"20", None))
+#if QT_CONFIG(tooltip)
+        self.crf_label.setToolTip(QCoreApplication.translate("MainWindow", u"CRF in FFmpeg: Control for video quality and size. Lower values mean better quality, higher values mean smaller file sizes. Low value and many frames takes time to compile. A good baseline is 17.", None))
+#endif // QT_CONFIG(tooltip)
+        self.crf_label.setText(QCoreApplication.translate("MainWindow", u"CRF:(compression level)", None))
+#if QT_CONFIG(tooltip)
+        self.goto_end_button.setToolTip(QCoreApplication.translate("MainWindow", u"Go to last / current frame in Film Reel.", None))
+#endif // QT_CONFIG(tooltip)
+        self.goto_end_button.setText("")
+#if QT_CONFIG(tooltip)
+        self.play_button.setToolTip(QCoreApplication.translate("MainWindow", u"Resume Deforum Rendering.", None))
+#endif // QT_CONFIG(tooltip)
+        self.play_button.setText("")
+#if QT_CONFIG(tooltip)
+        self.stop_button.setToolTip(QCoreApplication.translate("MainWindow", u"Paus Deforum Rendering.", None))
+#endif // QT_CONFIG(tooltip)
+        self.stop_button.setText("")
+#if QT_CONFIG(tooltip)
+        self.goto_start_button.setToolTip(QCoreApplication.translate("MainWindow", u"Go to first frame in Film Reel.", None))
+#endif // QT_CONFIG(tooltip)
+        self.goto_start_button.setText("")
+#if QT_CONFIG(tooltip)
+        self.loop_button.setToolTip(QCoreApplication.translate("MainWindow", u"This will put the generation in or out of loop-back. Number of generated images in loop-back mode,\n"
+"depends on the current Cadence.", None))
+#endif // QT_CONFIG(tooltip)
+        self.loop_button.setText("")
+#if QT_CONFIG(tooltip)
+        self.preview_compression_slider.setToolTip(QCoreApplication.translate("MainWindow", u"Film Reel Granularity Slider: Drag left to \"zoom in\", or drag right to \"zoom out\".", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
         self.replay_fps_input_box.setToolTip(QCoreApplication.translate("MainWindow", u"Enter the playback FPS of the preview animation. This works independently of what FPS you choose in deforum's \"Video Output Settings\".", None))
@@ -8738,41 +9567,6 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(tooltip)
         self.replay_from_input_box.setToolTip(QCoreApplication.translate("MainWindow", u"Input starting frame of preview animation. You can also right click Film reel and \"Mark FFMPEG preview, IN\" to set this value.", None))
 #endif // QT_CONFIG(tooltip)
-#if QT_CONFIG(tooltip)
-        self.preview_compression_slider.setToolTip(QCoreApplication.translate("MainWindow", u"Film Reel Granularity Slider: Drag left to \"zoom in\", or drag right to \"zoom out\".", None))
-#endif // QT_CONFIG(tooltip)
-#if QT_CONFIG(tooltip)
-        self.open_Deforum_folder.setToolTip(QCoreApplication.translate("MainWindow", u"This magic button will open the current Deforum output folder, usually something like \"...\\outputs\\img2img-images\\Deforum_timestring\"", None))
-#endif // QT_CONFIG(tooltip)
-#if QT_CONFIG(whatsthis)
-        self.open_Deforum_folder.setWhatsThis("")
-#endif // QT_CONFIG(whatsthis)
-        self.open_Deforum_folder.setText("")
-#if QT_CONFIG(tooltip)
-        self.goto_end_button.setToolTip(QCoreApplication.translate("MainWindow", u"Go to last / current frame in Film Reel.", None))
-#endif // QT_CONFIG(tooltip)
-        self.goto_end_button.setText("")
-#if QT_CONFIG(tooltip)
-        self.play_button.setToolTip(QCoreApplication.translate("MainWindow", u"Resume Deforum Rendering.", None))
-#endif // QT_CONFIG(tooltip)
-        self.play_button.setText("")
-#if QT_CONFIG(tooltip)
-        self.stop_button.setToolTip(QCoreApplication.translate("MainWindow", u"Paus Deforum Rendering.", None))
-#endif // QT_CONFIG(tooltip)
-        self.stop_button.setText("")
-#if QT_CONFIG(tooltip)
-        self.goto_start_button.setToolTip(QCoreApplication.translate("MainWindow", u"Go to first frame in Film Reel.", None))
-#endif // QT_CONFIG(tooltip)
-        self.goto_start_button.setText("")
-#if QT_CONFIG(tooltip)
-        self.crf_input_box.setToolTip(QCoreApplication.translate("MainWindow", u"CRF in FFmpeg: Control for video quality and size. Lower values mean better quality, higher values mean smaller file sizes.\n"
-"Low value and many frames takes time to compile. A good baseline is 17.", None))
-#endif // QT_CONFIG(tooltip)
-        self.crf_input_box.setText(QCoreApplication.translate("MainWindow", u"20", None))
-#if QT_CONFIG(tooltip)
-        self.crf_label.setToolTip(QCoreApplication.translate("MainWindow", u"CRF in FFmpeg: Control for video quality and size. Lower values mean better quality, higher values mean smaller file sizes. Low value and many frames takes time to compile. A good baseline is 17.", None))
-#endif // QT_CONFIG(tooltip)
-        self.crf_label.setText(QCoreApplication.translate("MainWindow", u"CRF:(compression level)", None))
 #if QT_CONFIG(tooltip)
         self.movie_clip.setToolTip(QCoreApplication.translate("MainWindow", u"Right click for more options.\n"
 "\n"
@@ -8822,13 +9616,6 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(whatsthis)
         self.save_morph_data.setText("")
         self.save_current_ui_label_4.setText(QCoreApplication.translate("MainWindow", u"Save Prompt Morphing to file", None))
-        self.prpmta_to_promptb_label.setText(QCoreApplication.translate("MainWindow", u"Prompt A - Prompt B", None))
-#if QT_CONFIG(tooltip)
-        self.morph_slider.setToolTip(QCoreApplication.translate("MainWindow", u"Gives Prompt A or Prompt B more focus. Left of middle will give Prompt A more focus,\n"
-"while right of middle will give Prompt B more focus. In the middle, both prompts have\n"
-"the same focus. Right click to reset balance.", None))
-#endif // QT_CONFIG(tooltip)
-        self.morphing_text_howto_label.setText(QCoreApplication.translate("MainWindow", u"Right click the slider to equal the weight", None))
 #if QT_CONFIG(tooltip)
         self.use_deforumation_prompt_scheduling_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"Prompt from Deforumation will be used to generate frames if checked. If unchecked (grey) prompt schedulinging,\n"
 "from deforum will be used to generate frames. You can dynamically switch between the two.", None))
@@ -8842,6 +9629,16 @@ class Ui_MainWindow(object):
         self.AddPromptMorp_Button.setToolTip(QCoreApplication.translate("MainWindow", u"This will add a new Promp Morph component", None))
 #endif // QT_CONFIG(tooltip)
         self.AddPromptMorp_Button.setText(QCoreApplication.translate("MainWindow", u"Add Prompt Morp Binding", None))
+        self.syrup_prompt_morph_label.setText(QCoreApplication.translate("MainWindow", u"Prompt Morph Smooth Motion", None))
+#if QT_CONFIG(tooltip)
+        self.syrup_prompt_morph_slider.setToolTip(QCoreApplication.translate("MainWindow", u"Gives Prompt A or Prompt B more focus. Left of middle will give Prompt A more focus,\n"
+"while right of middle will give Prompt B more focus. In the middle, both prompts have\n"
+"the same focus. Right click to reset balance.", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(tooltip)
+        self.syrup_prompt_morph_value.setToolTip(QCoreApplication.translate("MainWindow", u"Current set \"Smoot motion steps\" shows how many frames the smooth motion will use to reach the end value.\n"
+"Lower value equals faster smooth motion. Higher value equals slower smooth motion.", None))
+#endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
         self.add_prompt_after_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"If checked (green), Positive prompt will be placed after active prompt from Deforum prompt scedule.", None))
 #endif // QT_CONFIG(tooltip)
@@ -9382,6 +10179,13 @@ class Ui_MainWindow(object):
         self.cn_udcn2.setText("")
         self.cn_udcn1.setText("")
         self.deforumation_tabWidget.setTabText(self.deforumation_tabWidget.indexOf(self.ControlNet_tab), QCoreApplication.translate("MainWindow", u"ControlNet", None))
+#if QT_CONFIG(tooltip)
+        self.morph_slider.setToolTip(QCoreApplication.translate("MainWindow", u"Gives Prompt A or Prompt B more focus. Left of middle will give Prompt A more focus,\n"
+"while right of middle will give Prompt B more focus. In the middle, both prompts have\n"
+"the same focus. Right click to reset balance.", None))
+#endif // QT_CONFIG(tooltip)
+        self.morphing_text_howto_label.setText(QCoreApplication.translate("MainWindow", u"Right click the slider to equal the weight", None))
+        self.prpmta_to_promptb_label.setText(QCoreApplication.translate("MainWindow", u"Prompt A - Prompt B", None))
         self.deforumation_tabWidget.setTabText(self.deforumation_tabWidget.indexOf(self.Misc_Tab_A), QCoreApplication.translate("MainWindow", u"MiscA", None))
         self.deforumation_tabWidget.setTabText(self.deforumation_tabWidget.indexOf(self.Misc_Tab_B), QCoreApplication.translate("MainWindow", u"MiscB", None))
 #if QT_CONFIG(tooltip)
@@ -9460,6 +10264,7 @@ class Ui_MainWindow(object):
         self.cfg_label.setText(QCoreApplication.translate("MainWindow", u"CFG scale", None))
         self.cadence_label.setText(QCoreApplication.translate("MainWindow", u"Cadence", None))
         self.noise_multi_label.setText(QCoreApplication.translate("MainWindow", u"Noise Multi", None))
+        self.seed_value_label.setText(QCoreApplication.translate("MainWindow", u"Seed", None))
 #if QT_CONFIG(tooltip)
         self.panning_x_live_value.setToolTip(QCoreApplication.translate("MainWindow", u"Shows the value for this motion, currently used by Deforum.", None))
 #endif // QT_CONFIG(tooltip)
@@ -9508,6 +10313,10 @@ class Ui_MainWindow(object):
         self.noise_multiplier_live.setToolTip(QCoreApplication.translate("MainWindow", u"Shows the value for this motion, currently used by Deforum.", None))
 #endif // QT_CONFIG(tooltip)
         self.noise_multiplier_live.setText(QCoreApplication.translate("MainWindow", u"1.05", None))
+#if QT_CONFIG(tooltip)
+        self.seed_live_value.setToolTip(QCoreApplication.translate("MainWindow", u"Shows the value for this motion, currently used by Deforum.", None))
+#endif // QT_CONFIG(tooltip)
+        self.seed_live_value.setText(QCoreApplication.translate("MainWindow", u"-1", None))
 #if QT_CONFIG(tooltip)
         self.panx_rise_fall_frame.setToolTip(QCoreApplication.translate("MainWindow", u"When the left arrow becomes red, it means that the previous value was higher than the current value (values are decreasing).\n"
 "When the right arrow becomes green, it means that the previous value was lower than the current value (values are increaing.\n"
