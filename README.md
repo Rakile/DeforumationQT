@@ -1,4 +1,7 @@
-# DeforumationQT Version 0.1.3 #
+# DeforumationQT Version 0.1.5 #
+
+Below are info for older versions. The repo contains 0.1.5 😁
+
 <img src="github_images/DMQT front.png">
 
  # Video running DeforumationQT version 0.1.0 New video soon to arrive! #
