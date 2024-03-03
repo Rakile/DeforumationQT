@@ -1,5 +1,13 @@
 # DeforumationQT Version 0.1.5 #
 
+This release includes:
+*Smooth motion to prompt morphing
+*Dynamical seeding
+*An alpha version of loop-backing , which can allow you to change the environment according to how you like it.
+*OSC support for prompt morphing, controled VIA bind name (See example in Examples folder: test_osc_prompt_morphing.py)
+
+*BUG FIXES
+
 ## Live Prompting Tab
 <img src="github_images/prompt_tab.png">
 
