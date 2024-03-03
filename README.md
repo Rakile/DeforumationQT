@@ -1,8 +1,31 @@
 # DeforumationQT Version 0.1.5 #
 
-Below are info for older versions. The repo contains 0.1.5 😁
+## Live Prompting Tab
+<img src="github_images/prompt_tab.png">
 
-<img src="github_images/DMQT front.png">
+## Live Motions Tab
+<img src="github_images/motions_tab.png">
+
+
+## Promp / morph / strenghts Tab
+<img src="github_images/pm_tab.png">
+
+
+## Settings Tab
+<img src="github_images/settings_tab.png">
+
+
+## Easy to change , save, restore, load Lauouts
+<img src="github_images/ui_tab.png">
+
+
+## Live Controlnet Tab 
+<img src="github_images/cnet_tab.png">
+
+
+## Misc Tabs for customizable layouts
+<img src="github_images/misc_a-b.png">
+
 
  # Video running DeforumationQT version 0.1.0 New video soon to arrive! #
 [<img src="github_images/DMQTyou.png" width="50%">](https://youtu.be/1VGWA-sWiEk "DeforumationQT v.0.1.0  Quickrun, installation and functions video.")
