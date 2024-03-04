@@ -1,7 +1,15 @@
 # DeforumationQT Version 0.1.5 #
 
+
 This release includes:
 Smooth motion to prompt morphing
+
+Compatible with:
+
+ SD Automatic1111
+ 
+ And SD-Forged se https://github.com/Rakile/DeforumationQT/blob/main/Deforum_Version/sd-forged/Readme%20for%20sd-forge.txt for forge campability
+
 
 Dynamical seeding
 
