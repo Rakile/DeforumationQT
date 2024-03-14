@@ -27,7 +27,7 @@ from PIL import Image, ImageOps
 from .generate import generate, isJson
 from .noise import add_noise
 from .animation import anim_frame_warp
-from .animation_key_frames import DeformAnimKeys, LooperAnimKeys, ControlNetKeys, FreeUAnimKeys
+from .animation_key_frames import DeformAnimKeys, LooperAnimKeys, ControlNetKeys, FreeUAnimKeys, KohyaHRFixAnimKeys
 from .video_audio_utilities import get_frame_name, get_next_frame, render_preview
 from .depth import DepthModel
 from .colors import maintain_colors
@@ -168,7 +168,7 @@ def get_resume_vars_d(folder, timestring, cadence,startframe=-1):
     return prev_frame, next_frame, prev_img, next_img
 
 
-def render_animation(args, anim_args, video_args, parseq_args, loop_args, controlnet_args, freeu_args, root):
+def render_animation(args, anim_args, video_args, parseq_args, loop_args, controlnet_args, freeu_args, kohya_hrfix_args, root):
     cnu = {}
     global deforumation_cadence_scheduling_manifest
     #Deforumation_initialization
@@ -180,7 +180,7 @@ def render_animation(args, anim_args, video_args, parseq_args, loop_args, contro
 
     # initialise Parseq adapter
     #parseq_adapter = ParseqAdapter(parseq_args, anim_args, video_args, controlnet_args, loop_args)
-    parseq_adapter = ParseqAdapter(parseq_args, anim_args, video_args, controlnet_args, loop_args, freeu_args)
+    parseq_adapter = ParseqAdapter(parseq_args, anim_args, video_args, controlnet_args, loop_args, freeu_args, kohya_hrfix_args)
     
     if not cadence_was_one:
         print("Cadence was not one")
@@ -264,6 +264,7 @@ def render_animation(args, anim_args, video_args, parseq_args, loop_args, contro
     keys = DeformAnimKeys(anim_args, args.seed) if not parseq_adapter.use_parseq else parseq_adapter.anim_keys
     loopSchedulesAndData = LooperAnimKeys(loop_args, anim_args, args.seed) if not parseq_adapter.use_parseq else parseq_adapter.looper_keys
     freeu_schedules = FreeUAnimKeys(anim_args, freeu_args) if not parseq_adapter.use_parseq else parseq_adapter.freeu_keys
+    kohya_hrfix_schedules = KohyaHRFixAnimKeys(anim_args, kohya_hrfix_args) if not parseq_adapter.use_parseq else parseq_adapter.kohya_hrfix_keys
 
     # create output folder for the batch
     os.makedirs(args.outdir, exist_ok=True)
@@ -271,7 +272,7 @@ def render_animation(args, anim_args, video_args, parseq_args, loop_args, contro
 
     # save settings.txt file for the current run
     #save_settings_from_animation_run(args, anim_args, parseq_args, loop_args, controlnet_args, video_args, root)
-    save_settings_from_animation_run(args, anim_args, parseq_args, loop_args, controlnet_args, freeu_args, video_args, root)
+    save_settings_from_animation_run(args, anim_args, parseq_args, loop_args, controlnet_args, freeu_args, kohya_hrfix_args, video_args, root)
 
     # resume from timestring
     if anim_args.resume_from_timestring:
@@ -1205,6 +1206,11 @@ def render_animation(args, anim_args, video_args, parseq_args, loop_args, contro
             freeu_args.freeu_b2_frameval = freeu_schedules.freeu_b2_series[frame_idx]
             freeu_args.freeu_s1_frameval = freeu_schedules.freeu_s1_series[frame_idx]
             freeu_args.freeu_s2_frameval = freeu_schedules.freeu_s2_series[frame_idx]
+        if kohya_hrfix_args.kohya_hrfix_enabled:
+            kohya_hrfix_args.block_number_frameval = kohya_hrfix_schedules.block_number_series[frame_idx]
+            kohya_hrfix_args.downscale_factor_frameval = kohya_hrfix_schedules.downscale_factor_series[frame_idx]
+            kohya_hrfix_args.start_percent_frameval = kohya_hrfix_schedules.start_percent_series[frame_idx]
+            kohya_hrfix_args.end_percent_frameval = kohya_hrfix_schedules.end_percent_series[frame_idx]         
 
         if 'img2img_fix_steps' in opts.data and opts.data["img2img_fix_steps"]:  # disable "with img2img do exactly x steps" from general setting, as it *ruins* deforum animations
             opts.data["img2img_fix_steps"] = False
@@ -1272,7 +1278,7 @@ def render_animation(args, anim_args, video_args, parseq_args, loop_args, contro
             print(f"Optical flow redo is diffusing and warping using {optical_flow_redo_generation} and seed {args.seed} optical flow before generation.")
             
             #disposable_image = generate(args, keys, anim_args, loop_args, controlnet_args, root, parseq_adapter, frame_idx, sampler_name=scheduled_sampler_name)
-            disposable_image = generate(args, keys, anim_args, loop_args, controlnet_args, freeu_args, root, parseq_adapter, frame_idx, sampler_name=scheduled_sampler_name)
+            disposable_image = generate(args, keys, anim_args, loop_args, controlnet_args, freeu_args, kohya_hrfix_args, root, parseq_adapter, frame_idx, sampler_name=scheduled_sampler_name)
             if disposable_image != None:
                 disposable_image = cv2.cvtColor(np.array(disposable_image), cv2.COLOR_RGB2BGR)
                 disposable_flow = get_flow_from_images(prev_img, disposable_image, optical_flow_redo_generation, raft_model)
@@ -1291,7 +1297,7 @@ def render_animation(args, anim_args, video_args, parseq_args, loop_args, contro
                 args.seed = random.randint(0, 2 ** 32 - 1)
                 #disposable_image = generate(args, keys, anim_args, loop_args, controlnet_args, root, frame_idx, sampler_name=scheduled_sampler_name)
                 #disposable_image = generate(args, keys, anim_args, loop_args, controlnet_args, root, parseq_adapter, frame_idx, sampler_name=scheduled_sampler_name)
-                disposable_image = generate(args, keys, anim_args, loop_args, controlnet_args, freeu_args, root, parseq_adapter, frame_idx, sampler_name=scheduled_sampler_name)
+                disposable_image = generate(args, keys, anim_args, loop_args, controlnet_args, freeu_args, kohya_hrfix_args, root, parseq_adapter, frame_idx, sampler_name=scheduled_sampler_name)
                 disposable_image = cv2.cvtColor(np.array(disposable_image), cv2.COLOR_RGB2BGR)
                 # color match on last one only
                 if n == int(anim_args.diffusion_redo):
@@ -1305,7 +1311,7 @@ def render_animation(args, anim_args, video_args, parseq_args, loop_args, contro
         #image = generate(args, keys, anim_args, loop_args, controlnet_args, root, frame_idx, sampler_name=scheduled_sampler_name)
         
         #image = generate(args, keys, anim_args, loop_args, controlnet_args, root, parseq_adapter, frame_idx, sampler_name=scheduled_sampler_name)
-        image = generate(args, keys, anim_args, loop_args, controlnet_args, freeu_args, root, parseq_adapter, frame_idx, sampler_name=scheduled_sampler_name)
+        image = generate(args, keys, anim_args, loop_args, controlnet_args, freeu_args, kohya_hrfix_args, root, parseq_adapter, frame_idx, sampler_name=scheduled_sampler_name)
         #mediator_setValue("saved_frame_params", frame_idx)
         if image is None:
             break
