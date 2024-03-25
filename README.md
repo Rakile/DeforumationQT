@@ -34,7 +34,7 @@ OSC support for prompt morphing, controled VIA bind name (See example in Example
 <img src="github_images/settings_tab.png">
 
 
-## Easy to change , save, restore, load Lauouts
+## Easy to change , save, restore and load Layouts.
 <img src="github_images/ui_tab.png">
 
 
