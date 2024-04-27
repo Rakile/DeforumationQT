@@ -1,19 +1,10 @@
 import enum
-import math
-import sys
 
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-                            QMetaObject, QObject, QPoint, QRect,
-                            QSize, QTime, QUrl, Qt, QEvent, SIGNAL, Slot, Signal)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform, QTextDocument, QAbstractTextDocumentLayout,
-                           QTextFrame, QAction, QMouseEvent)
-from PySide6.QtWidgets import (QApplication, QFrame, QDateEdit, QGridLayout, QStackedLayout, QBoxLayout, QHBoxLayout,
-                               QVBoxLayout, QLabel, QSlider, QLayout, QMainWindow, QMenuBar, QPushButton, QSizePolicy, QStatusBar,
-                               QTabWidget, QTextEdit, QWidget, QDial, QMenu, QScrollArea, QWidgetAction, QLineEdit, QCheckBox, QProgressBar, QComboBox, QTableView, QRadioButton)
-from PySide6 import QtGui, QtCore
+
+from PySide6.QtGui import (QIcon)
+from PySide6.QtWidgets import (QFrame, QDateEdit, QVBoxLayout, QLabel, QSlider, QPushButton, QTextEdit, QWidget, QDial, QScrollArea, QLineEdit, QCheckBox, QProgressBar, QComboBox, QTableView, QRadioButton)
+from PySide6 import QtCore
+
 
 class widgetContainerClass():
 
@@ -239,7 +230,7 @@ class Deforumation_Widgets():
                             config[objname] = child.text()
 
     def enumerateWidgets(self, parent, aWidget):
-        moveableTypes = [QFrame, QLabel, QPushButton, QLabel, QSlider, QDateEdit, QDial, QLineEdit, QCheckBox, QTextEdit, QProgressBar, QComboBox, QWidget, QTableView, QScrollArea, QRadioButton]
+        moveableTypes = [QFrame, QPushButton, QLabel, QSlider, QDateEdit, QDial, QLineEdit, QCheckBox, QTextEdit, QProgressBar, QComboBox, QWidget, QTableView, QScrollArea, QRadioButton]
         #for widget in aWidget.children():
         isIterable = False
         while isIterable == False:

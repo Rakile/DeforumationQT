@@ -43,6 +43,7 @@ class Deforumation_Prompt_Morphing_Frame():
         #self.remove_morph_prompt = None
         self.slider_style = "QSlider{ border: none;}\nQSlider::groove:horizontal {\n    border-image: url(images/groove_230_m.png) ; /* Adjust slicing and stretch as needed */\n    border: none;\n    height: 29px; /* The height of your image */\n    width: 240px; /* Width of the handle - adjust as needed */\n}\n\nQSlider::handle:horizontal {\n    background-image: url(images/handle_off.png); /* The path to your handle image */\n  background-repeat: no-repeat;\n    border: none; /* Remove the border if you don't need it */\n    width: 32px; /* Width of the handle - adjust as needed */\n    height: 32px; /* Height of the handle - adjust as needed */\n    margin: -2px 0; /* Optional: Adjust the margin if needed */\n}\n\nQSlider::handle:horizontal:hover {\n\n    background-image: url(images/handle_hover.png); /* Change the handle image when hovering */\nbackground-repeat: no-repeat;\n    border: none; /* Remove the border if you don't need it */\n    width: 32px; /* Width of the handle - adjust as needed */\n    height: 32px; /* Height of the handle - adjust as needed */\n    margin: -2px 0; /* Optional: Adjust the margin if needed */\n}\n\nQSlider::handle:horizontal:pressed {\n    background-image: url(images/handle_on.png); /* Change the handle image when pressed */\nbackground-repeat: no-repeat;\n    border: none; /* Remove the border if you don't need it */\n    width: 32px; /* Width of the handle - adjust as needed */\n    height: 32px; /* Height of the handle - adjust as needed */\n    margin: -2px 0; /* Optional: Adjust the margin if needed */\n  \n}\n\nQSlider::add-page:horizontal {\n    background: none;\n border: none;\n}\n\nQSlider::sub-page:horizontal {\n    background: none;\n border: none;\n}\n"
         self.qlineedit_style = "/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;*/\n\n\n\nQLineEdit {\n    background-color: rgb(42, 42, 42); /* Dark background */\n    color: rgb(0, 255, 0); /* Bright green text */\n    border: 2px solid rgb(40, 40, 40); /* Dark grey border */\n    border-radius: 5px; /* Rounded corners */\n    padding-top: 1px; /* Top padding to push the text down */\n    padding-bottom: 1px; /* Bottom padding for even spacing */\n    padding-left: 1px; /* Left padding */\n    padding-right: 1px; /* Right padding */\n    text-align: center; /* Center the text horizontally */\n}"
+        self.qlineedit_style_error = "/*background-color:rgb(255, 0, 0);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;*/\n\n\n\nQLineEdit {\n    background-color: rgb(255, 0, 0); /* Dark background */\n    color: rgb(0, 255, 0); /* Bright green text */\n    border: 2px solid rgb(40, 40, 40); /* Dark grey border */\n    border-radius: 5px; /* Rounded corners */\n    padding-top: 1px; /* Top padding to push the text down */\n    padding-bottom: 1px; /* Bottom padding for even spacing */\n    padding-left: 1px; /* Left padding */\n    padding-right: 1px; /* Right padding */\n    text-align: center; /* Center the text horizontally */\n}"
         self.qcheckbox_style = "QCheckBox {\n    border: none; /* No border for the checkbox */\nbackground-color: rgb(108,108,118); /* Fallback color */\nborder-radius:5;\n}\n\nQCheckBox::indicator {\n    width: 24px; /* Width of the checkbox */\n    height: 12px; /* Height of the checkbox */\n    background-color: transparent; /* Ensures background is transparent */\nborder: none; /* No border for the checkbox */\n}\n\nQCheckBox::indicator:unchecked {\n    background-image: url(images/check_off_half_small.png); /* Image for unchecked state */\n    background-repeat: no-repeat; /* Prevents the image from repeating */\nbackground-position: left; /* Left the image */\nborder: none; /* No border for the checkbox */\n}\n\nQCheckBox::indicator:checked {\n    background-image: url(images/check_on_half_small.png); /* Image for checked state */\n    background-repeat: no-repeat; /* Prevents the image from repeating */\nbackground-position: left; /* Left the image */\nborder: none; /* No border for the checkbox */\n}\n"
         self.frame_style = "background-color: rgb(80, 80, 80); border: 2px solid rgb(22, 22, 22); border-radius: 10px;"
         self.qbutton_style = "QPushButton {\n    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n    border: none;\n    border-radius: 0px; /* Consistent with the tab's rounded corners */\n    padding: 0px 0px; /* Comfortable padding for the button text */\n    color: white; /* White text for contrast */\n    text-align: center;\n\n}\n\nQPushButton:hover {\n    background-color: rgb(96, 96, 96); /* Lighter grey, similar to tab hover effect */\n\n}\n\nQPushButton:pressed {\n    background-color: rgb(128, 128, 128); /* Similar to the selected tab color */\n\n}\n"
@@ -262,8 +263,8 @@ class Deforumation_Prompt_Morphing_Frame():
 
         self.morph_prompt_blending_checkbox_label = QLabel(self.morph_prompt_frame)
         self.morph_prompt_blending_checkbox_label.setObjectName(u"morph_prompt_blending_checkbox_label" + str(self.identifier))
-        self.morph_prompt_blending_checkbox_label.setGeometry(QRect(112, 70, 32, 9))
-        self.morph_prompt_blending_checkbox_label.setMinimumSize(QSize(64, 9))
+        self.morph_prompt_blending_checkbox_label.setGeometry(QRect(112, 70, 32, 12))
+        self.morph_prompt_blending_checkbox_label.setMinimumSize(QSize(64, 12))
         font11 = QFont()
         font11.setPointSize(7)
         self.morph_prompt_blending_checkbox_label.setFont(font11)
@@ -282,8 +283,8 @@ class Deforumation_Prompt_Morphing_Frame():
             self.morph_prompt_enabled_checkbox.setChecked(False)
         self.OnOff_label = QLabel(self.morph_prompt_frame)
         self.OnOff_label.setObjectName(u"OnOff_label" + str(self.identifier))
-        self.OnOff_label.setGeometry(QRect(10, 70, 32, 9))
-        self.OnOff_label.setMinimumSize(QSize(36, 9))
+        self.OnOff_label.setGeometry(QRect(10, 70, 32, 12))
+        self.OnOff_label.setMinimumSize(QSize(36, 12))
         font11 = QFont()
         font11.setPointSize(7)
         self.OnOff_label.setFont(font11)
@@ -303,8 +304,8 @@ class Deforumation_Prompt_Morphing_Frame():
             self.morph_prompt_smooth_motion_enabled_checkbox.setChecked(False)
         self.morph_prompt_smooth_motion_enabled_label = QLabel(self.morph_prompt_frame)
         self.morph_prompt_smooth_motion_enabled_label.setObjectName(u"morph_prompt_smooth_motion_enabled_label" + str(self.identifier))
-        self.morph_prompt_smooth_motion_enabled_label.setGeometry(QRect(64, 70, 32, 9))
-        self.morph_prompt_smooth_motion_enabled_label.setMinimumSize(QSize(36, 9))
+        self.morph_prompt_smooth_motion_enabled_label.setGeometry(QRect(64, 70, 32, 12))
+        self.morph_prompt_smooth_motion_enabled_label.setMinimumSize(QSize(36, 12))
         font11 = QFont()
         font11.setPointSize(7)
         self.morph_prompt_smooth_motion_enabled_label.setFont(font11)
@@ -470,7 +471,11 @@ class Deforumation_Prompts():
         self.savePromptMorphFrameToConfig(self.prompt_morphing_container[self.numberOfPromptMorphFrames])
 
     def loadMorphPromptSyrupFromConfig(self):
-        self.Prompt_Morph_Syrup_Value = int(self.deforumation_settings.getGuiConfigValue("Syrupmotion_Morph_Prompt"))
+        self.Prompt_Morph_Syrup_Value = self.deforumation_settings.getGuiConfigValue("Syrupmotion_Morph_Prompt")
+        if self.Prompt_Morph_Syrup_Value == None:
+            self.Prompt_Morph_Syrup_Value = 0
+        else:
+            self.Prompt_Morph_Syrup_Value = int(self.Prompt_Morph_Syrup_Value)
         if self.Prompt_Morph_Syrup_Value < 0:
             self.Prompt_Morph_Syrup_Value = 0
             self.deforumation_settings.writeDeforumationGuiValuesToConfig("Syrupmotion_Morph_Prompt", 0)
@@ -738,6 +743,33 @@ class Deforumation_Prompts():
             promptA = self.prompt_morphing_container[morph_prompt_identifier].morph_promptA.text()
             promptB = self.prompt_morphing_container[morph_prompt_identifier].morph_promptB.text()
             self.deforumationnamedpipes.writeValue("set_prompt_morph_values_" + str(binding), [promptA, promptB, None, None, None])
+        elif orgName.startswith("morph_prompt_binding"):
+            new_binding_name = self.prompt_morphing_container[morph_prompt_identifier].morph_prompt_binding.text()
+            binding_already_exists = False
+            for binding in self.prompt_morphing_container:
+                if binding == morph_prompt_identifier:
+                    continue
+                if self.prompt_morphing_container[binding].morph_prompt_binding.text() == new_binding_name:
+                    binding_already_exists = True
+                    break
+            if binding_already_exists:
+                self.parent.setWindowTitle(self.parent.window_title + " - morph binding already exists:" + str(new_binding_name))
+                self.prompt_morphing_container[morph_prompt_identifier].morph_prompt_binding.setStyleSheet(self.prompt_morphing_container[morph_prompt_identifier].qlineedit_style_error)
+                print("Binding already exists.")
+                self.prompt_morphing_container[morph_prompt_identifier].morph_prompt_binding.setText("")
+            else:
+                print("Binding name OK.")
+                self.prompt_morphing_container[morph_prompt_identifier].morph_prompt_binding.setStyleSheet(self.prompt_morphing_container[morph_prompt_identifier].qlineedit_style)
+                promptA = self.prompt_morphing_container[morph_prompt_identifier].morph_promptA.text()
+                promptB = self.prompt_morphing_container[morph_prompt_identifier].morph_promptB.text()
+                isPromptBlending = self.prompt_morphing_container[morph_prompt_identifier].isPromptBlending
+                is_enabled = self.prompt_morphing_container[morph_prompt_identifier].morph_prompt_enabled
+                binding_text = self.prompt_morphing_container[morph_prompt_identifier].morph_prompt_binding.text()
+                current_value = float(self.prompt_morphing_container[morph_prompt_identifier].morph_prompt_value.text())
+                self.deforumationnamedpipes.writeValue("start_prompt_morph_motion_" + str(binding_text), -2)
+                self.deforumationnamedpipes.writeValue("set_prompt_morph_values_" + str(binding_text), [promptA, promptB, isPromptBlending, is_enabled, current_value])
+
+            #print("Handle binding:" + str("dd"))
 
 
         self.savePromptMorphFrameToConfig(self.prompt_morphing_container[morph_prompt_identifier])
@@ -784,6 +816,15 @@ class Deforumation_Prompts():
         self.resizeEvent_morph_frames(self.parent.ui.right_prompt_tab_frame.width())
         self.savePromptMorphFrameToConfig(self.prompt_morphing_container[morph_prompt_identifier])
         self.saveCurrentPrompt()
+
+        promptA = self.prompt_morphing_container[morph_prompt_identifier].morph_promptA.text()
+        promptB = self.prompt_morphing_container[morph_prompt_identifier].morph_promptB.text()
+        isPromptBlending = self.prompt_morphing_container[morph_prompt_identifier].isPromptBlending
+        is_enabled = self.prompt_morphing_container[morph_prompt_identifier].morph_prompt_enabled
+        binding_text = self.prompt_morphing_container[morph_prompt_identifier].morph_prompt_binding.text()
+        current_value = float(self.prompt_morphing_container[morph_prompt_identifier].morph_prompt_value.text())
+        self.deforumationnamedpipes.writeValue("start_prompt_morph_motion_" + str(binding_text), -2)
+        self.deforumationnamedpipes.writeValue("set_prompt_morph_values_" + str(binding_text), [promptA, promptB, isPromptBlending, is_enabled, current_value])
     def resizeEvent_morph_frames(self, verticalFrame_prompt_width):
         for morphing_frame in self.prompt_morphing_container:
             self.prompt_morphing_container[morphing_frame].resizeEvent_morph_frame(verticalFrame_prompt_width)

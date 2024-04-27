@@ -32,6 +32,7 @@ class Deforumation_Motions():
         self.steps = 50
         self.strength = 0.68
         self.cfg = 3
+        self.cfg_float = 3.0
         self.cadence = 3
         self.Syrup_Panning_Motion = 0
         self.Syrup_Rotation_Motion = 0
@@ -104,7 +105,9 @@ class Deforumation_Motions():
                 # Set all values
                 self.steps = totalRecallFrame.steps
                 self.strength = totalRecallFrame.strength_value
-                self.cfg = totalRecallFrame.cfg_scale
+                self.cfg_float = totalRecallFrame.cfg_scale #self.deforumation_settings.getSendConfigValue("cfg")
+                self.cfg = self.cfg_float * 10
+                #self.cfg = totalRecallFrame.cfg_scale
                 self.cadence = totalRecallFrame.cadence
                 self.noise_multiplier = totalRecallFrame.noise_multiplier
                 self.fov = totalRecallFrame.fov
@@ -148,7 +151,9 @@ class Deforumation_Motions():
                 # Set Component label values
                 self.ui.step_slider_value.setText(str(self.steps))
                 self.ui.strength_slider_value.setText(str(float('%.2f' % self.strength)))
-                self.ui.cfg_slider_value.setText(str(self.cfg))
+                #self.cfg_float = round((self.cfg / 10 - 0.1) + 1,1)
+                self.ui.cfg_slider_value.setText(str(self.cfg_float))
+                #self.ui.cfg_slider_value.setText(str(self.cfg))
                 self.ui.cadence_slider_value.setText(str(self.cadence))
                 self.ui.noise_slider_value.setText(str(float('%.2f' % self.noise_multiplier)))
                 self.ui.pan_x_value.setText(str(float('%.2f' % self.Translation_X)))
@@ -200,7 +205,8 @@ class Deforumation_Motions():
 
         self.steps = self.deforumation_settings.getSendConfigValue("steps")
         self.strength = self.deforumation_settings.getSendConfigValue("strength")
-        self.cfg = self.deforumation_settings.getSendConfigValue("cfg")
+        self.cfg_float = self.deforumation_settings.getSendConfigValue("cfg")
+        self.cfg = self.cfg_float * 10
         #self.setParameterAccordingToCircumstances("cadence", "should_use_deforumation_cadence")
         self.cadence = self.deforumation_settings.getSendConfigValue("cadence")
         self.noise_multiplier = self.deforumation_settings.getSendConfigValue("noise_multiplier")
@@ -237,6 +243,8 @@ class Deforumation_Motions():
         self.Rotation_Granularity = self.deforumation_settings.getGuiConfigValue("Rotation_Granularity")
         self.Tilt_Granularity = self.deforumation_settings.getGuiConfigValue("Tilt_Granularity")
         self.Zoom_Granularity_Special = self.deforumation_settings.getGuiConfigValue("Zoom_Granularity_Special")
+        if self.Zoom_Granularity_Special == None:
+            self.Zoom_Granularity_Special = 0.1
         self.exponential_pan_motion = self.deforumation_settings.getGuiConfigValue("exponential_pan_motion")
         self.exponential_rotate_motion = self.deforumation_settings.getGuiConfigValue("exponential_rotate_motion")
         self.exponential_tilt_motion = self.deforumation_settings.getGuiConfigValue("exponential_tilt_motion")
@@ -245,9 +253,9 @@ class Deforumation_Motions():
         self.seed = self.deforumation_settings.getSendConfigValue("seed")
         self.seed_fixed = self.deforumation_settings.getGuiConfigValue("seed_fixed")
         self.seed_iter_n = self.deforumation_settings.getSendConfigValue("seed_iter_n")
+        if self.seed_iter_n == None:
+            self.seed_iter_n = 0
         if self.seed_iter_n <=0:
-            self.seed_iter_n = self.deforumation_settings.getGuiConfigValue("seed_iter_n")
-            if self.seed_iter_n <= 0:
                 self.seed_iter_n = 1
         self.parent.ui.IterSeed_N_Inputbox.setText(str(self.seed_iter_n))
         self.parent.ui.IterSeed_Inputbox.setText(str(self.seed))
@@ -374,7 +382,9 @@ class Deforumation_Motions():
         #Set Component label values
         self.ui.step_slider_value.setText(str(self.steps))
         self.ui.strength_slider_value.setText(str(float('%.2f' % self.strength)))
-        self.ui.cfg_slider_value.setText(str(self.cfg))
+        #self.cfg_float = round((self.cfg / 10 - 0.1) + 1,1)
+        self.ui.cfg_slider_value.setText(str(self.cfg_float))
+        #self.ui.cfg_slider_value.setText(str(self.cfg))
         self.ui.cadence_slider_value.setText(str(self.cadence))
         self.ui.noise_slider_value.setText(str(float('%.2f' % self.noise_multiplier)))
         self.ui.pan_x_value.setText(str(float('%.2f' % self.Translation_X)))
@@ -504,8 +514,13 @@ class Deforumation_Motions():
         #self.deforumation_settings.writeDeforumSendValuesToConfig(self.config)
         self.deforumation_settings.writeDeforumationGuiValuesToConfig("exponential_tilt_motion", value)
 
-    #def setExponentialZoomMotion(self, value):
-    #    self.Exponential_Zoom_Motion = value
+    def setCurrentCadenceValueOnly(self, item):
+        #orgName = self.getOriginalComponentName(item)
+        self.cadence = item.value()
+        self.parent.ui.cadence_slider_value.setText(str(self.cadence))
+        #cadence_identifier = int(orgName[len("morph_prompt_slider"):])
+        #cadence_identifier.setText(str('%.2f' % float(item.value() / 100)))
+
     def slider_changed(self, sender):
         if sender.objectName().startswith("syrup_pan_motion_slider"):
             self.Syrup_Panning_Motion = sender.value()
@@ -596,10 +611,12 @@ class Deforumation_Motions():
            self.cfg = sender.value()
            for sliderwidgets in self.deforumationwidgets.getWidgetContainer():
                if sliderwidgets.startswith("cfg_slider_value"):
-                   self.deforumationwidgets.getWidgetContainer()[sliderwidgets].widget.setText(str(self.cfg))
+                   self.cfg_float = round((self.cfg / 10),1)
+                   self.deforumationwidgets.getWidgetContainer()[sliderwidgets].widget.setText(str(self.cfg_float))
+                   #self.deforumationwidgets.getWidgetContainer()[sliderwidgets].widget.setText(str(self.cfg))
                elif sliderwidgets.startswith("cfg_slider") and type(self.deforumationwidgets.getWidgetContainer()[sliderwidgets].widget) == QSlider:
                    self.deforumationwidgets.getWidgetContainer()[sliderwidgets].widget.setValue(sender.value())
-           self.deforumationnamedpipes.writeValue("cfg", self.cfg)
+           self.deforumationnamedpipes.writeValue("cfg", self.cfg_float) #self.cfg)
            # Write the value to our config
            #self.deforumation_settings.writeDeforumSendValuesToConfig("cfg", sender.value())
         elif sender.objectName().startswith("cadence_slider"):
@@ -1256,7 +1273,7 @@ class Deforumation_Motions():
                 self.should_use_deforumation_cfg = self.deforumation_settings.getSendConfig()["should_use_deforumation_cfg"] #self.p["should_use_deforumation_cfg"]
         if self.should_use_deforumation_cfg:
             self.deforumationnamedpipes.writeValue("should_use_deforumation_cfg", 1)
-            self.deforumationnamedpipes.writeValue("cfg", self.cfg)
+            self.deforumationnamedpipes.writeValue("cfg", self.cfg_float) #self.cfg)
         else:
             self.deforumationnamedpipes.writeValue("should_use_deforumation_cfg", 0)
         #self.deforumation_settings.writeDeforumSendValuesToConfig(self.p)

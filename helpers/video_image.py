@@ -4,17 +4,10 @@ import subprocess
 import threading
 import time
 
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-                            QMetaObject, QObject, QPoint, QRect,
-                            QSize, QTime, QUrl, Qt, QEvent, SIGNAL, Slot, Signal, QThread)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform, QTextDocument, QAbstractTextDocumentLayout,
-                           QTextFrame, QAction, QMouseEvent)
-from PySide6.QtWidgets import (QApplication, QFrame, QDateEdit, QGridLayout, QStackedLayout, QBoxLayout, QHBoxLayout,
-                               QVBoxLayout, QLabel, QSlider, QLayout, QMainWindow, QMenuBar, QPushButton, QSizePolicy, QStatusBar,
-                               QTabWidget, QTextEdit, QWidget, QDial, QMenu, QScrollArea, QWidgetAction)
+from PySide6 import QtGui
+from PySide6.QtCore import (QMetaObject, QObject,QSize, Qt, Signal)
+from PySide6.QtGui import (QPainter, QPixmap,QMouseEvent, QPen)
+from PySide6.QtWidgets import (QGridLayout, QLabel)
 """from PySide6 import QtGui
 from PySide6.QtMultimedia import QAudioOutput, QMediaPlayer
 from helpers.named_pipes import Deforumation_Named_Pipes
@@ -65,9 +58,47 @@ class Video_Image(QLabel):
     def getpath(self):
         return self.image_path
     def setpixmap(self, pixmap):
-        self.setPixmap(pixmap)
+        #self.pixmap_org = pixmap.copy()
         self.pixmap = pixmap
-    def getpixmap(self):
+        self.pixmap_without_frame_number = pixmap.copy()
+
+        qp = QPainter(self.pixmap)  # self.pixmap)
+        custom_font = QtGui.QFont("Segoe UI Light", 100)
+        #qp.save()
+        qp.setFont(custom_font)
+        pen = QPen(Qt.red, 30)
+        qp.setPen(pen)
+        # qp.drawLine(10, 10, 50, 50)
+        qp.drawText(10, 10, 260, 200, Qt.AlignLeft | Qt.AlignTop, str(self.pathnumber))
+        qp.end()
+        self.setPixmap(self.pixmap)
+    def getpixmap(self, shouldIncludeFrameNumber = True):
+        #shouldIncludeFrameNumber = True
+        if not shouldIncludeFrameNumber:
+            '''pixmap_incluided_frame_number = self.pixmap.copy()
+            qp = QPainter(pixmap_incluided_frame_number)#self.pixmap)
+            custom_font = QtGui.QFont("Segoe UI Light", 40)
+            qp.save()
+            qp.setFont(custom_font)
+            pen = QPen(Qt.red, 40)
+            qp.setPen(pen)
+            # qp.drawLine(10, 10, 50, 50)
+            qp.drawText(10, 10, 200, 200, Qt.AlignLeft | Qt.AlignTop, str("1"))
+            qp.end()'''
+            #self.setPixmap(self.pixmap_without_frame_numer)
+            # Include with frame number (normal frame strip image)
+            return self.pixmap_without_frame_number
+        #self.setPixmap(self.pixmap)
+        qp = QPainter(self.pixmap)  # self.pixmap)
+        custom_font = QtGui.QFont("Segoe UI Light", 100)
+        #qp.save()
+        qp.setFont(custom_font)
+        pen = QPen(Qt.red, 30)
+        qp.setPen(pen)
+        # qp.drawLine(10, 10, 50, 50)
+        qp.drawText(10, 10, 260, 200, Qt.AlignLeft | Qt.AlignTop, str(self.pathnumber))
+        qp.end()
+        #self.setPixmap(self.pixmap)
         return self.pixmap
     def setwidth(self, width):
         self.resize(width, self.height())
@@ -82,6 +113,26 @@ class Video_Image(QLabel):
     def iscachedimage(self):
         return self.shouldCache
 
+    '''def paintEvent(self, e):
+        qp = QPainter()
+        qp.begin(self)
+
+        image = QImage('im.png')
+        qp.drawImage(QPoint(), image)
+
+        pen = QPen(Qt.red)
+        pen.setWidth(2)
+        qp.setPen(pen)
+
+        font = QFont()
+        font.setFamily('Times')
+        font.setBold(True)
+        font.setPointSize(24)
+        qp.setFont(font)
+
+        qp.drawText(150, 250, "X")
+
+        qp.end()'''
 class Video_Image_Container():
 
     def __init__(self, parent, namedpipes = None, deforumation_settings=None, deforumation_tools=None):
@@ -98,6 +149,7 @@ class Video_Image_Container():
         self.image_container = {}
         self.true_image_container = {}
         self.image_grid_container = {}
+        self.image_number_grid_container = {}
         self.current_scale_w = None
         self.current_scale_h = None
         #self.deforumationnamedpipes = Deforumation_Named_Pipes()
@@ -113,6 +165,7 @@ class Video_Image_Container():
         self.imageNumberCurrentlySelected = -1
         self.ffmpegIN = -1
         self.ffmpegOUT = -1
+        self.auto_scroll = False
         self.setInitValues()
 
     def setFFmpegIN(self, object):
@@ -140,7 +193,7 @@ class Video_Image_Container():
         #identifier.setStyleSheet(u"border-style: outset; border-width: 2px; border-color: red; border-radius: 0px;")
         self.preserveSpecialPurposeFrameLooks(0)
         current_movie_tab_height = self.parent.ui.preview_screen.height()
-        frame_image = identifier.getpixmap()
+        frame_image = identifier.getpixmap() #FIXIT
         frameSize = frame_image.size()
         framesizeScaledWidth = (frameSize.width() / frameSize.height()) * current_movie_tab_height
         shouldusethisheight = current_movie_tab_height  # int(frameSize.height() / 4)
@@ -148,36 +201,59 @@ class Video_Image_Container():
         #print("shouldusethisheight:" + str(shouldusethisheight) + " shouldusethiswidth:" + str(shouldusethiswidth))
         self.parent.ui.preview_image.setMaximumHeight(shouldusethisheight)
         self.parent.ui.preview_image.setMaximumWidth(shouldusethiswidth)
-        self.parent.ui.preview_image.setPixmap(identifier.getpixmap())
+        self.parent.ui.preview_image.setPixmap(identifier.getpixmap(False))
         if self.parent.detachedPreviewWindow != None:
-            self.parent.dettachedPreviewImage.setPixmap(identifier.getpixmap())
+            self.parent.dettachedPreviewImage.setPixmap(identifier.getpixmap(False))
 
         """if self.ffmpegIN != -1 and self.ffmpegOUT != -1:
             if identifier.getpathnumber() >= self.ffmpegIN and identifier.getpathnumber() <= self.ffmpegOUT:
                 identifier.setStyleSheet( u"border-style: outset; border-width: 2px; border-top-color : red; border-left-color : blue; border-right-color : blue; border-bottom-color : red; border-radius: 0px;")"""
 
+    def handleCheckBoxes(self,sender, event):
+        if sender.objectName().startswith("AutoScroll_checkbox"):
+            if sender.isChecked():
+                self.auto_scroll = False
+                self.deforumation_settings.writeDeforumationGuiValuesToConfig("auto_scroll", False)
+            else:
+                self.auto_scroll = True
+                self.deforumation_settings.writeDeforumationGuiValuesToConfig("auto_scroll", True)
+
     def setInitValues(self):
+        auto_scroll = self.deforumation_settings.getGuiConfigValue("auto_scroll")
+        if auto_scroll != None:
+            self.auto_scroll = auto_scroll
+
         replayFPS = self.deforumation_settings.getGuiConfigValue("replay_fps")
-        if replayFPS != -1:
+        if replayFPS != None:
             self.replayFPS = replayFPS
         replayCRF = self.deforumation_settings.getGuiConfigValue("replay_crf")
-        if replayCRF != -1:
+        if replayCRF != None:
             self.replayCRF = replayCRF
         pathToAudioFile = self.deforumation_settings.getGuiConfigValue("path_to_audio_file")
-        if pathToAudioFile != -1:
+        if pathToAudioFile != None:
             self.pathToAudioFile = pathToAudioFile
         pathToFFMPEG = self.deforumation_settings.getGuiConfigValue("path_to_ffmpeg")
-        if pathToFFMPEG != -1:
+        if pathToFFMPEG != None:
             self.pathToFFMPEG = pathToFFMPEG
 
         self.parent.ui.pathToAudioFile_value.setText(self.pathToAudioFile)
         self.parent.ui.pathToFFMPEG_value.setText(str(self.pathToFFMPEG))
         self.parent.ui.replay_fps_input_box.setText(str(self.replayFPS))
         self.parent.ui.crf_input_box.setText(str(self.replayCRF))
+        self.parent.ui.AutoScroll_checkbox.setChecked(self.auto_scroll)
 
-    def setPreviewCompression(self, identifier, movie_slider, total_number_of_frames_generated):
-        self.preview_compression_rate = identifier.value()
-        movie_slider.setMaximum(int(total_number_of_frames_generated / self.getPreviewCompression()))
+    def setPreviewCompression(self, identifier, movie_slider, total_number_of_frames_generated, preview_compression_rate=1):
+        if identifier is None:
+            self.preview_compression_rate = preview_compression_rate
+        else:
+            self.preview_compression_rate = identifier.value()
+        self.total_number_of_audiovideo_frames = self.parent.AudioWaveContainer.currentTotalAudioVideoFrames()
+        if self.total_number_of_audiovideo_frames < total_number_of_frames_generated:
+            movie_slider.setMaximum(int(total_number_of_frames_generated / self.getPreviewCompression()))
+        else:
+            movie_slider.setMaximum(int(self.total_number_of_audiovideo_frames / self.getPreviewCompression()))
+        #movie_slider.setMaximum(int(total_number_of_frames_generated / self.getPreviewCompression()))
+
     def getPreviewCompression(self):
         return self.preview_compression_rate
     def setidentifier(self, identifier):
@@ -193,7 +269,10 @@ class Video_Image_Container():
             #if not image_path_number in self.true_image_container:
             aVideoImage = Video_Image(None, None)
             imagePath = self.get_current_image_path_f(image_path_number*self.preview_compression_rate)
-            if total_number_of_frames_generated < image_path_number:
+            #print("Image Path Number:" + str(image_path_number))
+            #print("Image Path Number * preview_compression_rate:" + str(image_path_number * self.preview_compression_rate))
+            #print("total_number_of_frames_generated:" + str(total_number_of_frames_generated))
+            if total_number_of_frames_generated < (image_path_number * self.preview_compression_rate): #image_path_number:
                 imagePath = None
             if imagePath == None:
                 #Set dummy image (as it currently does not exist)
@@ -202,7 +281,7 @@ class Video_Image_Container():
                 else:
                     image = QPixmap(512, 512)
                 image.fill(Qt.black)
-                aVideoImage.setpathnumber(image_path_number)
+                aVideoImage.setpathnumber(image_path_number*self.preview_compression_rate)
                 aVideoImage.setpath(imagePath)
                 aVideoImage.setpixmap(image)
                 aVideoImage.setwidth(image.size().width())
@@ -210,6 +289,7 @@ class Video_Image_Container():
                 aVideoImage.setScaledContents(True)
             else:
                 image = QPixmap(imagePath)
+
                 img_width = image.size().width()
                 img_height = image.size().height()
                 if img_width == 0 or img_height == 0:
@@ -242,15 +322,21 @@ class Video_Image_Container():
             #    self.image_container[imageNumber] = self.true_image_container[image_path_number]
             #    self.image_container[imageNumber].setObjectName(f"movie_frame_image_{image_path_number}")
 
-    def addImageGridContainer(self, imageNumber, movie_frame):
-        #print("Adding image nr:" + str(imageNumber))
+    def addImageGridContainer(self, imageNumber, movie_frame, movie_frame_number = None):
         self.image_grid_container[imageNumber] = QGridLayout(movie_frame)
-        kalle = movie_frame.size()
-        #palle = self.image_grid_container[imageNumber].size()
         self.image_grid_container[imageNumber].setSpacing(0)
         self.image_grid_container[imageNumber].setObjectName(f"movie_gridLayout_{imageNumber}")
         self.image_grid_container[imageNumber].setContentsMargins(1, 0, 1, 0)
         self.image_grid_container[imageNumber].addWidget(self.image_container[imageNumber], 0, 0, 1, 1)
+        #Also add include image_frame_label_grid_container
+        '''if movie_frame_number != None:
+            self.image_number_grid_container[imageNumber] = QGridLayout(movie_frame)
+            self.image_number_grid_container[imageNumber].setSpacing(0)
+            self.image_number_grid_container[imageNumber].setObjectName(f"movie_gridLayout_{imageNumber}")
+            self.image_number_grid_container[imageNumber].setContentsMargins(1, 0, 1, 0)
+            self.image_number_grid_container[imageNumber].addWidget(self.image_container[imageNumber], 0, 0, 1, 1)'''
+
+
     def removeImageGridContainer(self, imageNumber):
         #print("Removing gridframecontainer:" + str(imageNumber))
         del self.image_grid_container[imageNumber]
@@ -290,6 +376,7 @@ class Video_Image_Container():
 
             imageNumber += 1
     def getImage(self, imageNumber):
+        #print("Getting image:" + str(imageNumber))
         if imageNumber in self.image_container:
             return self.image_container[imageNumber]
         else:
@@ -453,6 +540,8 @@ class Video_Image_Container():
                 '-r', str(float(fps)),
                 '-i', imgs_path,
                 '-frames:v', str(stitch_to_frame),
+                #'-c:v', 'libx264',
+                #'-pix_fmt', 'yuv420p10le',
                 '-pix_fmt', 'yuv420p',
                 '-crf', str(crf),
                 '-pattern_type', 'sequence'

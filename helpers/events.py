@@ -1,17 +1,17 @@
 import os
 
-from PySide6.QtCore import QEvent, QPoint, QMetaObject, QFileInfo, QRect
+from PySide6.QtCore import QEvent, QPoint, QMetaObject, QFileInfo, QRect, QCoreApplication
 from PySide6.QtGui import QIcon, Qt, QAction, QFont
-from PySide6.QtWidgets import QPushButton, QLineEdit, QSlider, QFileDialog, QWidget, QVBoxLayout, QScrollArea, QWidgetAction, QFrame, QLabel, QMenu
-
+from PySide6.QtWidgets import (QFileDialog, QWidgetAction, QFrame, QDateEdit, QVBoxLayout, QLabel, QSlider, QPushButton, QTextEdit, QWidget, QDial, QScrollArea, QLineEdit, QCheckBox, QProgressBar, QComboBox, QTableView, QRadioButton)
 
 def handleEventValueChanged(self, item):
     if item.objectName().startswith("movie_slider"):
         # self.currentSliderPosition = item.value()
-        self.ui.movie_slider_frame_number.setText(str(item.value()))
+        value_with_granularity = item.value() * self.VideoImageContainer.preview_compression_rate
+        self.ui.movie_slider_frame_number.setText(str(value_with_granularity)) #item.value()))
         self.setMovieSlidePosition(item, item.value())
         self.currentSliderPosition = item.value()
-        self.setMovieSliderFrameNumber(item, item.value())
+        self.setMovieSliderFrameNumber(item, value_with_granularity)#item.value())
 
         # self.ui.movie_slider.setValue(item.value())
         # self.setPositionMovieFrame(item, item.value())
@@ -24,7 +24,7 @@ def handleEventValueChanged(self, item):
         shouldusethiswidth = framesizeScaledWidth
         self.ui.preview_image.setMaximumHeight(shouldusethisheight)
         self.ui.preview_image.setMaximumWidth(shouldusethiswidth)
-        self.ui.preview_image.setPixmap(self.VideoImageContainer.getImage(0).getpixmap())
+        self.ui.preview_image.setPixmap(self.VideoImageContainer.getImage(0).getpixmap(False))
     elif item.objectName().startswith("syrup_pan_motion_slider"):
         self.DeforumationMotions.slider_changed(item)
     elif item.objectName().startswith("syrup_rotate_motion_slider"):
@@ -44,13 +44,18 @@ def handleEventValueChanged(self, item):
     elif item.objectName().startswith("cfg_slider"):
         self.DeforumationMotions.slider_changed(item)
     elif item.objectName().startswith("cadence_slider"):
-        self.DeforumationMotions.slider_changed(item)
+        self.DeforumationMotions.setCurrentCadenceValueOnly(item)
     elif item.objectName().startswith("noise_slider"):
         self.DeforumationMotions.slider_changed(item)
 
     elif item.objectName().startswith("preview_compression_slider"):
+        old_compression_rate = self.VideoImageContainer.getPreviewCompression()
+        old_left_frame = old_compression_rate * self.ui.movie_slider.value()
         self.VideoImageContainer.setPreviewCompression(item, self.ui.movie_slider, self.total_number_of_frames_generated)
         self.update_movie_strip(True)
+        self.setMovieSlidePosition(self.ui.movie_slider_frame_number, old_left_frame) #video_frame_number)
+        self.setMovieSliderFrameNumber(self.ui.movie_slider_frame_number, old_left_frame) #video_frame_number)
+
     elif item.objectName().startswith("motion_zoom_granularity"):
         self.DeforumationMotions.set_zoom_granularity(item)
     elif item.objectName().startswith("morph_slider"):
@@ -83,9 +88,15 @@ def handleEventReturnPressed(self):
     elif sender.objectName().startswith("syrup_tilt_motion_slider_frame_number"):
         self.DeforumationMotions.setSyrupTiltMotion(int(sender.text()))
     elif sender.objectName().startswith("replay_fps_input_box"):
-        self.VideoImageContainer.saveFPStoConfig()
+        self.VideoImageContainer.saveFPStoConfig(sender)
+        self.AudioWaveContainer.showAudioWave()
     elif sender.objectName().startswith("crf_input_box"):
-        self.VideoImageContainer.saveCRFtoConfig()
+        self.VideoImageContainer.saveCRFtoConfig(sender)
+    elif sender.objectName().startswith("amplitude_value_box") or sender.objectName().startswith("shift_value_box") or sender.objectName().startswith("ampshift_value_box") or sender.objectName().startswith("shift_leftright_value_box"):
+        self.AudioWaveContainer.clicked_button(sender)
+
+    elif sender.objectName().startswith("metronome_trigger_over_value_box") or sender.objectName().startswith("metronome_trigger_under_value_box"):
+        self.AudioWaveContainer.clicked_metronome_button(sender)
     else:
         if self.is_verbose:
             print("<NOT IMPLEMENTED YET, Pressed return>:" + str(sender.objectName()))
@@ -94,12 +105,29 @@ def handleMouseReleaseEvent(self, object, event):
     if event.type() == QEvent.MouseButtonRelease:
         if object.objectName().startswith("morph_prompt_slider"):
             self.DeforumationPrompts.setCurrentMorphPromptWeight(object)
+        elif object.objectName().startswith("cadence_slider"):
+            self.DeforumationMotions.slider_changed(object)
+            if self.ui.cadence_audio_line_show_checkbox.isChecked():
+                self.AudioWaveContainer.showAudioWave(shouldUpdateAll=True)
+
+
 def handleEvent(self, object, event):
     #This is for restoring icons in a strange way, and should be removed in further release
     #if object.objectName() == "iter_RadioButton":
     #print("Action:" + str(event.type()) + "    --  Object Name:" + str(object.objectName()))
     #if event.type() == QEvent.ContextMenu:
     #    print("Action!!!:" + str(event.type()) + "    --  Object Name!!!:" + str(object.objectName()))
+
+    if (event.type() == QEvent.Wheel): #  This part is a *HACK* and is only here to prevent the scroll-wheel to work when hovering the mouse over a Prompt Morph Slider (the slider value can thus only be changed by dragging the slider).
+        #print("Mouse WHEEL! " + str(object.objectName()))
+        if object.objectName().startswith("morph_prompt_slider"):
+            QCoreApplication.sendEvent(self.ui.scrollArea_Prompt_Morph_bindings.verticalScrollBar(), event)
+            return True
+        elif object.objectName().startswith("cadence_slider"):
+            self.DeforumationMotions.slider_changed(object)
+            if self.ui.cadence_audio_line_show_checkbox.isChecked():
+                self.AudioWaveContainer.showAudioWave(shouldUpdateAll=True)
+
 
     if object.objectName() in self.deforumationwidgets.getWidgetContainer():
         # print("Object Name:" + str(object.objectName()))
@@ -125,6 +153,8 @@ def handleEvent(self, object, event):
     handleContextMenu(self, object, event)
     #Handle Mouse Release event
     handleMouseReleaseEvent(self, object, event)
+
+    return False
 
 def handleContextMenu(self, object, event):
     if (object.objectName().startswith("prompt1") or object.objectName().startswith("prompt2") or object.objectName().startswith("negative_prompt")) and event.type() == QEvent.MouseButtonPress:
@@ -295,6 +325,7 @@ def handleFocusOut(self, object, event):
         if type(object) == QLineEdit:
             if object.objectName().startswith("replay_fps_input_box"):
                 self.VideoImageContainer.saveFPStoConfig(object)
+                self.AudioWaveContainer.showAudioWave()
             elif object.objectName().startswith("crf_input_box"):
                 self.VideoImageContainer.saveCRFtoConfig(object)
             elif object.objectName().startswith("motion_") and "_granularity" in object.objectName():
@@ -319,6 +350,10 @@ def handleFocusOut(self, object, event):
                     object.setText("")
             elif object.objectName().startswith("morph_prompt_binding") or object.objectName().startswith("morph_promptA") or object.objectName().startswith("morph_promptB") or object.objectName().startswith("morph_prompt_min") or object.objectName().startswith("morph_prompt_max") or object.objectName().startswith("morph_prompt_step") or object.objectName().startswith("morph_prompt_value"):
                 self.DeforumationPrompts.set_prompt_morph_input_text(object)
+            elif object.objectName().startswith("amplitude_value_box") or object.objectName().startswith("shift_value_box") or object.objectName().startswith("ampshift_value_box") or object.objectName().startswith("shift_leftright_value_box"):
+                self.AudioWaveContainer.clicked_button(object, event)
+            elif object.objectName().startswith("metronome_trigger_over_value_box") or object.objectName().startswith("metronome_trigger_under_value_box"):
+                self.AudioWaveContainer.clicked_metronome_button(object, event)
             else:
                 if self.is_verbose:
                     print("<Not implemented yet>, FocusOut:" + str(object.objectName()))
@@ -401,6 +436,7 @@ def handleMouseButtonRelease(self, object, event):
                 #    # Set this in order for the context menu to not show when right clicking on a widget to remove it
                 #    self.skipContextMenu = False
         if event.button() == Qt.LeftButton:
+
             ######################################################################################################################################################################################################
             # LEFT MOUSE-CLICK RELEASE EVENTS
             ##############################################################################################
@@ -478,6 +514,10 @@ def handleMouseButtonRelease(self, object, event):
 
             # All below buttons should be dissabled while user is able to move around buttons
             elif self.noMoreMovement:
+                moveableTypes = [QPushButton, QLabel, QDateEdit, QDial, QLineEdit, QCheckBox, QTextEdit, QProgressBar, QComboBox, QTableView, QRadioButton]
+                if type(sender) in moveableTypes: #This is done to skip forwarding audio needle when pushing a button or other (see above "moveableTypes") component
+                    self.skipSetMovieSlidePosition = True
+                    #print("Setting skipSetMovieSlidePosition:" + str(sender.objectName()))
                 if sender.objectName().startswith("motion_"):
                     self.DeforumationMotions.clicked_button(event, sender)
                 elif sender.objectName().startswith("pan_middle_button"):
@@ -540,11 +580,19 @@ def handleMouseButtonRelease(self, object, event):
                     file_name, _ = QFileDialog.getOpenFileName(self, "Path to FFMPEG executable", "", "All (*.*)")
                     self.ui.pathToFFMPEG_value.setText(file_name)
                 elif sender.objectName().startswith("browse_audio_file"):
-                    file_name, _ = QFileDialog.getOpenFileName(self, "Open Media File", "", "Media Files (*.mp4 *.mp3 *.wav,*.ogg)")
+                    file_name, _ = QFileDialog.getOpenFileName(self, "Open Media File", "", "Media Files (*.mp4 *.mp3 *.wav *.ogg)")
                     self.ui.pathToAudioFile_value.setText(file_name)
-                elif sender.objectName().startswith("Left_Frame") or sender.objectName().startswith("Right_Frame") or sender.objectName().endswith("_Tab") or "_Tab_" in sender.objectName():
-                    self.setMovieSlidePosition(self.ui.movie_slider_frame_number, self.total_number_of_frames_generated)
-                    self.setMovieSliderFrameNumber(self.ui.movie_slider_frame_number, self.total_number_of_frames_generated)
+                elif sender.objectName().startswith("Left_Frame") or sender.objectName().startswith("Right_Frame") or sender.objectName().endswith("_Tab") or "_Tab_" in sender.objectName() or sender.objectName().startswith("audio_settings_interface") or sender.objectName().startswith("Preview_Frame"):
+                    if sender.objectName().startswith("Audio_Tab") or sender.objectName().startswith("audio_settings_interface") or sender.objectName().startswith("Preview_Frame"):
+                        self.skipSetMovieSlidePosition = True
+                    elif not self.skipSetMovieSlidePosition and (sender.objectName().startswith("Left_Frame") or sender.objectName().startswith("Right_Frame")):
+                        #print("Reached movieslider update through:" + str(sender.objectName()))
+                        self.setMovieSlidePosition(self.ui.movie_slider_frame_number, self.total_number_of_frames_generated)
+                        self.setMovieSliderFrameNumber(self.ui.movie_slider_frame_number, self.total_number_of_frames_generated)
+                    else:
+                        if sender.objectName().startswith("Left_Frame") or sender.objectName().startswith("Right_Frame"):
+                            #print("Setting skipSetMovieSlidePosition to False again through:" + str(sender.objectName()))
+                            self.skipSetMovieSlidePosition = False
                 elif sender.objectName().startswith("Create_Language_Config"):
                     file_name, _ = QFileDialog.getSaveFileName(self, "Save Language File", "", "Language Files(*.json)")
                     if file_name != "":
@@ -679,9 +727,84 @@ def handleMouseButtonRelease(self, object, event):
                     self.DeforumationMotions.setSeedAndScheme(event, sender)
                 elif sender.objectName().startswith("iter_RadioButton") or sender.objectName().startswith("fixed_RadioButton") or sender.objectName().startswith("random_RadioButton") or sender.objectName().startswith("ladder_RadioButton") or sender.objectName().startswith("alternate_RadioButton") or sender.objectName().startswith("scheduled_RadioButton"):
                     self.DeforumationMotions.setSeedAndScheme(event, sender)
+                elif sender.objectName().startswith("audio_synq_strength_selection") or sender.objectName().startswith("audio_synq_zoom_selection"):
+                    self.AudioWaveContainer.setEditableCurve(event, sender)
                 elif sender.objectName().startswith("loop_button"):
                     self.DeforumationMotions.toggleLoopBack(event, sender)
+                elif sender.objectName().startswith("openWaveFileButton"):
+                    self.AudioWaveContainer.openFileDialog()
+                elif sender.objectName().startswith("amplitude_increase_button"):
+                    self.AudioWaveContainer.clicked_button(sender, event)
+                elif sender.objectName().startswith("amplitude_decrease_button"):
+                    self.AudioWaveContainer.clicked_button(sender, event)
+                elif sender.objectName().startswith("ampshift_increase_button"):
+                    self.AudioWaveContainer.clicked_button(sender, event)
+                elif sender.objectName().startswith("ampshift_decrease_button"):
+                    self.AudioWaveContainer.clicked_button(sender, event)
+                elif sender.objectName().startswith("shift_increase_button"):
+                    self.AudioWaveContainer.clicked_button(sender, event)
+                elif sender.objectName().startswith("shift_decrease_button"):
+                    self.AudioWaveContainer.clicked_button(sender, event)
+                elif sender.objectName().startswith("shift_left_button"):
+                    self.AudioWaveContainer.clicked_button(sender, event)
+                elif sender.objectName().startswith("shift_right_button"):
+                    self.AudioWaveContainer.clicked_button(sender, event)
+                elif sender.objectName().startswith("change_audio_value_increase_button"):
+                    self.AudioWaveContainer.clicked_button(sender, event)
+                elif sender.objectName().startswith("change_audio_value_decrease_button"):
+                    self.AudioWaveContainer.clicked_button(sender, event)
+                elif sender.objectName().startswith("change_audio_value_high_button"):
+                    self.AudioWaveContainer.clicked_button(sender, event)
+                elif sender.objectName().startswith("change_audio_value_middle_button"):
+                    self.AudioWaveContainer.clicked_button(sender, event)
+                elif sender.objectName().startswith("change_audio_value_low_button"):
+                    self.AudioWaveContainer.clicked_button(sender, event)
+                elif sender.objectName().startswith("change_audio_value_zero_button"):
+                    self.AudioWaveContainer.clicked_button(sender, event)
+                elif sender.objectName().startswith("change_audio_value_org_button"):
+                    self.AudioWaveContainer.clicked_button(sender, event)
+                elif sender.objectName().startswith("change_audio_value_button"):
+                    self.AudioWaveContainer.clicked_button(sender, event)
+                elif sender.objectName().startswith("cadence_change_audio_value_button"):
+                    self.AudioWaveContainer.clicked_button(sender, event)
+                elif sender.objectName().startswith("editable_curve_checkbox") or sender.objectName().startswith("show_curve_checkbox"):
+                    original_component_name = self.deforumationtools.getOriginalComponentName(sender)
+                    self.AudioWaveContainer.handleCheckBoxes(event, sender, original_component_name)
+                    #self.propagateAllCheckboxes(sender, sender.objectName())
+                elif sender.objectName().startswith("metronome_trigger_over_value_checkbox") or sender.objectName().startswith("metronome_trigger_under_value_checkbox") or sender.objectName().startswith("metronome_trigger_cadence_value_checkbox"):
+                    original_component_name = self.deforumationtools.getOriginalComponentName(sender)
+                    self.AudioWaveContainer.handleCheckBoxesMetronome(event, sender, original_component_name)
+                elif sender.objectName().startswith("audio_synq_strength_deforum_checkbox") or sender.objectName().startswith("audio_synq_zoom_deforum_checkbox") or sender.objectName().startswith("audio_synq_panlr_deforum_checkbox") or sender.objectName().startswith("audio_synq_panud_deforum_checkbox") or sender.objectName().startswith("audio_synq_rotatev_deforum_checkbox") or sender.objectName().startswith("audio_synq_rotateh_deforum_checkbox") or sender.objectName().startswith("audio_synq_tilt_deforum_checkbox"):
+                    original_component_name = self.deforumationtools.getOriginalComponentName(sender)
+                    self.AudioWaveContainer.handleCheckBoxesGraphSynq(event, sender, original_component_name)
+                elif sender.objectName().startswith("metronome_trigger_over_value_increase_button"):
+                    self.AudioWaveContainer.clicked_metronome_button(sender, event)
+                elif sender.objectName().startswith("metronome_trigger_over_value_decrease_button"):
+                    self.AudioWaveContainer.clicked_metronome_button(sender, event)
+                elif sender.objectName().startswith("metronome_trigger_under_value_increase_button"):
+                    self.AudioWaveContainer.clicked_metronome_button(sender, event)
+                elif sender.objectName().startswith("metronome_trigger_under_value_decrease_button"):
+                    self.AudioWaveContainer.clicked_metronome_button(sender, event)
+                elif sender.objectName().startswith("cadence_audio_line_show_checkbox"):
+                    original_component_name = self.deforumationtools.getOriginalComponentName(sender)
+                    self.AudioWaveContainer.handleCheckBoxesMisc(event, sender, original_component_name)
+                elif sender.objectName().startswith("Save_Audio_Settings"):
+                    self.AudioWaveContainer.clicked_button(sender, event)
+                elif sender.objectName().startswith("Load_Audio_Settings"):
+                    self.AudioWaveContainer.clicked_button(sender, event)
+                elif sender.objectName().startswith("Convert_MP3_to_Wave"):
+                    self.AudioWaveContainer.clicked_button(sender, event)
+                elif sender.objectName().startswith("AutoScroll_checkbox"):
+                    self.VideoImageContainer.handleCheckBoxes(sender,event)
+                elif sender.objectName().startswith("reset_current_graph_button"):
+                    self.AudioWaveContainer.resetGraph()
+                elif sender.objectName().startswith("delete_current_graph_button"):
+                    self.AudioWaveContainer.deleteGraph()
+                elif sender.objectName().startswith("create_audio_beats_button"):
+                    self.AudioWaveContainer.createAudioBeat()
+
                 else:
+                    #self.skipSetMovieSlidePosition = False
                     if self.is_verbose:
                         print("<Not implemented yet>, Button clicked:" + str(object.objectName()))
 

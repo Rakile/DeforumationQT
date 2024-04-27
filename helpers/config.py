@@ -213,7 +213,7 @@ class Deforumation_Settings():
         except Exception as e:
             if self.is_verbose:
                 print("Error getGuiConfigValue, value:" + str(key) + " -- " + str(e))
-        return -1
+        return None
     def getSendConfigValue(self, key):
         try:
             return self.deforumation_settings_send[key]

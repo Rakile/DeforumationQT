@@ -134,7 +134,7 @@ class Deforumation_Joystick():
     control_binding_buttons = {"joystick_panning_left_binding_button":"Pan_L", "joystick_panning_right_binding_button":"Pan_R", "joystick_panning_up_binding_button":"Pan_U", "joystick_panning_down_binding_button":"Pan_D", "joystick_rotate_h_left_binding_button":"Rot_H_L", "joystick_rotate_h_right_binding_button":"Rot_H_R", "joystick_rotate_v_up_binding_button":"Rot_V_U", "joystick_rotate_v_down_binding_button":"Rot_V_D", "joystick_zoom_forwards_binding_button":"Zoom_F", "joystick_zoom_backwards_binding_button":"Zoom_B", "joystick_tilt_cw_bind_button":"Tilt_CW", "joystick_tilt_cc_bind_button":"Tilt_CC"}
     for c_b in control_binding_buttons:
       controller_code = self.deforumation_settings.getGuiConfigValue(c_b)
-      if controller_code != -1:
+      if controller_code != None:
         if not controller_code in self.bindings:
           self.bindings[controller_code] = binding()
           self.bindings[controller_code].bindings_name = control_binding_buttons[c_b]
@@ -175,7 +175,8 @@ class Deforumation_Joystick():
 
   def joystic_selection_changed(self, index):
     self.currentJoystick = self.parent.ui.joystick_combo_box.currentText()
-    print("Changed controller to:" + self.currentJoystick)
+    if self.currentJoystick != "":
+      print("Changed controller to:" + self.currentJoystick)
     #devices = None #Joystick.get_joysticks()
     if self.currentJoystick in self.joystic_device:
       #print("Found it")
@@ -183,69 +184,6 @@ class Deforumation_Joystick():
         self.notInLimbo = False
         self.free_current_joystick()
       self.currentJoystickObject = self.joystic_device[self.currentJoystick]
-
-
-      """font5 = QFont()
-      font5.setPointSize(9)
-      currentGeometry = self.parent.ui.verticalLayoutWidget_4.geometry()
-      new_height_key_name = currentGeometry.height()
-      currentWidth = currentGeometry.width()
-      currentGeometry = self.parent.ui.verticalLayoutWidget_5.geometry()
-      new_height_key_value = currentGeometry.height()
-
-      sizePolicy2 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-      sizePolicy2.setHorizontalStretch(0)
-      sizePolicy2.setVerticalStretch(0)
-      #sizePolicy2.setHeightForWidth(self.parent.ui.splitter.sizePolicy().hasHeightForWidth())
-      #sizePolicy2.setHeightForWidth(self.parent.ui.test_bind_value.sizePolicy().hasHeightForWidth())
-      for control_map in self.abbrevs: #self.currentJoystickObject.controller_mapping:
-        self.joy_key_name = QLabel(self.parent.ui.verticalLayoutWidget_4)
-        self.joy_key_name.setObjectName(u"Key_Map_Name_"+str(control_map))
-        sizePolicy2.setHeightForWidth(self.joy_key_name.sizePolicy().hasHeightForWidth())
-        self.joy_key_name.setSizePolicy(sizePolicy2)
-        self.joy_key_name.setMinimumSize(QSize(0, 0))
-        self.joy_key_name.setText(QCoreApplication.translate("MainWindow", str(control_map), None))
-        self.joy_key_name.setFont(font5)
-        self.joy_key_name.setStyleSheet("background-color: rgb(64, 64, 64);\npadding: 4px; /* To prevent the content from touching the border */\n border-radius: 3px;")
-        self.parent.ui.verticalLayout_JoystickBinding_Key_Name.addWidget(self.joy_key_name)
-        currentGeometry = self.parent.ui.verticalLayoutWidget_4.geometry()
-        new_height_key_name = currentGeometry.height() + 28
-        currentWidth = currentGeometry.width()
-        self.parent.ui.verticalLayoutWidget_4.setGeometry(QRect(0, 4, currentWidth, new_height_key_name))
-
-        #Joystic LineEdits
-        self.joy_key_value = QPushButton(self.parent.ui.verticalLayoutWidget_5)
-        self.joy_key_value.setObjectName(u"Key_Map_Value_"+str(control_map))
-        sizePolicy2.setHeightForWidth(self.joy_key_value.sizePolicy().hasHeightForWidth())
-        self.joy_key_value.setSizePolicy(sizePolicy2)
-        self.joy_key_value.setMinimumSize(QSize(0, 0))
-        self.joy_key_value.setText("")#str(self.currentJoystickObject.controller_mapping[control_map].keyname))
-        self.joy_key_value.setFont(font5)
-        self.joy_key_value.setStyleSheet("QPushButton {\n    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n    border: none;\n    border-radius: 3px; /* Consistent with the tab's rounded corners */\n    padding: 4px; /* Comfortable padding for the button text */\n    color: white; /* White text for contrast */\n    text-align: center;\n\n}\n\nQPushButton:hover {\n    background-color: rgb(96, 96, 96); /* Lighter grey, similar to tab hover effect */\n\n}\n\nQPushButton:pressed {\n    background-color: rgb(128, 128, 128); /* Similar to the selected tab color */\n\n}\n")
-        self.parent.ui.verticalLayout_JoystickBinding_Key_Value.addWidget(self.joy_key_value)
-        currentGeometry = self.parent.ui.verticalLayoutWidget_5.geometry()
-        new_height_key_value = currentGeometry.height() + 28
-        currentWidth = currentGeometry.width()
-        self.parent.ui.verticalLayoutWidget_5.setGeometry(QRect(0, 4, currentWidth, new_height_key_value))
-
-
-      #Fix the size of the scroll area for the joystick binding names
-      currentGeometry2 = self.parent.ui.joystic_bindings_row.geometry()
-      currentWidth2 = currentGeometry2.width()
-      currentGeometry3 = self.parent.ui.joystic_key_bindings_frame_poppable.geometry()
-      currentWidth3 = currentGeometry3.width()
-      self.parent.ui.scrollAreaWidgetContentsJoystickBindings.setMinimumSize(QSize(currentWidth, new_height_key_name+28))
-      self.parent.ui.joystic_bindings_row.setGeometry(5,0, currentWidth2, new_height_key_name)
-      self.parent.ui.joystic_key_bindings_frame_poppable.setGeometry(0,0, currentWidth3, new_height_key_name)
-
-      #Fix the size of the scroll area for the joystick binding values
-      currentGeometry2 = self.parent.ui.joystic_value_bindings_row.geometry()
-      currentWidth2 = currentGeometry2.width()
-      #currentGeometry3 = self.parent.ui.joystic_key_bindings_frame_poppable.geometry()
-      #currentWidth3 = currentGeometry3.width()
-      #self.parent.ui.scrollAreaWidgetContentsJoystickBindings.setMinimumSize(QSize(currentWidth, newHeight))
-      self.parent.ui.joystic_value_bindings_row.setGeometry(144,0, currentWidth2, new_height_key_value)
-      #self.parent.ui.joystic_key_bindings_frame_poppable.setGeometry(0,0, currentWidth3, newHeight)"""
 
     else:
       self.currentJoystickObject = None
