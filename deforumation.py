@@ -9,17 +9,9 @@ import threading
 import time
 
 
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-                            QMetaObject, QObject, QPoint, QRect,
-                            QSize, QTime, QUrl, Qt, QEvent, SIGNAL, Slot, Signal, QGenericArgument, Q_ARG, QThread, QFileInfo, QPointF, QAbstractTableModel, QModelIndex)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-                           QFont, QFontDatabase, QGradient, QIcon,
-                           QImage, QKeySequence, QLinearGradient, QPainter,
-                           QPalette, QPixmap, QRadialGradient, QTransform, QTextDocument, QAbstractTextDocumentLayout,
-                           QTextFrame, QAction, QMouseEvent, QTextCursor)
-from PySide6.QtWidgets import (QApplication, QFrame, QDateEdit, QGridLayout, QStackedLayout, QBoxLayout, QHBoxLayout,
-                               QVBoxLayout, QLabel, QSlider, QLayout, QMainWindow, QMenuBar, QPushButton, QSizePolicy, QStatusBar,
-                               QTabWidget, QTextEdit, QWidget, QDial, QMenu, QScrollArea, QWidgetAction, QLineEdit, QTabBar, QFileDialog, QStackedWidget, QComboBox, QCheckBox)
+from PySide6.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,QSize, Qt, QEvent, Slot, Signal, Q_ARG, QPointF, QAbstractTableModel, QModelIndex)
+from PySide6.QtGui import (QColor, QIcon, QMouseEvent)
+from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel, QSlider, QMainWindow, QPushButton, QWidget, QMenu, QScrollArea, QLineEdit, QTabBar, QFileDialog, QStackedWidget, QComboBox)
 from PySide6 import QtGui
 from PySide6.QtMultimedia import QAudioOutput, QMediaPlayer
 
@@ -29,6 +21,7 @@ from PySide6.QtMultimedia import QAudioOutput, QMediaPlayer
 #     pyside2-uic form.ui -o ui_form.py
 from ui.ui_deforumation import Ui_MainWindow
 from helpers.video_image import Video_Image_Container
+from helpers.audio_wave import Audio_Wave_Container
 from helpers.config import Deforumation_Settings
 from helpers.widget_container import  Deforumation_Widgets
 if sys.platform.startswith('win'):
@@ -68,18 +61,13 @@ class EditableTableModel(QAbstractTableModel):
     def data(self, index, role):
         if role == Qt.DisplayRole or role == Qt.EditRole:
             if index.column() == 0:
-                kalle = index.row()
                 return f"X{index.row() + 1}"
             elif index.column() >= 1:
-                kalle = index.row()
-                arne = self._data[index.row()][index.column() - 1]
                 return self._data[index.row()][index.column() - 1]
         return None
 
     def setData(self, index, value, role):
         if role == Qt.EditRole:
-            kalle = index.row()
-            arne = index.column()
             self._data[index.row()][index.column()-1] = value
             self.dataChanged.emit(index, index)
             return True
@@ -266,11 +254,13 @@ class MainWindow(QMainWindow):
         self.shouldExitLiveView = False
         self.shouldExitOSC = False
         self.skipLiveValues = False
+        self.skipSetMovieSlidePosition = False
         self.noMoreMovement = 1
         self.currentlyShownMovieFrames = 0
         self.currentShownMovieStartIndex = 0
         self.currentSliderPosition = 0
         self.total_number_of_frames_generated = 0
+        self.total_number_of_audiovideo_frames = 0
         self.current_movie_tab_width = 1
         self.current_movie_tab_height = 1
         self.exponential_pan_motion = False
@@ -290,6 +280,7 @@ class MainWindow(QMainWindow):
         self.is_verbose = False
         self.component_is_being_dragged = False
         self.dragged_component = None
+        self.shouldAutoScroll = False
         self.should_use_deforumation_game_mode = False
         self.controller_pan_x_touch_base = True
         self.controller_pan_y_touch_base = True
@@ -340,6 +331,8 @@ class MainWindow(QMainWindow):
         self.deforumationwidgets = Deforumation_Widgets(self, self.deforumation_settings)
         self.deforumationtools = Deforumation_Tools(self, self.deforumationwidgets)
         self.VideoImageContainer = Video_Image_Container(self, self.deforumationnamedpipes, self.deforumation_settings, self.deforumationtools)
+        self.AudioWaveContainer = Audio_Wave_Container(self, self.VideoImageContainer, self.deforumation_settings, self.deforumationnamedpipes, self.deforumationtools)
+        self.AudioWaveContainer.setComponetValues()
         self.DeforumationMotions = Deforumation_Motions(self, self.ui, self.deforumation_settings, self.deforumationwidgets, self.deforumationnamedpipes)
         self.DeforumationMotions.setComponetValues(self.DeforumationTotalRecall.getCurrentTotalRecallFrame())
         self.enumerateAllWidgetsInAllWindows()
@@ -492,6 +485,10 @@ class MainWindow(QMainWindow):
             if self.VideoImageContainer.player != None:
                 self.VideoImageContainer.player.close()
                 self.VideoImageContainer.player = None
+        #Close AudioPlayer if open
+        self.AudioWaveContainer.audioDataContainer.shouldPlayAudio = False
+        self.AudioWaveContainer.audioDataContainer.shouldCloseAudioPlayer = True
+
         #Exit all dettached screens
         if self.detachedPreviewWindow != None:
             self.detachedPreviewWindow.close()
@@ -564,8 +561,11 @@ class MainWindow(QMainWindow):
                     break
                 #print("Setting max value on slider to:" + str(self.total_number_of_frames_generated))
                 self.VideoImageContainer.set_current_image_path_from_mediator()
-                self.ui.movie_slider.setMaximum(int(self.total_number_of_frames_generated/self.VideoImageContainer.getPreviewCompression()))
-
+                self.total_number_of_audiovideo_frames = self.AudioWaveContainer.currentTotalAudioVideoFrames()
+                if self.total_number_of_audiovideo_frames < self.total_number_of_frames_generated:
+                    self.ui.movie_slider.setMaximum(int(self.total_number_of_frames_generated/self.VideoImageContainer.getPreviewCompression()))
+                else:
+                    self.ui.movie_slider.setMaximum(int(self.total_number_of_audiovideo_frames / self.VideoImageContainer.getPreviewCompression()))
                 # Do graphical stuff in a thread-safe way
                 if not self.skipLiveValues:
                     QMetaObject.invokeMethod(self, "setLiveValues_from_thread", Qt.QueuedConnection)
@@ -583,7 +583,12 @@ class MainWindow(QMainWindow):
         print("Live view has been terminated")
         QMetaObject.invokeMethod(self, "close_down", Qt.QueuedConnection)
 
-
+    @Slot()
+    def updateAudioPlayerLine(self):
+        self.AudioWaveContainer.updateAudioPlayerLine()
+    @Slot()
+    def showAudioWave(self):
+        self.AudioWaveContainer.showAudioWave(shouldUpdateAll=True)
     @Slot()
     def setStyleSheet_to_active_safe(self):
         self.Deforumation_Joystick.currentBindingButton.setStyleSheet(u"QPushButton {\n    background-color: rgb(150, 0, 0); /* Matching the tab's base color */\n    border: none;\n    border-radius: 3px; /* Consistent with the tab's rounded corners */\n    padding: 4px; /* Comfortable padding for the button text */\n    color: white; /* White text for contrast */\n    text-align: center;\n\n}\n\nQPushButton:hover {\n    background-color: rgb(96, 96, 96); /* Lighter grey, similar to tab hover effect */\n\n}\n\nQPushButton:pressed {\n    background-color: rgb(128, 128, 128); /* Similar to the selected tab color */\n\n}\n")
@@ -812,7 +817,7 @@ class MainWindow(QMainWindow):
 
     def load_language_file(self):
         file_name = self.deforumation_settings.getGuiConfigValue('language_file')
-        if file_name != -1:
+        if file_name != None:
                 self.deforumation_settings.openLanguageConfig(file=file_name)
                 self.lp = self.deforumation_settings.getLanguageConfiguaration()
                 self.deforumationwidgets.extractLabelWidgetsAndChangeToConfig(self, self.ui.centralwidget, self.lp)
@@ -834,8 +839,19 @@ class MainWindow(QMainWindow):
 
     @Slot()
     def update_movie_strip(self, forceupdate=False):
+
         start_at = self.ui.movie_slider.value()
+        videoCompressionRate = self.VideoImageContainer.getPreviewCompression()
         #print("Starting at:" + str(start_at))
+        #self.setMovieSlidePosition(self.ui.movie_slider_frame_number, self.total_number_of_frames_generated)
+        #self.setMovieSliderFrameNumber(self.ui.movie_slider_frame_number, self.total_number_of_frames_generated)
+        '''print("Number of images shown:" + str(self.currentlyShownMovieFrames*videoCompressionRate))
+        print("self.currentlyShownMovieFrames:" + str(self.currentlyShownMovieFrames))
+        print("start_at" + str(start_at*videoCompressionRate))
+        print("videoCompressionRate" + str(videoCompressionRate))
+        print("Middle frame is:" + str(start_at*videoCompressionRate + int(self.currentlyShownMovieFrames*videoCompressionRate/2)))
+        print("Last frame is:" + str(start_at * videoCompressionRate + int(self.currentlyShownMovieFrames * videoCompressionRate)))'''
+        #if
         for kk in range(0, self.currentlyShownMovieFrames):
             if self.VideoImageContainer.getImage(kk).getpath() == None or (start_at + kk) >= self.total_number_of_frames_generated or forceupdate == True:
                 #print("None Path at image:"+str(kk))
@@ -859,10 +875,21 @@ class MainWindow(QMainWindow):
                 self.VideoImageContainer.getImage(kk).show()
             else:
                 pass
+        # Now show the appropriate audio wave for visible frames with specific FPS
+        showAudioFromFrame = self.ui.movie_slider.value()
+        currentFPS = float(self.ui.replay_fps_input_box.text())
+        self.AudioWaveContainer.showAudioWave(showAudioFromFrame, self.currentlyShownMovieFrames, currentFPS)
+
                 #print(str(kk)+":" + str(self.VideoImageContainer.getImage(kk).getpath()))
         # If any of the currently shown movie frames was clicked, paint the red frame around it
         #for kk in range(0, self.currentlyShownMovieFrames):
         self.VideoImageContainer.preserveSpecialPurposeFrameLooks(0)
+        if self.VideoImageContainer.auto_scroll:
+            last_frame_visible = start_at * videoCompressionRate + int(self.currentlyShownMovieFrames * videoCompressionRate)
+            if self.total_number_of_frames_generated >= last_frame_visible:
+                print("Last frame reached")
+                self.setMovieSlidePosition(self.ui.movie_slider_frame_number, self.total_number_of_frames_generated)
+                self.setMovieSliderFrameNumber(self.ui.movie_slider_frame_number, self.total_number_of_frames_generated)
 
     def setPositionMovieFrame(self, item, imagenumber):
         #print("Size of currentlyShownMovieFrames:" + str(self.currentlyShownMovieFrames))
@@ -878,9 +905,11 @@ class MainWindow(QMainWindow):
                 slider_jump_window = self.currentlyShownMovieFrames
             if item.value() > self.currentSliderPosition:
                 for delIndex in range(0, self.currentlyShownMovieFrames-slider_jump_window):
-                    self.VideoImageContainer.getImage(delIndex).setpixmap(self.VideoImageContainer.getImage(delIndex+slider_jump_window).getpixmap())
-                    self.VideoImageContainer.getImage(delIndex).setpath(self.VideoImageContainer.getImage(delIndex+slider_jump_window).getpath())
+                    #print("Getting image:" + str(delIndex+slider_jump_window))
                     self.VideoImageContainer.getImage(delIndex).setpathnumber(self.VideoImageContainer.getImage(delIndex + slider_jump_window).getpathnumber())
+                    self.VideoImageContainer.getImage(delIndex).setpixmap(self.VideoImageContainer.getImage(delIndex+slider_jump_window).getpixmap(False)) #False))
+                    #self.VideoImageContainer.getImage(delIndex).setpixmap(self.VideoImageContainer.getImage(delIndex + slider_jump_window).getpixmap(False))
+                    self.VideoImageContainer.getImage(delIndex).setpath(self.VideoImageContainer.getImage(delIndex+slider_jump_window).getpath())
                     self.VideoImageContainer.getImage(delIndex).setObjectName(self.VideoImageContainer.getImage(delIndex+slider_jump_window).objectName())
                 for delIndex in range(self.currentlyShownMovieFrames - slider_jump_window, self.currentlyShownMovieFrames):
                     self.VideoImageContainer.getImageGridContainer(delIndex).parentWidget().close()
@@ -903,9 +932,9 @@ class MainWindow(QMainWindow):
                     #print("Jump to great. So need to update all images")
                     slider_jump_window = self.currentlyShownMovieFrames
                 for delIndex in range(self.currentlyShownMovieFrames - 1, slider_jump_window - 1, -1):
-                    self.VideoImageContainer.getImage(delIndex).setpixmap(self.VideoImageContainer.getImage(delIndex - slider_jump_window).getpixmap())
-                    self.VideoImageContainer.getImage(delIndex).setpath(self.VideoImageContainer.getImage(delIndex - slider_jump_window).getpath())
                     self.VideoImageContainer.getImage(delIndex).setpathnumber(self.VideoImageContainer.getImage(delIndex - slider_jump_window).getpathnumber())
+                    self.VideoImageContainer.getImage(delIndex).setpixmap(self.VideoImageContainer.getImage(delIndex - slider_jump_window).getpixmap(False))
+                    self.VideoImageContainer.getImage(delIndex).setpath(self.VideoImageContainer.getImage(delIndex - slider_jump_window).getpath())
                     self.VideoImageContainer.getImage(delIndex).setObjectName(self.VideoImageContainer.getImage(delIndex-slider_jump_window).objectName())
                 for delIndex in range(0, slider_jump_window):
                     self.VideoImageContainer.getImageGridContainer(delIndex).parentWidget().close()
@@ -923,15 +952,28 @@ class MainWindow(QMainWindow):
                     self.ui.movie_tab_grid_layout.addWidget(self.movie_frame, 0, kk, 1, 1)
                     self.VideoImageContainer.getImage(kk).show()
             if self.detachedPreviewWindow != None:
-                self.dettachedPreviewImage.setPixmap(self.VideoImageContainer.getImage(0).getpixmap())
+                self.dettachedPreviewImage.setPixmap(self.VideoImageContainer.getImage(0).getpixmap(False))
 
             #If any of the currently shown movie frames was clicked, paint the red frame around it
             self.VideoImageContainer.preserveSpecialPurposeFrameLooks(0)
             #currentFrameParameters = self.DeforumationTotalRecall.getOriginalFrameParameters(imagenumber)
 
+            # Now show the appropriate audio wave for visible frames with specific FPS
+            showAudioFromFrame = self.ui.movie_slider.value()
+            currentFPS = float(self.ui.replay_fps_input_box.text())
+            self.AudioWaveContainer.showAudioWave(showAudioFromFrame, self.currentlyShownMovieFrames, currentFPS)
+
+            videoCompressionRate = self.VideoImageContainer.getPreviewCompression()
+            '''print("Number of images shown:" + str(self.currentlyShownMovieFrames * videoCompressionRate))
+            print("self.currentlyShownMovieFrames:" + str(self.currentlyShownMovieFrames))
+            print("start_at" + str(showAudioFromFrame* videoCompressionRate))
+            print("videoCompressionRate" + str(videoCompressionRate))
+            print("Middle frame is:" + str(showAudioFromFrame*videoCompressionRate + int(self.currentlyShownMovieFrames * videoCompressionRate / 2)))
+            print("Last frame is:" + str(showAudioFromFrame*videoCompressionRate + int(self.currentlyShownMovieFrames * videoCompressionRate)))'''
+
     def refreshPreviewSliderWindow(self):
         for delIndex in range(0, self.currentlyShownMovieFrames):
-            self.VideoImageContainer.getImage(delIndex).setpixmap(self.VideoImageContainer.getImage(delIndex).getpixmap())
+            self.VideoImageContainer.getImage(delIndex).setpixmap(self.VideoImageContainer.getImage(delIndex).getpixmap(False))
             self.VideoImageContainer.getImage(delIndex).setpath(self.VideoImageContainer.getImage(delIndex).getpath())
             self.VideoImageContainer.getImage(delIndex).setpathnumber(self.VideoImageContainer.getImage(delIndex).getpathnumber())
             self.VideoImageContainer.getImage(delIndex).setObjectName(self.VideoImageContainer.getImage(delIndex).objectName())
@@ -953,6 +995,11 @@ class MainWindow(QMainWindow):
 
             self.VideoImageContainer.preserveSpecialPurposeFrameLooks(0)
 
+        # Now show the appropriate audio wave for visible frames with specific FPS
+        showAudioFromFrame = self.ui.movie_slider.value()
+        currentFPS = int(self.ui.replay_fps_input_box.text())
+        self.AudioWaveContainer.showAudioWave(showAudioFromFrame, self.currentlyShownMovieFrames, currentFPS)
+
     def createAcontextMenu(self, event, menuOptions, triggerEvent, identifier):
         context_menu = QMenu(self)
         action = []
@@ -964,7 +1011,6 @@ class MainWindow(QMainWindow):
         context_menu.popup(event.globalPosition().toPoint())
 
     def clicked_image_menue(self, event, identifier):
-        arne = event.button()
         if event.button().name == "RightButton":
             self.createAcontextMenu(event, ["Set current image & Copy it's original values", "Set current image", "Copy this image's original values to Deforumation", "Get this image's prompt", "Get active prompt", "Mark FFMPEG Preview, IN", "Mark FFMPEG Preview, OUT", "Clear FFMPEG Preview"], self.on_action_popup_preview_image_triggered, identifier)
 
@@ -1017,8 +1063,8 @@ class MainWindow(QMainWindow):
         current_preview_dettached_window_size = event.size()
         frameSize = self.VideoImageContainer.getImage(0).getpixmap().size()
         framesizeScaledWidth = (frameSize.width() / frameSize.height()) * current_preview_dettached_window_size.height()
-        shouldusethisheight = current_preview_dettached_window_size.height()  # int(frameSize.height() / 4)
-        shouldusethiswidth = framesizeScaledWidth  # in
+        shouldusethisheight = int(current_preview_dettached_window_size.height()) # int(frameSize.height() / 4)
+        shouldusethiswidth = int(framesizeScaledWidth)  # in
 
         self.detachedPreviewWindow.resize(QSize(shouldusethiswidth,shouldusethisheight))
         event.accept()
@@ -1039,7 +1085,7 @@ class MainWindow(QMainWindow):
                 self.detachedPreviewWindow = QMainWindow()
                 self.detachedPreviewWindow.setWindowTitle("Preview")
                 self.dettachedPreviewImage = QLabel()
-                image = self.VideoImageContainer.getImage(0).getpixmap()
+                image = self.VideoImageContainer.getImage(0).getpixmap(False)
                 self.dettachedPreviewImage.setMinimumSize(QSize(64,64))
                 self.dettachedPreviewImage.setScaledContents(True)
                 self.dettachedPreviewImage.setPixmap(image)
@@ -1146,7 +1192,7 @@ class MainWindow(QMainWindow):
                 print("Couldn't find configuration key:" + str(e))
     def setCurrentTabPosition(self):
         tabIndex = self.deforumation_settings.getGuiConfigValue("current_tab_index")
-        if tabIndex == -1:
+        if tabIndex == None:
             tabIndex = 0
         #print("Current tab index:" + str(tabIndex))
         self.ui.deforumation_tabWidget.setCurrentIndex(tabIndex)
@@ -1183,7 +1229,7 @@ class MainWindow(QMainWindow):
         self.p["Tab_Tabs_ScreenSizeWidth"] = self.ui.Tab_Tabs.width()
         self.p["Tab_Tabs_ScreenSizeHeight"] = self.ui.Tab_Tabs.height()
         sizes = self.ui.splitter.sizes()
-        self.p["Left_Splitter"] = [sizes[0], sizes[1], sizes[2]]
+        self.p["Left_Splitter"] = [sizes[0], sizes[1], sizes[2], sizes[3]]
         sizes = self.ui.splitter_2.sizes()
         self.p["Right_Splitter"] = [sizes[0], sizes[1]]
         sizes = self.ui.splitter_3.sizes()
@@ -1238,6 +1284,7 @@ class MainWindow(QMainWindow):
             sizes[0] = stored_sizes[0]
             sizes[1] = stored_sizes[1]
             sizes[2] = stored_sizes[2]
+            sizes[3] = stored_sizes[3]
             self.ui.splitter.setSizes(sizes)
 
             #Splitter of the Right frames
@@ -1355,6 +1402,7 @@ class MainWindow(QMainWindow):
                 for kk in range(self.currentlyShownMovieFrames, self.currentlyShownMovieFrames + extraFrames):
                     self.VideoImageContainer.addImage(kk, click_callback=self.clicked_image, clicked_image_menue=self.clicked_image_menue, image_path_number=kk + self.ui.movie_slider.value(), total_number_of_frames_generated=self.total_number_of_frames_generated)
                     self.movie_frame = QFrame(self.ui.movie_clip)
+                    #self.movie_frame_number = QFrame(self.ui.movie_clip_frame_number)
                     self.movie_frame.setObjectName(f"movie_frame_{kk}")
                     self.movie_frame.setFrameShape(QFrame.StyledPanel)
                     self.movie_frame.setFrameShadow(QFrame.Raised)
@@ -1371,8 +1419,27 @@ class MainWindow(QMainWindow):
 
                     self.VideoImageContainer.removeImageGridContainer(delIndex)
                     self.VideoImageContainer.removeImage(delIndex)
+
+
+            '''if shouldusethismany != self.currentlyShownMovieFrames:
+                #self.ui.movie_clip_frame_number.setMinimumWidth(24+shouldusethismany*shouldusethiswidth)
+                #for kk in range(0, self.currentlyShownMovieFrames):
+                #self.ui.movie_clip_frame_number.clear()
+                self.frameLabelString = QLabel()
+                self.frameLabelString.setText("1")
+                self.frameLabelString.setMinimumWidth(shouldusethiswidth)
+                self.frameLabelString.setMaximumWidth(shouldusethiswidth)
+                for kk in range(0, shouldusethismany):
+                    self.ui.movie_clip_frame_number_grid.addWidget(self.frameLabelString, 0, kk, 1, 1)'''
+
+
             self.currentlyShownMovieFrames = shouldusethismany
             self.VideoImageContainer.preserveSpecialPurposeFrameLooks(0)
+
+            #Now show the appropriate audio wave for visible frames with specific FPS
+            showAudioFromFrame = self.ui.movie_slider.value()
+            currentFPS = int(self.ui.replay_fps_input_box.text())
+            self.AudioWaveContainer.showAudioWave(showAudioFromFrame, shouldusethismany, currentFPS)
 
         # Save the new window sizes for the settings file
         QMainWindow.resizeEvent(self, event)
@@ -1456,24 +1523,53 @@ class MainWindow(QMainWindow):
         global ShouldOnlyRestartDeforumationGui
 
         if object == self:
+            if event.type() == QEvent.KeyPress:
+                if event.key() == Qt.Key_Shift:
+                    self.AudioWaveContainer.setSpecialKey("Shift", True)
+                elif event.key() == Qt.Key_Control:
+                    self.AudioWaveContainer.setSpecialKey("Control", True)
+                elif event.key() == Qt.Key_Alt:
+                    self.AudioWaveContainer.setSpecialKey("Alt", True)
+                elif event.key() == Qt.Key_Delete:
+                    self.AudioWaveContainer.setSpecialKey("Delete", True)
+                elif event.key() == Qt.Key_A:
+                    self.AudioWaveContainer.setSpecialKey("a_key", True)
+                elif event.key() == Qt.Key_C:
+                    self.AudioWaveContainer.setSpecialKey("c_key", True)
+                elif event.key() == Qt.Key_V:
+                    self.AudioWaveContainer.setSpecialKey("v_key", True)
+                elif event.key() == Qt.Key_Space:
+                    self.AudioWaveContainer.togglePlayAudio()
+                elif event.key() == Qt.Key_Return:
+                    self.AudioWaveContainer.togglePlayAudioRememberStartPosition()
+
             if event.type() == QEvent.KeyRelease:
                 if event.key() == Qt.Key_Delete or event.key() == Qt.Key_Backspace:
-                    #print("Inside object:" + str(object))
-                    #print("Removing joystic Binding")
                     self.Deforumation_Joystick.abort_joystick_event(1337)
                 elif event.key() == Qt.Key_Escape:
                     #print("No changes made, aborting joystick binding")
                     self.Deforumation_Joystick.abort_joystick_event(1338)
+                elif event.key() == Qt.Key_Shift:
+                    self.AudioWaveContainer.setSpecialKey("Shift", False)
+                    #print("Releasing shift")
+                elif event.key() == Qt.Key_Control:
+                    self.AudioWaveContainer.setSpecialKey("Control", False)
+                    #print("Releasing control")
+                elif event.key() == Qt.Key_Alt:
+                    self.AudioWaveContainer.setSpecialKey("Alt", False)
+                    #print("Releasing Alt")
+
+
 
 
         #Handle all events (done in helpers/events.py)
-        handleEvent(self, object, event)
+        handledStatus = handleEvent(self, object, event)
 
         #Some special values that need to be set in the main deforumation gui
         ShouldRestoreOriginalDeforumationGui = self.ShouldRestoreOriginalDeforumationGui
         ShouldOnlyRestartDeforumationGui = self.ShouldOnlyRestartDeforumationGui
 
-        return False
+        return handledStatus
 
     def makeDeforumationMainWindowOnTop(self, shouldBeOnTop):
         self.setWindowFlag(Qt.WindowStaysOnTopHint, shouldBeOnTop)
@@ -1549,19 +1645,29 @@ class MainWindow(QMainWindow):
                 realPos.setY(y)
                 widget.move(realPos) # - self.ui.cookie_button.rect().center())
 
-    def setMovieSlidePosition(self, item, imageNumber):
-        self.setPositionMovieFrame(item, imageNumber)
-        for sliderwidgets in self.deforumationwidgets.getWidgetContainer():
-            if sliderwidgets.startswith("movie_slider"):
-                if type(self.deforumationwidgets.getWidgetContainer()[sliderwidgets].widget) == QSlider:
-                    self.deforumationwidgets.getWidgetContainer()[sliderwidgets].widget.setValue(imageNumber)
-
+    def setMovieSlidePosition(self, item, imageNumber, specialAudioNumber=None):
+        videoCompressionRate = self.VideoImageContainer.getPreviewCompression()
+        sliderNumber = int((imageNumber - imageNumber % videoCompressionRate) / videoCompressionRate)
+        if videoCompressionRate != 1:
+            pass
+        if specialAudioNumber == None:
+            self.setPositionMovieFrame(item, imageNumber)
+        else:
+            self.setPositionMovieFrame(item, specialAudioNumber)
+        if not item.objectName() == ("movie_slider"):
+            for sliderwidgets in self.deforumationwidgets.getWidgetContainer():
+                if sliderwidgets.startswith("movie_slider"):
+                    if type(self.deforumationwidgets.getWidgetContainer()[sliderwidgets].widget) == QSlider:
+                        if specialAudioNumber == None:
+                            self.deforumationwidgets.getWidgetContainer()[sliderwidgets].widget.setValue(sliderNumber) #imageNumber)
+                        else:
+                            self.deforumationwidgets.getWidgetContainer()[sliderwidgets].widget.setValue(specialAudioNumber)
     def setMovieSliderFrameNumber(self, item, imageNumber):
         self.ui.movie_slider_frame_number.setText(str(imageNumber))
         for slidertextwidgets in self.deforumationwidgets.getWidgetContainer():
             if slidertextwidgets.startswith("movie_slider_frame_number"):
                 if type(self.deforumationwidgets.getWidgetContainer()[slidertextwidgets].widget) == QLineEdit:
-                    self.deforumationwidgets.getWidgetContainer()[slidertextwidgets].widget.setText(str(imageNumber))
+                    self.deforumationwidgets.getWidgetContainer()[slidertextwidgets].widget.setText(str(imageNumber))#*self.VideoImageContainer.preview_compression_rate))
 
 
     def mousePressEventMorphPromptLabelStandard(self, event, action, popMenu):
@@ -1689,7 +1795,8 @@ def get_local_ip():
         return s.getsockname()[0]
 
 if __name__ == "__main__":
-    patreons = "Chris Barnes, 鑫涛 李, Mintercraft Media, Mizar, 红军 陆, Eddie Wong, Thomas DeColita, Dmitry, Dmitry,\n"
+
+    patreons = "Onebit, Chris Barnes, 鑫涛 李, Mintercraft Media, Mizar, 红军 陆, Eddie Wong, Thomas DeColita, Dmitry, Dmitry,\n"
     " Милена Куприна, Jarkabob French, 雨 刘, kimraven, Itzevil, Apollo R.E.D., Michael, Dustin johnsen,\n"
     "wildpusa, ein5tv, eku Zhombi, Davy Smith, Anup prabhakar, Baptiste Perrin, virusvjvisuals, make shimis,\n"
     "Jags, Wrenn Bunker-Koesters, esfera, cheng bei, le000dv, Justin Weiss, Sergiy Dovgal, Pistons&Volts,\n"

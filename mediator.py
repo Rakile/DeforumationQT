@@ -25,8 +25,8 @@ deforum_steps = 25
 strength_value = 0.65
 deforum_strength = 0.65
 # Keyframes/CFG
-cfg_scale = 6
-deforum_cfg = 6
+cfg_scale = 6.0
+deforum_cfg = 6.0
 # Keyframes/3D/Motion
 rotation_x = 0.0
 rotation_y = 0.0
@@ -73,6 +73,9 @@ should_use_deforumation_tilt = 1
 cadence = 2
 deforum_cadence = 2
 should_use_optical_flow = 1
+should_use_deforumation_graph = {"Strength":0,"Zoom":0,"PanLR":0,"PanUD":0,"RotateH":0,"RotateV":0,"Tilt":0}
+deforumation_graph = {"Strength":[],"Zoom":[],"PanLR":[],"PanUD":[],"RotateH":[],"RotateV":[],"Tilt":[]}
+deforumation_graph_xshift = {"Strength":0,"Zoom":0,"PanLR":0,"PanUD":0,"RotateH":0,"RotateV":0,"Tilt":0}
 cadence_flow_factor = 1
 generation_flow_factor = 1
 
@@ -471,7 +474,7 @@ class ParameterContainer():
     deforum_rotation_z = 0
     deforum_fov = 70
     deforum_strength = 0.65
-    deforum_cfg = 6
+    deforum_cfg = 6.0
     deforum_steps = 25
     deforum_cadence = 2
     deforum_perlin_octaves = 4
@@ -482,7 +485,7 @@ class ParameterContainer():
     # Keyframes/Strength
     strength_value = 0.65
     # Keyframes/CFG
-    cfg_scale = 6
+    cfg_scale = 6.0
     # Keyframes/3D/Motion
     rotation_x = 0.0
     rotation_y = 0.0
@@ -763,8 +766,14 @@ def doSyrup():
 
     # ZERO PROMPT MORPH
     current_prompt_morph_progressions = []
+    might_have_to_remove_these_prompt_morphs = []
     for morphs in prepare_prompt_morph_motion_container:
-        prepare_prompt_morph_motion_start_value = prepare_prompt_morph_motion_start_container[morphs]
+        if morphs in prepare_prompt_morph_motion_start_container:
+            prepare_prompt_morph_motion_start_value = prepare_prompt_morph_motion_start_container[morphs]
+        else:
+            print("The motion has disappeared for morph:" + str(morphs) + ". This can happen if the an ongoing prompt morph is deleted while also doing a smooth motion that has not completed yet. Removing from container.")
+            might_have_to_remove_these_prompt_morphs.append(morphs)
+            continue
         if len(prepare_prompt_morph_motion_container[morphs]) > 0:
             if start_prompt_morph_motion_container[morphs] == 1 and (frame_idx < (prepare_prompt_morph_motion_start_value + len(prepare_prompt_morph_motion_container[morphs]))):
                 if (frame_idx >= prepare_prompt_morph_motion_start_value):
@@ -787,6 +796,11 @@ def doSyrup():
                 start_prompt_morph_motion_container[morphs] = -1
                 if doVerbose:
                     print("0-morph motion "+str(morphs)+" complete")
+    #Clean old morphs
+    for morph in might_have_to_remove_these_prompt_morphs:
+        if morph in prepare_prompt_morph_motion_container:
+            del prepare_prompt_morph_motion_container[morph]
+            print("Cleaned up old morph:" + str(morph))
 
 
 
@@ -916,6 +930,9 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
     global use_deforumation_cadence_scheduling
     global deforumation_cadence_scheduling_manifest
     global should_use_optical_flow
+    global deforumation_graph
+    global should_use_deforumation_graph
+    global deforumation_graph_xshift
     global cadence_flow_factor
     global generation_flow_factor
     global should_use_total_recall
@@ -1411,7 +1428,24 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
             else:
                 if doVerbose:
                     print("sending translation_x:" + str(translation_x))
-                totalToSend.append((str(translation_x)))
+                if should_use_deforumation_graph["PanLR"]:
+                    xshift = deforumation_graph_xshift["PanLR"]
+                    if start_frame > 0:
+                        realIdx = start_frame+1
+                    else:
+                        realIdx = start_frame
+                    if (len(deforumation_graph["PanLR"]) + xshift) > realIdx:
+                        if xshift <= realIdx:
+                            realIdx = realIdx - xshift
+                            value_from_graph = deforumation_graph["PanLR"][realIdx]
+                            #print("Sending PanLR value to deforum:" + str(value_from_graph) + " (realIdx:"+str(realIdx)+")")
+                            totalToSend.append((str(value_from_graph)))
+                        else:
+                            value_from_graph = deforumation_graph["PanLR"][0]
+                            #print("Graph uses [0] because of xshift:" + str(value_from_graph) + " (realIdx:" + str(realIdx) + ")")
+                            totalToSend.append((str(value_from_graph)))
+                else:
+                    totalToSend.append((str(translation_x)))
 
         elif str(parameter) == "translation_y":
             if shouldWrite:
@@ -1425,7 +1459,24 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
             else:
                 if doVerbose:
                     print("sending translation_y:" + str(translation_y))
-                totalToSend.append((str(translation_y)))
+                if should_use_deforumation_graph["PanUD"]:
+                    xshift = deforumation_graph_xshift["PanUD"]
+                    if start_frame > 0:
+                        realIdx = start_frame+1
+                    else:
+                        realIdx = start_frame
+                    if (len(deforumation_graph["PanUD"]) + xshift) > realIdx:
+                        if xshift <= realIdx:
+                            realIdx = realIdx - xshift
+                            value_from_graph = deforumation_graph["PanUD"][realIdx]
+                            #print("Sending PanUD value to deforum:" + str(value_from_graph) + " (realIdx:"+str(realIdx)+")")
+                            totalToSend.append((str(value_from_graph)))
+                        else:
+                            value_from_graph = deforumation_graph["PanUD"][0]
+                            #print("Graph uses [0] because of xshift:" + str(value_from_graph) + " (realIdx:" + str(realIdx) + ")")
+                            totalToSend.append((str(value_from_graph)))
+                else:
+                    totalToSend.append((str(translation_y)))
 
         elif str(parameter) == "translation_z":
             if shouldWrite:
@@ -1439,7 +1490,24 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
             else:
                 if doVerbose:
                     print("sending translation_z:" + str(translation_z))
-                totalToSend.append((str(translation_z)))
+                if should_use_deforumation_graph["Zoom"]:
+                    xshift = deforumation_graph_xshift["Zoom"]
+                    if start_frame > 0:
+                        realIdx = start_frame+1
+                    else:
+                        realIdx = start_frame
+                    if (len(deforumation_graph["Zoom"]) + xshift) > realIdx:
+                        if xshift <= realIdx:
+                            realIdx = realIdx - xshift
+                            value_from_graph = deforumation_graph["Zoom"][realIdx]
+                            #print("Sending zoom value to deforum:" + str(value_from_graph) + " (realIdx:"+str(realIdx)+")")
+                            totalToSend.append((str(value_from_graph)))
+                        else:
+                            value_from_graph = deforumation_graph["Zoom"][0]
+                            #print("Graph uses [0] because of xshift:" + str(value_from_graph) + " (realIdx:" + str(realIdx) + ")")
+                            totalToSend.append((str(value_from_graph)))
+                else:
+                    totalToSend.append((str(translation_z)))
         # What Deforum thinks it has for Translation
         elif str(parameter) == "deforum_translation_x":
             if shouldWrite:
@@ -1503,7 +1571,24 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
             else:
                 if doVerbose:
                     print("sending rotation_x:" + str(rotation_x))
-                totalToSend.append((str(rotation_x)))
+                if should_use_deforumation_graph["RotateV"]:
+                    xshift = deforumation_graph_xshift["RotateV"]
+                    if start_frame > 0:
+                        realIdx = start_frame+1
+                    else:
+                        realIdx = start_frame
+                    if (len(deforumation_graph["RotateV"]) + xshift) > realIdx:
+                        if xshift <= realIdx:
+                            realIdx = realIdx - xshift
+                            value_from_graph = deforumation_graph["RotateV"][realIdx]
+                            #print("Sending RotateV value to deforum:" + str(value_from_graph) + " (realIdx:"+str(realIdx)+")")
+                            totalToSend.append((str(value_from_graph)))
+                        else:
+                            value_from_graph = deforumation_graph["RotateV"][0]
+                            #print("Graph uses [0] because of xshift:" + str(value_from_graph) + " (realIdx:" + str(realIdx) + ")")
+                            totalToSend.append((str(value_from_graph)))
+                else:
+                    totalToSend.append((str(rotation_x)))
         elif str(parameter) == "rotation_y":
             if shouldWrite:
                 if not should_use_total_recall or (should_use_total_recall and not should_use_total_recall_movements):
@@ -1516,7 +1601,24 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
             else:
                 if doVerbose:
                     print("sending rotation_y:" + str(rotation_y))
-                totalToSend.append((str(rotation_y)))
+                if should_use_deforumation_graph["RotateH"]:
+                    xshift = deforumation_graph_xshift["RotateH"]
+                    if start_frame > 0:
+                        realIdx = start_frame+1
+                    else:
+                        realIdx = start_frame
+                    if (len(deforumation_graph["RotateH"]) + xshift) > realIdx:
+                        if xshift <= realIdx:
+                            realIdx = realIdx - xshift
+                            value_from_graph = deforumation_graph["RotateH"][realIdx]
+                            #print("Sending RotateH value to deforum:" + str(value_from_graph) + " (realIdx:"+str(realIdx)+")")
+                            totalToSend.append((str(value_from_graph)))
+                        else:
+                            value_from_graph = deforumation_graph["RotateH"][0]
+                            #print("Graph uses [0] because of xshift:" + str(value_from_graph) + " (realIdx:" + str(realIdx) + ")")
+                            totalToSend.append((str(value_from_graph)))
+                else:
+                    totalToSend.append((str(rotation_y)))
         elif str(parameter) == "rotation_z":
             if shouldWrite:
                 if not should_use_total_recall or (should_use_total_recall and not should_use_total_recall_movements):
@@ -1529,7 +1631,24 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
             else:
                 if doVerbose:
                     print("sending rotation_z:" + str(rotation_z))
-                totalToSend.append((str(rotation_z)))
+                if should_use_deforumation_graph["Tilt"]:
+                    xshift = deforumation_graph_xshift["Tilt"]
+                    if start_frame > 0:
+                        realIdx = start_frame+1
+                    else:
+                        realIdx = start_frame
+                    if (len(deforumation_graph["Tilt"]) + xshift) > realIdx:
+                        if xshift <= realIdx:
+                            realIdx = realIdx - xshift
+                            value_from_graph = deforumation_graph["Tilt"][realIdx]
+                            #print("Sending Tilt value to deforum:" + str(value_from_graph) + " (realIdx:"+str(realIdx)+")")
+                            totalToSend.append((str(value_from_graph)))
+                        else:
+                            value_from_graph = deforumation_graph["Tilt"][0]
+                            #print("Graph uses [0] because of xshift:" + str(value_from_graph) + " (realIdx:" + str(realIdx) + ")")
+                            totalToSend.append((str(value_from_graph)))
+                else:
+                    totalToSend.append((str(rotation_z)))
         # FOV Params
         ###########################################################################
         elif str(parameter) == "fov":
@@ -1552,7 +1671,7 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
         ###########################################################################
         elif str(parameter) == "cfg":
             if shouldWrite:
-                cfg_scale = int(value)
+                cfg_scale = float(value)
             else:
                 if doVerbose:
                     print("sending CFG:" + str(cfg_scale))
@@ -1561,7 +1680,7 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
         ###########################################################################
         elif str(parameter) == "deforum_cfg":
             if shouldWrite:
-                deforum_cfg = int(value)
+                deforum_cfg = float(value)
             else:
                 if doVerbose:
                     print("sending deforum_cfg:" + str(deforum_cfg))
@@ -1574,7 +1693,26 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
             else:
                 if doVerbose:
                     print("sending STRENGTH:" + str(strength_value))
-                totalToSend.append((str(strength_value)))
+                if should_use_deforumation_graph["Strength"]:
+                    xshift = deforumation_graph_xshift["Strength"]
+                    if start_frame > 0:
+                        realIdx = start_frame+1
+                    else:
+                        realIdx = start_frame
+                    if (len(deforumation_graph["Strength"]) + xshift) > realIdx:
+                        if xshift <= realIdx:
+                            realIdx = realIdx - xshift
+                            value_from_strength_graph = deforumation_graph["Strength"][realIdx]
+                            print("Sending strengh value to deforum:" + str(value_from_strength_graph) + " (realIdx:"+str(realIdx)+")")
+                            totalToSend.append((str(value_from_strength_graph)))
+                        else:
+                            value_from_strength_graph = deforumation_graph["Strength"][0]
+                            #print("Graph uses [0] because of xshift:" + str(value_from_strength_graph) + " (realIdx:" + str(realIdx) + ")")
+                            totalToSend.append((str(value_from_strength_graph)))
+                    else:
+                        totalToSend.append((str(strength_value)))
+                else:
+                    totalToSend.append((str(strength_value)))
         # What Deforum think the Strength Value is
         ###########################################################################
         elif str(parameter) == "deforum_strength":
@@ -2390,6 +2528,50 @@ async def handleMesssage(arr, pipe = None, pipeName = None, websocketCommunicati
                 if doVerbose2:
                     print("sending generation_flow_factor:" + str(generation_flow_factor))
                 totalToSend.append((str(generation_flow_factor)))
+        ######## Here Audio Synq Graphs are handled
+        elif str(parameter) == "should_use_deforumation_graph":
+            graph_types = ["Strength", "Zoom", "PanLR", "PanUD", "RotateH", "RotateV", "Tilt"]
+            if shouldWrite:
+                if value[0] in graph_types:
+                    should_use_deforumation_graph[value[0]] = value[1]
+                else:
+                    print("ERROR in should_use_deforumation_graph! Cant set graph " + str(value[0]) + "   ---- NO SUCH GRAPH exists!")
+            else:
+                if doVerbose2:
+                    print("sending should_use_deforumation_graph:")
+                if value in graph_types:
+                    totalToSend.append((str(should_use_deforumation_graph[value])))
+                else:
+                    print("ERROR in should_use_deforumation_graph! NO SUCH GRAPH exists:" + str(value))
+
+        elif str(parameter) == "set_deforumation_graph":
+            graph_types = ["Strength", "Zoom", "PanLR", "PanUD", "RotateH", "RotateV", "Tilt"]
+            if shouldWrite:
+                if value[0] in graph_types:
+                    deforumation_graph[value[0]] = value[1]
+                #print("Received:" + str(deforumation_graph[value[0]]))
+            else:
+                if doVerbose2:
+                    print("sending deforumation_graph:")
+                if value in graph_types:
+                    totalToSend.append((str(deforumation_graph[value])))
+                else:
+                    print("ERROR in set_deforumation_graph! NO SUCH GRAPH exists:" + str(value))
+
+        elif str(parameter) == "deforumation_graph_xshift":
+            graph_types = ["Strength", "Zoom", "PanLR", "PanUD", "RotateH", "RotateV", "Tilt"]
+            if shouldWrite:
+                if value[0] in graph_types:
+                    deforumation_graph_xshift[value[0]] = value[1]
+                #print("Received:" + str(deforumation_graph_xshift[value[0]]))
+            else:
+                if doVerbose2:
+                    print("sending deforumation_graph_xshift:")
+                if value in graph_types:
+                    totalToSend.append((str(deforumation_graph_xshift[value])))
+                else:
+                    print("ERROR in deforumation_graph_xshift! NO SUCH GRAPH exists:" + str(value))
+        ##############
         elif str(parameter) == "deforum_interrupted":
             if shouldWrite:
                 deforum_interrupted = value
@@ -2539,7 +2721,7 @@ async def main_websockets(host, port):
 
 
 if __name__ == '__main__':
-    patreons = "Chris Barnes, 鑫涛 李, Mintercraft Media, Mizar, 红军 陆, Eddie Wong, Thomas DeColita, Dmitry, Dmitry,\n"
+    patreons = "Onebit, Chris Barnes, 鑫涛 李, Mintercraft Media, Mizar, 红军 陆, Eddie Wong, Thomas DeColita, Dmitry, Dmitry,\n"
     " Милена Куприна, Jarkabob French, 雨 刘, kimraven, Itzevil, Apollo R.E.D., Michael, Dustin johnsen,\n"
     "wildpusa, ein5tv, eku Zhombi, Davy Smith, Anup prabhakar, Baptiste Perrin, virusvjvisuals, make shimis,\n"
     "Jags, Wrenn Bunker-Koesters, esfera, cheng bei, le000dv, Justin Weiss, Sergiy Dovgal, Pistons&Volts,\n"
@@ -2586,14 +2768,14 @@ if __name__ == '__main__':
         if isWindows:
             import win32pipe, win32file, pywintypes
             shouldUseNamedPipes = True
-            print("Starting DMQT Mediator with Named Pipes communication, version 0.1.5")
+            print("Starting DMQT Mediator with Named Pipes communication, version 0.1.8")
         else:
             shouldUseNamedPipes = False
-            print("Named DMQT Pipes communication is only supported on Windows OS, version 0.1.5... exiting..")
+            print("Named DMQT Pipes communication is only supported on Windows OS, version 0.1.8... exiting..")
             exit(0)
     else:
         shouldUseNamedPipes = False
-        print("Starting DMQT Mediator (version 0.1.5) with WebSocket communication, listening for Deforum at " + args.mediator_deforum_address + ":" + args.mediator_deforum_port + ", version 0.7.7")
+        print("Starting DMQT Mediator (version 0.1.8) with WebSocket communication, listening for Deforum at " + args.mediator_deforum_address + ":" + args.mediator_deforum_port + ", version 0.7.7")
         print("   -- And listening for Deforumation at " + args.mediator_deforumation_address + ":" + args.mediator_deforumation_port + ", version 0.7.7")
         print("Connecting to Deforumation's live view server using " + args.deforumation_address + ":" + args.deforumation_port)
         deforumation_address = args.deforumation_address

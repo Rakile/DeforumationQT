@@ -6,3 +6,8 @@ websockets~=12.0
 python-osc~=1.8.3
 inputs~=0.5
 pyjoystick~=1.2.4
+pyqtgraph~=0.13.3
+pyaudio
+pydub
+librosa~=0.10.1
+scipy~=1.11.4
