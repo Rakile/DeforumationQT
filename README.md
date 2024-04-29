@@ -45,6 +45,9 @@ OSC support for prompt morphing, controled VIA bind name (See example in Example
 ## Misc Tabs for customizable layouts
 <img src="github_images/misc_a-b.png">
 
+## Audio Tab with Audio Synq
+<img src="github_images/Audio_Synq.png">
+
 
  # Video running DeforumationQT version 0.1.0 New video soon to arrive! #
 [<img src="github_images/DMQTyou.png" width="50%">](https://youtu.be/1VGWA-sWiEk "DeforumationQT v.0.1.0  Quickrun, installation and functions video.")
