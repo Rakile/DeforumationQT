@@ -1,5 +1,5 @@
 # DeforumationQT Version 0.1.8 #
-
+!PS To see tutorials on how to use DeforumationQT, please refere to @lainols youtube channell: https://www.youtube.com/@lainolkar/videos 
 
 This release includes:
 Smooth motion to prompt morphing
