@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>2053</width>
-    <height>840</height>
+    <width>1968</width>
+    <height>1125</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -17,7 +17,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Deforumation QT v 0.1.8</string>
+   <string>Deforumation QT v 0.1.9</string>
   </property>
   <property name="toolTip">
    <string/>
@@ -510,8 +510,8 @@ border: none;/* No background for the scrollable area behind the handle */
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>255</width>
-                      <height>330</height>
+                      <width>270</width>
+                      <height>390</height>
                      </rect>
                     </property>
                     <property name="minimumSize">
@@ -919,7 +919,7 @@ QLineEdit {
 }</string>
                         </property>
                         <property name="text">
-                         <string>20</string>
+                         <string>-1</string>
                         </property>
                        </widget>
                        <widget class="QLineEdit" name="fixedSeed_Inputbox">
@@ -963,7 +963,7 @@ QLineEdit {
 }</string>
                         </property>
                         <property name="text">
-                         <string>20</string>
+                         <string>0</string>
                         </property>
                        </widget>
                        <widget class="QRadioButton" name="random_RadioButton">
@@ -1054,7 +1054,7 @@ QLineEdit {
 }</string>
                         </property>
                         <property name="text">
-                         <string>20</string>
+                         <string>1</string>
                         </property>
                        </widget>
                        <widget class="QLabel" name="seed_iter_n">
@@ -1675,8 +1675,8 @@ border: none;/* No background for the scrollable area behind the handle */
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>259</width>
-                      <height>390</height>
+                      <width>274</width>
+                      <height>526</height>
                      </rect>
                     </property>
                     <property name="sizePolicy">
@@ -4575,295 +4575,22 @@ color: white;
                      <number>0</number>
                     </property>
                     <item row="0" column="8">
-                     <widget class="QCheckBox" name="AutoScroll_checkbox">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>34</width>
-                        <height>22</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>34</width>
-                        <height>22</height>
-                       </size>
-                      </property>
-                      <property name="baseSize">
-                       <size>
-                        <width>0</width>
-                        <height>0</height>
-                       </size>
+                     <widget class="QLabel" name="autoscroll_label">
+                      <property name="font">
+                       <font>
+                        <bold>true</bold>
+                       </font>
                       </property>
                       <property name="toolTip">
                        <string>Enable or disable auto scroll of movie strip. When the rendered frame goes outside the visible range,
 it automatically scrolls into view, keeping up with the currently rendered frame.</string>
                       </property>
-                      <property name="statusTip">
-                       <string>Enable or disable live panning control.</string>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QCheckBox {
-    border: none; /* No border for the checkbox */
-background-color: transparent ; /* Fallback color */
-}
-
-QCheckBox::indicator {
-    width: 54px; /* Width of the checkbox */
-    height: 29px; /* Height of the checkbox */
-    background-color: transparent; /* Ensures background is transparent */
-border: none; /* No border for the checkbox */
-}
-
-QCheckBox::indicator:unchecked {
-    background-image: url(images/check_off_small.png); /* Image for unchecked state */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-background-position: left; /* Left the image */
-border: none; /* No border for the checkbox */
-}
-
-QCheckBox::indicator:checked {
-    background-image: url(images/check_on_small.png); /* Image for checked state */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-background-position: left; /* Left the image */
-border: none; /* No border for the checkbox */
-}
-</string>
-                      </property>
                       <property name="text">
-                       <string/>
-                      </property>
-                      <property name="iconSize">
-                       <size>
-                        <width>33</width>
-                        <height>20</height>
-                       </size>
+                       <string>Auto Scroll</string>
                       </property>
                      </widget>
                     </item>
-                    <item row="0" column="3">
-                     <widget class="QFrame" name="open_Deforum_folder_frame_poppable">
-                      <property name="minimumSize">
-                       <size>
-                        <width>36</width>
-                        <height>30</height>
-                       </size>
-                      </property>
-                      <property name="tabletTracking">
-                       <bool>true</bool>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">border:0</string>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <widget class="QPushButton" name="open_Deforum_folder">
-                       <property name="enabled">
-                        <bool>true</bool>
-                       </property>
-                       <property name="geometry">
-                        <rect>
-                         <x>0</x>
-                         <y>0</y>
-                         <width>40</width>
-                         <height>32</height>
-                        </rect>
-                       </property>
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>40</width>
-                         <height>32</height>
-                        </size>
-                       </property>
-                       <property name="baseSize">
-                        <size>
-                         <width>0</width>
-                         <height>0</height>
-                        </size>
-                       </property>
-                       <property name="focusPolicy">
-                        <enum>Qt::StrongFocus</enum>
-                       </property>
-                       <property name="toolTip">
-                        <string>This magic button will open the current Deforum output folder, usually something like &quot;...\outputs\img2img-images\Deforum_timestring&quot;</string>
-                       </property>
-                       <property name="toolTipDuration">
-                        <number>-1</number>
-                       </property>
-                       <property name="whatsThis">
-                        <string/>
-                       </property>
-                       <property name="autoFillBackground">
-                        <bool>false</bool>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">QPushButton {
-    /* Normal state */
-    background-image: url(images/Folder_off.png);
-    background-position: left top;
-    background-repeat: no-repeat;
-    border-radius: 0px;
-    min-width: 38px;
-    min-height: 30px;
-}
-
-QPushButton:hover {
-    /* Hovered state */
-    background-image: url(images/Folder_hover.png);
-    background-position: left top;
-    background-repeat: no-repeat;
-    border: none;
-    min-width: 38px;
-    min-height: 30px;
-}
-
-QPushButton:pressed {
-    /* Pressed state */
-    background-image: url(images/Folder_active.png);
-    background-position: left top;
-    background-repeat: no-repeat;
-    border: none;
-    min-width: 38px;
-    min-height: 30px;
-}</string>
-                       </property>
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>36</width>
-                         <height>30</height>
-                        </size>
-                       </property>
-                      </widget>
-                     </widget>
-                    </item>
-                    <item row="0" column="12">
-                     <widget class="QFrame" name="CRF_Compression_Frame_poppable">
-                      <property name="minimumSize">
-                       <size>
-                        <width>211</width>
-                        <height>0</height>
-                       </size>
-                      </property>
-                      <property name="tabletTracking">
-                       <bool>true</bool>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">border: 0px</string>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::StyledPanel</enum>
-                      </property>
-                      <property name="frameShadow">
-                       <enum>QFrame::Raised</enum>
-                      </property>
-                      <widget class="QLineEdit" name="crf_input_box">
-                       <property name="geometry">
-                        <rect>
-                         <x>160</x>
-                         <y>8</y>
-                         <width>40</width>
-                         <height>24</height>
-                        </rect>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>40</width>
-                         <height>16777215</height>
-                        </size>
-                       </property>
-                       <property name="toolTip">
-                        <string>CRF in FFmpeg: Control for video quality and size. Lower values mean better quality, higher values mean smaller file sizes.
-Low value and many frames takes time to compile. A good baseline is 17.</string>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;*/
-
-
-
-QLineEdit {
-    background-color: rgb(42, 42, 42); /* Dark background */
-    color: rgb(0, 255, 0); /* Bright green text */
-    border: 2px solid rgb(40, 40, 40); /* Dark grey border */
-    border-radius: 5px; /* Rounded corners */
-    padding-top: 1px; /* Top padding to push the text down */
-    padding-bottom: 1px; /* Bottom padding for even spacing */
-    padding-left: 1px; /* Left padding */
-    padding-right: 1px; /* Right padding */
-    text-align: center; /* Center the text horizontally */
-}</string>
-                       </property>
-                       <property name="text">
-                        <string>20</string>
-                       </property>
-                      </widget>
-                      <widget class="QLabel" name="crf_label">
-                       <property name="geometry">
-                        <rect>
-                         <x>5</x>
-                         <y>3</y>
-                         <width>153</width>
-                         <height>35</height>
-                        </rect>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <bold>true</bold>
-                        </font>
-                       </property>
-                       <property name="toolTip">
-                        <string>CRF in FFmpeg: Control for video quality and size. Lower values mean better quality, higher values mean smaller file sizes. Low value and many frames takes time to compile. A good baseline is 17.</string>
-                       </property>
-                       <property name="text">
-                        <string>CRF:(compression level)</string>
-                       </property>
-                      </widget>
-                     </widget>
-                    </item>
-                    <item row="0" column="11">
-                     <spacer name="horizontalSpacer_5">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>10</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                    <item row="0" column="4">
-                     <spacer name="horizontalSpacer_7">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>20</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                    <item row="0" column="9">
+                    <item row="0" column="10">
                      <spacer name="horizontalSpacer_3">
                       <property name="orientation">
                        <enum>Qt::Horizontal</enum>
@@ -4876,86 +4603,7 @@ QLineEdit {
                       </property>
                      </spacer>
                     </item>
-                    <item row="0" column="13">
-                     <widget class="QSlider" name="preview_compression_slider">
-                      <property name="minimumSize">
-                       <size>
-                        <width>200</width>
-                        <height>0</height>
-                       </size>
-                      </property>
-                      <property name="toolTip">
-                       <string>Film Reel Granularity Slider: Drag left to &quot;zoom in&quot;, or drag right to &quot;zoom out&quot;.</string>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QSlider{
-border:0;
-}
-QSlider::groove:horizontal {
-    border-image: url(images/groove_230.png) ; /* Adjust slicing and stretch as needed */
-    height: 31px; /* The height of your image */
-}
-
-QSlider::handle:horizontal {
-    background-image: url(images/handle_off.png); /* The path to your handle image */
-  background-repeat: no-repeat;
-    border: none; /* Remove the border if you don't need it */
-    width: 32px; /* Width of the handle - adjust as needed */
-    height: 32px; /* Height of the handle - adjust as needed */
-    margin: -1px 0; /* Optional: Adjust the margin if needed */
-}
-
-QSlider::handle:horizontal:hover {
-
-    background-image: url(images/handle_hover.png); /* Change the handle image when hovering */
-background-repeat: no-repeat;
-    border: none; /* Remove the border if you don't need it */
-    width: 32px; /* Width of the handle - adjust as needed */
-    height: 32px; /* Height of the handle - adjust as needed */
-    margin: -1px 0; /* Optional: Adjust the margin if needed */
-}
-
-QSlider::handle:horizontal:pressed {
-    background-image: url(images/handle_on.png); /* Change the handle image when pressed */
-background-repeat: no-repeat;
-    border: none; /* Remove the border if you don't need it */
-    width: 32px; /* Width of the handle - adjust as needed */
-    height: 32px; /* Height of the handle - adjust as needed */
-    margin: -1px 0; /* Optional: Adjust the margin if needed */
-  
-}</string>
-                      </property>
-                      <property name="minimum">
-                       <number>1</number>
-                      </property>
-                      <property name="maximum">
-                       <number>600</number>
-                      </property>
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="tickPosition">
-                       <enum>QSlider::TicksBelow</enum>
-                      </property>
-                      <property name="tickInterval">
-                       <number>2</number>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="0" column="6">
-                     <spacer name="horizontalSpacer_10">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>20</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
-                    </item>
-                    <item row="0" column="10">
+                    <item row="0" column="11">
                      <widget class="QFrame" name="Play_Preview_From_To_Frame_poppable">
                       <property name="minimumSize">
                        <size>
@@ -5198,6 +4846,170 @@ QLineEdit {
                       </widget>
                      </widget>
                     </item>
+                    <item row="0" column="9">
+                     <widget class="QCheckBox" name="AutoScroll_checkbox">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>34</width>
+                        <height>22</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>34</width>
+                        <height>22</height>
+                       </size>
+                      </property>
+                      <property name="baseSize">
+                       <size>
+                        <width>0</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="toolTip">
+                       <string>Enable or disable auto scroll of movie strip. When the rendered frame goes outside the visible range,
+it automatically scrolls into view, keeping up with the currently rendered frame.</string>
+                      </property>
+                      <property name="statusTip">
+                       <string>Enable or disable live panning control.</string>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QCheckBox {
+    border: none; /* No border for the checkbox */
+background-color: transparent ; /* Fallback color */
+}
+
+QCheckBox::indicator {
+    width: 54px; /* Width of the checkbox */
+    height: 29px; /* Height of the checkbox */
+    background-color: transparent; /* Ensures background is transparent */
+border: none; /* No border for the checkbox */
+}
+
+QCheckBox::indicator:unchecked {
+    background-image: url(images/check_off_small.png); /* Image for unchecked state */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+background-position: left; /* Left the image */
+border: none; /* No border for the checkbox */
+}
+
+QCheckBox::indicator:checked {
+    background-image: url(images/check_on_small.png); /* Image for checked state */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+background-position: left; /* Left the image */
+border: none; /* No border for the checkbox */
+}
+</string>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="iconSize">
+                       <size>
+                        <width>33</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="12">
+                     <spacer name="horizontalSpacer_5">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>10</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item row="0" column="14">
+                     <widget class="QSlider" name="preview_compression_slider">
+                      <property name="minimumSize">
+                       <size>
+                        <width>200</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="toolTip">
+                       <string>Film Reel Granularity Slider: Drag left to &quot;zoom in&quot;, or drag right to &quot;zoom out&quot;.</string>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QSlider{
+border:0;
+}
+QSlider::groove:horizontal {
+    border-image: url(images/groove_230.png) ; /* Adjust slicing and stretch as needed */
+    height: 31px; /* The height of your image */
+}
+
+QSlider::handle:horizontal {
+    background-image: url(images/handle_off.png); /* The path to your handle image */
+  background-repeat: no-repeat;
+    border: none; /* Remove the border if you don't need it */
+    width: 32px; /* Width of the handle - adjust as needed */
+    height: 32px; /* Height of the handle - adjust as needed */
+    margin: -1px 0; /* Optional: Adjust the margin if needed */
+}
+
+QSlider::handle:horizontal:hover {
+
+    background-image: url(images/handle_hover.png); /* Change the handle image when hovering */
+background-repeat: no-repeat;
+    border: none; /* Remove the border if you don't need it */
+    width: 32px; /* Width of the handle - adjust as needed */
+    height: 32px; /* Height of the handle - adjust as needed */
+    margin: -1px 0; /* Optional: Adjust the margin if needed */
+}
+
+QSlider::handle:horizontal:pressed {
+    background-image: url(images/handle_on.png); /* Change the handle image when pressed */
+background-repeat: no-repeat;
+    border: none; /* Remove the border if you don't need it */
+    width: 32px; /* Width of the handle - adjust as needed */
+    height: 32px; /* Height of the handle - adjust as needed */
+    margin: -1px 0; /* Optional: Adjust the margin if needed */
+  
+}</string>
+                      </property>
+                      <property name="minimum">
+                       <number>1</number>
+                      </property>
+                      <property name="maximum">
+                       <number>600</number>
+                      </property>
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="tickPosition">
+                       <enum>QSlider::TicksBelow</enum>
+                      </property>
+                      <property name="tickInterval">
+                       <number>2</number>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="7">
+                     <spacer name="horizontalSpacer_10">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
                     <item row="0" column="2">
                      <spacer name="horizontalSpacer_4">
                       <property name="orientation">
@@ -5211,7 +5023,7 @@ QLineEdit {
                       </property>
                      </spacer>
                     </item>
-                    <item row="0" column="5">
+                    <item row="0" column="6">
                      <widget class="QFrame" name="Preview_Play_Buttons_poppable">
                       <property name="minimumSize">
                        <size>
@@ -5494,19 +5306,261 @@ depends on the current Cadence.</string>
                       </widget>
                      </widget>
                     </item>
-                    <item row="0" column="7">
-                     <widget class="QLabel" name="autoscroll_label">
-                      <property name="font">
-                       <font>
-                        <bold>true</bold>
-                       </font>
+                    <item row="0" column="3">
+                     <widget class="QFrame" name="open_Deforum_folder_frame_poppable">
+                      <property name="minimumSize">
+                       <size>
+                        <width>36</width>
+                        <height>30</height>
+                       </size>
+                      </property>
+                      <property name="tabletTracking">
+                       <bool>true</bool>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">border:0</string>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <widget class="QPushButton" name="open_Deforum_folder">
+                       <property name="enabled">
+                        <bool>true</bool>
+                       </property>
+                       <property name="geometry">
+                        <rect>
+                         <x>0</x>
+                         <y>0</y>
+                         <width>40</width>
+                         <height>32</height>
+                        </rect>
+                       </property>
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>40</width>
+                         <height>32</height>
+                        </size>
+                       </property>
+                       <property name="baseSize">
+                        <size>
+                         <width>0</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="focusPolicy">
+                        <enum>Qt::StrongFocus</enum>
+                       </property>
+                       <property name="toolTip">
+                        <string>This magic button will open the current Deforum output folder, usually something like &quot;...\outputs\img2img-images\Deforum_timestring&quot;</string>
+                       </property>
+                       <property name="toolTipDuration">
+                        <number>-1</number>
+                       </property>
+                       <property name="whatsThis">
+                        <string/>
+                       </property>
+                       <property name="autoFillBackground">
+                        <bool>false</bool>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QPushButton {
+    /* Normal state */
+    background-image: url(images/Folder_off.png);
+    background-position: left top;
+    background-repeat: no-repeat;
+    border-radius: 0px;
+    min-width: 38px;
+    min-height: 30px;
+}
+
+QPushButton:hover {
+    /* Hovered state */
+    background-image: url(images/Folder_hover.png);
+    background-position: left top;
+    background-repeat: no-repeat;
+    border: none;
+    min-width: 38px;
+    min-height: 30px;
+}
+
+QPushButton:pressed {
+    /* Pressed state */
+    background-image: url(images/Folder_active.png);
+    background-position: left top;
+    background-repeat: no-repeat;
+    border: none;
+    min-width: 38px;
+    min-height: 30px;
+}</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>36</width>
+                         <height>30</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </widget>
+                    </item>
+                    <item row="0" column="13">
+                     <widget class="QFrame" name="CRF_Compression_Frame_poppable">
+                      <property name="minimumSize">
+                       <size>
+                        <width>211</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="tabletTracking">
+                       <bool>true</bool>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">border: 0px</string>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                      <widget class="QLineEdit" name="crf_input_box">
+                       <property name="geometry">
+                        <rect>
+                         <x>160</x>
+                         <y>8</y>
+                         <width>40</width>
+                         <height>24</height>
+                        </rect>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>40</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="toolTip">
+                        <string>CRF in FFmpeg: Control for video quality and size. Lower values mean better quality, higher values mean smaller file sizes.
+Low value and many frames takes time to compile. A good baseline is 17.</string>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;*/
+
+
+
+QLineEdit {
+    background-color: rgb(42, 42, 42); /* Dark background */
+    color: rgb(0, 255, 0); /* Bright green text */
+    border: 2px solid rgb(40, 40, 40); /* Dark grey border */
+    border-radius: 5px; /* Rounded corners */
+    padding-top: 1px; /* Top padding to push the text down */
+    padding-bottom: 1px; /* Bottom padding for even spacing */
+    padding-left: 1px; /* Left padding */
+    padding-right: 1px; /* Right padding */
+    text-align: center; /* Center the text horizontally */
+}</string>
+                       </property>
+                       <property name="text">
+                        <string>20</string>
+                       </property>
+                      </widget>
+                      <widget class="QLabel" name="crf_label">
+                       <property name="geometry">
+                        <rect>
+                         <x>5</x>
+                         <y>3</y>
+                         <width>153</width>
+                         <height>35</height>
+                        </rect>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="toolTip">
+                        <string>CRF in FFmpeg: Control for video quality and size. Lower values mean better quality, higher values mean smaller file sizes. Low value and many frames takes time to compile. A good baseline is 17.</string>
+                       </property>
+                       <property name="text">
+                        <string>CRF:(compression level)</string>
+                       </property>
+                      </widget>
+                     </widget>
+                    </item>
+                    <item row="0" column="5">
+                     <spacer name="horizontalSpacer_7">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item row="0" column="15">
+                     <widget class="QPushButton" name="record_voice_button_2">
+                      <property name="enabled">
+                       <bool>true</bool>
+                      </property>
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>32</width>
+                        <height>32</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>32</width>
+                        <height>32</height>
+                       </size>
+                      </property>
+                      <property name="tabletTracking">
+                       <bool>false</bool>
                       </property>
                       <property name="toolTip">
-                       <string>Enable or disable auto scroll of movie strip. When the rendered frame goes outside the visible range,
-it automatically scrolls into view, keeping up with the currently rendered frame.</string>
+                       <string>This will put the generation in or out of loop-back. Number of generated images in loop-back mode,
+depends on the current Cadence.</string>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">    background-color: none;
+    border-radius: 0px;
+    border: none;
+
+</string>
                       </property>
                       <property name="text">
-                       <string>Auto Scroll</string>
+                       <string/>
+                      </property>
+                      <property name="icon">
+                       <iconset>
+                        <normaloff>images/record_button_off.png</normaloff>
+                        <normalon>images/record_button_active.png</normalon>
+                        <activeon>images/record_button_hover.png</activeon>images/record_button_off.png</iconset>
+                      </property>
+                      <property name="iconSize">
+                       <size>
+                        <width>32</width>
+                        <height>32</height>
+                       </size>
                       </property>
                      </widget>
                     </item>
@@ -5818,6 +5872,9 @@ padding: 0px; /* To prevent the content from touching the border */
                         <kerning>true</kerning>
                        </font>
                       </property>
+                      <property name="windowTitle">
+                       <string>Deforumation QT v 0.1.9</string>
+                      </property>
                       <property name="toolTip">
                        <string/>
                       </property>
@@ -5862,7 +5919,7 @@ QTabBar::tab:selected { /* Style for the selected tab */
                        <enum>QTabWidget::Rounded</enum>
                       </property>
                       <property name="currentIndex">
-                       <number>3</number>
+                       <number>6</number>
                       </property>
                       <property name="iconSize">
                        <size>
@@ -12864,7 +12921,7 @@ border: none;/* No background for the scrollable area behind the handle */
                              <property name="geometry">
                               <rect>
                                <x>0</x>
-                               <y>0</y>
+                               <y>-111</y>
                                <width>302</width>
                                <height>340</height>
                               </rect>
@@ -15498,7 +15555,7 @@ border: none; /* No border for the checkbox */
                          <property name="geometry">
                           <rect>
                            <x>10</x>
-                           <y>207</y>
+                           <y>220</y>
                            <width>367</width>
                            <height>45</height>
                           </rect>
@@ -15755,7 +15812,7 @@ border-radius: 2px;
                          <property name="geometry">
                           <rect>
                            <x>8</x>
-                           <y>127</y>
+                           <y>116</y>
                            <width>361</width>
                            <height>25</height>
                           </rect>
@@ -15781,19 +15838,19 @@ Especially important for the &quot;Strength&quot;-graph.</string>
                          <property name="geometry">
                           <rect>
                            <x>8</x>
-                           <y>152</y>
+                           <y>136</y>
                            <width>361</width>
-                           <height>49</height>
+                           <height>73</height>
                           </rect>
                          </property>
                          <property name="styleSheet">
                           <string notr="true">border: none;</string>
                          </property>
                          <property name="text">
-                          <string>Use this to get specific values on specific cadence lines. This works well to create &quot;Beats&quot; that will always trigger. This can be especially important for the &quot;Strength&quot;-graph.</string>
+                          <string>Use this to get specific values on specific cadence lines. This works well to create &quot;Beats&quot; that will always trigger. This can be especially important for the &quot;Strength&quot;-graph. (Keep values inside the value range for the specific graph).</string>
                          </property>
                          <property name="alignment">
-                          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+                          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                          </property>
                          <property name="wordWrap">
                           <bool>true</bool>
@@ -16845,6 +16902,26 @@ color: rgb(0, 255, 0);
 border: 2px solid rgb(128,128,128);
 border-radius: 5px;
 }
+
+QPushButton {
+    background-color: rgb(64, 64, 64); /* Matching the tab's base color */
+    border: none;
+    border-radius: 5px; /* Consistent with the tab's rounded corners */
+    padding: 6px 12px; /* Comfortable padding for the button text */
+    color: white; /* White text for contrast */
+    text-align: center;
+
+}
+
+QPushButton:hover {
+    background-color: rgb(96, 96, 96); /* Lighter grey, similar to tab hover effect */
+
+}
+
+QPushButton:pressed {
+    background-color: rgb(128, 128, 128); /* Similar to the selected tab color */
+
+}
 </string>
                         </property>
                         <property name="frameShape">
@@ -16886,6 +16963,1603 @@ border-radius: 5px;
                          </property>
                          <property name="orientation">
                           <enum>Qt::Horizontal</enum>
+                         </property>
+                        </widget>
+                        <widget class="QPushButton" name="recordXXXX_voice_button">
+                         <property name="geometry">
+                          <rect>
+                           <x>16</x>
+                           <y>48</y>
+                           <width>97</width>
+                           <height>24</height>
+                          </rect>
+                         </property>
+                         <property name="text">
+                          <string>Record Voice</string>
+                         </property>
+                        </widget>
+                       </widget>
+                      </widget>
+                      <widget class="QWidget" name="Speech_Control_Tab">
+                       <property name="styleSheet">
+                        <string notr="true">background-color: rgb(102,102,102);
+
+border: 2px solid rgb(40, 40, 40); /* Simulated shadow using border */
+border-radius: 10px;
+padding: 1px; /* To prevent the content from touching the border */
+
+QPushButton {
+    background-color: rgb(64, 64, 64); /* Matching the tab's base color */
+    border: none;
+    border-radius: 5px; /* Consistent with the tab's rounded corners */
+    padding: 6px 12px; /* Comfortable padding for the button text */
+    color: white; /* White text for contrast */
+    text-align: center;
+
+}
+
+QPushButton:hover {
+    background-color: rgb(96, 96, 96); /* Lighter grey, similar to tab hover effect */
+
+}
+
+QPushButton:pressed {
+    background-color: rgb(128, 128, 128); /* Similar to the selected tab color */
+
+}
+
+
+</string>
+                       </property>
+                       <attribute name="title">
+                        <string>Speech Control</string>
+                       </attribute>
+                       <widget class="QFrame" name="speech_control_frame">
+                        <property name="geometry">
+                         <rect>
+                          <x>8</x>
+                          <y>8</y>
+                          <width>1057</width>
+                          <height>249</height>
+                         </rect>
+                        </property>
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="tabletTracking">
+                         <bool>true</bool>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">
+QFrame{
+background-color: rgb(108,108,118);
+border: 2px solid rgb(40, 40, 40); /* Simulated shadow using border */
+border-radius: 5px;
+padding: 0px  1px ;  /* To prevent the content from touching the border */
+}
+QToolTip { 
+ background-color: black; 
+color: white; 
+ border: black solid 1px;
+ }
+QTextEdit{
+background-color:rgb(42, 42, 42);
+color: rgb(0, 255, 0);
+border: 2px solid rgb(128,128,128);
+border-radius: 5px;
+}
+
+QPushButton {
+    background-color: rgb(64, 64, 64); /* Matching the tab's base color */
+    border: none;
+    border-radius: 5px; /* Consistent with the tab's rounded corners */
+    padding: 6px 12px; /* Comfortable padding for the button text */
+    color: white; /* White text for contrast */
+    text-align: center;
+
+}
+
+QPushButton:hover {
+    background-color: rgb(96, 96, 96); /* Lighter grey, similar to tab hover effect */
+
+}
+
+QPushButton:pressed {
+    background-color: rgb(128, 128, 128); /* Similar to the selected tab color */
+
+}
+</string>
+                        </property>
+                        <property name="frameShape">
+                         <enum>QFrame::StyledPanel</enum>
+                        </property>
+                        <property name="frameShadow">
+                         <enum>QFrame::Raised</enum>
+                        </property>
+                        <widget class="QLabel" name="audio_misc_info_label_2">
+                         <property name="geometry">
+                          <rect>
+                           <x>8</x>
+                           <y>4</y>
+                           <width>113</width>
+                           <height>35</height>
+                          </rect>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <pointsize>14</pointsize>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">   border: none;</string>
+                         </property>
+                         <property name="text">
+                          <string>Audio Misc</string>
+                         </property>
+                        </widget>
+                        <widget class="Line" name="line_audio_misc_info_interface_middle_2">
+                         <property name="geometry">
+                          <rect>
+                           <x>12</x>
+                           <y>44</y>
+                           <width>260</width>
+                           <height>1</height>
+                          </rect>
+                         </property>
+                         <property name="orientation">
+                          <enum>Qt::Horizontal</enum>
+                         </property>
+                        </widget>
+                        <widget class="QFrame" name="speech_control_bindings_frame">
+                         <property name="geometry">
+                          <rect>
+                           <x>2</x>
+                           <y>50</y>
+                           <width>1049</width>
+                           <height>195</height>
+                          </rect>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QFrame { border:0;}</string>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QVBoxLayout" name="verticalLayout_19">
+                          <property name="spacing">
+                           <number>0</number>
+                          </property>
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
+                          <item>
+                           <widget class="QScrollArea" name="scrollarea_speech_control">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="minimumSize">
+                             <size>
+                              <width>0</width>
+                              <height>0</height>
+                             </size>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">QScrollArea {
+    border: 0px;
+background-color: rgb(108,108,118);
+}
+
+
+QScrollArea QScrollBar:vertical {
+    border: 2px;
+    background: rgb(66,66,66);
+    width: 15px; /* Narrow scrollbar for a sleek look */
+    border-radius: 5px;
+    margin: 0px 0 0px 0;
+    
+}
+
+QScrollArea QScrollBar::handle:vertical {
+    background-color: rgb(40,129,232); /* Dark handle */
+    min-height: 20px; /* Minimum handle height */
+    border-radius: 5px; /* Rounded corners for the handle */
+}
+
+QScrollArea QScrollBar::handle:vertical:hover {
+    background-color: rgb(59,165,0); /* Slightly lighter handle on hover */
+}
+
+
+QScrollArea QScrollBar::sub-line:vertical,
+QScrollArea QScrollBar::add-line:vertical {
+    background: none;
+border: none; /* No buttons at the end of the scrollbar */
+}
+
+QScrollArea QScrollBar::sub-page:vertical,
+QScrollArea QScrollBar::add-page:vertical {
+    background: none; 
+border: none;/* No background for the scrollable area behind the handle */
+}</string>
+                            </property>
+                            <property name="verticalScrollBarPolicy">
+                             <enum>Qt::ScrollBarAsNeeded</enum>
+                            </property>
+                            <property name="widgetResizable">
+                             <bool>true</bool>
+                            </property>
+                            <widget class="QWidget" name="speech_control__scrollarea_widget_bindings">
+                             <property name="geometry">
+                              <rect>
+                               <x>0</x>
+                               <y>0</y>
+                               <width>1030</width>
+                               <height>498</height>
+                              </rect>
+                             </property>
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                               <horstretch>0</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>498</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true"/>
+                             </property>
+                             <layout class="QVBoxLayout" name="verticalLayout_21">
+                              <property name="spacing">
+                               <number>0</number>
+                              </property>
+                              <property name="leftMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="topMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="rightMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="bottomMargin">
+                               <number>0</number>
+                              </property>
+                              <item>
+                               <widget class="QFrame" name="frame_speech_bindings">
+                                <property name="minimumSize">
+                                 <size>
+                                  <width>0</width>
+                                  <height>0</height>
+                                 </size>
+                                </property>
+                                <property name="autoFillBackground">
+                                 <bool>false</bool>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true">border:0</string>
+                                </property>
+                                <property name="frameShape">
+                                 <enum>QFrame::StyledPanel</enum>
+                                </property>
+                                <property name="frameShadow">
+                                 <enum>QFrame::Raised</enum>
+                                </property>
+                                <widget class="QFrame" name="speech_key_bindings_frame_poppable">
+                                 <property name="geometry">
+                                  <rect>
+                                   <x>0</x>
+                                   <y>0</y>
+                                   <width>1033</width>
+                                   <height>498</height>
+                                  </rect>
+                                 </property>
+                                 <property name="tabletTracking">
+                                  <bool>true</bool>
+                                 </property>
+                                 <property name="styleSheet">
+                                  <string notr="true">border:0</string>
+                                 </property>
+                                 <property name="frameShape">
+                                  <enum>QFrame::StyledPanel</enum>
+                                 </property>
+                                 <property name="frameShadow">
+                                  <enum>QFrame::Raised</enum>
+                                 </property>
+                                 <widget class="QWidget" name="speech_bindings_row" native="true">
+                                  <property name="geometry">
+                                   <rect>
+                                    <x>5</x>
+                                    <y>0</y>
+                                    <width>137</width>
+                                    <height>498</height>
+                                   </rect>
+                                  </property>
+                                  <property name="sizePolicy">
+                                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                   </sizepolicy>
+                                  </property>
+                                  <property name="styleSheet">
+                                   <string notr="true">QLabel {
+background-color:rgb(64, 64, 64);
+border-radius: 3px; /* Consistent with the tab's rounded corners */
+padding: 4px; /* Comfortable padding for the button text */
+border:0;
+}</string>
+                                  </property>
+                                  <widget class="QWidget" name="verticalLayoutWidget_7">
+                                   <property name="geometry">
+                                    <rect>
+                                     <x>0</x>
+                                     <y>4</y>
+                                     <width>140</width>
+                                     <height>494</height>
+                                    </rect>
+                                   </property>
+                                   <layout class="QVBoxLayout" name="verticalLayout_speech_binding_Key_Name">
+                                    <property name="spacing">
+                                     <number>2</number>
+                                    </property>
+                                    <property name="sizeConstraint">
+                                     <enum>QLayout::SetDefaultConstraint</enum>
+                                    </property>
+                                    <item>
+                                     <widget class="QLabel" name="speech_prompt_start_label">
+                                      <property name="sizePolicy">
+                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                       </sizepolicy>
+                                      </property>
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="font">
+                                       <font>
+                                        <pointsize>9</pointsize>
+                                       </font>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>Start a Prompt</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLabel" name="speech_add_to_prompt_label">
+                                      <property name="sizePolicy">
+                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                       </sizepolicy>
+                                      </property>
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>0</height>
+                                       </size>
+                                      </property>
+                                      <property name="font">
+                                       <font>
+                                        <pointsize>9</pointsize>
+                                       </font>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>Add to Prompt</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLabel" name="speech_cancel_prompt_label">
+                                      <property name="sizePolicy">
+                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                       </sizepolicy>
+                                      </property>
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>0</height>
+                                       </size>
+                                      </property>
+                                      <property name="font">
+                                       <font>
+                                        <pointsize>9</pointsize>
+                                       </font>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>Cancel Prompt</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLabel" name="speech_panning_left_label">
+                                      <property name="sizePolicy">
+                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                       </sizepolicy>
+                                      </property>
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="font">
+                                       <font>
+                                        <pointsize>9</pointsize>
+                                       </font>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>Panning Left</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLabel" name="speech_panning_right_label">
+                                      <property name="sizePolicy">
+                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                       </sizepolicy>
+                                      </property>
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="font">
+                                       <font>
+                                        <pointsize>9</pointsize>
+                                       </font>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>Panning Right</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLabel" name="speech_panning_up_label">
+                                      <property name="sizePolicy">
+                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                       </sizepolicy>
+                                      </property>
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>0</height>
+                                       </size>
+                                      </property>
+                                      <property name="font">
+                                       <font>
+                                        <pointsize>9</pointsize>
+                                       </font>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>Panning Up</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLabel" name="speech_panning_down_label">
+                                      <property name="sizePolicy">
+                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                       </sizepolicy>
+                                      </property>
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>0</height>
+                                       </size>
+                                      </property>
+                                      <property name="font">
+                                       <font>
+                                        <pointsize>9</pointsize>
+                                       </font>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>Panning Down</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLabel" name="speech_rotate_h_left_label">
+                                      <property name="sizePolicy">
+                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                       </sizepolicy>
+                                      </property>
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>0</height>
+                                       </size>
+                                      </property>
+                                      <property name="font">
+                                       <font>
+                                        <pointsize>9</pointsize>
+                                       </font>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>Rotate H Left</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLabel" name="speech_rotate_h_right_label">
+                                      <property name="sizePolicy">
+                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                       </sizepolicy>
+                                      </property>
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>0</height>
+                                       </size>
+                                      </property>
+                                      <property name="font">
+                                       <font>
+                                        <pointsize>9</pointsize>
+                                       </font>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>Rotate H Right</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLabel" name="speech_rotate_v_up_label">
+                                      <property name="sizePolicy">
+                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                       </sizepolicy>
+                                      </property>
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>0</height>
+                                       </size>
+                                      </property>
+                                      <property name="font">
+                                       <font>
+                                        <pointsize>9</pointsize>
+                                       </font>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>Rotate V Up</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLabel" name="speech_rotate_v_down_label">
+                                      <property name="sizePolicy">
+                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                       </sizepolicy>
+                                      </property>
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>0</height>
+                                       </size>
+                                      </property>
+                                      <property name="font">
+                                       <font>
+                                        <pointsize>9</pointsize>
+                                       </font>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>Rotate V Down</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLabel" name="speech_zoom_forwards_label">
+                                      <property name="sizePolicy">
+                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                       </sizepolicy>
+                                      </property>
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>0</height>
+                                       </size>
+                                      </property>
+                                      <property name="font">
+                                       <font>
+                                        <pointsize>9</pointsize>
+                                       </font>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>Zoom Forwards</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLabel" name="speech_zoom_backwards_label">
+                                      <property name="sizePolicy">
+                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                       </sizepolicy>
+                                      </property>
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>0</height>
+                                       </size>
+                                      </property>
+                                      <property name="font">
+                                       <font>
+                                        <pointsize>9</pointsize>
+                                       </font>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>Zoom Backwards</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLabel" name="speech_tilt_cw_label">
+                                      <property name="sizePolicy">
+                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                       </sizepolicy>
+                                      </property>
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>0</height>
+                                       </size>
+                                      </property>
+                                      <property name="font">
+                                       <font>
+                                        <pointsize>9</pointsize>
+                                       </font>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>Tilt Clockwise</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLabel" name="speech_tilt_cc_label">
+                                      <property name="sizePolicy">
+                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                       </sizepolicy>
+                                      </property>
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>0</height>
+                                       </size>
+                                      </property>
+                                      <property name="font">
+                                       <font>
+                                        <pointsize>9</pointsize>
+                                       </font>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>Tilt Counter-Clockwise</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLabel" name="speech_reset_panning_label">
+                                      <property name="sizePolicy">
+                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                       </sizepolicy>
+                                      </property>
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>0</height>
+                                       </size>
+                                      </property>
+                                      <property name="font">
+                                       <font>
+                                        <pointsize>9</pointsize>
+                                       </font>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>Reset Panning</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLabel" name="speech_reset_zoom_label">
+                                      <property name="sizePolicy">
+                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                       </sizepolicy>
+                                      </property>
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>0</height>
+                                       </size>
+                                      </property>
+                                      <property name="font">
+                                       <font>
+                                        <pointsize>9</pointsize>
+                                       </font>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>Reset Zoom</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLabel" name="speech_reset_rotation_label">
+                                      <property name="sizePolicy">
+                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                       </sizepolicy>
+                                      </property>
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>0</height>
+                                       </size>
+                                      </property>
+                                      <property name="font">
+                                       <font>
+                                        <pointsize>9</pointsize>
+                                       </font>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>Reset Rotation</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLabel" name="speech_reset_tilt_label">
+                                      <property name="sizePolicy">
+                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                       </sizepolicy>
+                                      </property>
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>0</height>
+                                       </size>
+                                      </property>
+                                      <property name="font">
+                                       <font>
+                                        <pointsize>9</pointsize>
+                                       </font>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>Reset Tilt</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                   </layout>
+                                  </widget>
+                                 </widget>
+                                 <widget class="QWidget" name="speech_value_bindings_row" native="true">
+                                  <property name="geometry">
+                                   <rect>
+                                    <x>144</x>
+                                    <y>0</y>
+                                    <width>889</width>
+                                    <height>498</height>
+                                   </rect>
+                                  </property>
+                                  <property name="sizePolicy">
+                                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                   </sizepolicy>
+                                  </property>
+                                  <property name="styleSheet">
+                                   <string notr="true">QLineEdit {
+background-color:rgb(42, 42, 42);
+color: rgb(0, 255, 0);
+    border-radius: 3px; /* Consistent with the tab's rounded corners */
+    padding: 4px; /* Comfortable padding for the button text */
+border:0;
+}</string>
+                                  </property>
+                                  <widget class="QWidget" name="verticalLayoutWidget_8">
+                                   <property name="geometry">
+                                    <rect>
+                                     <x>0</x>
+                                     <y>4</y>
+                                     <width>881</width>
+                                     <height>494</height>
+                                    </rect>
+                                   </property>
+                                   <layout class="QVBoxLayout" name="verticalLayout_SpeechBinding_Key_Value">
+                                    <property name="spacing">
+                                     <number>2</number>
+                                    </property>
+                                    <property name="sizeConstraint">
+                                     <enum>QLayout::SetDefaultConstraint</enum>
+                                    </property>
+                                    <property name="bottomMargin">
+                                     <number>0</number>
+                                    </property>
+                                    <item>
+                                     <widget class="QLineEdit" name="speech_prompt_start_binding">
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="mouseTracking">
+                                       <bool>false</bool>
+                                      </property>
+                                      <property name="focusPolicy">
+                                       <enum>Qt::StrongFocus</enum>
+                                      </property>
+                                      <property name="acceptDrops">
+                                       <bool>true</bool>
+                                      </property>
+                                      <property name="toolTip">
+                                       <string>Current set &quot;Smoot motion steps&quot; shows how many frames the smooth motion will use to reach the end value.
+Lower value equals faster smooth motion. Higher value equals slower smooth motion.</string>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>prompt, begin</string>
+                                      </property>
+                                      <property name="alignment">
+                                       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLineEdit" name="speech_add_to_prompt_binding">
+                                      <property name="sizePolicy">
+                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                        <horstretch>0</horstretch>
+                                        <verstretch>0</verstretch>
+                                       </sizepolicy>
+                                      </property>
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="toolTip">
+                                       <string>Current set &quot;Smoot motion steps&quot; shows how many frames the smooth motion will use to reach the end value.
+Lower value equals faster smooth motion. Higher value equals slower smooth motion.</string>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>add</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLineEdit" name="speech_cancel_prompt_binding">
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="toolTip">
+                                       <string>Current set &quot;Smoot motion steps&quot; shows how many frames the smooth motion will use to reach the end value.
+Lower value equals faster smooth motion. Higher value equals slower smooth motion.</string>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true">QLineEdit {
+background-color:rgb(42, 42, 42);
+color: rgb(0, 255, 0);
+    border: none;
+    border-radius: 3px; /* Consistent with the tab's rounded corners */
+    padding: 3px; /* Comfortable padding for the button text */
+    text-align: center;
+
+}</string>
+                                      </property>
+                                      <property name="text">
+                                       <string>cancel</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLineEdit" name="speech_panning_left_binding">
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="mouseTracking">
+                                       <bool>false</bool>
+                                      </property>
+                                      <property name="focusPolicy">
+                                       <enum>Qt::StrongFocus</enum>
+                                      </property>
+                                      <property name="acceptDrops">
+                                       <bool>true</bool>
+                                      </property>
+                                      <property name="toolTip">
+                                       <string>Current set &quot;Smoot motion steps&quot; shows how many frames the smooth motion will use to reach the end value.
+Lower value equals faster smooth motion. Higher value equals slower smooth motion.</string>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>go left, pan left, call left, turn left, time left, pin left, pin lift, pin left, pem left, pen left, pam left</string>
+                                      </property>
+                                      <property name="alignment">
+                                       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLineEdit" name="speech_panning_right_binding">
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="toolTip">
+                                       <string>Current set &quot;Smoot motion steps&quot; shows how many frames the smooth motion will use to reach the end value.
+Lower value equals faster smooth motion. Higher value equals slower smooth motion.</string>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>go right, pan right, go Wright, call right, call Wright, turn right, turn brigh, pin right, time right, pin right, pin right, pem right, pen right, pam right</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLineEdit" name="speech_panning_up_binding">
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="toolTip">
+                                       <string>Current set &quot;Smoot motion steps&quot; shows how many frames the smooth motion will use to reach the end value.
+Lower value equals faster smooth motion. Higher value equals slower smooth motion.</string>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>go up, turn up, call up, open up, pan up, pin up, pem up, pen up, pam up, pan app</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLineEdit" name="speech_panning_down_binding">
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="toolTip">
+                                       <string>Current set &quot;Smoot motion steps&quot; shows how many frames the smooth motion will use to reach the end value.
+Lower value equals faster smooth motion. Higher value equals slower smooth motion.</string>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>go down, turn down, call down, pan down, pin down, pin down, pem down, pen down, pam down</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLineEdit" name="speech_rotate_h_left_binding">
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="toolTip">
+                                       <string>Current set &quot;Smoot motion steps&quot; shows how many frames the smooth motion will use to reach the end value.
+Lower value equals faster smooth motion. Higher value equals slower smooth motion.</string>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>rotate left, rotate lift, rooted left, rooted lift</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLineEdit" name="speech_rotate_h_right_binding">
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="toolTip">
+                                       <string>Current set &quot;Smoot motion steps&quot; shows how many frames the smooth motion will use to reach the end value.
+Lower value equals faster smooth motion. Higher value equals slower smooth motion.</string>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>rotate right, rotate Wright, rotate bright, rooted right</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLineEdit" name="speech_rotate_v_up_binding">
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="toolTip">
+                                       <string>Current set &quot;Smoot motion steps&quot; shows how many frames the smooth motion will use to reach the end value.
+Lower value equals faster smooth motion. Higher value equals slower smooth motion.</string>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>rotate up, rooted up, rotate app</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLineEdit" name="speech_rotate_v_down_binding">
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="toolTip">
+                                       <string>Current set &quot;Smoot motion steps&quot; shows how many frames the smooth motion will use to reach the end value.
+Lower value equals faster smooth motion. Higher value equals slower smooth motion.</string>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>rotate down, rooted down</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLineEdit" name="speech_zoom_forwards_binding">
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="toolTip">
+                                       <string>Current set &quot;Smoot motion steps&quot; shows how many frames the smooth motion will use to reach the end value.
+Lower value equals faster smooth motion. Higher value equals slower smooth motion.</string>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>zoom in, resume in, turn in</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLineEdit" name="speech_zoom_backwards_binding">
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="toolTip">
+                                       <string>Current set &quot;Smoot motion steps&quot; shows how many frames the smooth motion will use to reach the end value.
+Lower value equals faster smooth motion. Higher value equals slower smooth motion.</string>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>zoom out, resume out, turn out, resume Route, turn Route</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLineEdit" name="speech_tilt_cw_bind">
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="toolTip">
+                                       <string>Current set &quot;Smoot motion steps&quot; shows how many frames the smooth motion will use to reach the end value.
+Lower value equals faster smooth motion. Higher value equals slower smooth motion.</string>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>tilt right, tilt Wright, tilt bright</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLineEdit" name="speech_tilt_cc_bind">
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="toolTip">
+                                       <string>Current set &quot;Smoot motion steps&quot; shows how many frames the smooth motion will use to reach the end value.
+Lower value equals faster smooth motion. Higher value equals slower smooth motion.</string>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true"/>
+                                      </property>
+                                      <property name="text">
+                                       <string>tilt left, tilt lift</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLineEdit" name="speech_reset_panning_binding">
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="toolTip">
+                                       <string>Current set &quot;Smoot motion steps&quot; shows how many frames the smooth motion will use to reach the end value.
+Lower value equals faster smooth motion. Higher value equals slower smooth motion.</string>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true">QLineEdit {
+background-color:rgb(42, 42, 42);
+color: rgb(0, 255, 0);
+    border: none;
+    border-radius: 3px; /* Consistent with the tab's rounded corners */
+    padding: 3px; /* Comfortable padding for the button text */
+    text-align: center;
+
+}</string>
+                                      </property>
+                                      <property name="text">
+                                       <string>reset pan, reset plan</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLineEdit" name="speech_reset_zoom_binding">
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="toolTip">
+                                       <string>Current set &quot;Smoot motion steps&quot; shows how many frames the smooth motion will use to reach the end value.
+Lower value equals faster smooth motion. Higher value equals slower smooth motion.</string>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true">QLineEdit {
+background-color:rgb(42, 42, 42);
+color: rgb(0, 255, 0);
+    border: none;
+    border-radius: 3px; /* Consistent with the tab's rounded corners */
+    padding: 3px; /* Comfortable padding for the button text */
+    text-align: center;
+
+}</string>
+                                      </property>
+                                      <property name="text">
+                                       <string>reset zoom, reset resume, reset turn</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLineEdit" name="speech_reset_rotation_binding">
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="toolTip">
+                                       <string>Current set &quot;Smoot motion steps&quot; shows how many frames the smooth motion will use to reach the end value.
+Lower value equals faster smooth motion. Higher value equals slower smooth motion.</string>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true">QLineEdit {
+background-color:rgb(42, 42, 42);
+color: rgb(0, 255, 0);
+    border: none;
+    border-radius: 3px; /* Consistent with the tab's rounded corners */
+    padding: 3px; /* Comfortable padding for the button text */
+    text-align: center;
+
+}</string>
+                                      </property>
+                                      <property name="text">
+                                       <string>reset rotation</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                    <item>
+                                     <widget class="QLineEdit" name="speech_reset_tilt_binding">
+                                      <property name="minimumSize">
+                                       <size>
+                                        <width>0</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="maximumSize">
+                                       <size>
+                                        <width>16777215</width>
+                                        <height>24</height>
+                                       </size>
+                                      </property>
+                                      <property name="toolTip">
+                                       <string>Current set &quot;Smoot motion steps&quot; shows how many frames the smooth motion will use to reach the end value.
+Lower value equals faster smooth motion. Higher value equals slower smooth motion.</string>
+                                      </property>
+                                      <property name="styleSheet">
+                                       <string notr="true">QLineEdit {
+background-color:rgb(42, 42, 42);
+color: rgb(0, 255, 0);
+    border: none;
+    border-radius: 3px; /* Consistent with the tab's rounded corners */
+    padding: 3px; /* Comfortable padding for the button text */
+    text-align: center;
+
+}</string>
+                                      </property>
+                                      <property name="text">
+                                       <string>reset tilt</string>
+                                      </property>
+                                     </widget>
+                                    </item>
+                                   </layout>
+                                  </widget>
+                                 </widget>
+                                </widget>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                        <widget class="QPushButton" name="record_voice_button">
+                         <property name="enabled">
+                          <bool>true</bool>
+                         </property>
+                         <property name="geometry">
+                          <rect>
+                           <x>384</x>
+                           <y>10</y>
+                           <width>32</width>
+                           <height>32</height>
+                          </rect>
+                         </property>
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>0</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>16777215</height>
+                          </size>
+                         </property>
+                         <property name="tabletTracking">
+                          <bool>false</bool>
+                         </property>
+                         <property name="toolTip">
+                          <string>This will put the generation in or out of loop-back. Number of generated images in loop-back mode,
+depends on the current Cadence.</string>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">    background-color: none;
+    border-radius: 0px;
+    border: none;
+
+</string>
+                         </property>
+                         <property name="text">
+                          <string/>
+                         </property>
+                         <property name="icon">
+                          <iconset>
+                           <normaloff>images/record_button_off.png</normaloff>
+                           <normalon>images/record_button_active.png</normalon>
+                           <activeon>images/record_button_hover.png</activeon>images/record_button_off.png</iconset>
+                         </property>
+                         <property name="iconSize">
+                          <size>
+                           <width>32</width>
+                           <height>32</height>
+                          </size>
+                         </property>
+                        </widget>
+                        <widget class="QLabel" name="record_speech_button_label">
+                         <property name="geometry">
+                          <rect>
+                           <x>288</x>
+                           <y>12</y>
+                           <width>89</width>
+                           <height>25</height>
+                          </rect>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <pointsize>10</pointsize>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">   border: none;</string>
+                         </property>
+                         <property name="text">
+                          <string>Record Voice</string>
                          </property>
                         </widget>
                        </widget>
@@ -21258,8 +22932,8 @@ QPushButton:pressed {
                        <widget class="QSlider" name="morph_slider">
                         <property name="geometry">
                          <rect>
-                          <x>264</x>
-                          <y>124</y>
+                          <x>16</x>
+                          <y>532</y>
                           <width>643</width>
                           <height>33</height>
                          </rect>
@@ -21345,8 +23019,8 @@ QSlider::sub-page:horizontal {
                        <widget class="QLabel" name="morphing_text_howto_label">
                         <property name="geometry">
                          <rect>
-                          <x>264</x>
-                          <y>157</y>
+                          <x>16</x>
+                          <y>565</y>
                           <width>643</width>
                           <height>29</height>
                          </rect>
@@ -21387,8 +23061,8 @@ QSlider::sub-page:horizontal {
                        <widget class="QLabel" name="prpmta_to_promptb_label">
                         <property name="geometry">
                          <rect>
-                          <x>264</x>
-                          <y>96</y>
+                          <x>16</x>
+                          <y>504</y>
                           <width>643</width>
                           <height>28</height>
                          </rect>
@@ -21415,6 +23089,19 @@ QSlider::sub-page:horizontal {
                         </property>
                         <property name="alignment">
                          <set>Qt::AlignHCenter|Qt::AlignTop</set>
+                        </property>
+                       </widget>
+                       <widget class="QLabel" name="legacy_label">
+                        <property name="geometry">
+                         <rect>
+                          <x>16</x>
+                          <y>472</y>
+                          <width>241</width>
+                          <height>25</height>
+                         </rect>
+                        </property>
+                        <property name="text">
+                         <string>Legacy stuff (about to be removed)</string>
                         </property>
                        </widget>
                       </widget>
@@ -21826,8 +23513,8 @@ border: none;/* No background for the scrollable area behind the handle */
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>250</width>
-                         <height>352</height>
+                         <width>265</width>
+                         <height>370</height>
                         </rect>
                        </property>
                        <property name="minimumSize">
@@ -22920,8 +24607,8 @@ border: none;/* No background for the scrollable area behind the handle */
                         <rect>
                          <x>0</x>
                          <y>0</y>
-                         <width>254</width>
-                         <height>390</height>
+                         <width>269</width>
+                         <height>500</height>
                         </rect>
                        </property>
                        <property name="sizePolicy">
@@ -24120,7 +25807,7 @@ color: white;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>2053</width>
+     <width>1968</width>
      <height>19</height>
     </rect>
    </property>

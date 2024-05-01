@@ -26,7 +26,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(2053, 840)
+        MainWindow.resize(1968, 1125)
         MainWindow.setMinimumSize(QSize(1340, 249))
         MainWindow.setLayoutDirection(Qt.LeftToRight)
         MainWindow.setStyleSheet(u"QMainWindow {\n"
@@ -380,7 +380,7 @@ class Ui_MainWindow(object):
         self.scrollArea_Left_slider_frame.setWidgetResizable(True)
         self.scrollAreaWidgetContentsSlidersLeft = QWidget()
         self.scrollAreaWidgetContentsSlidersLeft.setObjectName(u"scrollAreaWidgetContentsSlidersLeft")
-        self.scrollAreaWidgetContentsSlidersLeft.setGeometry(QRect(0, 0, 255, 330))
+        self.scrollAreaWidgetContentsSlidersLeft.setGeometry(QRect(0, 0, 270, 390))
         self.scrollAreaWidgetContentsSlidersLeft.setMinimumSize(QSize(0, 330))
         self.scrollAreaWidgetContentsSlidersLeft.setStyleSheet(u"")
         self.verticalLayout_13 = QVBoxLayout(self.scrollAreaWidgetContentsSlidersLeft)
@@ -931,7 +931,7 @@ class Ui_MainWindow(object):
         self.scrollArea_left_values.setWidgetResizable(True)
         self.scrollAreaLeftWidgetValues = QWidget()
         self.scrollAreaLeftWidgetValues.setObjectName(u"scrollAreaLeftWidgetValues")
-        self.scrollAreaLeftWidgetValues.setGeometry(QRect(0, 0, 259, 390))
+        self.scrollAreaLeftWidgetValues.setGeometry(QRect(0, 0, 274, 526))
         sizePolicy1.setHeightForWidth(self.scrollAreaLeftWidgetValues.sizePolicy().hasHeightForWidth())
         self.scrollAreaLeftWidgetValues.setSizePolicy(sizePolicy1)
         self.scrollAreaLeftWidgetValues.setMinimumSize(QSize(0, 390))
@@ -2031,191 +2031,15 @@ class Ui_MainWindow(object):
         self.gridLayout_15.setObjectName(u"gridLayout_15")
         self.gridLayout_15.setVerticalSpacing(0)
         self.gridLayout_15.setContentsMargins(5, 0, 7, 0)
-        self.AutoScroll_checkbox = QCheckBox(self.Preview_Frame)
-        self.AutoScroll_checkbox.setObjectName(u"AutoScroll_checkbox")
-        sizePolicy1.setHeightForWidth(self.AutoScroll_checkbox.sizePolicy().hasHeightForWidth())
-        self.AutoScroll_checkbox.setSizePolicy(sizePolicy1)
-        self.AutoScroll_checkbox.setMinimumSize(QSize(34, 22))
-        self.AutoScroll_checkbox.setMaximumSize(QSize(34, 22))
-        self.AutoScroll_checkbox.setBaseSize(QSize(0, 0))
-        self.AutoScroll_checkbox.setStyleSheet(u"QCheckBox {\n"
-"    border: none; /* No border for the checkbox */\n"
-"background-color: transparent ; /* Fallback color */\n"
-"}\n"
-"\n"
-"QCheckBox::indicator {\n"
-"    width: 54px; /* Width of the checkbox */\n"
-"    height: 29px; /* Height of the checkbox */\n"
-"    background-color: transparent; /* Ensures background is transparent */\n"
-"border: none; /* No border for the checkbox */\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:unchecked {\n"
-"    background-image: url(images/check_off_small.png); /* Image for unchecked state */\n"
-"    background-repeat: no-repeat; /* Prevents the image from repeating */\n"
-"background-position: left; /* Left the image */\n"
-"border: none; /* No border for the checkbox */\n"
-"}\n"
-"\n"
-"QCheckBox::indicator:checked {\n"
-"    background-image: url(images/check_on_small.png); /* Image for checked state */\n"
-"    background-repeat: no-repeat; /* Prevents the image from repeating */\n"
-"background-position: left; /* Left the image */\n"
-"border: none; /* No border for the checkbox *"
-                        "/\n"
-"}\n"
-"")
-        self.AutoScroll_checkbox.setIconSize(QSize(33, 20))
+        self.autoscroll_label = QLabel(self.Preview_Frame)
+        self.autoscroll_label.setObjectName(u"autoscroll_label")
+        self.autoscroll_label.setFont(font6)
 
-        self.gridLayout_15.addWidget(self.AutoScroll_checkbox, 0, 8, 1, 1)
-
-        self.open_Deforum_folder_frame_poppable = QFrame(self.Preview_Frame)
-        self.open_Deforum_folder_frame_poppable.setObjectName(u"open_Deforum_folder_frame_poppable")
-        self.open_Deforum_folder_frame_poppable.setMinimumSize(QSize(36, 30))
-        self.open_Deforum_folder_frame_poppable.setTabletTracking(True)
-        self.open_Deforum_folder_frame_poppable.setStyleSheet(u"border:0")
-        self.open_Deforum_folder_frame_poppable.setFrameShape(QFrame.StyledPanel)
-        self.open_Deforum_folder_frame_poppable.setFrameShadow(QFrame.Raised)
-        self.open_Deforum_folder = QPushButton(self.open_Deforum_folder_frame_poppable)
-        self.open_Deforum_folder.setObjectName(u"open_Deforum_folder")
-        self.open_Deforum_folder.setEnabled(True)
-        self.open_Deforum_folder.setGeometry(QRect(0, 0, 40, 32))
-        sizePolicy6.setHeightForWidth(self.open_Deforum_folder.sizePolicy().hasHeightForWidth())
-        self.open_Deforum_folder.setSizePolicy(sizePolicy6)
-        self.open_Deforum_folder.setMinimumSize(QSize(40, 32))
-        self.open_Deforum_folder.setBaseSize(QSize(0, 0))
-        self.open_Deforum_folder.setFocusPolicy(Qt.StrongFocus)
-        self.open_Deforum_folder.setToolTipDuration(-1)
-        self.open_Deforum_folder.setAutoFillBackground(False)
-        self.open_Deforum_folder.setStyleSheet(u"QPushButton {\n"
-"    /* Normal state */\n"
-"    background-image: url(images/Folder_off.png);\n"
-"    background-position: left top;\n"
-"    background-repeat: no-repeat;\n"
-"    border-radius: 0px;\n"
-"    min-width: 38px;\n"
-"    min-height: 30px;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    /* Hovered state */\n"
-"    background-image: url(images/Folder_hover.png);\n"
-"    background-position: left top;\n"
-"    background-repeat: no-repeat;\n"
-"    border: none;\n"
-"    min-width: 38px;\n"
-"    min-height: 30px;\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    /* Pressed state */\n"
-"    background-image: url(images/Folder_active.png);\n"
-"    background-position: left top;\n"
-"    background-repeat: no-repeat;\n"
-"    border: none;\n"
-"    min-width: 38px;\n"
-"    min-height: 30px;\n"
-"}")
-        self.open_Deforum_folder.setIconSize(QSize(36, 30))
-
-        self.gridLayout_15.addWidget(self.open_Deforum_folder_frame_poppable, 0, 3, 1, 1)
-
-        self.CRF_Compression_Frame_poppable = QFrame(self.Preview_Frame)
-        self.CRF_Compression_Frame_poppable.setObjectName(u"CRF_Compression_Frame_poppable")
-        self.CRF_Compression_Frame_poppable.setMinimumSize(QSize(211, 0))
-        self.CRF_Compression_Frame_poppable.setTabletTracking(True)
-        self.CRF_Compression_Frame_poppable.setStyleSheet(u"border: 0px")
-        self.CRF_Compression_Frame_poppable.setFrameShape(QFrame.StyledPanel)
-        self.CRF_Compression_Frame_poppable.setFrameShadow(QFrame.Raised)
-        self.crf_input_box = QLineEdit(self.CRF_Compression_Frame_poppable)
-        self.crf_input_box.setObjectName(u"crf_input_box")
-        self.crf_input_box.setGeometry(QRect(160, 8, 40, 24))
-        self.crf_input_box.setMaximumSize(QSize(40, 16777215))
-        self.crf_input_box.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;*/\n"
-"\n"
-"\n"
-"\n"
-"QLineEdit {\n"
-"    background-color: rgb(42, 42, 42); /* Dark background */\n"
-"    color: rgb(0, 255, 0); /* Bright green text */\n"
-"    border: 2px solid rgb(40, 40, 40); /* Dark grey border */\n"
-"    border-radius: 5px; /* Rounded corners */\n"
-"    padding-top: 1px; /* Top padding to push the text down */\n"
-"    padding-bottom: 1px; /* Bottom padding for even spacing */\n"
-"    padding-left: 1px; /* Left padding */\n"
-"    padding-right: 1px; /* Right padding */\n"
-"    text-align: center; /* Center the text horizontally */\n"
-"}")
-        self.crf_label = QLabel(self.CRF_Compression_Frame_poppable)
-        self.crf_label.setObjectName(u"crf_label")
-        self.crf_label.setGeometry(QRect(5, 3, 153, 35))
-        self.crf_label.setFont(font6)
-
-        self.gridLayout_15.addWidget(self.CRF_Compression_Frame_poppable, 0, 12, 1, 1)
-
-        self.horizontalSpacer_5 = QSpacerItem(10, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout_15.addItem(self.horizontalSpacer_5, 0, 11, 1, 1)
-
-        self.horizontalSpacer_7 = QSpacerItem(20, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout_15.addItem(self.horizontalSpacer_7, 0, 4, 1, 1)
+        self.gridLayout_15.addWidget(self.autoscroll_label, 0, 8, 1, 1)
 
         self.horizontalSpacer_3 = QSpacerItem(20, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
-        self.gridLayout_15.addItem(self.horizontalSpacer_3, 0, 9, 1, 1)
-
-        self.preview_compression_slider = QSlider(self.Preview_Frame)
-        self.preview_compression_slider.setObjectName(u"preview_compression_slider")
-        self.preview_compression_slider.setMinimumSize(QSize(200, 0))
-        self.preview_compression_slider.setStyleSheet(u"QSlider{\n"
-"border:0;\n"
-"}\n"
-"QSlider::groove:horizontal {\n"
-"    border-image: url(images/groove_230.png) ; /* Adjust slicing and stretch as needed */\n"
-"    height: 31px; /* The height of your image */\n"
-"}\n"
-"\n"
-"QSlider::handle:horizontal {\n"
-"    background-image: url(images/handle_off.png); /* The path to your handle image */\n"
-"  background-repeat: no-repeat;\n"
-"    border: none; /* Remove the border if you don't need it */\n"
-"    width: 32px; /* Width of the handle - adjust as needed */\n"
-"    height: 32px; /* Height of the handle - adjust as needed */\n"
-"    margin: -1px 0; /* Optional: Adjust the margin if needed */\n"
-"}\n"
-"\n"
-"QSlider::handle:horizontal:hover {\n"
-"\n"
-"    background-image: url(images/handle_hover.png); /* Change the handle image when hovering */\n"
-"background-repeat: no-repeat;\n"
-"    border: none; /* Remove the border if you don't need it */\n"
-"    width: 32px; /* Width of the handle - adjust as needed */\n"
-"    height: 32px; /* Height of the handle - adjust "
-                        "as needed */\n"
-"    margin: -1px 0; /* Optional: Adjust the margin if needed */\n"
-"}\n"
-"\n"
-"QSlider::handle:horizontal:pressed {\n"
-"    background-image: url(images/handle_on.png); /* Change the handle image when pressed */\n"
-"background-repeat: no-repeat;\n"
-"    border: none; /* Remove the border if you don't need it */\n"
-"    width: 32px; /* Width of the handle - adjust as needed */\n"
-"    height: 32px; /* Height of the handle - adjust as needed */\n"
-"    margin: -1px 0; /* Optional: Adjust the margin if needed */\n"
-"  \n"
-"}")
-        self.preview_compression_slider.setMinimum(1)
-        self.preview_compression_slider.setMaximum(600)
-        self.preview_compression_slider.setOrientation(Qt.Horizontal)
-        self.preview_compression_slider.setTickPosition(QSlider.TicksBelow)
-        self.preview_compression_slider.setTickInterval(2)
-
-        self.gridLayout_15.addWidget(self.preview_compression_slider, 0, 13, 1, 1)
-
-        self.horizontalSpacer_10 = QSpacerItem(20, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout_15.addItem(self.horizontalSpacer_10, 0, 6, 1, 1)
+        self.gridLayout_15.addItem(self.horizontalSpacer_3, 0, 10, 1, 1)
 
         self.Play_Preview_From_To_Frame_poppable = QFrame(self.Preview_Frame)
         self.Play_Preview_From_To_Frame_poppable.setObjectName(u"Play_Preview_From_To_Frame_poppable")
@@ -2316,7 +2140,101 @@ class Ui_MainWindow(object):
 "    text-align: center; /* Center the text horizontally */\n"
 "}")
 
-        self.gridLayout_15.addWidget(self.Play_Preview_From_To_Frame_poppable, 0, 10, 1, 1)
+        self.gridLayout_15.addWidget(self.Play_Preview_From_To_Frame_poppable, 0, 11, 1, 1)
+
+        self.AutoScroll_checkbox = QCheckBox(self.Preview_Frame)
+        self.AutoScroll_checkbox.setObjectName(u"AutoScroll_checkbox")
+        sizePolicy1.setHeightForWidth(self.AutoScroll_checkbox.sizePolicy().hasHeightForWidth())
+        self.AutoScroll_checkbox.setSizePolicy(sizePolicy1)
+        self.AutoScroll_checkbox.setMinimumSize(QSize(34, 22))
+        self.AutoScroll_checkbox.setMaximumSize(QSize(34, 22))
+        self.AutoScroll_checkbox.setBaseSize(QSize(0, 0))
+        self.AutoScroll_checkbox.setStyleSheet(u"QCheckBox {\n"
+"    border: none; /* No border for the checkbox */\n"
+"background-color: transparent ; /* Fallback color */\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 54px; /* Width of the checkbox */\n"
+"    height: 29px; /* Height of the checkbox */\n"
+"    background-color: transparent; /* Ensures background is transparent */\n"
+"border: none; /* No border for the checkbox */\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    background-image: url(images/check_off_small.png); /* Image for unchecked state */\n"
+"    background-repeat: no-repeat; /* Prevents the image from repeating */\n"
+"background-position: left; /* Left the image */\n"
+"border: none; /* No border for the checkbox */\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background-image: url(images/check_on_small.png); /* Image for checked state */\n"
+"    background-repeat: no-repeat; /* Prevents the image from repeating */\n"
+"background-position: left; /* Left the image */\n"
+"border: none; /* No border for the checkbox *"
+                        "/\n"
+"}\n"
+"")
+        self.AutoScroll_checkbox.setIconSize(QSize(33, 20))
+
+        self.gridLayout_15.addWidget(self.AutoScroll_checkbox, 0, 9, 1, 1)
+
+        self.horizontalSpacer_5 = QSpacerItem(10, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_15.addItem(self.horizontalSpacer_5, 0, 12, 1, 1)
+
+        self.preview_compression_slider = QSlider(self.Preview_Frame)
+        self.preview_compression_slider.setObjectName(u"preview_compression_slider")
+        self.preview_compression_slider.setMinimumSize(QSize(200, 0))
+        self.preview_compression_slider.setStyleSheet(u"QSlider{\n"
+"border:0;\n"
+"}\n"
+"QSlider::groove:horizontal {\n"
+"    border-image: url(images/groove_230.png) ; /* Adjust slicing and stretch as needed */\n"
+"    height: 31px; /* The height of your image */\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal {\n"
+"    background-image: url(images/handle_off.png); /* The path to your handle image */\n"
+"  background-repeat: no-repeat;\n"
+"    border: none; /* Remove the border if you don't need it */\n"
+"    width: 32px; /* Width of the handle - adjust as needed */\n"
+"    height: 32px; /* Height of the handle - adjust as needed */\n"
+"    margin: -1px 0; /* Optional: Adjust the margin if needed */\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal:hover {\n"
+"\n"
+"    background-image: url(images/handle_hover.png); /* Change the handle image when hovering */\n"
+"background-repeat: no-repeat;\n"
+"    border: none; /* Remove the border if you don't need it */\n"
+"    width: 32px; /* Width of the handle - adjust as needed */\n"
+"    height: 32px; /* Height of the handle - adjust "
+                        "as needed */\n"
+"    margin: -1px 0; /* Optional: Adjust the margin if needed */\n"
+"}\n"
+"\n"
+"QSlider::handle:horizontal:pressed {\n"
+"    background-image: url(images/handle_on.png); /* Change the handle image when pressed */\n"
+"background-repeat: no-repeat;\n"
+"    border: none; /* Remove the border if you don't need it */\n"
+"    width: 32px; /* Width of the handle - adjust as needed */\n"
+"    height: 32px; /* Height of the handle - adjust as needed */\n"
+"    margin: -1px 0; /* Optional: Adjust the margin if needed */\n"
+"  \n"
+"}")
+        self.preview_compression_slider.setMinimum(1)
+        self.preview_compression_slider.setMaximum(600)
+        self.preview_compression_slider.setOrientation(Qt.Horizontal)
+        self.preview_compression_slider.setTickPosition(QSlider.TicksBelow)
+        self.preview_compression_slider.setTickInterval(2)
+
+        self.gridLayout_15.addWidget(self.preview_compression_slider, 0, 14, 1, 1)
+
+        self.horizontalSpacer_10 = QSpacerItem(20, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_15.addItem(self.horizontalSpacer_10, 0, 7, 1, 1)
 
         self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
@@ -2405,13 +2323,117 @@ class Ui_MainWindow(object):
         self.loop_button.setIcon(icon8)
         self.loop_button.setIconSize(QSize(41, 38))
 
-        self.gridLayout_15.addWidget(self.Preview_Play_Buttons_poppable, 0, 5, 1, 1)
+        self.gridLayout_15.addWidget(self.Preview_Play_Buttons_poppable, 0, 6, 1, 1)
 
-        self.autoscroll_label = QLabel(self.Preview_Frame)
-        self.autoscroll_label.setObjectName(u"autoscroll_label")
-        self.autoscroll_label.setFont(font6)
+        self.open_Deforum_folder_frame_poppable = QFrame(self.Preview_Frame)
+        self.open_Deforum_folder_frame_poppable.setObjectName(u"open_Deforum_folder_frame_poppable")
+        self.open_Deforum_folder_frame_poppable.setMinimumSize(QSize(36, 30))
+        self.open_Deforum_folder_frame_poppable.setTabletTracking(True)
+        self.open_Deforum_folder_frame_poppable.setStyleSheet(u"border:0")
+        self.open_Deforum_folder_frame_poppable.setFrameShape(QFrame.StyledPanel)
+        self.open_Deforum_folder_frame_poppable.setFrameShadow(QFrame.Raised)
+        self.open_Deforum_folder = QPushButton(self.open_Deforum_folder_frame_poppable)
+        self.open_Deforum_folder.setObjectName(u"open_Deforum_folder")
+        self.open_Deforum_folder.setEnabled(True)
+        self.open_Deforum_folder.setGeometry(QRect(0, 0, 40, 32))
+        sizePolicy6.setHeightForWidth(self.open_Deforum_folder.sizePolicy().hasHeightForWidth())
+        self.open_Deforum_folder.setSizePolicy(sizePolicy6)
+        self.open_Deforum_folder.setMinimumSize(QSize(40, 32))
+        self.open_Deforum_folder.setBaseSize(QSize(0, 0))
+        self.open_Deforum_folder.setFocusPolicy(Qt.StrongFocus)
+        self.open_Deforum_folder.setToolTipDuration(-1)
+        self.open_Deforum_folder.setAutoFillBackground(False)
+        self.open_Deforum_folder.setStyleSheet(u"QPushButton {\n"
+"    /* Normal state */\n"
+"    background-image: url(images/Folder_off.png);\n"
+"    background-position: left top;\n"
+"    background-repeat: no-repeat;\n"
+"    border-radius: 0px;\n"
+"    min-width: 38px;\n"
+"    min-height: 30px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    /* Hovered state */\n"
+"    background-image: url(images/Folder_hover.png);\n"
+"    background-position: left top;\n"
+"    background-repeat: no-repeat;\n"
+"    border: none;\n"
+"    min-width: 38px;\n"
+"    min-height: 30px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    /* Pressed state */\n"
+"    background-image: url(images/Folder_active.png);\n"
+"    background-position: left top;\n"
+"    background-repeat: no-repeat;\n"
+"    border: none;\n"
+"    min-width: 38px;\n"
+"    min-height: 30px;\n"
+"}")
+        self.open_Deforum_folder.setIconSize(QSize(36, 30))
 
-        self.gridLayout_15.addWidget(self.autoscroll_label, 0, 7, 1, 1)
+        self.gridLayout_15.addWidget(self.open_Deforum_folder_frame_poppable, 0, 3, 1, 1)
+
+        self.CRF_Compression_Frame_poppable = QFrame(self.Preview_Frame)
+        self.CRF_Compression_Frame_poppable.setObjectName(u"CRF_Compression_Frame_poppable")
+        self.CRF_Compression_Frame_poppable.setMinimumSize(QSize(211, 0))
+        self.CRF_Compression_Frame_poppable.setTabletTracking(True)
+        self.CRF_Compression_Frame_poppable.setStyleSheet(u"border: 0px")
+        self.CRF_Compression_Frame_poppable.setFrameShape(QFrame.StyledPanel)
+        self.CRF_Compression_Frame_poppable.setFrameShadow(QFrame.Raised)
+        self.crf_input_box = QLineEdit(self.CRF_Compression_Frame_poppable)
+        self.crf_input_box.setObjectName(u"crf_input_box")
+        self.crf_input_box.setGeometry(QRect(160, 8, 40, 24))
+        self.crf_input_box.setMaximumSize(QSize(40, 16777215))
+        self.crf_input_box.setStyleSheet(u"/*background-color:rgb(42, 42, 42);color: rgb(0, 255, 0); border: 1px solid rgb(128,128,128); border-radius: 2px;*/\n"
+"\n"
+"\n"
+"\n"
+"QLineEdit {\n"
+"    background-color: rgb(42, 42, 42); /* Dark background */\n"
+"    color: rgb(0, 255, 0); /* Bright green text */\n"
+"    border: 2px solid rgb(40, 40, 40); /* Dark grey border */\n"
+"    border-radius: 5px; /* Rounded corners */\n"
+"    padding-top: 1px; /* Top padding to push the text down */\n"
+"    padding-bottom: 1px; /* Bottom padding for even spacing */\n"
+"    padding-left: 1px; /* Left padding */\n"
+"    padding-right: 1px; /* Right padding */\n"
+"    text-align: center; /* Center the text horizontally */\n"
+"}")
+        self.crf_label = QLabel(self.CRF_Compression_Frame_poppable)
+        self.crf_label.setObjectName(u"crf_label")
+        self.crf_label.setGeometry(QRect(5, 3, 153, 35))
+        self.crf_label.setFont(font6)
+
+        self.gridLayout_15.addWidget(self.CRF_Compression_Frame_poppable, 0, 13, 1, 1)
+
+        self.horizontalSpacer_7 = QSpacerItem(20, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_15.addItem(self.horizontalSpacer_7, 0, 5, 1, 1)
+
+        self.record_voice_button_2 = QPushButton(self.Preview_Frame)
+        self.record_voice_button_2.setObjectName(u"record_voice_button_2")
+        self.record_voice_button_2.setEnabled(True)
+        sizePolicy6.setHeightForWidth(self.record_voice_button_2.sizePolicy().hasHeightForWidth())
+        self.record_voice_button_2.setSizePolicy(sizePolicy6)
+        self.record_voice_button_2.setMinimumSize(QSize(32, 32))
+        self.record_voice_button_2.setMaximumSize(QSize(32, 32))
+        self.record_voice_button_2.setTabletTracking(False)
+        self.record_voice_button_2.setStyleSheet(u"    background-color: none;\n"
+"    border-radius: 0px;\n"
+"    border: none;\n"
+"\n"
+"")
+        icon9 = QIcon()
+        icon9.addFile(u"images/record_button_off.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon9.addFile(u"images/record_button_active.png", QSize(), QIcon.Normal, QIcon.On)
+        icon9.addFile(u"images/record_button_hover.png", QSize(), QIcon.Active, QIcon.On)
+        self.record_voice_button_2.setIcon(icon9)
+        self.record_voice_button_2.setIconSize(QSize(32, 32))
+
+        self.gridLayout_15.addWidget(self.record_voice_button_2, 0, 15, 1, 1)
 
 
         self.gridLayout_8.addWidget(self.Preview_Frame, 5, 0, 1, 1)
@@ -3761,13 +3783,13 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "")
-        icon9 = QIcon()
-        icon9.addFile(u"images/upp_off.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon9.addFile(u"images/upp_hover.png", QSize(), QIcon.Normal, QIcon.On)
-        icon9.addFile(u"images/upp_off.png", QSize(), QIcon.Disabled, QIcon.Off)
-        icon9.addFile(u"images/upp_off.png", QSize(), QIcon.Disabled, QIcon.On)
-        icon9.addFile(u"images/upp_active.png", QSize(), QIcon.Active, QIcon.On)
-        self.motion_pan_button_up.setIcon(icon9)
+        icon10 = QIcon()
+        icon10.addFile(u"images/upp_off.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon10.addFile(u"images/upp_hover.png", QSize(), QIcon.Normal, QIcon.On)
+        icon10.addFile(u"images/upp_off.png", QSize(), QIcon.Disabled, QIcon.Off)
+        icon10.addFile(u"images/upp_off.png", QSize(), QIcon.Disabled, QIcon.On)
+        icon10.addFile(u"images/upp_active.png", QSize(), QIcon.Active, QIcon.On)
+        self.motion_pan_button_up.setIcon(icon10)
         self.motion_pan_button_up.setIconSize(QSize(53, 33))
         self.motion_pan_button_right = QPushButton(self.Motion_Panning_Component_poppable)
         self.motion_pan_button_right.setObjectName(u"motion_pan_button_right")
@@ -4015,11 +4037,11 @@ class Ui_MainWindow(object):
         self.pan_middle_button.setObjectName(u"pan_middle_button")
         self.pan_middle_button.setGeometry(QRect(126, 286, 51, 51))
         self.pan_middle_button.setStyleSheet(u"border : 0")
-        icon10 = QIcon()
-        icon10.addFile(u"images/middle_off.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon10.addFile(u"images/middle_hover.png", QSize(), QIcon.Normal, QIcon.On)
-        icon10.addFile(u"images/middle_active.png", QSize(), QIcon.Active, QIcon.On)
-        self.pan_middle_button.setIcon(icon10)
+        icon11 = QIcon()
+        icon11.addFile(u"images/middle_off.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon11.addFile(u"images/middle_hover.png", QSize(), QIcon.Normal, QIcon.On)
+        icon11.addFile(u"images/middle_active.png", QSize(), QIcon.Active, QIcon.On)
+        self.pan_middle_button.setIcon(icon11)
         self.pan_middle_button.setIconSize(QSize(51, 51))
         self.Panning_Component = QLabel(self.Motion_Panning_Component_poppable)
         self.Panning_Component.setObjectName(u"Panning_Component")
@@ -4388,7 +4410,7 @@ class Ui_MainWindow(object):
         self.rotate_middle_button.setObjectName(u"rotate_middle_button")
         self.rotate_middle_button.setGeometry(QRect(126, 286, 51, 51))
         self.rotate_middle_button.setStyleSheet(u"border : 0")
-        self.rotate_middle_button.setIcon(icon10)
+        self.rotate_middle_button.setIcon(icon11)
         self.rotate_middle_button.setIconSize(QSize(51, 51))
         self.smooth_motion_steps_rotation_label = QLabel(self.Motion_Rotation_Component_poppable)
         self.smooth_motion_steps_rotation_label.setObjectName(u"smooth_motion_steps_rotation_label")
@@ -4729,10 +4751,10 @@ class Ui_MainWindow(object):
         self.motion_tilt_button_left.setMaximumSize(QSize(7579, 71))
         self.motion_tilt_button_left.setTabletTracking(True)
         self.motion_tilt_button_left.setStyleSheet(u"border : 0")
-        icon11 = QIcon()
-        icon11.addFile(u"images/tilt_left.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon11.addFile(u"images/tilt_left_press.png", QSize(), QIcon.Normal, QIcon.On)
-        self.motion_tilt_button_left.setIcon(icon11)
+        icon12 = QIcon()
+        icon12.addFile(u"images/tilt_left.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon12.addFile(u"images/tilt_left_press.png", QSize(), QIcon.Normal, QIcon.On)
+        self.motion_tilt_button_left.setIcon(icon12)
         self.motion_tilt_button_left.setIconSize(QSize(75, 79))
         self.motion_tilt_button_right = QPushButton(self.Motion_Tilt_Component_poppable)
         self.motion_tilt_button_right.setObjectName(u"motion_tilt_button_right")
@@ -4743,17 +4765,17 @@ class Ui_MainWindow(object):
         self.motion_tilt_button_right.setMaximumSize(QSize(76, 79))
         self.motion_tilt_button_right.setTabletTracking(True)
         self.motion_tilt_button_right.setStyleSheet(u"border : 0")
-        icon12 = QIcon()
-        icon12.addFile(u"images/tilt_right.png", QSize(), QIcon.Normal, QIcon.Off)
-        icon12.addFile(u"images/tilt_right_press.png", QSize(), QIcon.Normal, QIcon.On)
-        icon12.addFile(u"images/tilt_right_press.png", QSize(), QIcon.Active, QIcon.On)
-        self.motion_tilt_button_right.setIcon(icon12)
+        icon13 = QIcon()
+        icon13.addFile(u"images/tilt_right.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon13.addFile(u"images/tilt_right_press.png", QSize(), QIcon.Normal, QIcon.On)
+        icon13.addFile(u"images/tilt_right_press.png", QSize(), QIcon.Active, QIcon.On)
+        self.motion_tilt_button_right.setIcon(icon13)
         self.motion_tilt_button_right.setIconSize(QSize(76, 79))
         self.tilt_middle_button = QPushButton(self.Motion_Tilt_Component_poppable)
         self.tilt_middle_button.setObjectName(u"tilt_middle_button")
         self.tilt_middle_button.setGeometry(QRect(126, 308, 51, 51))
         self.tilt_middle_button.setStyleSheet(u"border : 0")
-        self.tilt_middle_button.setIcon(icon10)
+        self.tilt_middle_button.setIcon(icon11)
         self.tilt_middle_button.setIconSize(QSize(51, 51))
         self.Motion_Fov_Component_poppable = QFrame(self.Movement_Tab)
         self.Motion_Fov_Component_poppable.setObjectName(u"Motion_Fov_Component_poppable")
@@ -6103,7 +6125,7 @@ class Ui_MainWindow(object):
         self.scrollArea_joystick_key_bindings.setWidgetResizable(True)
         self.scrollAreaWidgetContentsJoystickBindings = QWidget()
         self.scrollAreaWidgetContentsJoystickBindings.setObjectName(u"scrollAreaWidgetContentsJoystickBindings")
-        self.scrollAreaWidgetContentsJoystickBindings.setGeometry(QRect(0, 0, 302, 340))
+        self.scrollAreaWidgetContentsJoystickBindings.setGeometry(QRect(0, -111, 302, 340))
         sizePolicy1.setHeightForWidth(self.scrollAreaWidgetContentsJoystickBindings.sizePolicy().hasHeightForWidth())
         self.scrollAreaWidgetContentsJoystickBindings.setSizePolicy(sizePolicy1)
         self.scrollAreaWidgetContentsJoystickBindings.setMinimumSize(QSize(0, 340))
@@ -7387,7 +7409,7 @@ class Ui_MainWindow(object):
         self.cadence_audio_line_show_checkbox.setIconSize(QSize(33, 20))
         self.frame_cadence_change_audio_value = QFrame(self.audio_misc_settings_interface)
         self.frame_cadence_change_audio_value.setObjectName(u"frame_cadence_change_audio_value")
-        self.frame_cadence_change_audio_value.setGeometry(QRect(10, 207, 367, 45))
+        self.frame_cadence_change_audio_value.setGeometry(QRect(10, 220, 367, 45))
         self.frame_cadence_change_audio_value.setStyleSheet(u"QFrame{\n"
 "background-color: rgb(108,108,118);\n"
 "border: 2px solid rgb(150,128,128);\n"
@@ -7475,14 +7497,14 @@ class Ui_MainWindow(object):
 "}")
         self.cadence_indice_audio_settings_label = QLabel(self.audio_misc_settings_interface)
         self.cadence_indice_audio_settings_label.setObjectName(u"cadence_indice_audio_settings_label")
-        self.cadence_indice_audio_settings_label.setGeometry(QRect(8, 127, 361, 25))
+        self.cadence_indice_audio_settings_label.setGeometry(QRect(8, 116, 361, 25))
         self.cadence_indice_audio_settings_label.setFont(font3)
         self.cadence_indice_audio_settings_label.setStyleSheet(u"   border: none;")
         self.cadence_indice_explanation_label = QLabel(self.audio_misc_settings_interface)
         self.cadence_indice_explanation_label.setObjectName(u"cadence_indice_explanation_label")
-        self.cadence_indice_explanation_label.setGeometry(QRect(8, 152, 361, 49))
+        self.cadence_indice_explanation_label.setGeometry(QRect(8, 136, 361, 73))
         self.cadence_indice_explanation_label.setStyleSheet(u"border: none;")
-        self.cadence_indice_explanation_label.setAlignment(Qt.AlignBottom|Qt.AlignLeading|Qt.AlignLeft)
+        self.cadence_indice_explanation_label.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
         self.cadence_indice_explanation_label.setWordWrap(True)
         self.line_audio_interface_middle_5 = QFrame(self.audio_misc_settings_interface)
         self.line_audio_interface_middle_5.setObjectName(u"line_audio_interface_middle_5")
@@ -7920,6 +7942,27 @@ class Ui_MainWindow(object):
 "border: 2px solid rgb(128,128,128);\n"
 "border-radius: 5px;\n"
 "}\n"
+"\n"
+"QPushButton {\n"
+"    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n"
+"    border: none;\n"
+"    border-radius: 5px; /* Consistent with the tab's rounded corners */\n"
+"    padding: 6px 12px; /* Comfortable padding for the button text */\n"
+"    color: white; /* White text for contrast */\n"
+"    text-align: center;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(96, 96, 96); /* Lighter grey, similar to tab hover effect */\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    backgr"
+                        "ound-color: rgb(128, 128, 128); /* Similar to the selected tab color */\n"
+"\n"
+"}\n"
 "")
         self.audio_misc_info_interface.setFrameShape(QFrame.StyledPanel)
         self.audio_misc_info_interface.setFrameShadow(QFrame.Raised)
@@ -7933,7 +7976,641 @@ class Ui_MainWindow(object):
         self.line_audio_misc_info_interface_middle.setGeometry(QRect(12, 37, 260, 1))
         self.line_audio_misc_info_interface_middle.setFrameShape(QFrame.HLine)
         self.line_audio_misc_info_interface_middle.setFrameShadow(QFrame.Sunken)
+        self.recordXXXX_voice_button = QPushButton(self.audio_misc_info_interface)
+        self.recordXXXX_voice_button.setObjectName(u"recordXXXX_voice_button")
+        self.recordXXXX_voice_button.setGeometry(QRect(16, 48, 97, 24))
         self.deforumation_tabWidget.addTab(self.Audio_Tab1, "")
+        self.Speech_Control_Tab = QWidget()
+        self.Speech_Control_Tab.setObjectName(u"Speech_Control_Tab")
+        self.Speech_Control_Tab.setStyleSheet(u"background-color: rgb(102,102,102);\n"
+"\n"
+"border: 2px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
+"border-radius: 10px;\n"
+"padding: 1px; /* To prevent the content from touching the border */\n"
+"\n"
+"QPushButton {\n"
+"    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n"
+"    border: none;\n"
+"    border-radius: 5px; /* Consistent with the tab's rounded corners */\n"
+"    padding: 6px 12px; /* Comfortable padding for the button text */\n"
+"    color: white; /* White text for contrast */\n"
+"    text-align: center;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(96, 96, 96); /* Lighter grey, similar to tab hover effect */\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(128, 128, 128); /* Similar to the selected tab color */\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.speech_control_frame = QFrame(self.Speech_Control_Tab)
+        self.speech_control_frame.setObjectName(u"speech_control_frame")
+        self.speech_control_frame.setGeometry(QRect(8, 8, 1057, 249))
+        sizePolicy.setHeightForWidth(self.speech_control_frame.sizePolicy().hasHeightForWidth())
+        self.speech_control_frame.setSizePolicy(sizePolicy)
+        self.speech_control_frame.setTabletTracking(True)
+        self.speech_control_frame.setStyleSheet(u"\n"
+"QFrame{\n"
+"background-color: rgb(108,108,118);\n"
+"border: 2px solid rgb(40, 40, 40); /* Simulated shadow using border */\n"
+"border-radius: 5px;\n"
+"padding: 0px  1px ;  /* To prevent the content from touching the border */\n"
+"}\n"
+"QToolTip { \n"
+" background-color: black; \n"
+"color: white; \n"
+" border: black solid 1px;\n"
+" }\n"
+"QTextEdit{\n"
+"background-color:rgb(42, 42, 42);\n"
+"color: rgb(0, 255, 0);\n"
+"border: 2px solid rgb(128,128,128);\n"
+"border-radius: 5px;\n"
+"}\n"
+"\n"
+"QPushButton {\n"
+"    background-color: rgb(64, 64, 64); /* Matching the tab's base color */\n"
+"    border: none;\n"
+"    border-radius: 5px; /* Consistent with the tab's rounded corners */\n"
+"    padding: 6px 12px; /* Comfortable padding for the button text */\n"
+"    color: white; /* White text for contrast */\n"
+"    text-align: center;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(96, 96, 96); /* Lighter grey, similar to tab hover effect */\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    b"
+                        "ackground-color: rgb(128, 128, 128); /* Similar to the selected tab color */\n"
+"\n"
+"}\n"
+"")
+        self.speech_control_frame.setFrameShape(QFrame.StyledPanel)
+        self.speech_control_frame.setFrameShadow(QFrame.Raised)
+        self.audio_misc_info_label_2 = QLabel(self.speech_control_frame)
+        self.audio_misc_info_label_2.setObjectName(u"audio_misc_info_label_2")
+        self.audio_misc_info_label_2.setGeometry(QRect(8, 4, 113, 35))
+        self.audio_misc_info_label_2.setFont(font14)
+        self.audio_misc_info_label_2.setStyleSheet(u"   border: none;")
+        self.line_audio_misc_info_interface_middle_2 = QFrame(self.speech_control_frame)
+        self.line_audio_misc_info_interface_middle_2.setObjectName(u"line_audio_misc_info_interface_middle_2")
+        self.line_audio_misc_info_interface_middle_2.setGeometry(QRect(12, 44, 260, 1))
+        self.line_audio_misc_info_interface_middle_2.setFrameShape(QFrame.HLine)
+        self.line_audio_misc_info_interface_middle_2.setFrameShadow(QFrame.Sunken)
+        self.speech_control_bindings_frame = QFrame(self.speech_control_frame)
+        self.speech_control_bindings_frame.setObjectName(u"speech_control_bindings_frame")
+        self.speech_control_bindings_frame.setGeometry(QRect(2, 50, 1049, 195))
+        self.speech_control_bindings_frame.setStyleSheet(u"QFrame { border:0;}")
+        self.speech_control_bindings_frame.setFrameShape(QFrame.StyledPanel)
+        self.speech_control_bindings_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_19 = QVBoxLayout(self.speech_control_bindings_frame)
+        self.verticalLayout_19.setSpacing(0)
+        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
+        self.verticalLayout_19.setContentsMargins(0, 0, 0, 0)
+        self.scrollarea_speech_control = QScrollArea(self.speech_control_bindings_frame)
+        self.scrollarea_speech_control.setObjectName(u"scrollarea_speech_control")
+        sizePolicy1.setHeightForWidth(self.scrollarea_speech_control.sizePolicy().hasHeightForWidth())
+        self.scrollarea_speech_control.setSizePolicy(sizePolicy1)
+        self.scrollarea_speech_control.setMinimumSize(QSize(0, 0))
+        self.scrollarea_speech_control.setStyleSheet(u"QScrollArea {\n"
+"    border: 0px;\n"
+"background-color: rgb(108,108,118);\n"
+"}\n"
+"\n"
+"\n"
+"QScrollArea QScrollBar:vertical {\n"
+"    border: 2px;\n"
+"    background: rgb(66,66,66);\n"
+"    width: 15px; /* Narrow scrollbar for a sleek look */\n"
+"    border-radius: 5px;\n"
+"    margin: 0px 0 0px 0;\n"
+"    \n"
+"}\n"
+"\n"
+"QScrollArea QScrollBar::handle:vertical {\n"
+"    background-color: rgb(40,129,232); /* Dark handle */\n"
+"    min-height: 20px; /* Minimum handle height */\n"
+"    border-radius: 5px; /* Rounded corners for the handle */\n"
+"}\n"
+"\n"
+"QScrollArea QScrollBar::handle:vertical:hover {\n"
+"    background-color: rgb(59,165,0); /* Slightly lighter handle on hover */\n"
+"}\n"
+"\n"
+"\n"
+"QScrollArea QScrollBar::sub-line:vertical,\n"
+"QScrollArea QScrollBar::add-line:vertical {\n"
+"    background: none;\n"
+"border: none; /* No buttons at the end of the scrollbar */\n"
+"}\n"
+"\n"
+"QScrollArea QScrollBar::sub-page:vertical,\n"
+"QScrollArea QScrollBar::add-page:vertical {\n"
+"    background: none; \n"
+""
+                        "border: none;/* No background for the scrollable area behind the handle */\n"
+"}")
+        self.scrollarea_speech_control.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.scrollarea_speech_control.setWidgetResizable(True)
+        self.speech_control__scrollarea_widget_bindings = QWidget()
+        self.speech_control__scrollarea_widget_bindings.setObjectName(u"speech_control__scrollarea_widget_bindings")
+        self.speech_control__scrollarea_widget_bindings.setGeometry(QRect(0, 0, 1030, 498))
+        sizePolicy1.setHeightForWidth(self.speech_control__scrollarea_widget_bindings.sizePolicy().hasHeightForWidth())
+        self.speech_control__scrollarea_widget_bindings.setSizePolicy(sizePolicy1)
+        self.speech_control__scrollarea_widget_bindings.setMinimumSize(QSize(0, 498))
+        self.speech_control__scrollarea_widget_bindings.setStyleSheet(u"")
+        self.verticalLayout_21 = QVBoxLayout(self.speech_control__scrollarea_widget_bindings)
+        self.verticalLayout_21.setSpacing(0)
+        self.verticalLayout_21.setObjectName(u"verticalLayout_21")
+        self.verticalLayout_21.setContentsMargins(0, 0, 0, 0)
+        self.frame_speech_bindings = QFrame(self.speech_control__scrollarea_widget_bindings)
+        self.frame_speech_bindings.setObjectName(u"frame_speech_bindings")
+        self.frame_speech_bindings.setMinimumSize(QSize(0, 0))
+        self.frame_speech_bindings.setAutoFillBackground(False)
+        self.frame_speech_bindings.setStyleSheet(u"border:0")
+        self.frame_speech_bindings.setFrameShape(QFrame.StyledPanel)
+        self.frame_speech_bindings.setFrameShadow(QFrame.Raised)
+        self.speech_key_bindings_frame_poppable = QFrame(self.frame_speech_bindings)
+        self.speech_key_bindings_frame_poppable.setObjectName(u"speech_key_bindings_frame_poppable")
+        self.speech_key_bindings_frame_poppable.setGeometry(QRect(0, 0, 1033, 498))
+        self.speech_key_bindings_frame_poppable.setTabletTracking(True)
+        self.speech_key_bindings_frame_poppable.setStyleSheet(u"border:0")
+        self.speech_key_bindings_frame_poppable.setFrameShape(QFrame.StyledPanel)
+        self.speech_key_bindings_frame_poppable.setFrameShadow(QFrame.Raised)
+        self.speech_bindings_row = QWidget(self.speech_key_bindings_frame_poppable)
+        self.speech_bindings_row.setObjectName(u"speech_bindings_row")
+        self.speech_bindings_row.setGeometry(QRect(5, 0, 137, 498))
+        sizePolicy1.setHeightForWidth(self.speech_bindings_row.sizePolicy().hasHeightForWidth())
+        self.speech_bindings_row.setSizePolicy(sizePolicy1)
+        self.speech_bindings_row.setStyleSheet(u"QLabel {\n"
+"background-color:rgb(64, 64, 64);\n"
+"border-radius: 3px; /* Consistent with the tab's rounded corners */\n"
+"padding: 4px; /* Comfortable padding for the button text */\n"
+"border:0;\n"
+"}")
+        self.verticalLayoutWidget_7 = QWidget(self.speech_bindings_row)
+        self.verticalLayoutWidget_7.setObjectName(u"verticalLayoutWidget_7")
+        self.verticalLayoutWidget_7.setGeometry(QRect(0, 4, 140, 494))
+        self.verticalLayout_speech_binding_Key_Name = QVBoxLayout(self.verticalLayoutWidget_7)
+        self.verticalLayout_speech_binding_Key_Name.setSpacing(2)
+        self.verticalLayout_speech_binding_Key_Name.setObjectName(u"verticalLayout_speech_binding_Key_Name")
+        self.verticalLayout_speech_binding_Key_Name.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.verticalLayout_speech_binding_Key_Name.setContentsMargins(0, 0, 0, 0)
+        self.speech_prompt_start_label = QLabel(self.verticalLayoutWidget_7)
+        self.speech_prompt_start_label.setObjectName(u"speech_prompt_start_label")
+        sizePolicy16.setHeightForWidth(self.speech_prompt_start_label.sizePolicy().hasHeightForWidth())
+        self.speech_prompt_start_label.setSizePolicy(sizePolicy16)
+        self.speech_prompt_start_label.setMinimumSize(QSize(0, 24))
+        self.speech_prompt_start_label.setMaximumSize(QSize(16777215, 24))
+        self.speech_prompt_start_label.setFont(font15)
+        self.speech_prompt_start_label.setStyleSheet(u"")
+
+        self.verticalLayout_speech_binding_Key_Name.addWidget(self.speech_prompt_start_label)
+
+        self.speech_add_to_prompt_label = QLabel(self.verticalLayoutWidget_7)
+        self.speech_add_to_prompt_label.setObjectName(u"speech_add_to_prompt_label")
+        sizePolicy16.setHeightForWidth(self.speech_add_to_prompt_label.sizePolicy().hasHeightForWidth())
+        self.speech_add_to_prompt_label.setSizePolicy(sizePolicy16)
+        self.speech_add_to_prompt_label.setMinimumSize(QSize(0, 0))
+        self.speech_add_to_prompt_label.setFont(font15)
+        self.speech_add_to_prompt_label.setStyleSheet(u"")
+
+        self.verticalLayout_speech_binding_Key_Name.addWidget(self.speech_add_to_prompt_label)
+
+        self.speech_cancel_prompt_label = QLabel(self.verticalLayoutWidget_7)
+        self.speech_cancel_prompt_label.setObjectName(u"speech_cancel_prompt_label")
+        sizePolicy16.setHeightForWidth(self.speech_cancel_prompt_label.sizePolicy().hasHeightForWidth())
+        self.speech_cancel_prompt_label.setSizePolicy(sizePolicy16)
+        self.speech_cancel_prompt_label.setMinimumSize(QSize(0, 0))
+        self.speech_cancel_prompt_label.setFont(font15)
+        self.speech_cancel_prompt_label.setStyleSheet(u"")
+
+        self.verticalLayout_speech_binding_Key_Name.addWidget(self.speech_cancel_prompt_label)
+
+        self.speech_panning_left_label = QLabel(self.verticalLayoutWidget_7)
+        self.speech_panning_left_label.setObjectName(u"speech_panning_left_label")
+        sizePolicy16.setHeightForWidth(self.speech_panning_left_label.sizePolicy().hasHeightForWidth())
+        self.speech_panning_left_label.setSizePolicy(sizePolicy16)
+        self.speech_panning_left_label.setMinimumSize(QSize(0, 24))
+        self.speech_panning_left_label.setMaximumSize(QSize(16777215, 24))
+        self.speech_panning_left_label.setFont(font15)
+        self.speech_panning_left_label.setStyleSheet(u"")
+
+        self.verticalLayout_speech_binding_Key_Name.addWidget(self.speech_panning_left_label)
+
+        self.speech_panning_right_label = QLabel(self.verticalLayoutWidget_7)
+        self.speech_panning_right_label.setObjectName(u"speech_panning_right_label")
+        sizePolicy16.setHeightForWidth(self.speech_panning_right_label.sizePolicy().hasHeightForWidth())
+        self.speech_panning_right_label.setSizePolicy(sizePolicy16)
+        self.speech_panning_right_label.setMinimumSize(QSize(0, 24))
+        self.speech_panning_right_label.setMaximumSize(QSize(16777215, 24))
+        self.speech_panning_right_label.setFont(font15)
+        self.speech_panning_right_label.setStyleSheet(u"")
+
+        self.verticalLayout_speech_binding_Key_Name.addWidget(self.speech_panning_right_label)
+
+        self.speech_panning_up_label = QLabel(self.verticalLayoutWidget_7)
+        self.speech_panning_up_label.setObjectName(u"speech_panning_up_label")
+        sizePolicy16.setHeightForWidth(self.speech_panning_up_label.sizePolicy().hasHeightForWidth())
+        self.speech_panning_up_label.setSizePolicy(sizePolicy16)
+        self.speech_panning_up_label.setMinimumSize(QSize(0, 0))
+        self.speech_panning_up_label.setFont(font15)
+        self.speech_panning_up_label.setStyleSheet(u"")
+
+        self.verticalLayout_speech_binding_Key_Name.addWidget(self.speech_panning_up_label)
+
+        self.speech_panning_down_label = QLabel(self.verticalLayoutWidget_7)
+        self.speech_panning_down_label.setObjectName(u"speech_panning_down_label")
+        sizePolicy16.setHeightForWidth(self.speech_panning_down_label.sizePolicy().hasHeightForWidth())
+        self.speech_panning_down_label.setSizePolicy(sizePolicy16)
+        self.speech_panning_down_label.setMinimumSize(QSize(0, 0))
+        self.speech_panning_down_label.setFont(font15)
+        self.speech_panning_down_label.setStyleSheet(u"")
+
+        self.verticalLayout_speech_binding_Key_Name.addWidget(self.speech_panning_down_label)
+
+        self.speech_rotate_h_left_label = QLabel(self.verticalLayoutWidget_7)
+        self.speech_rotate_h_left_label.setObjectName(u"speech_rotate_h_left_label")
+        sizePolicy16.setHeightForWidth(self.speech_rotate_h_left_label.sizePolicy().hasHeightForWidth())
+        self.speech_rotate_h_left_label.setSizePolicy(sizePolicy16)
+        self.speech_rotate_h_left_label.setMinimumSize(QSize(0, 0))
+        self.speech_rotate_h_left_label.setFont(font15)
+        self.speech_rotate_h_left_label.setStyleSheet(u"")
+
+        self.verticalLayout_speech_binding_Key_Name.addWidget(self.speech_rotate_h_left_label)
+
+        self.speech_rotate_h_right_label = QLabel(self.verticalLayoutWidget_7)
+        self.speech_rotate_h_right_label.setObjectName(u"speech_rotate_h_right_label")
+        sizePolicy16.setHeightForWidth(self.speech_rotate_h_right_label.sizePolicy().hasHeightForWidth())
+        self.speech_rotate_h_right_label.setSizePolicy(sizePolicy16)
+        self.speech_rotate_h_right_label.setMinimumSize(QSize(0, 0))
+        self.speech_rotate_h_right_label.setFont(font15)
+        self.speech_rotate_h_right_label.setStyleSheet(u"")
+
+        self.verticalLayout_speech_binding_Key_Name.addWidget(self.speech_rotate_h_right_label)
+
+        self.speech_rotate_v_up_label = QLabel(self.verticalLayoutWidget_7)
+        self.speech_rotate_v_up_label.setObjectName(u"speech_rotate_v_up_label")
+        sizePolicy16.setHeightForWidth(self.speech_rotate_v_up_label.sizePolicy().hasHeightForWidth())
+        self.speech_rotate_v_up_label.setSizePolicy(sizePolicy16)
+        self.speech_rotate_v_up_label.setMinimumSize(QSize(0, 0))
+        self.speech_rotate_v_up_label.setFont(font15)
+        self.speech_rotate_v_up_label.setStyleSheet(u"")
+
+        self.verticalLayout_speech_binding_Key_Name.addWidget(self.speech_rotate_v_up_label)
+
+        self.speech_rotate_v_down_label = QLabel(self.verticalLayoutWidget_7)
+        self.speech_rotate_v_down_label.setObjectName(u"speech_rotate_v_down_label")
+        sizePolicy16.setHeightForWidth(self.speech_rotate_v_down_label.sizePolicy().hasHeightForWidth())
+        self.speech_rotate_v_down_label.setSizePolicy(sizePolicy16)
+        self.speech_rotate_v_down_label.setMinimumSize(QSize(0, 0))
+        self.speech_rotate_v_down_label.setFont(font15)
+        self.speech_rotate_v_down_label.setStyleSheet(u"")
+
+        self.verticalLayout_speech_binding_Key_Name.addWidget(self.speech_rotate_v_down_label)
+
+        self.speech_zoom_forwards_label = QLabel(self.verticalLayoutWidget_7)
+        self.speech_zoom_forwards_label.setObjectName(u"speech_zoom_forwards_label")
+        sizePolicy16.setHeightForWidth(self.speech_zoom_forwards_label.sizePolicy().hasHeightForWidth())
+        self.speech_zoom_forwards_label.setSizePolicy(sizePolicy16)
+        self.speech_zoom_forwards_label.setMinimumSize(QSize(0, 0))
+        self.speech_zoom_forwards_label.setFont(font15)
+        self.speech_zoom_forwards_label.setStyleSheet(u"")
+
+        self.verticalLayout_speech_binding_Key_Name.addWidget(self.speech_zoom_forwards_label)
+
+        self.speech_zoom_backwards_label = QLabel(self.verticalLayoutWidget_7)
+        self.speech_zoom_backwards_label.setObjectName(u"speech_zoom_backwards_label")
+        sizePolicy16.setHeightForWidth(self.speech_zoom_backwards_label.sizePolicy().hasHeightForWidth())
+        self.speech_zoom_backwards_label.setSizePolicy(sizePolicy16)
+        self.speech_zoom_backwards_label.setMinimumSize(QSize(0, 0))
+        self.speech_zoom_backwards_label.setFont(font15)
+        self.speech_zoom_backwards_label.setStyleSheet(u"")
+
+        self.verticalLayout_speech_binding_Key_Name.addWidget(self.speech_zoom_backwards_label)
+
+        self.speech_tilt_cw_label = QLabel(self.verticalLayoutWidget_7)
+        self.speech_tilt_cw_label.setObjectName(u"speech_tilt_cw_label")
+        sizePolicy16.setHeightForWidth(self.speech_tilt_cw_label.sizePolicy().hasHeightForWidth())
+        self.speech_tilt_cw_label.setSizePolicy(sizePolicy16)
+        self.speech_tilt_cw_label.setMinimumSize(QSize(0, 0))
+        self.speech_tilt_cw_label.setFont(font15)
+        self.speech_tilt_cw_label.setStyleSheet(u"")
+
+        self.verticalLayout_speech_binding_Key_Name.addWidget(self.speech_tilt_cw_label)
+
+        self.speech_tilt_cc_label = QLabel(self.verticalLayoutWidget_7)
+        self.speech_tilt_cc_label.setObjectName(u"speech_tilt_cc_label")
+        sizePolicy16.setHeightForWidth(self.speech_tilt_cc_label.sizePolicy().hasHeightForWidth())
+        self.speech_tilt_cc_label.setSizePolicy(sizePolicy16)
+        self.speech_tilt_cc_label.setMinimumSize(QSize(0, 0))
+        self.speech_tilt_cc_label.setFont(font15)
+        self.speech_tilt_cc_label.setStyleSheet(u"")
+
+        self.verticalLayout_speech_binding_Key_Name.addWidget(self.speech_tilt_cc_label)
+
+        self.speech_reset_panning_label = QLabel(self.verticalLayoutWidget_7)
+        self.speech_reset_panning_label.setObjectName(u"speech_reset_panning_label")
+        sizePolicy16.setHeightForWidth(self.speech_reset_panning_label.sizePolicy().hasHeightForWidth())
+        self.speech_reset_panning_label.setSizePolicy(sizePolicy16)
+        self.speech_reset_panning_label.setMinimumSize(QSize(0, 0))
+        self.speech_reset_panning_label.setFont(font15)
+        self.speech_reset_panning_label.setStyleSheet(u"")
+
+        self.verticalLayout_speech_binding_Key_Name.addWidget(self.speech_reset_panning_label)
+
+        self.speech_reset_zoom_label = QLabel(self.verticalLayoutWidget_7)
+        self.speech_reset_zoom_label.setObjectName(u"speech_reset_zoom_label")
+        sizePolicy16.setHeightForWidth(self.speech_reset_zoom_label.sizePolicy().hasHeightForWidth())
+        self.speech_reset_zoom_label.setSizePolicy(sizePolicy16)
+        self.speech_reset_zoom_label.setMinimumSize(QSize(0, 0))
+        self.speech_reset_zoom_label.setFont(font15)
+        self.speech_reset_zoom_label.setStyleSheet(u"")
+
+        self.verticalLayout_speech_binding_Key_Name.addWidget(self.speech_reset_zoom_label)
+
+        self.speech_reset_rotation_label = QLabel(self.verticalLayoutWidget_7)
+        self.speech_reset_rotation_label.setObjectName(u"speech_reset_rotation_label")
+        sizePolicy16.setHeightForWidth(self.speech_reset_rotation_label.sizePolicy().hasHeightForWidth())
+        self.speech_reset_rotation_label.setSizePolicy(sizePolicy16)
+        self.speech_reset_rotation_label.setMinimumSize(QSize(0, 0))
+        self.speech_reset_rotation_label.setFont(font15)
+        self.speech_reset_rotation_label.setStyleSheet(u"")
+
+        self.verticalLayout_speech_binding_Key_Name.addWidget(self.speech_reset_rotation_label)
+
+        self.speech_reset_tilt_label = QLabel(self.verticalLayoutWidget_7)
+        self.speech_reset_tilt_label.setObjectName(u"speech_reset_tilt_label")
+        sizePolicy16.setHeightForWidth(self.speech_reset_tilt_label.sizePolicy().hasHeightForWidth())
+        self.speech_reset_tilt_label.setSizePolicy(sizePolicy16)
+        self.speech_reset_tilt_label.setMinimumSize(QSize(0, 0))
+        self.speech_reset_tilt_label.setFont(font15)
+        self.speech_reset_tilt_label.setStyleSheet(u"")
+
+        self.verticalLayout_speech_binding_Key_Name.addWidget(self.speech_reset_tilt_label)
+
+        self.speech_value_bindings_row = QWidget(self.speech_key_bindings_frame_poppable)
+        self.speech_value_bindings_row.setObjectName(u"speech_value_bindings_row")
+        self.speech_value_bindings_row.setGeometry(QRect(144, 0, 889, 498))
+        sizePolicy1.setHeightForWidth(self.speech_value_bindings_row.sizePolicy().hasHeightForWidth())
+        self.speech_value_bindings_row.setSizePolicy(sizePolicy1)
+        self.speech_value_bindings_row.setStyleSheet(u"QLineEdit {\n"
+"background-color:rgb(42, 42, 42);\n"
+"color: rgb(0, 255, 0);\n"
+"    border-radius: 3px; /* Consistent with the tab's rounded corners */\n"
+"    padding: 4px; /* Comfortable padding for the button text */\n"
+"border:0;\n"
+"}")
+        self.verticalLayoutWidget_8 = QWidget(self.speech_value_bindings_row)
+        self.verticalLayoutWidget_8.setObjectName(u"verticalLayoutWidget_8")
+        self.verticalLayoutWidget_8.setGeometry(QRect(0, 4, 881, 494))
+        self.verticalLayout_SpeechBinding_Key_Value = QVBoxLayout(self.verticalLayoutWidget_8)
+        self.verticalLayout_SpeechBinding_Key_Value.setSpacing(2)
+        self.verticalLayout_SpeechBinding_Key_Value.setObjectName(u"verticalLayout_SpeechBinding_Key_Value")
+        self.verticalLayout_SpeechBinding_Key_Value.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.verticalLayout_SpeechBinding_Key_Value.setContentsMargins(0, 0, 0, 0)
+        self.speech_prompt_start_binding = QLineEdit(self.verticalLayoutWidget_8)
+        self.speech_prompt_start_binding.setObjectName(u"speech_prompt_start_binding")
+        self.speech_prompt_start_binding.setMinimumSize(QSize(0, 24))
+        self.speech_prompt_start_binding.setMaximumSize(QSize(16777215, 24))
+        self.speech_prompt_start_binding.setMouseTracking(False)
+        self.speech_prompt_start_binding.setFocusPolicy(Qt.StrongFocus)
+        self.speech_prompt_start_binding.setAcceptDrops(True)
+        self.speech_prompt_start_binding.setStyleSheet(u"")
+        self.speech_prompt_start_binding.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.verticalLayout_SpeechBinding_Key_Value.addWidget(self.speech_prompt_start_binding)
+
+        self.speech_add_to_prompt_binding = QLineEdit(self.verticalLayoutWidget_8)
+        self.speech_add_to_prompt_binding.setObjectName(u"speech_add_to_prompt_binding")
+        sizePolicy16.setHeightForWidth(self.speech_add_to_prompt_binding.sizePolicy().hasHeightForWidth())
+        self.speech_add_to_prompt_binding.setSizePolicy(sizePolicy16)
+        self.speech_add_to_prompt_binding.setMinimumSize(QSize(0, 24))
+        self.speech_add_to_prompt_binding.setMaximumSize(QSize(16777215, 24))
+        self.speech_add_to_prompt_binding.setStyleSheet(u"")
+
+        self.verticalLayout_SpeechBinding_Key_Value.addWidget(self.speech_add_to_prompt_binding)
+
+        self.speech_cancel_prompt_binding = QLineEdit(self.verticalLayoutWidget_8)
+        self.speech_cancel_prompt_binding.setObjectName(u"speech_cancel_prompt_binding")
+        self.speech_cancel_prompt_binding.setMinimumSize(QSize(0, 24))
+        self.speech_cancel_prompt_binding.setMaximumSize(QSize(16777215, 24))
+        self.speech_cancel_prompt_binding.setStyleSheet(u"QLineEdit {\n"
+"background-color:rgb(42, 42, 42);\n"
+"color: rgb(0, 255, 0);\n"
+"    border: none;\n"
+"    border-radius: 3px; /* Consistent with the tab's rounded corners */\n"
+"    padding: 3px; /* Comfortable padding for the button text */\n"
+"    text-align: center;\n"
+"\n"
+"}")
+
+        self.verticalLayout_SpeechBinding_Key_Value.addWidget(self.speech_cancel_prompt_binding)
+
+        self.speech_panning_left_binding = QLineEdit(self.verticalLayoutWidget_8)
+        self.speech_panning_left_binding.setObjectName(u"speech_panning_left_binding")
+        self.speech_panning_left_binding.setMinimumSize(QSize(0, 24))
+        self.speech_panning_left_binding.setMaximumSize(QSize(16777215, 24))
+        self.speech_panning_left_binding.setMouseTracking(False)
+        self.speech_panning_left_binding.setFocusPolicy(Qt.StrongFocus)
+        self.speech_panning_left_binding.setAcceptDrops(True)
+        self.speech_panning_left_binding.setStyleSheet(u"")
+        self.speech_panning_left_binding.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.verticalLayout_SpeechBinding_Key_Value.addWidget(self.speech_panning_left_binding)
+
+        self.speech_panning_right_binding = QLineEdit(self.verticalLayoutWidget_8)
+        self.speech_panning_right_binding.setObjectName(u"speech_panning_right_binding")
+        self.speech_panning_right_binding.setMinimumSize(QSize(0, 24))
+        self.speech_panning_right_binding.setMaximumSize(QSize(16777215, 24))
+        self.speech_panning_right_binding.setStyleSheet(u"")
+
+        self.verticalLayout_SpeechBinding_Key_Value.addWidget(self.speech_panning_right_binding)
+
+        self.speech_panning_up_binding = QLineEdit(self.verticalLayoutWidget_8)
+        self.speech_panning_up_binding.setObjectName(u"speech_panning_up_binding")
+        self.speech_panning_up_binding.setMinimumSize(QSize(0, 24))
+        self.speech_panning_up_binding.setMaximumSize(QSize(16777215, 24))
+        self.speech_panning_up_binding.setStyleSheet(u"")
+
+        self.verticalLayout_SpeechBinding_Key_Value.addWidget(self.speech_panning_up_binding)
+
+        self.speech_panning_down_binding = QLineEdit(self.verticalLayoutWidget_8)
+        self.speech_panning_down_binding.setObjectName(u"speech_panning_down_binding")
+        self.speech_panning_down_binding.setMinimumSize(QSize(0, 24))
+        self.speech_panning_down_binding.setMaximumSize(QSize(16777215, 24))
+        self.speech_panning_down_binding.setStyleSheet(u"")
+
+        self.verticalLayout_SpeechBinding_Key_Value.addWidget(self.speech_panning_down_binding)
+
+        self.speech_rotate_h_left_binding = QLineEdit(self.verticalLayoutWidget_8)
+        self.speech_rotate_h_left_binding.setObjectName(u"speech_rotate_h_left_binding")
+        self.speech_rotate_h_left_binding.setMinimumSize(QSize(0, 24))
+        self.speech_rotate_h_left_binding.setMaximumSize(QSize(16777215, 24))
+        self.speech_rotate_h_left_binding.setStyleSheet(u"")
+
+        self.verticalLayout_SpeechBinding_Key_Value.addWidget(self.speech_rotate_h_left_binding)
+
+        self.speech_rotate_h_right_binding = QLineEdit(self.verticalLayoutWidget_8)
+        self.speech_rotate_h_right_binding.setObjectName(u"speech_rotate_h_right_binding")
+        self.speech_rotate_h_right_binding.setMinimumSize(QSize(0, 24))
+        self.speech_rotate_h_right_binding.setMaximumSize(QSize(16777215, 24))
+        self.speech_rotate_h_right_binding.setStyleSheet(u"")
+
+        self.verticalLayout_SpeechBinding_Key_Value.addWidget(self.speech_rotate_h_right_binding)
+
+        self.speech_rotate_v_up_binding = QLineEdit(self.verticalLayoutWidget_8)
+        self.speech_rotate_v_up_binding.setObjectName(u"speech_rotate_v_up_binding")
+        self.speech_rotate_v_up_binding.setMinimumSize(QSize(0, 24))
+        self.speech_rotate_v_up_binding.setMaximumSize(QSize(16777215, 24))
+        self.speech_rotate_v_up_binding.setStyleSheet(u"")
+
+        self.verticalLayout_SpeechBinding_Key_Value.addWidget(self.speech_rotate_v_up_binding)
+
+        self.speech_rotate_v_down_binding = QLineEdit(self.verticalLayoutWidget_8)
+        self.speech_rotate_v_down_binding.setObjectName(u"speech_rotate_v_down_binding")
+        self.speech_rotate_v_down_binding.setMinimumSize(QSize(0, 24))
+        self.speech_rotate_v_down_binding.setMaximumSize(QSize(16777215, 24))
+        self.speech_rotate_v_down_binding.setStyleSheet(u"")
+
+        self.verticalLayout_SpeechBinding_Key_Value.addWidget(self.speech_rotate_v_down_binding)
+
+        self.speech_zoom_forwards_binding = QLineEdit(self.verticalLayoutWidget_8)
+        self.speech_zoom_forwards_binding.setObjectName(u"speech_zoom_forwards_binding")
+        self.speech_zoom_forwards_binding.setMinimumSize(QSize(0, 24))
+        self.speech_zoom_forwards_binding.setMaximumSize(QSize(16777215, 24))
+        self.speech_zoom_forwards_binding.setStyleSheet(u"")
+
+        self.verticalLayout_SpeechBinding_Key_Value.addWidget(self.speech_zoom_forwards_binding)
+
+        self.speech_zoom_backwards_binding = QLineEdit(self.verticalLayoutWidget_8)
+        self.speech_zoom_backwards_binding.setObjectName(u"speech_zoom_backwards_binding")
+        self.speech_zoom_backwards_binding.setMinimumSize(QSize(0, 24))
+        self.speech_zoom_backwards_binding.setMaximumSize(QSize(16777215, 24))
+        self.speech_zoom_backwards_binding.setStyleSheet(u"")
+
+        self.verticalLayout_SpeechBinding_Key_Value.addWidget(self.speech_zoom_backwards_binding)
+
+        self.speech_tilt_cw_bind = QLineEdit(self.verticalLayoutWidget_8)
+        self.speech_tilt_cw_bind.setObjectName(u"speech_tilt_cw_bind")
+        self.speech_tilt_cw_bind.setMinimumSize(QSize(0, 24))
+        self.speech_tilt_cw_bind.setMaximumSize(QSize(16777215, 24))
+        self.speech_tilt_cw_bind.setStyleSheet(u"")
+
+        self.verticalLayout_SpeechBinding_Key_Value.addWidget(self.speech_tilt_cw_bind)
+
+        self.speech_tilt_cc_bind = QLineEdit(self.verticalLayoutWidget_8)
+        self.speech_tilt_cc_bind.setObjectName(u"speech_tilt_cc_bind")
+        self.speech_tilt_cc_bind.setMinimumSize(QSize(0, 24))
+        self.speech_tilt_cc_bind.setMaximumSize(QSize(16777215, 24))
+        self.speech_tilt_cc_bind.setStyleSheet(u"")
+
+        self.verticalLayout_SpeechBinding_Key_Value.addWidget(self.speech_tilt_cc_bind)
+
+        self.speech_reset_panning_binding = QLineEdit(self.verticalLayoutWidget_8)
+        self.speech_reset_panning_binding.setObjectName(u"speech_reset_panning_binding")
+        self.speech_reset_panning_binding.setMinimumSize(QSize(0, 24))
+        self.speech_reset_panning_binding.setMaximumSize(QSize(16777215, 24))
+        self.speech_reset_panning_binding.setStyleSheet(u"QLineEdit {\n"
+"background-color:rgb(42, 42, 42);\n"
+"color: rgb(0, 255, 0);\n"
+"    border: none;\n"
+"    border-radius: 3px; /* Consistent with the tab's rounded corners */\n"
+"    padding: 3px; /* Comfortable padding for the button text */\n"
+"    text-align: center;\n"
+"\n"
+"}")
+
+        self.verticalLayout_SpeechBinding_Key_Value.addWidget(self.speech_reset_panning_binding)
+
+        self.speech_reset_zoom_binding = QLineEdit(self.verticalLayoutWidget_8)
+        self.speech_reset_zoom_binding.setObjectName(u"speech_reset_zoom_binding")
+        self.speech_reset_zoom_binding.setMinimumSize(QSize(0, 24))
+        self.speech_reset_zoom_binding.setMaximumSize(QSize(16777215, 24))
+        self.speech_reset_zoom_binding.setStyleSheet(u"QLineEdit {\n"
+"background-color:rgb(42, 42, 42);\n"
+"color: rgb(0, 255, 0);\n"
+"    border: none;\n"
+"    border-radius: 3px; /* Consistent with the tab's rounded corners */\n"
+"    padding: 3px; /* Comfortable padding for the button text */\n"
+"    text-align: center;\n"
+"\n"
+"}")
+
+        self.verticalLayout_SpeechBinding_Key_Value.addWidget(self.speech_reset_zoom_binding)
+
+        self.speech_reset_rotation_binding = QLineEdit(self.verticalLayoutWidget_8)
+        self.speech_reset_rotation_binding.setObjectName(u"speech_reset_rotation_binding")
+        self.speech_reset_rotation_binding.setMinimumSize(QSize(0, 24))
+        self.speech_reset_rotation_binding.setMaximumSize(QSize(16777215, 24))
+        self.speech_reset_rotation_binding.setStyleSheet(u"QLineEdit {\n"
+"background-color:rgb(42, 42, 42);\n"
+"color: rgb(0, 255, 0);\n"
+"    border: none;\n"
+"    border-radius: 3px; /* Consistent with the tab's rounded corners */\n"
+"    padding: 3px; /* Comfortable padding for the button text */\n"
+"    text-align: center;\n"
+"\n"
+"}")
+
+        self.verticalLayout_SpeechBinding_Key_Value.addWidget(self.speech_reset_rotation_binding)
+
+        self.speech_reset_tilt_binding = QLineEdit(self.verticalLayoutWidget_8)
+        self.speech_reset_tilt_binding.setObjectName(u"speech_reset_tilt_binding")
+        self.speech_reset_tilt_binding.setMinimumSize(QSize(0, 24))
+        self.speech_reset_tilt_binding.setMaximumSize(QSize(16777215, 24))
+        self.speech_reset_tilt_binding.setStyleSheet(u"QLineEdit {\n"
+"background-color:rgb(42, 42, 42);\n"
+"color: rgb(0, 255, 0);\n"
+"    border: none;\n"
+"    border-radius: 3px; /* Consistent with the tab's rounded corners */\n"
+"    padding: 3px; /* Comfortable padding for the button text */\n"
+"    text-align: center;\n"
+"\n"
+"}")
+
+        self.verticalLayout_SpeechBinding_Key_Value.addWidget(self.speech_reset_tilt_binding)
+
+
+        self.verticalLayout_21.addWidget(self.frame_speech_bindings)
+
+        self.scrollarea_speech_control.setWidget(self.speech_control__scrollarea_widget_bindings)
+
+        self.verticalLayout_19.addWidget(self.scrollarea_speech_control)
+
+        self.record_voice_button = QPushButton(self.speech_control_frame)
+        self.record_voice_button.setObjectName(u"record_voice_button")
+        self.record_voice_button.setEnabled(True)
+        self.record_voice_button.setGeometry(QRect(384, 10, 32, 32))
+        sizePolicy6.setHeightForWidth(self.record_voice_button.sizePolicy().hasHeightForWidth())
+        self.record_voice_button.setSizePolicy(sizePolicy6)
+        self.record_voice_button.setMinimumSize(QSize(0, 0))
+        self.record_voice_button.setMaximumSize(QSize(16777215, 16777215))
+        self.record_voice_button.setTabletTracking(False)
+        self.record_voice_button.setStyleSheet(u"    background-color: none;\n"
+"    border-radius: 0px;\n"
+"    border: none;\n"
+"\n"
+"")
+        self.record_voice_button.setIcon(icon9)
+        self.record_voice_button.setIconSize(QSize(32, 32))
+        self.record_speech_button_label = QLabel(self.speech_control_frame)
+        self.record_speech_button_label.setObjectName(u"record_speech_button_label")
+        self.record_speech_button_label.setGeometry(QRect(288, 12, 89, 25))
+        self.record_speech_button_label.setFont(font3)
+        self.record_speech_button_label.setStyleSheet(u"   border: none;")
+        self.deforumation_tabWidget.addTab(self.Speech_Control_Tab, "")
         self.ControlNet_tab = QWidget()
         self.ControlNet_tab.setObjectName(u"ControlNet_tab")
         self.ControlNet_tab.setStyleSheet(u"background-color: rgb(102,102,102);\n"
@@ -10370,7 +11047,7 @@ class Ui_MainWindow(object):
 "")
         self.morph_slider = QSlider(self.Misc_Tab_A)
         self.morph_slider.setObjectName(u"morph_slider")
-        self.morph_slider.setGeometry(QRect(264, 124, 643, 33))
+        self.morph_slider.setGeometry(QRect(16, 532, 643, 33))
         sizePolicy1.setHeightForWidth(self.morph_slider.sizePolicy().hasHeightForWidth())
         self.morph_slider.setSizePolicy(sizePolicy1)
         self.morph_slider.setMinimumSize(QSize(0, 33))
@@ -10424,7 +11101,7 @@ class Ui_MainWindow(object):
         self.morph_slider.setOrientation(Qt.Horizontal)
         self.morphing_text_howto_label = QLabel(self.Misc_Tab_A)
         self.morphing_text_howto_label.setObjectName(u"morphing_text_howto_label")
-        self.morphing_text_howto_label.setGeometry(QRect(264, 157, 643, 29))
+        self.morphing_text_howto_label.setGeometry(QRect(16, 565, 643, 29))
         sizePolicy1.setHeightForWidth(self.morphing_text_howto_label.sizePolicy().hasHeightForWidth())
         self.morphing_text_howto_label.setSizePolicy(sizePolicy1)
         self.morphing_text_howto_label.setMinimumSize(QSize(0, 22))
@@ -10435,11 +11112,14 @@ class Ui_MainWindow(object):
         self.morphing_text_howto_label.setWordWrap(True)
         self.prpmta_to_promptb_label = QLabel(self.Misc_Tab_A)
         self.prpmta_to_promptb_label.setObjectName(u"prpmta_to_promptb_label")
-        self.prpmta_to_promptb_label.setGeometry(QRect(264, 96, 643, 28))
+        self.prpmta_to_promptb_label.setGeometry(QRect(16, 504, 643, 28))
         self.prpmta_to_promptb_label.setMinimumSize(QSize(0, 28))
         self.prpmta_to_promptb_label.setMaximumSize(QSize(16777215, 28))
         self.prpmta_to_promptb_label.setFont(font2)
         self.prpmta_to_promptb_label.setAlignment(Qt.AlignHCenter|Qt.AlignTop)
+        self.legacy_label = QLabel(self.Misc_Tab_A)
+        self.legacy_label.setObjectName(u"legacy_label")
+        self.legacy_label.setGeometry(QRect(16, 472, 241, 25))
         self.deforumation_tabWidget.addTab(self.Misc_Tab_A, "")
         self.Misc_Tab_B = QWidget()
         self.Misc_Tab_B.setObjectName(u"Misc_Tab_B")
@@ -10663,7 +11343,7 @@ class Ui_MainWindow(object):
         self.scrollArea_slider_frame.setWidgetResizable(True)
         self.scrollAreaWidgetContentsSliders = QWidget()
         self.scrollAreaWidgetContentsSliders.setObjectName(u"scrollAreaWidgetContentsSliders")
-        self.scrollAreaWidgetContentsSliders.setGeometry(QRect(0, 0, 250, 352))
+        self.scrollAreaWidgetContentsSliders.setGeometry(QRect(0, 0, 265, 370))
         self.scrollAreaWidgetContentsSliders.setMinimumSize(QSize(0, 352))
         self.scrollAreaWidgetContentsSliders.setStyleSheet(u"")
         self.verticalLayout_7 = QVBoxLayout(self.scrollAreaWidgetContentsSliders)
@@ -11150,7 +11830,7 @@ class Ui_MainWindow(object):
         self.scrollArea_live_values.setWidgetResizable(True)
         self.scrollAreaWidgetContentsLiveValues = QWidget()
         self.scrollAreaWidgetContentsLiveValues.setObjectName(u"scrollAreaWidgetContentsLiveValues")
-        self.scrollAreaWidgetContentsLiveValues.setGeometry(QRect(0, 0, 254, 390))
+        self.scrollAreaWidgetContentsLiveValues.setGeometry(QRect(0, 0, 269, 500))
         sizePolicy1.setHeightForWidth(self.scrollAreaWidgetContentsLiveValues.sizePolicy().hasHeightForWidth())
         self.scrollAreaWidgetContentsLiveValues.setSizePolicy(sizePolicy1)
         self.scrollAreaWidgetContentsLiveValues.setMinimumSize(QSize(0, 390))
@@ -11553,7 +12233,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 2053, 19))
+        self.menubar.setGeometry(QRect(0, 0, 1968, 19))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")
@@ -11565,7 +12245,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.audio_plot_type.setCurrentIndex(0)
-        self.deforumation_tabWidget.setCurrentIndex(3)
+        self.deforumation_tabWidget.setCurrentIndex(6)
         self.syrup_pan_curve_type.setCurrentIndex(0)
         self.enablemovements_button.setDefault(False)
         self.tabWidget_CN.setCurrentIndex(0)
@@ -11575,7 +12255,7 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Deforumation QT v 0.1.8", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Deforumation QT v 0.1.9", None))
 #if QT_CONFIG(tooltip)
         MainWindow.setToolTip("")
 #endif // QT_CONFIG(tooltip)
@@ -11591,11 +12271,11 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(tooltip)
         self.IterSeed_Inputbox.setToolTip(QCoreApplication.translate("MainWindow", u"Seed value", None))
 #endif // QT_CONFIG(tooltip)
-        self.IterSeed_Inputbox.setText(QCoreApplication.translate("MainWindow", u"20", None))
+        self.IterSeed_Inputbox.setText(QCoreApplication.translate("MainWindow", u"-1", None))
 #if QT_CONFIG(tooltip)
         self.fixedSeed_Inputbox.setToolTip(QCoreApplication.translate("MainWindow", u"Fixed Seed value that will be used.", None))
 #endif // QT_CONFIG(tooltip)
-        self.fixedSeed_Inputbox.setText(QCoreApplication.translate("MainWindow", u"20", None))
+        self.fixedSeed_Inputbox.setText(QCoreApplication.translate("MainWindow", u"0", None))
 #if QT_CONFIG(tooltip)
         self.random_RadioButton.setToolTip(QCoreApplication.translate("MainWindow", u"Will create a random seed for each new iteration.", None))
 #endif // QT_CONFIG(tooltip)
@@ -11603,7 +12283,7 @@ class Ui_MainWindow(object):
 #if QT_CONFIG(tooltip)
         self.IterSeed_N_Inputbox.setToolTip(QCoreApplication.translate("MainWindow", u"Iter N value, that decides how many iterations will be skipped before seed increase.", None))
 #endif // QT_CONFIG(tooltip)
-        self.IterSeed_N_Inputbox.setText(QCoreApplication.translate("MainWindow", u"20", None))
+        self.IterSeed_N_Inputbox.setText(QCoreApplication.translate("MainWindow", u"1", None))
 #if QT_CONFIG(tooltip)
         self.seed_iter_n.setToolTip(QCoreApplication.translate("MainWindow", u"Iter N value, that decides how many iterations will be skipped before seed increase.", None))
 #endif // QT_CONFIG(tooltip)
@@ -11840,32 +12520,10 @@ class Ui_MainWindow(object):
 "\"Clear FFmpeg preview\": Clear all selected frames.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
-        self.AutoScroll_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"Enable or disable auto scroll of movie strip. When the rendered frame goes outside the visible range,\n"
+        self.autoscroll_label.setToolTip(QCoreApplication.translate("MainWindow", u"Enable or disable auto scroll of movie strip. When the rendered frame goes outside the visible range,\n"
 "it automatically scrolls into view, keeping up with the currently rendered frame.", None))
 #endif // QT_CONFIG(tooltip)
-#if QT_CONFIG(statustip)
-        self.AutoScroll_checkbox.setStatusTip(QCoreApplication.translate("MainWindow", u"Enable or disable live panning control.", None))
-#endif // QT_CONFIG(statustip)
-        self.AutoScroll_checkbox.setText("")
-#if QT_CONFIG(tooltip)
-        self.open_Deforum_folder.setToolTip(QCoreApplication.translate("MainWindow", u"This magic button will open the current Deforum output folder, usually something like \"...\\outputs\\img2img-images\\Deforum_timestring\"", None))
-#endif // QT_CONFIG(tooltip)
-#if QT_CONFIG(whatsthis)
-        self.open_Deforum_folder.setWhatsThis("")
-#endif // QT_CONFIG(whatsthis)
-        self.open_Deforum_folder.setText("")
-#if QT_CONFIG(tooltip)
-        self.crf_input_box.setToolTip(QCoreApplication.translate("MainWindow", u"CRF in FFmpeg: Control for video quality and size. Lower values mean better quality, higher values mean smaller file sizes.\n"
-"Low value and many frames takes time to compile. A good baseline is 17.", None))
-#endif // QT_CONFIG(tooltip)
-        self.crf_input_box.setText(QCoreApplication.translate("MainWindow", u"20", None))
-#if QT_CONFIG(tooltip)
-        self.crf_label.setToolTip(QCoreApplication.translate("MainWindow", u"CRF in FFmpeg: Control for video quality and size. Lower values mean better quality, higher values mean smaller file sizes. Low value and many frames takes time to compile. A good baseline is 17.", None))
-#endif // QT_CONFIG(tooltip)
-        self.crf_label.setText(QCoreApplication.translate("MainWindow", u"CRF:(compression level)", None))
-#if QT_CONFIG(tooltip)
-        self.preview_compression_slider.setToolTip(QCoreApplication.translate("MainWindow", u"Film Reel Granularity Slider: Drag left to \"zoom in\", or drag right to \"zoom out\".", None))
-#endif // QT_CONFIG(tooltip)
+        self.autoscroll_label.setText(QCoreApplication.translate("MainWindow", u"Auto Scroll", None))
 #if QT_CONFIG(tooltip)
         self.replay_fps_input_box.setToolTip(QCoreApplication.translate("MainWindow", u"Enter the playback FPS of the preview animation. This works independently of what FPS you choose in deforum's \"Video Output Settings\".", None))
 #endif // QT_CONFIG(tooltip)
@@ -11894,6 +12552,17 @@ class Ui_MainWindow(object):
         self.replay_from_input_box.setToolTip(QCoreApplication.translate("MainWindow", u"Input starting frame of preview animation. You can also right click Film reel and \"Mark FFMPEG preview, IN\" to set this value.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
+        self.AutoScroll_checkbox.setToolTip(QCoreApplication.translate("MainWindow", u"Enable or disable auto scroll of movie strip. When the rendered frame goes outside the visible range,\n"
+"it automatically scrolls into view, keeping up with the currently rendered frame.", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(statustip)
+        self.AutoScroll_checkbox.setStatusTip(QCoreApplication.translate("MainWindow", u"Enable or disable live panning control.", None))
+#endif // QT_CONFIG(statustip)
+        self.AutoScroll_checkbox.setText("")
+#if QT_CONFIG(tooltip)
+        self.preview_compression_slider.setToolTip(QCoreApplication.translate("MainWindow", u"Film Reel Granularity Slider: Drag left to \"zoom in\", or drag right to \"zoom out\".", None))
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(tooltip)
         self.goto_end_button.setToolTip(QCoreApplication.translate("MainWindow", u"Go to last / current frame in Film Reel.", None))
 #endif // QT_CONFIG(tooltip)
         self.goto_end_button.setText("")
@@ -11915,16 +12584,33 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.loop_button.setText("")
 #if QT_CONFIG(tooltip)
-        self.autoscroll_label.setToolTip(QCoreApplication.translate("MainWindow", u"Enable or disable auto scroll of movie strip. When the rendered frame goes outside the visible range,\n"
-"it automatically scrolls into view, keeping up with the currently rendered frame.", None))
+        self.open_Deforum_folder.setToolTip(QCoreApplication.translate("MainWindow", u"This magic button will open the current Deforum output folder, usually something like \"...\\outputs\\img2img-images\\Deforum_timestring\"", None))
 #endif // QT_CONFIG(tooltip)
-        self.autoscroll_label.setText(QCoreApplication.translate("MainWindow", u"Auto Scroll", None))
+#if QT_CONFIG(whatsthis)
+        self.open_Deforum_folder.setWhatsThis("")
+#endif // QT_CONFIG(whatsthis)
+        self.open_Deforum_folder.setText("")
+#if QT_CONFIG(tooltip)
+        self.crf_input_box.setToolTip(QCoreApplication.translate("MainWindow", u"CRF in FFmpeg: Control for video quality and size. Lower values mean better quality, higher values mean smaller file sizes.\n"
+"Low value and many frames takes time to compile. A good baseline is 17.", None))
+#endif // QT_CONFIG(tooltip)
+        self.crf_input_box.setText(QCoreApplication.translate("MainWindow", u"20", None))
+#if QT_CONFIG(tooltip)
+        self.crf_label.setToolTip(QCoreApplication.translate("MainWindow", u"CRF in FFmpeg: Control for video quality and size. Lower values mean better quality, higher values mean smaller file sizes. Low value and many frames takes time to compile. A good baseline is 17.", None))
+#endif // QT_CONFIG(tooltip)
+        self.crf_label.setText(QCoreApplication.translate("MainWindow", u"CRF:(compression level)", None))
+#if QT_CONFIG(tooltip)
+        self.record_voice_button_2.setToolTip(QCoreApplication.translate("MainWindow", u"This will put the generation in or out of loop-back. Number of generated images in loop-back mode,\n"
+"depends on the current Cadence.", None))
+#endif // QT_CONFIG(tooltip)
+        self.record_voice_button_2.setText("")
 #if QT_CONFIG(tooltip)
         self.movie_slider_frame_number.setToolTip(QCoreApplication.translate("MainWindow", u"Tells what frame number is currently in the most left film reel. You can jump directly to a frame by typing it in.", None))
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(tooltip)
         self.movie_slider.setToolTip(QCoreApplication.translate("MainWindow", u"Film Reel jogging slider.", None))
 #endif // QT_CONFIG(tooltip)
+        self.deforumation_tabWidget.setWindowTitle(QCoreApplication.translate("MainWindow", u"Deforumation QT v 0.1.9", None))
 #if QT_CONFIG(tooltip)
         self.deforumation_tabWidget.setToolTip("")
 #endif // QT_CONFIG(tooltip)
@@ -12578,7 +13264,7 @@ class Ui_MainWindow(object):
 "Especially important for the \"Strength\"-graph.", None))
 #endif // QT_CONFIG(tooltip)
         self.cadence_indice_audio_settings_label.setText(QCoreApplication.translate("MainWindow", u"Value Point Manipulation - Beat creation relative cadence", None))
-        self.cadence_indice_explanation_label.setText(QCoreApplication.translate("MainWindow", u"Use this to get specific values on specific cadence lines. This works well to create \"Beats\" that will always trigger. This can be especially important for the \"Strength\"-graph.", None))
+        self.cadence_indice_explanation_label.setText(QCoreApplication.translate("MainWindow", u"Use this to get specific values on specific cadence lines. This works well to create \"Beats\" that will always trigger. This can be especially important for the \"Strength\"-graph. (Keep values inside the value range for the specific graph).", None))
         self.audio_graph_synq_label.setText(QCoreApplication.translate("MainWindow", u"DMQT to Deforum Graph Synq", None))
         self.audio_synq_zoom_deforum_label.setText(QCoreApplication.translate("MainWindow", u"Synq Zoom Graph to Deforum", None))
 #if QT_CONFIG(tooltip)
@@ -12639,7 +13325,130 @@ class Ui_MainWindow(object):
         self.audio_synq_tilt_deforum_checkbox.setText("")
         self.audio_synq_deforum_explanation_label.setText(QCoreApplication.translate("MainWindow", u"Enable different Plot Graphs to be used with Deforumation. When activated it will send the Plot to Deforum and it will override any other Motion or Live parameters.", None))
         self.audio_misc_info_label.setText(QCoreApplication.translate("MainWindow", u"Audio Misc", None))
+        self.recordXXXX_voice_button.setText(QCoreApplication.translate("MainWindow", u"Record Voice", None))
         self.deforumation_tabWidget.setTabText(self.deforumation_tabWidget.indexOf(self.Audio_Tab1), QCoreApplication.translate("MainWindow", u"Audio", None))
+        self.audio_misc_info_label_2.setText(QCoreApplication.translate("MainWindow", u"Audio Misc", None))
+        self.speech_prompt_start_label.setText(QCoreApplication.translate("MainWindow", u"Start a Prompt", None))
+        self.speech_add_to_prompt_label.setText(QCoreApplication.translate("MainWindow", u"Add to Prompt", None))
+        self.speech_cancel_prompt_label.setText(QCoreApplication.translate("MainWindow", u"Cancel Prompt", None))
+        self.speech_panning_left_label.setText(QCoreApplication.translate("MainWindow", u"Panning Left", None))
+        self.speech_panning_right_label.setText(QCoreApplication.translate("MainWindow", u"Panning Right", None))
+        self.speech_panning_up_label.setText(QCoreApplication.translate("MainWindow", u"Panning Up", None))
+        self.speech_panning_down_label.setText(QCoreApplication.translate("MainWindow", u"Panning Down", None))
+        self.speech_rotate_h_left_label.setText(QCoreApplication.translate("MainWindow", u"Rotate H Left", None))
+        self.speech_rotate_h_right_label.setText(QCoreApplication.translate("MainWindow", u"Rotate H Right", None))
+        self.speech_rotate_v_up_label.setText(QCoreApplication.translate("MainWindow", u"Rotate V Up", None))
+        self.speech_rotate_v_down_label.setText(QCoreApplication.translate("MainWindow", u"Rotate V Down", None))
+        self.speech_zoom_forwards_label.setText(QCoreApplication.translate("MainWindow", u"Zoom Forwards", None))
+        self.speech_zoom_backwards_label.setText(QCoreApplication.translate("MainWindow", u"Zoom Backwards", None))
+        self.speech_tilt_cw_label.setText(QCoreApplication.translate("MainWindow", u"Tilt Clockwise", None))
+        self.speech_tilt_cc_label.setText(QCoreApplication.translate("MainWindow", u"Tilt Counter-Clockwise", None))
+        self.speech_reset_panning_label.setText(QCoreApplication.translate("MainWindow", u"Reset Panning", None))
+        self.speech_reset_zoom_label.setText(QCoreApplication.translate("MainWindow", u"Reset Zoom", None))
+        self.speech_reset_rotation_label.setText(QCoreApplication.translate("MainWindow", u"Reset Rotation", None))
+        self.speech_reset_tilt_label.setText(QCoreApplication.translate("MainWindow", u"Reset Tilt", None))
+#if QT_CONFIG(tooltip)
+        self.speech_prompt_start_binding.setToolTip(QCoreApplication.translate("MainWindow", u"Current set \"Smoot motion steps\" shows how many frames the smooth motion will use to reach the end value.\n"
+"Lower value equals faster smooth motion. Higher value equals slower smooth motion.", None))
+#endif // QT_CONFIG(tooltip)
+        self.speech_prompt_start_binding.setText(QCoreApplication.translate("MainWindow", u"prompt, begin", None))
+#if QT_CONFIG(tooltip)
+        self.speech_add_to_prompt_binding.setToolTip(QCoreApplication.translate("MainWindow", u"Current set \"Smoot motion steps\" shows how many frames the smooth motion will use to reach the end value.\n"
+"Lower value equals faster smooth motion. Higher value equals slower smooth motion.", None))
+#endif // QT_CONFIG(tooltip)
+        self.speech_add_to_prompt_binding.setText(QCoreApplication.translate("MainWindow", u"add", None))
+#if QT_CONFIG(tooltip)
+        self.speech_cancel_prompt_binding.setToolTip(QCoreApplication.translate("MainWindow", u"Current set \"Smoot motion steps\" shows how many frames the smooth motion will use to reach the end value.\n"
+"Lower value equals faster smooth motion. Higher value equals slower smooth motion.", None))
+#endif // QT_CONFIG(tooltip)
+        self.speech_cancel_prompt_binding.setText(QCoreApplication.translate("MainWindow", u"cancel", None))
+#if QT_CONFIG(tooltip)
+        self.speech_panning_left_binding.setToolTip(QCoreApplication.translate("MainWindow", u"Current set \"Smoot motion steps\" shows how many frames the smooth motion will use to reach the end value.\n"
+"Lower value equals faster smooth motion. Higher value equals slower smooth motion.", None))
+#endif // QT_CONFIG(tooltip)
+        self.speech_panning_left_binding.setText(QCoreApplication.translate("MainWindow", u"go left, pan left, call left, turn left, time left, pin left, pin lift, pin left, pem left, pen left, pam left", None))
+#if QT_CONFIG(tooltip)
+        self.speech_panning_right_binding.setToolTip(QCoreApplication.translate("MainWindow", u"Current set \"Smoot motion steps\" shows how many frames the smooth motion will use to reach the end value.\n"
+"Lower value equals faster smooth motion. Higher value equals slower smooth motion.", None))
+#endif // QT_CONFIG(tooltip)
+        self.speech_panning_right_binding.setText(QCoreApplication.translate("MainWindow", u"go right, pan right, go Wright, call right, call Wright, turn right, turn brigh, pin right, time right, pin right, pin right, pem right, pen right, pam right", None))
+#if QT_CONFIG(tooltip)
+        self.speech_panning_up_binding.setToolTip(QCoreApplication.translate("MainWindow", u"Current set \"Smoot motion steps\" shows how many frames the smooth motion will use to reach the end value.\n"
+"Lower value equals faster smooth motion. Higher value equals slower smooth motion.", None))
+#endif // QT_CONFIG(tooltip)
+        self.speech_panning_up_binding.setText(QCoreApplication.translate("MainWindow", u"go up, turn up, call up, open up, pan up, pin up, pem up, pen up, pam up, pan app", None))
+#if QT_CONFIG(tooltip)
+        self.speech_panning_down_binding.setToolTip(QCoreApplication.translate("MainWindow", u"Current set \"Smoot motion steps\" shows how many frames the smooth motion will use to reach the end value.\n"
+"Lower value equals faster smooth motion. Higher value equals slower smooth motion.", None))
+#endif // QT_CONFIG(tooltip)
+        self.speech_panning_down_binding.setText(QCoreApplication.translate("MainWindow", u"go down, turn down, call down, pan down, pin down, pin down, pem down, pen down, pam down", None))
+#if QT_CONFIG(tooltip)
+        self.speech_rotate_h_left_binding.setToolTip(QCoreApplication.translate("MainWindow", u"Current set \"Smoot motion steps\" shows how many frames the smooth motion will use to reach the end value.\n"
+"Lower value equals faster smooth motion. Higher value equals slower smooth motion.", None))
+#endif // QT_CONFIG(tooltip)
+        self.speech_rotate_h_left_binding.setText(QCoreApplication.translate("MainWindow", u"rotate left, rotate lift, rooted left, rooted lift", None))
+#if QT_CONFIG(tooltip)
+        self.speech_rotate_h_right_binding.setToolTip(QCoreApplication.translate("MainWindow", u"Current set \"Smoot motion steps\" shows how many frames the smooth motion will use to reach the end value.\n"
+"Lower value equals faster smooth motion. Higher value equals slower smooth motion.", None))
+#endif // QT_CONFIG(tooltip)
+        self.speech_rotate_h_right_binding.setText(QCoreApplication.translate("MainWindow", u"rotate right, rotate Wright, rotate bright, rooted right", None))
+#if QT_CONFIG(tooltip)
+        self.speech_rotate_v_up_binding.setToolTip(QCoreApplication.translate("MainWindow", u"Current set \"Smoot motion steps\" shows how many frames the smooth motion will use to reach the end value.\n"
+"Lower value equals faster smooth motion. Higher value equals slower smooth motion.", None))
+#endif // QT_CONFIG(tooltip)
+        self.speech_rotate_v_up_binding.setText(QCoreApplication.translate("MainWindow", u"rotate up, rooted up, rotate app", None))
+#if QT_CONFIG(tooltip)
+        self.speech_rotate_v_down_binding.setToolTip(QCoreApplication.translate("MainWindow", u"Current set \"Smoot motion steps\" shows how many frames the smooth motion will use to reach the end value.\n"
+"Lower value equals faster smooth motion. Higher value equals slower smooth motion.", None))
+#endif // QT_CONFIG(tooltip)
+        self.speech_rotate_v_down_binding.setText(QCoreApplication.translate("MainWindow", u"rotate down, rooted down", None))
+#if QT_CONFIG(tooltip)
+        self.speech_zoom_forwards_binding.setToolTip(QCoreApplication.translate("MainWindow", u"Current set \"Smoot motion steps\" shows how many frames the smooth motion will use to reach the end value.\n"
+"Lower value equals faster smooth motion. Higher value equals slower smooth motion.", None))
+#endif // QT_CONFIG(tooltip)
+        self.speech_zoom_forwards_binding.setText(QCoreApplication.translate("MainWindow", u"zoom in, resume in, turn in", None))
+#if QT_CONFIG(tooltip)
+        self.speech_zoom_backwards_binding.setToolTip(QCoreApplication.translate("MainWindow", u"Current set \"Smoot motion steps\" shows how many frames the smooth motion will use to reach the end value.\n"
+"Lower value equals faster smooth motion. Higher value equals slower smooth motion.", None))
+#endif // QT_CONFIG(tooltip)
+        self.speech_zoom_backwards_binding.setText(QCoreApplication.translate("MainWindow", u"zoom out, resume out, turn out, resume Route, turn Route", None))
+#if QT_CONFIG(tooltip)
+        self.speech_tilt_cw_bind.setToolTip(QCoreApplication.translate("MainWindow", u"Current set \"Smoot motion steps\" shows how many frames the smooth motion will use to reach the end value.\n"
+"Lower value equals faster smooth motion. Higher value equals slower smooth motion.", None))
+#endif // QT_CONFIG(tooltip)
+        self.speech_tilt_cw_bind.setText(QCoreApplication.translate("MainWindow", u"tilt right, tilt Wright, tilt bright", None))
+#if QT_CONFIG(tooltip)
+        self.speech_tilt_cc_bind.setToolTip(QCoreApplication.translate("MainWindow", u"Current set \"Smoot motion steps\" shows how many frames the smooth motion will use to reach the end value.\n"
+"Lower value equals faster smooth motion. Higher value equals slower smooth motion.", None))
+#endif // QT_CONFIG(tooltip)
+        self.speech_tilt_cc_bind.setText(QCoreApplication.translate("MainWindow", u"tilt left, tilt lift", None))
+#if QT_CONFIG(tooltip)
+        self.speech_reset_panning_binding.setToolTip(QCoreApplication.translate("MainWindow", u"Current set \"Smoot motion steps\" shows how many frames the smooth motion will use to reach the end value.\n"
+"Lower value equals faster smooth motion. Higher value equals slower smooth motion.", None))
+#endif // QT_CONFIG(tooltip)
+        self.speech_reset_panning_binding.setText(QCoreApplication.translate("MainWindow", u"reset pan, reset plan", None))
+#if QT_CONFIG(tooltip)
+        self.speech_reset_zoom_binding.setToolTip(QCoreApplication.translate("MainWindow", u"Current set \"Smoot motion steps\" shows how many frames the smooth motion will use to reach the end value.\n"
+"Lower value equals faster smooth motion. Higher value equals slower smooth motion.", None))
+#endif // QT_CONFIG(tooltip)
+        self.speech_reset_zoom_binding.setText(QCoreApplication.translate("MainWindow", u"reset zoom, reset resume, reset turn", None))
+#if QT_CONFIG(tooltip)
+        self.speech_reset_rotation_binding.setToolTip(QCoreApplication.translate("MainWindow", u"Current set \"Smoot motion steps\" shows how many frames the smooth motion will use to reach the end value.\n"
+"Lower value equals faster smooth motion. Higher value equals slower smooth motion.", None))
+#endif // QT_CONFIG(tooltip)
+        self.speech_reset_rotation_binding.setText(QCoreApplication.translate("MainWindow", u"reset rotation", None))
+#if QT_CONFIG(tooltip)
+        self.speech_reset_tilt_binding.setToolTip(QCoreApplication.translate("MainWindow", u"Current set \"Smoot motion steps\" shows how many frames the smooth motion will use to reach the end value.\n"
+"Lower value equals faster smooth motion. Higher value equals slower smooth motion.", None))
+#endif // QT_CONFIG(tooltip)
+        self.speech_reset_tilt_binding.setText(QCoreApplication.translate("MainWindow", u"reset tilt", None))
+#if QT_CONFIG(tooltip)
+        self.record_voice_button.setToolTip(QCoreApplication.translate("MainWindow", u"This will put the generation in or out of loop-back. Number of generated images in loop-back mode,\n"
+"depends on the current Cadence.", None))
+#endif // QT_CONFIG(tooltip)
+        self.record_voice_button.setText("")
+        self.record_speech_button_label.setText(QCoreApplication.translate("MainWindow", u"Record Voice", None))
+        self.deforumation_tabWidget.setTabText(self.deforumation_tabWidget.indexOf(self.Speech_Control_Tab), QCoreApplication.translate("MainWindow", u"Speech Control", None))
         self.label_cnet15.setText(QCoreApplication.translate("MainWindow", u"CNet 1 Weight", None))
         self.CN_1_weight_slider_value.setText(QCoreApplication.translate("MainWindow", u"1.0", None))
         self.label_cnet14.setText(QCoreApplication.translate("MainWindow", u"CNet 1 Starting Control Step", None))
@@ -12713,6 +13522,7 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.morphing_text_howto_label.setText(QCoreApplication.translate("MainWindow", u"Right click the slider to equal the weight", None))
         self.prpmta_to_promptb_label.setText(QCoreApplication.translate("MainWindow", u"Prompt A - Prompt B", None))
+        self.legacy_label.setText(QCoreApplication.translate("MainWindow", u"Legacy stuff (about to be removed)", None))
         self.deforumation_tabWidget.setTabText(self.deforumation_tabWidget.indexOf(self.Misc_Tab_A), QCoreApplication.translate("MainWindow", u"MiscA", None))
         self.deforumation_tabWidget.setTabText(self.deforumation_tabWidget.indexOf(self.Misc_Tab_B), QCoreApplication.translate("MainWindow", u"MiscB", None))
 #if QT_CONFIG(tooltip)
