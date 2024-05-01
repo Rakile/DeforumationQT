@@ -36,6 +36,7 @@ from helpers.tools import Deforumation_Tools
 from helpers.events import handleEvent, handleEventValueChanged, handleEventReturnPressed
 from helpers.video_player_deforumation import Deforumation_Video_Player
 from helpers.joystick import Deforumation_Joystick
+from helpers.speech import Deforumation_Speech
 ShouldRestoreOriginalDeforumationGui = False
 ShouldOnlyRestartDeforumationGui = False
 mediator_address = 'localhost'
@@ -406,6 +407,10 @@ class MainWindow(QMainWindow):
         BUF_MAX_SIZE = CHUNK_SIZE * 10
         self.DeforumationPrompts = Deforumation_Prompts(self, self.DeforumationTotalRecall, self.deforumationnamedpipes, self.deforumation_settings, self.deforumationwidgets, self.deforumationtools)
 
+        #Start voice recognition functionality
+        self.Deforumation_Speech = Deforumation_Speech(self)
+        self.Deforumation_Speech.setComponetValues()
+
         #Load the currently chosen language
         self.load_language_file()
 
@@ -485,6 +490,9 @@ class MainWindow(QMainWindow):
             if self.VideoImageContainer.player != None:
                 self.VideoImageContainer.player.close()
                 self.VideoImageContainer.player = None
+        #Close Audio Recorder if active
+        self.Deforumation_Speech.is_recording = False
+
         #Close AudioPlayer if open
         self.AudioWaveContainer.audioDataContainer.shouldPlayAudio = False
         self.AudioWaveContainer.audioDataContainer.shouldCloseAudioPlayer = True
@@ -622,8 +630,28 @@ class MainWindow(QMainWindow):
         print("Should change prompt:" + str(args[0]) + " to:" + str(args[1]))
         self.DeforumationPrompts.changePromptWeightByBindName(args[0], args[1])
 
-    @Slot(list, str)
-    def handler(self, args, value):
+    @Slot(list)
+    def setTextToPrompt(self, args):
+        self.ui.prompt1.setText(args[0])
+        #print("Hello:" + str(args))
+    @Slot(list)
+    def addTextToPrompt(self, args):
+        current_prompt_text = self.ui.prompt1.toPlainText()
+        current_prompt_text += "," + args[0]
+        self.ui.prompt1.setText(current_prompt_text)
+    def fakeMotion(self, value, widget1, widget2):
+        if int(value) < 0:
+            button_pos = QPointF(100.0, 100.0)
+            mouse_event = QMouseEvent(QEvent.MouseButtonRelease, button_pos, button_pos, Qt.LeftButton, Qt.LeftButton, Qt.NoModifier)
+            QCoreApplication.postEvent(widget1, mouse_event)
+        elif int(value) > 0:
+            button_pos = QPointF(100.0, 100.0)
+            mouse_event = QMouseEvent(QEvent.MouseButtonRelease, button_pos, button_pos, Qt.LeftButton, Qt.LeftButton, Qt.NoModifier)
+            QCoreApplication.postEvent(widget2, mouse_event)
+
+    @Slot(list, str, str)
+    def handler(self, args, value, shouldStep = 0):
+        shouldStep = int(shouldStep)
         self.should_use_deforumation_game_mode = self.DeforumationMotions.should_use_deforumation_game_mode
         if args[0] == "Sampler_Steps":
             self.ui.step_slider.setValue(int(value))
@@ -637,30 +665,54 @@ class MainWindow(QMainWindow):
             self.ui.noise_slider.setValue(int(round(float(value),2)*100))
 
         elif args[0] == "Zoom":
-            self.ui.pan_z_value.setText(str('%.2f' % float(value)))
-            self.DeforumationMotions.propagateAllComponents(self.ui.pan_z_value, float(value))
-            self.deforumationnamedpipes.writeValue("translation_z", float(value))
+            print("I'm zooming")
+            if shouldStep:
+                if shouldStep:
+                    self.fakeMotion(value, self.ui.motion_zoom_button_backwards, self.ui.motion_zoom_button_forwards)
+            else:
+                self.ui.pan_z_value.setText(str('%.2f' % float(value)))
+                self.DeforumationMotions.propagateAllComponents(self.ui.pan_z_value, float(value))
+                self.deforumationnamedpipes.writeValue("translation_z", float(value))
             #self.ui.motion_zoom_slider.setValue(int(float(value) * 100))
         elif args[0] == "Tilt":
-            self.ui.rotate_z_value.setText(str('%.2f' % float(value)))
-            self.DeforumationMotions.propagateAllComponents(self.ui.rotate_z_value, float(value))
-            self.deforumationnamedpipes.writeValue("rotation_z", float(value))
+            if shouldStep:
+                if shouldStep:
+                    self.fakeMotion(value, self.ui.motion_tilt_button_left, self.ui.motion_tilt_button_right)
+            else:
+                self.ui.rotate_z_value.setText(str('%.2f' % float(value)))
+                self.DeforumationMotions.propagateAllComponents(self.ui.rotate_z_value, float(value))
+                self.deforumationnamedpipes.writeValue("rotation_z", float(value))
         elif args[0] == "Pan_X":
-            self.ui.pan_x_value.setText(str('%.2f' % float(value)))
-            self.DeforumationMotions.propagateAllComponents(self.ui.pan_x_value, float(value))
-            self.deforumationnamedpipes.writeValue("translation_x", float(value))
+            if shouldStep:
+                self.fakeMotion(value, self.ui.motion_pan_button_left, self.ui.motion_pan_button_right)
+            else:
+                self.ui.pan_x_value.setText(str('%.2f' % float(value)))
+                self.DeforumationMotions.propagateAllComponents(self.ui.pan_x_value, float(value))
+                self.deforumationnamedpipes.writeValue("translation_x", float(value))
         elif args[0] == "Pan_Y":
-            self.ui.pan_y_value.setText(str('%.2f' % float(value)))
-            self.DeforumationMotions.propagateAllComponents(self.ui.pan_y_value, float(value))
-            self.deforumationnamedpipes.writeValue("translation_y", float(value))
+            if shouldStep:
+                if shouldStep:
+                    self.fakeMotion(value, self.ui.motion_pan_button_down, self.ui.motion_pan_button_up)
+            else:
+                self.ui.pan_y_value.setText(str('%.2f' % float(value)))
+                self.DeforumationMotions.propagateAllComponents(self.ui.pan_y_value, float(value))
+                self.deforumationnamedpipes.writeValue("translation_y", float(value))
         elif args[0] == "Rot_H":
-            self.ui.rotate_x_value.setText(str('%.2f' % float(value)))
-            self.DeforumationMotions.propagateAllComponents(self.ui.rotate_x_value, float(value))
-            self.deforumationnamedpipes.writeValue("rotation_y", float(value))
+            if shouldStep:
+                if shouldStep:
+                    self.fakeMotion(value, self.ui.motion_rotate_button_left, self.ui.motion_rotate_button_right)
+            else:
+                self.ui.rotate_x_value.setText(str('%.2f' % float(value)))
+                self.DeforumationMotions.propagateAllComponents(self.ui.rotate_x_value, float(value))
+                self.deforumationnamedpipes.writeValue("rotation_y", float(value))
         elif args[0] == "Rot_V":
-            self.ui.rotate_y_value.setText(str('%.2f' % float(value)))
-            self.DeforumationMotions.propagateAllComponents(self.ui.rotate_y_value, float(value))
-            self.deforumationnamedpipes.writeValue("rotation_x", float(value))
+            if shouldStep:
+                if shouldStep:
+                    self.fakeMotion(value, self.ui.motion_rotate_button_down, self.ui.motion_rotate_button_up)
+            else:
+                self.ui.rotate_y_value.setText(str('%.2f' % float(value)))
+                self.DeforumationMotions.propagateAllComponents(self.ui.rotate_y_value, float(value))
+                self.deforumationnamedpipes.writeValue("rotation_x", float(value))
         elif args[0] == "Pan_L" or args[0] == "Pan_R":
             if not self.should_use_deforumation_game_mode:
                 # Send a faked event to the button
@@ -1795,7 +1847,6 @@ def get_local_ip():
         return s.getsockname()[0]
 
 if __name__ == "__main__":
-
     patreons = "Onebit, Chris Barnes, 鑫涛 李, Mintercraft Media, Mizar, 红军 陆, Eddie Wong, Thomas DeColita, Dmitry, Dmitry,\n"
     " Милена Куприна, Jarkabob French, 雨 刘, kimraven, Itzevil, Apollo R.E.D., Michael, Dustin johnsen,\n"
     "wildpusa, ein5tv, eku Zhombi, Davy Smith, Anup prabhakar, Baptiste Perrin, virusvjvisuals, make shimis,\n"

@@ -10,3 +10,4 @@ python3-pyaudio
 pydub
 librosa~=0.10.1
 scipy~=1.11.4
+SpeechRecognition~=3.10.3

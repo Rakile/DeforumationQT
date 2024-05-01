@@ -2768,15 +2768,15 @@ if __name__ == '__main__':
         if isWindows:
             import win32pipe, win32file, pywintypes
             shouldUseNamedPipes = True
-            print("Starting DMQT Mediator with Named Pipes communication, version 0.1.8")
+            print("Starting DMQT Mediator with Named Pipes communication, version 0.1.9")
         else:
             shouldUseNamedPipes = False
-            print("Named DMQT Pipes communication is only supported on Windows OS, version 0.1.8... exiting..")
+            print("Named DMQT Pipes communication is only supported on Windows OS, version 0.1.9... exiting..")
             exit(0)
     else:
         shouldUseNamedPipes = False
-        print("Starting DMQT Mediator (version 0.1.8) with WebSocket communication, listening for Deforum at " + args.mediator_deforum_address + ":" + args.mediator_deforum_port + ", version 0.7.7")
-        print("   -- And listening for Deforumation at " + args.mediator_deforumation_address + ":" + args.mediator_deforumation_port + ", version 0.7.7")
+        print("Starting DMQT Mediator (version 0.1.9) with WebSocket communication, listening for Deforum at " + args.mediator_deforum_address + ":" + args.mediator_deforum_port + ", version 0.1.9")
+        print("   -- And listening for Deforumation at " + args.mediator_deforumation_address + ":" + args.mediator_deforumation_port + ", version 0.1.9")
         print("Connecting to Deforumation's live view server using " + args.deforumation_address + ":" + args.deforumation_port)
         deforumation_address = args.deforumation_address
         deforumation_port = args.deforumation_port
