@@ -136,6 +136,7 @@ class Deforumation_Motions():
                 self.Translation_RX_EXPONENTIAL = self.Translation_RX
                 self.Translation_RY_EXPONENTIAL = self.Translation_RY
                 self.Translation_RZ_EXPONENTIAL = self.Translation_RZ
+                self.Translation_Z_EXPONENTIAL = self.Translation_Z
 
 
                 # Adjust component sliders
@@ -166,6 +167,8 @@ class Deforumation_Motions():
 
                 # Special for handling total recall seed value
                 seed_value = totalRecallFrame.seed_value
+                if str(seed_value) == "None":
+                    seed_value = -1
                 self.parent.ui.IterSeed_Inputbox.setText(str(seed_value))
                 self.parent.ui.fixedSeed_Inputbox.setText(str(seed_value))
                 self.deforumationnamedpipes.writeValue("seed", seed_value)
@@ -216,6 +219,7 @@ class Deforumation_Motions():
         self.Translation_Y = self.deforumation_settings.getSendConfigValue("translation_y")
         self.Translation_Y_EXPONENTIAL = self.Translation_Y
         self.Translation_Z = self.deforumation_settings.getSendConfigValue("translation_z")
+        self.Translation_Z_EXPONENTIAL = self.Translation_Z
         self.Translation_RX = self.deforumation_settings.getSendConfigValue("rotation_x")
         self.Translation_RX_EXPONENTIAL = self.Translation_RX
         self.Translation_RY = self.deforumation_settings.getSendConfigValue("rotation_y")
@@ -251,10 +255,14 @@ class Deforumation_Motions():
         self.should_stay_on_top = self.deforumation_settings.getGuiConfigValue("should_stay_on_top")
         #Special handling of seed stuff
         self.seed = self.deforumation_settings.getSendConfigValue("seed")
+        if self.seed == None:
+            self.seed = -1
         self.seed_fixed = self.deforumation_settings.getGuiConfigValue("seed_fixed")
         self.seed_iter_n = self.deforumation_settings.getSendConfigValue("seed_iter_n")
         if self.seed_iter_n == None:
-            self.seed_iter_n = 0
+            self.seed_iter_n = 1
+        if self.seed_fixed == None:
+            self.seed_fixed = 0
         if self.seed_iter_n <=0:
                 self.seed_iter_n = 1
         self.parent.ui.IterSeed_N_Inputbox.setText(str(self.seed_iter_n))
@@ -555,6 +563,7 @@ class Deforumation_Motions():
             if self.Syrup_Zooming_Motion == 0:
                 self.deforumationnamedpipes.writeValue("start_zero_pan_motion_z", -2)
                 self.Translation_Z = round(sender.value()/100, 2)
+                self.Translation_Z_EXPONENTIAL = self.Translation_Z
                 self.propagateAllComponents(sender, sender.value())
                 self.ui.pan_z_value.setText(str('%.2f' % self.Translation_Z))
                 self.propagateAllComponents(self.ui.pan_z_value, str('%.2f' % self.Translation_Z))
@@ -564,7 +573,13 @@ class Deforumation_Motions():
             else:
                 #print("Sender value: ", sender.value())
                 self.Translation_Z = float(self.deforumationnamedpipes.readValue("deforum_translation_z"))
-                bezierArray = pyeaze.Animator(current_value=self.Translation_Z, target_value=(sender.value() / 100), duration=1, fps=int(self.Syrup_Zooming_Motion), easing=bezierTupple, reverse=False)
+                #granularity = float(self.ui.motion_zoom_granularity_special.text())
+                #self.Translation_Z_EXPONENTIAL = self.Translation_Z_EXPONENTIAL - granularity
+                #self.Translation_Z = self.Translation_Z_EXPONENTIAL
+                #self.Translation_Z = float(sender.value() / 100)
+                self.Translation_Z_EXPONENTIAL = float(sender.value() / 100)
+                bezierArray = pyeaze.Animator(current_value=self.Translation_Z, target_value=(self.Translation_Z_EXPONENTIAL), duration=1, fps=int(self.Syrup_Zooming_Motion), easing=bezierTupple, reverse=False)
+                #bezierArray = pyeaze.Animator(current_value=self.Translation_Z, target_value=(sender.value() / 100), duration=1, fps=int(self.Syrup_Zooming_Motion), easing=bezierTupple, reverse=False)
                 #self.Translation_X = round(self.Translation_X - granularity, 2)
                 #else:
                 #bezierArray = pyeaze.Animator(current_value=self.Translation_X, target_value=self.Translation_X_EXPONENTIAL, duration=1, fps=int(self.Syrup_Panning_Motion), easing=bezierTupple, reverse=False)
@@ -724,13 +739,17 @@ class Deforumation_Motions():
             if event.button() == Qt.LeftButton:
                 granularity = float(self.ui.motion_zoom_granularity_special.text())
                 self.Translation_Z = round(self.Translation_Z - granularity, 2)
-                sender.setValue(int(self.Translation_Z * 100))
+                self.Translation_Z_EXPONENTIAL = round(self.Translation_Z_EXPONENTIAL - granularity, 2)
+                #print("Sending Translation_Z:" + str(self.Translation_Z_EXPONENTIAL))
+                sender.setValue(int(self.Translation_Z_EXPONENTIAL * 100))
         elif sender.objectName().startswith("motion_zoom_button_forwards"):
             sender = self.ui.motion_zoom_slider
             if event.button() == Qt.LeftButton:
                 granularity = float(self.ui.motion_zoom_granularity_special.text())
                 self.Translation_Z = round(self.Translation_Z + granularity, 2)
-                sender.setValue(int(self.Translation_Z * 100))
+                self.Translation_Z_EXPONENTIAL = round(self.Translation_Z_EXPONENTIAL + granularity, 2)
+                #print("Sending Translation_Z:" + str(self.Translation_Z_EXPONENTIAL))
+                sender.setValue(int(self.Translation_Z_EXPONENTIAL * 100))
         elif sender.objectName().startswith("motion_pan_button_left"):
             if event.button() == Qt.LeftButton or event.button() == Qt.RightButton:
                 #Is there any sirup motion?

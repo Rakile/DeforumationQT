@@ -354,6 +354,10 @@ def handleFocusOut(self, object, event):
                 self.AudioWaveContainer.clicked_button(object, event)
             elif object.objectName().startswith("metronome_trigger_over_value_box") or object.objectName().startswith("metronome_trigger_under_value_box"):
                 self.AudioWaveContainer.clicked_metronome_button(object, event)
+
+            elif object.objectName().startswith("speech_"):
+                self.Deforumation_Speech.saveBindingValues(object, event)
+
             else:
                 if self.is_verbose:
                     print("<Not implemented yet>, FocusOut:" + str(object.objectName()))
@@ -802,6 +806,9 @@ def handleMouseButtonRelease(self, object, event):
                     self.AudioWaveContainer.deleteGraph()
                 elif sender.objectName().startswith("create_audio_beats_button"):
                     self.AudioWaveContainer.createAudioBeat()
+                elif sender.objectName().startswith("record_voice_button"):
+                    original_component_name = self.deforumationtools.getOriginalComponentName(sender)
+                    self.Deforumation_Speech.toggleRecording(event, sender, original_component_name)
 
                 else:
                     #self.skipSetMovieSlidePosition = False
